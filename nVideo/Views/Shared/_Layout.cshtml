@@ -9,25 +9,42 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">nVideo</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        <nav class="navbar navbar-expand-md fixed-top">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">nVideo</a>
+            <div id="top">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <div class="btn-group">
+                                <a class="btn" asp-controller="" asp-action="" id="wishlist-total">Закладки</a>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <div class="btn-group">
+                                <a class="btn" asp-controller="" asp-action="" id="wishlist-total">Избранное </a>
+                            </div>
+                        </li>
+                        <!--Dropdown wich registration-->
+                        <li class="nav-item">
+                            <div class="btn-group">
+                                <div class="dropdown open">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Личный кабинет
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" asp-controller="Account" asp-action="Register" asp-route-category="Шлемы">Регистрация</a>
+                                            <a class="dropdown-item" asp-controller="Account" asp-action="Auth" asp-route-category="Нагрудники">Войти</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+    <hr>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -40,9 +57,11 @@
             &copy; 2021 - nVideo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
