@@ -43,6 +43,15 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+<<<<<<< HEAD
+=======
+          "dependencies": {
+            "popper.js": {
+              "target": "Package",
+              "version": "[1.16.1, )"
+            }
+          },
+>>>>>>> AlexandersBranch
           "imports": [
             "net461",
             "net462",
