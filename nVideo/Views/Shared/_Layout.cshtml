@@ -1,11 +1,13 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - nVideo</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script type="text/javascript" src="~/JS/jquery3-2-1-full.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
     <header>
@@ -26,18 +28,15 @@
                         </li>
                         <!--Dropdown wich registration-->
                         <li class="nav-item">
-                            <div class="btn-group">
-                                <div class="dropdown open">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Личный кабинет
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" asp-controller="Account" asp-action="Register" asp-route-category="Шлемы">Регистрация</a>
-                                            <a class="dropdown-item" asp-controller="Account" asp-action="Auth" asp-route-category="Нагрудники">Войти</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="dropdown">
+                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Личный кабинет
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Register">Регистрация</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Auth">Войти</a></li>
+                                </ul>
                             </div>
                         </li>
                     </ul>
@@ -58,10 +57,6 @@
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
