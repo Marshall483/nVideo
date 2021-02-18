@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jows1\\source\\repos\\nVideo\\nVideo\\nVideo.csproj": {}
+    "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jows1\\source\\repos\\nVideo\\nVideo\\nVideo.csproj": {
+    "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jows1\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
+        "projectUniqueName": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
         "projectName": "nVideo",
-        "projectPath": "C:\\Users\\jows1\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
-        "packagesPath": "C:\\Users\\jows1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jows1\\source\\repos\\nVideo\\nVideo\\obj\\",
+        "projectPath": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
+        "packagesPath": "C:\\Users\\Alexander Putilin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\jows1\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Alexander Putilin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -26,6 +30,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +42,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -55,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
