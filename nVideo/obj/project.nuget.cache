@@ -1,17 +1,17 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "/FspiIamE03a6phObo3COs9RVw7LyyzyUiyb82LL2DycFfmZLVh4MBnzOEE1oEe9/RlSYnip2f7E03Stsq5uPg==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
-  "expectedPackageFiles": [],
-=======
   "dgSpecHash": "nLKdTHg4+fLXX2PuY45AEKSJWTsGaICNJjPzZ0hjWr3N8CD4fcFgPhnacXZ4HhcDG71HnlGst4UA9Cb9qjROBg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alexander Putilin\\.nuget\\packages\\popper.js\\1.16.1\\popper.js.1.16.1.nupkg.sha512"
   ],
->>>>>>> AlexandersBranch
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Ошибка чтения файла кэша C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
