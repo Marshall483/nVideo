@@ -159,15 +159,12 @@
     "frameworks": {
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
-<<<<<<< HEAD
-=======
         "dependencies": {
           "popper.js": {
             "target": "Package",
             "version": "[1.16.1, )"
           }
         },
->>>>>>> AlexandersBranch
         "imports": [
           "net461",
           "net462",
@@ -189,5 +186,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Ошибка чтения файла кэша C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
