@@ -9,7 +9,7 @@ namespace nVideo.Models
     public class User : IdentityUser
     {
 
-
+        public List<Comment> Comments  { get; set; }
 
     }
 }

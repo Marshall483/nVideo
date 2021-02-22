@@ -22,6 +22,8 @@ namespace nVideo
 
         public Startup(IConfiguration configuration){
             Configuration = configuration;
+            // Не будет запсано, если не создан файл с секретами содержащий строку подключения с 
+            // именем ConnectionStrings:dbConnectionString
             _dbConnection = Configuration["ConnectionStrings:dbConnectionString"];
         }
 
@@ -41,7 +43,7 @@ namespace nVideo
 
             /* IMPOTANT */
             services.AddMvc(option => option.EnableEndpointRouting = false); // Добавть MVC
-            services.AddMemoryCache(); // Подлючить дополнительную библиотеку с кешами
+            services.AddMemoryCache(); // Подлючить библиотеку с кешами
             services.AddSession(); // Подлючить дополнительную библиотеку с сессиями
         }
 
