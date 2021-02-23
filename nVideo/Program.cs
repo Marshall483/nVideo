@@ -29,9 +29,12 @@ namespace nVideo
                     RoleInitializer.InitializeAsync(userManager, rolesManager).Wait();
                 }
                 catch(Exception ex){
-
+                    var logger = serviceScope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                    logger.LogError($"An error occured while initializing Db -\n{ex.Message} ");
                 }
             }
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

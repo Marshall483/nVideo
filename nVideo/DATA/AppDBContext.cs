@@ -14,5 +14,11 @@ namespace nVideo.DATA
 
         }
 
+        public List<Catalog_Category> Categories { get; set; }
+        public List<Catalog_Entity> Entities { get; set; }
+        public List<Catalog_Attribute> Attributes { get; set; }
+        public List<Catalog_Value> Values { get; set; }
+        public List<Image> Images { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }
