@@ -1,0 +1,9 @@
+﻿@model Catalog_Entity
+
+    <li class="span3">
+        <div class="thumbnail">
+            <a class="zoomTool" asp-controller="Catalog" asp-action="View" asp-route-id="@Model.Id" title="more info"><span class="icon-search"></span>Подробнее</a>
+            <a href="#" class="tag"></a>
+            <a href="product_details.html"><img src="@Model.Images.First().Patch" alt="bootstrap-entity"></a>
+        </div>
+    </li>

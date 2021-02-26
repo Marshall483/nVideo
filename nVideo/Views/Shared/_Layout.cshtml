@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model HomeViewModel
+
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -75,7 +77,7 @@
                     </a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li class="active"><a href="index.html">Home	</a></li>
+                            <li class="active"><a asp-controller="Home">Home</a></li>
                             <li class=""><a asp-controller="Catalog" asp-action="List">List View</a></li>
                             <li class=""><a href="grid-view.html">Grid View</a></li>
                             <li class=""><a href="three-col.html">Three Column</a></li>
@@ -117,58 +119,35 @@
             <div id="sidebar" class="span3">
                 <div class="well well-small">
                     <ul class="nav nav-list">
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Fashion</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Watches</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Loose Beads</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Телефоны и гаджеты</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Телевизоры и аудио</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Ноутбуки и компьютеры</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Техника для кухни</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Техника для дома</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Игры и софт, развлечения</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Красота и здововье</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Фото и видео</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Авто электроника</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Аксессуары</a></li>
                         <li style="border:0"> &nbsp;</li>
                         <li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
                     </ul>
                 </div>
 
 
-                <div class="well well-small"><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
+                <div class="well well-small"><a href="#"><img src="~/assets/img/paypal.jpg" alt="payment method paypal"></a></div>
 
                 <a class="shopBtn btn-block" href="#">С этим товаром также покупают </a>
                 <br>
                 <br>
                 <!--С этим товаром также покупают-->
                 <ul class="nav nav-list promowrapper">
-                    <li>
-                        <div class="thumbnail">
-                            <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                            <img src="~/assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
-                            <div class="caption">
-                                <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="border:0"> &nbsp;</li>
-                    <li>
-                        <div class="thumbnail">
-                            <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                            <img src="~/assets/img/shopping-cart-template.png" alt="shopping cart template">
-                            <div class="caption">
-                                <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="border:0"> &nbsp;</li>
-                    <li>
-                        <div class="thumbnail">
-                            <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                            <img src="~/assets/img/bootstrap-template.png" alt="bootstrap template">
-                            <div class="caption">
-                                <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
-                            </div>
-                        </div>
-                    </li>
+                    @{
+                        foreach (Catalog_Entity e in Model.ForAlsoBought)
+                        {
+                            @Html.Partial("AlsoBoughtPartial", e)
+                        }
+                    }
                 </ul>
             </div>
 
