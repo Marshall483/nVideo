@@ -2,14 +2,14 @@
 
     <li class="span4">
         <div class="thumbnail">
-            <a class="zoomTool" asp-controller="Catalog" asp-action="View" asp-route-id="@Model.Id" title="more-info"><span class="icon-search"></span>Подробнее</a>
+            <a class="zoomTool" asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" title="more-info"><span class="icon-search"></span>Подробнее</a>
             <a asp-controller="Catalog" asp-action="View" asp-route-id="@Model.Id"><img src="@Model.Images.First().Patch" alt="ProdImg"></a>
             <div class="caption">
                 <h5>@Model.Name</h5>
                 <h4>
                     <a class="defaultBtn" asp-controller="Catalog" asp-action="View" asp-route-id="@Model.Id title="Click to view"><span class="icon-zoom-in"></span></a>
                     <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-                    <span class="pull-right">@Model.Price</span>
+                    <span class="pull-right">@Model.Price.ToString("# руб")</span>
                 </h4>
             </div>
         </div>

@@ -1,10 +1,8 @@
-﻿@model HomeViewModel
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <title>@ViewData["Title"] - nVideo</title>
+    <title>nVideo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ecommerce shop">
     <meta name="author" content="borschTeam">
@@ -119,16 +117,16 @@
             <div id="sidebar" class="span3">
                 <div class="well well-small">
                     <ul class="nav nav-list">
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Телефоны и гаджеты</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Телевизоры и аудио</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Ноутбуки и компьютеры</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Техника для кухни</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Техника для дома</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Игры и софт, развлечения</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Красота и здововье</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Фото и видео</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Авто электроника</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Аксессуары</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Телефоны и гаджеты"><span class="icon-chevron-right"></span>Телефоны и гаджеты</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Телевизоры и аудио"><span class="icon-chevron-right"></span>Телевизоры и аудио</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Ноутбуки и компьютеры"><span class="icon-chevron-right"></span>Ноутбуки и компьютеры</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Техника для кухни"><span class="icon-chevron-right"></span>Техника для кухни</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Техника для дома"><span class="icon-chevron-right"></span>Техника для дома</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Игры и софт, равлечения"><span class="icon-chevron-right"></span>Игры и софт, развлечения</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Красота и здоровье"><span class="icon-chevron-right"></span>Красота и здововье</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Фото и видео"><span class="icon-chevron-right"></span>Фото и видео</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Авто электроника"><span class="icon-chevron-right"></span>Авто электроника</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Аксессуары"><span class="icon-chevron-right"></span>Аксессуары</a></li>
                         <li style="border:0"> &nbsp;</li>
                         <li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
                     </ul>
@@ -142,12 +140,9 @@
                 <br>
                 <!--С этим товаром также покупают-->
                 <ul class="nav nav-list promowrapper">
-                    @{
-                        foreach (Catalog_Entity e in Model.ForAlsoBought)
-                        {
-                            @Html.Partial("AlsoBoughtPartial", e)
-                        }
-                    }
+
+                    <!--TODO-->
+
                 </ul>
             </div>
 

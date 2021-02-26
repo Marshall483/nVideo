@@ -110,3 +110,11 @@ C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\bin\Debug\netcoreapp3.1\Mi
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\List.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ListCatalogPartial.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AlsoBoughtPartial.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\FeaturedPartial.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\NewProductPartial.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ThumbnailsPartial.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\About.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ItemCarouselPartial.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\HomeCarouselPartial.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AttributesPartial.cshtml.g.cs
