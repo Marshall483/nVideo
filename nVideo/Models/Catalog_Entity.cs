@@ -19,7 +19,7 @@ namespace nVideo.Models
         public ushort InStock { get; set; }
 
 
-        public virtual List<Image> Images { get; set; }
+        public virtual List<Picture> Images { get; set; }
         public virtual List<Catalog_Attribute> Attributes { get; set; }
         public virtual List<Comment> Comments { get; set; }
 

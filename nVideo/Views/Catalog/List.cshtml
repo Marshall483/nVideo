@@ -1,0 +1,15 @@
+﻿@model CatalogViewModel
+
+
+<div class="span9">
+    <div class="well well-small">
+
+        @{
+            foreach (Catalog_Entity e in Model.Entities)
+            {
+                @Html.Partial("ListCatalogPartial", e)
+            }
+        }
+
+    </div>
+</div>

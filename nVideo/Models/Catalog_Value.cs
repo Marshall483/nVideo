@@ -10,12 +10,11 @@ namespace nVideo.Models
     public class Catalog_Value
     {
         [Key]
-        [ForeignKey("Catalog_Attribute")]
         public int Id { get; set; }
         public int? IntegerValue { get; set; }
         public string StringValue { get; set; }
-        public bool? BoolValue { get; set; }
 
+        [ForeignKey("Catalog_Attribute")]
         public Catalog_Attribute Attribute { get; set; }
     }
 }

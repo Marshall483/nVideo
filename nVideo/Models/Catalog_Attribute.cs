@@ -13,6 +13,7 @@ namespace nVideo.Models
         public int? EntityId { get; set; }
         public Catalog_Entity Entity { get; set; }
 
+        public int? ValueId { get; set; }
         public Catalog_Value Value { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace nVideo.Models
 {
-    public class Image
+    public class Picture
     {
 
         public int Id { get; set; }

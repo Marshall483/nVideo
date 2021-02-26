@@ -13,27 +13,27 @@ namespace nVideo.DATA
 
         private static Dictionary<Catalog_Attribute, Catalog_Value> _attrValuePairs;
 
-        private static Image[] _images;
+        private static List<Picture> _images;
 
         public static void Initial(AppDBContext content)
         {
-            //if (!content.Cities.Any())
+            //if (!content.Cities.Any()) ---> Задел на геолокацию
             //    content.Cities.AddRange(Cities);
 
-            if (!content.Categories.Any()) // Если данных нет => Заполнить данными
+            if (!content.Categories.Any()) 
                 content.Categories.AddRange(Category.Select(c => c.Value));
 
-            if (!content.Attributes.Any())
-                content.Attributes.AddRange(AttrValuePairs.Select(a => a.Key));
+            if (!content.Entities.Any())
+                content.Entities.AddRange(Entities.Select(v => v.Value));
+
+            if (!content.Pictures.Any())
+                content.Pictures.AddRange(Images.Select(i => i));
 
             if (!content.Values.Any())
                 content.Values.AddRange(AttrValuePairs.Select(v => v.Value));
 
-            if (!content.Images.Any())
-                content.Images.AddRange(_images);
-
-            //if (!content.Entities.Any())
-            //    content.Entities.AddRange(_entities);
+            if (!content.Attributes.Any())
+                content.Attributes.AddRange(AttrValuePairs.Select(a => a.Key));
 
             content.SaveChanges();
         }
@@ -54,6 +54,8 @@ namespace nVideo.DATA
                         new Catalog_Category { CategoryName = "Аксессуары" }
                     };
 
+                    _categories = new Dictionary<string, Catalog_Category>();
+
                     foreach (var cat in catesories)
                         _categories.Add(cat.CategoryName, cat);
 
@@ -66,8 +68,6 @@ namespace nVideo.DATA
         public static Dictionary<string, Catalog_Entity> Entities { 
             get{
                  if(_entities == null){
-
-
                         var entities = new List<Catalog_Entity>{
 
                             #region Телефоны и гаджеты
@@ -765,10 +765,9 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
 
                     #endregion
 
-
                         };
 
-                    
+                    _entities = new Dictionary<string, Catalog_Entity>();
 
                     foreach (var ent in entities)
                         _entities.Add(ent.Articul, ent);
@@ -779,83 +778,83 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
             }   
         }
 
-        public static Image[] Images { 
+        public static List<Picture> Images { 
             get { 
                 if(_images == null){
-                    var images = new List<Image>{
+                    var images = new List<Picture>{
 
                         #region Phones
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\iPhone\12\1.jpg",
                             Entity = _entities["0001-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\iPhone\12\2.jpg",
                             Entity = _entities["0001-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\iPhone\12\3.jpg",
                             Entity = _entities["0001-0001"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\iPhone\XR\1.jpg",
                             Entity = _entities["0001-0005"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\iPhone\XR\2.jpg",
                             Entity = _entities["0001-0005"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\iPhone\XR\3.jpg",
                             Entity = _entities["0001-0005"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\OnePlus\8Pro\1.jpg",
                             Entity = _entities[@"0001-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\OnePlus\8Pro\2.jpg",
                             Entity = _entities[@"0001-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\OnePlus\8Pro\3.jpg",
                             Entity = _entities[@"0001-0003"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\Xiaomi\Mi10T\1.jpg",
                             Entity = _entities[@"0001-0002"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\Xiaomi\Mi10T\2.png",
                             Entity = _entities[@"0001-0002"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\Xiaomi\RedmiNote9\1.jpg",
                             Entity = _entities[@"0001-0004"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\Xiaomi\RedmiNote9\2.jpg",
                             Entity = _entities[@"0001-0004"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Phones&Gadgets\Xiaomi\RedmiNote9\3.jpg",
                             Entity = _entities[@"0001-0004"]
@@ -864,49 +863,49 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
 
                         #region TV&Audio
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Samsumg\UE5\1.jpg",
                             Entity = _entities["0002-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Samsumg\UE5\2.jpg",
                             Entity = _entities["0002-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Samsumg\UE5\3.jpg",
                             Entity = _entities["0002-0001"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Novex\1.jpg",
                             Entity = _entities["0002-0002"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Novex\2.jpg",
                             Entity = _entities["0002-0002"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Novex\3.jpg",
                             Entity = _entities["0002-0002"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Sony\1.jpg",
                             Entity = _entities[@"0002-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Sony\2.jpg",
                             Entity = _entities[@"0002-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Sony\3.jpg",
                             Entity = _entities[@"0002-0003"]
@@ -916,49 +915,49 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
 
                         #region Notebook&Desk
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Nodebook&Desck\Apple\1.jpg",
                             Entity = _entities["0003-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Nodebook&Desck\Apple\2.jpg",
                             Entity = _entities["0003-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Nodebook&Desck\Apple\3.jpg",
                             Entity = _entities["0003-0001"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Microsoft\1.png",
                             Entity = _entities["0003-0002"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Microsoft\2.png",
                             Entity = _entities["0003-0002"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Microsoft\3.png",
                             Entity = _entities["0003-0002"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Xiaomi\1.png",
                             Entity = _entities[@"0003-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Xiaomi\2.png",
                             Entity = _entities[@"0003-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\TV&Audio\Xiaomi\3.png",
                             Entity = _entities[@"0003-0003"]
@@ -968,49 +967,49 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
 
                         #region Kitchen
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Kitchen\CoffeeMachine\1.jpg",
                             Entity = _entities["0004-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Kitchen\CoffeeMachine\2.jpg",
                             Entity = _entities["0004-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Kitchen\CoffeeMachine\3.jpg",
                             Entity = _entities["0004-0001"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Kitchen\YogurtMaker\1.png",
                             Entity = _entities["0004-0002"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Kitchen\YogurtMaker\2.png",
                             Entity = _entities["0004-0002"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Kitchen\YogurtMaker\3.png",
                             Entity = _entities["0004-0002"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Kitchen\Indesit\1.jpg",
                             Entity = _entities[@"0004-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Kitchen\Indesit\2.jpg",
                             Entity = _entities[@"0004-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Kitchen\Indesit\3.jpg",
                             Entity = _entities[@"0004-0003"]
@@ -1020,39 +1019,39 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
 
                         #region Home
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Home\VacuumCL\1.png",
                             Entity = _entities["0005-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Home\VacuumCL\2.png",
                             Entity = _entities["0005-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Home\VacuumCL\3.png",
                             Entity = _entities["0005-0001"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Home\SewingMachine\1.png",
                             Entity = _entities["0005-0002"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Home\SewingMachine\2.png",
                             Entity = _entities["0005-0002"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Home\Iron\1.png",
                             Entity = _entities[@"0005-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Home\Iron\2.png",
                             Entity = _entities[@"0005-0003"]
@@ -1062,19 +1061,19 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
 
                         #region Games&Fun
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Games&Soft\LOU\cover.jpg",
                             Entity = _entities["0006-0001"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Games&Soft\Nigthmares2\cover.jpg",
                             Entity = _entities["0006-0002"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Games&Soft\DS\cover.jpg",
                             Entity = _entities[@"0006-0003"]
@@ -1084,59 +1083,59 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
 
                         #region Beauty&Health
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Beauty&Health\Massage\1.jpg",
                             Entity = _entities["0007-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Beauty&Health\Massage\2.jpg",
                             Entity = _entities["0007-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Beauty&Health\Massage\3.jpg",
                             Entity = _entities["0007-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Beauty&Health\Massage\4.jpg",
                             Entity = _entities["0007-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Beauty&Health\Massage\5.jpg",
                             Entity = _entities["0007-0001"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Beauty&Health\Pomazok\1.png",
                             Entity = _entities["0007-0002"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Beauty&Health\Pomazok\2.png",
                             Entity = _entities["0007-0002"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Beauty&Health\NewLife\1.jpeg",
                             Entity = _entities[@"0007-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Beauty&Health\NewLife\2.jpeg",
                             Entity = _entities[@"0007-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Beauty&Health\NewLife\3.jpeg",
                             Entity = _entities[@"0007-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Beauty&Health\NewLife\4.jpeg",
                             Entity = _entities[@"0007-0003"]
@@ -1146,49 +1145,49 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
 
                         #region Photo&Video
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Photo&Video\Cannon\Legria\1.png",
                             Entity = _entities["0008-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Photo&Video\Cannon\Legria\2.png",
                             Entity = _entities["0008-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Photo&Video\Cannon\Legria\3.png",
                             Entity = _entities["0008-0001"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Photo&Video\Nicon\D3500\1.jpg",
                             Entity = _entities["0008-0002"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Photo&Video\Nicon\D3500\2.jpg",
                             Entity = _entities["0008-0002"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Photo&Video\Nicon\D3500\3.jpg",
                             Entity = _entities["0008-0002"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Photo&Video\Nicon\D7500\1.png",
                             Entity = _entities["0008-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Photo&Video\Nicon\D7500\2.png",
                             Entity = _entities["0008-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Photo&Video\Nicon\D7500\3.png",
                             Entity = _entities["0008-0003"]
@@ -1198,24 +1197,24 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
 
                         #region Auto Electronic
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Auto\Nexia\1.jpeg",
                             Entity = _entities["0009-0001"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Auto\AUTOPROFI\1.jpg",
                             Entity = _entities["0009-0002"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Auto\Pioneer\1.jpg",
                             Entity = _entities["0009-0003"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Auto\Pioneer\2.jpg",
                             Entity = _entities["0009-0003"]
@@ -1225,29 +1224,29 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
 
                         #region Accessories
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Accessories\Headphones\Xiaomi\1.jpg",
                             Entity = _entities["0010-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Accessories\Headphones\Xiaomi\2.jpg",
                             Entity = _entities["0010-0001"]
                         },
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Accessories\Headphones\Xiaomi\3.jpg",
                             Entity = _entities["0010-0001"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Accessories\SaveGlass\1.jpg",
                             Entity = _entities["0010-0002"]
                         },
 
-                        new Image
+                        new Picture
                         {
                             Patch = @"\IMG\Accessories\Otter\Otter.jpg",
                             Entity = _entities["0010-0003"]
@@ -1256,7 +1255,12 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
                         #endregion
 
                     };
-                    images.CopyTo(_images);
+
+                    _images = new List<Picture>();
+
+                    foreach (var img in images)
+                        _images.Add(img);
+
                     return _images;
                 }
                 return _images;
@@ -1266,7 +1270,7 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
         public static Dictionary<Catalog_Attribute, Catalog_Value> AttrValuePairs{ 
             get{
                 if(_attrValuePairs == null){
-                    var attrValuePairs = new Dictionary<Catalog_Attribute, Catalog_Value>();
+                    var _attrValuePairs = new Dictionary<Catalog_Attribute, Catalog_Value>();
 
                     #region iPhone 12
                     var values = new Catalog_Value[] {
@@ -1296,7 +1300,7 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
                         }
                     };
 
-                    var attr = new List<Catalog_Attribute>{
+                    var attr = new List<Catalog_Attribute> {
                         new Catalog_Attribute {
                             Entity = _entities["0001-0001"],
                             AttributeName = "Встроенная память, Гб",
@@ -3463,9 +3467,8 @@ Bluetooth-гарнитура Millet Bluetooth Headset mini, это свобод�
                     for (int i = 0; i < attr.Count; i++)
                         _attrValuePairs.Add(attr[i], values[i]);
 
-                    #endregion
+                    #endregion 
 
-                    _attrValuePairs = attrValuePairs;
                     return _attrValuePairs;
                 }
                 return _attrValuePairs;

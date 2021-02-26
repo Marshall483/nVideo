@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using nVideo.DATA;
 using nVideo.Models;
+using nVideo.DATA.Interfaces;
+using nVideo.DATA.Repository;
 
 namespace nVideo
 {
@@ -31,6 +33,7 @@ namespace nVideo
 
         public void ConfigureServices(IServiceCollection services){
             services.AddControllersWithViews();
+
             services.AddHttpContextAccessor();
             services.AddDbContext<AppDBContext>(options =>
                 options.UseSqlServer(_dbConnection)); // Подключить контекст бд
@@ -38,6 +41,9 @@ namespace nVideo
             services.AddIdentity<User, IdentityRole>().
                 AddEntityFrameworkStores<AppDBContext>().
                 AddDefaultTokenProviders();
+
+            /* Lifetime */
+            services.AddTransient<IAllCatalog, CatalogRepository>();
 
 
 
