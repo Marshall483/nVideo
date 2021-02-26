@@ -1,0 +1,12 @@
+﻿@model Catalog_Entity
+
+<li>
+    <div class="thumbnail">
+        <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+        <img src="@Model.Images.First().Patch" alt="bootstrap ecommerce templates">
+        <div class="caption">
+            <h4><a class="defaultBtn" asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id">VIEW</a> <span class="pull-right">@Model.Price.ToString("# руб")</span></h4>
+        </div>
+    </div>
+</li>
+<li style="border:0"> &nbsp;</li>

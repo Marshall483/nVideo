@@ -14,13 +14,13 @@
     </div>
     <div class="span4 alignR">
         <form class="form-horizontal qtyFrm">
-            <h3> @Model.Price.ToString("c") </h3>
+            <h3> @Model.Price.ToString("# руб") </h3>
             <label class="checkbox">
                 <input type="checkbox">  Adds product to compair
             </label><br>
             <div class="btn-group">
                 <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-                <a asp-controller="Catalog" asp-action="View" asp-route-id="@Model.Id" class="shopBtn">VIEW</a>
+                <a asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" class="shopBtn">VIEW</a>
             </div>
         </form>
     </div>

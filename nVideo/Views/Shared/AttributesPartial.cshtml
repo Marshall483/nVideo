@@ -1,0 +1,15 @@
+﻿@model Catalog_Attribute
+
+    <tr class="techSpecRow">
+        <td class="techSpecTD1">
+            @Model.AttributeName:
+        </td>
+        <td class="techSpecTD2">
+            @{ 
+               if (Model.Value.IntegerValue.HasValue)
+                    @Model.Value.IntegerValue
+               else
+                    @Model.Value.StringValue
+             } 
+        </td>
+    </tr>
