@@ -118,3 +118,10 @@ C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Ra
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ItemCarouselPartial.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\HomeCarouselPartial.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AttributesPartial.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Account\OnEmailConfirm.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\LoginPartial.cshtml.g.cs

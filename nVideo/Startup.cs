@@ -15,6 +15,7 @@ using nVideo.DATA;
 using nVideo.Models;
 using nVideo.DATA.Interfaces;
 using nVideo.DATA.Repository;
+using nVideo.DATA.Services;
 
 namespace nVideo
 {
@@ -44,7 +45,7 @@ namespace nVideo
 
             /* Lifetime */
             services.AddTransient<IAllCatalog, CatalogRepository>();
-
+            services.AddTransient<IEmailSender, EmailSenderService>();
 
 
             /* IMPOTANT */

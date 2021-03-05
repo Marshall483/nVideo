@@ -1,8 +1,6 @@
-﻿using nVideo.Models;
-using System;
+﻿using nVideo.DATA.ControllerModels;
+using nVideo.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace nVideo.DATA.ViewModels
 {
@@ -16,5 +14,7 @@ namespace nVideo.DATA.ViewModels
         public IEnumerable<Catalog_Entity> ForThumbnailBlock { get; set; }
         //3 items by raiting
         public IEnumerable<Catalog_Entity> ForFeaturedBlock { get; set; }
+
+        public LoginModel LoginModel = new LoginModel();
     }
 }

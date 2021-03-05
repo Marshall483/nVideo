@@ -1,0 +1,48 @@
+﻿@model LoginModel
+
+<body class="text-center">
+    <form asp-action="Login" asp-controller="Account" asp-antiforgery="true" method="post" class="form-signin">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+
+        <img class="mb-4" src="/IMG/LogIcon.jpg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Войти</h1>
+
+        <div style=" display: inline-block;">
+            <div class="form-group">
+                <label asp-for="Email" , class="sr-only">Email address</label>
+                <div>
+                    <input asp-for="Email" , type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="sr-only">Password</label>
+                <div>
+                    <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row" style=" padding-left: 60px; ">
+                    <div class="col-md-7">
+                        <label asp-for="RememberMe" class="sr-only">Запомнить?</label>
+                        Запомнить меня
+                    </div>
+                    <div class="col">
+                        <input asp-for="RememberMe" type="checkbox" class="form-control" style=" width: 30px; height: 30px;">
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+            <p class="mt-5 mb-3 text-muted">
+                Впервые на сайте?
+                <a asp-action="Register" , asp-controller="Account">Зарегестрироваться</a>
+            </p>
+        </div>
+
+    </form>
+</body>
