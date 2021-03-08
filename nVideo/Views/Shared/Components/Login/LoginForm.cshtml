@@ -1,0 +1,29 @@
+﻿@model LoginModel
+
+<form asp-action="Login" asp-controller="Account" asp-antiforgery="true" method="post" class="form-horizontal loginFrm">
+     <div class="validation" asp-validation-summary="ModelOnly"></div>
+
+         <div class="control-group">
+             <label asp-for="Email" , class="sr-only">Email address</label>
+             <div>
+                 <input asp-for="Email" , type="email" class="span2" id="inputEmail" placeholder="Email address" required="" autofocus="">
+                 <span asp-validation-for="Email" class="text-danger"></span>
+             </div>
+         </div>
+
+         <div class="control-group">
+             <label asp-for="Password" class="sr-only">Password</label>
+             <div>
+                 <input asp-for="Password" type="password" class="span2" id="inputPassword" placeholder="Password" required="">
+                 <span asp-validation-for="Password" class="text-danger"></span>
+             </div>
+         </div>
+
+         <div class="control-group">
+             <label class="checkbox">
+                 <input type="checkbox"> Remember me
+             </label>
+             <button type="submit" class="shopBtn btn-block">Sign in</button>
+         </div>
+
+ </form>

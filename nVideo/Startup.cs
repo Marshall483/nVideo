@@ -39,13 +39,20 @@ namespace nVideo
             services.AddDbContext<AppDBContext>(options =>
                 options.UseSqlServer(_dbConnection)); // Подключить контекст бд
 
-            services.AddIdentity<User, IdentityRole>().
-                AddEntityFrameworkStores<AppDBContext>().
-                AddDefaultTokenProviders();
+            services.AddIdentity<User, IdentityRole>(opts => {
+                opts.Password.RequiredLength = 5;   // минимальная длина
+                opts.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы
+                opts.Password.RequireLowercase = false; // требуются ли символы в нижнем регистре
+                opts.Password.RequireUppercase = false; // требуются ли символы в верхнем регистре
+                opts.Password.RequireDigit = false; // требуются ли цифры
+            })
+              .AddEntityFrameworkStores<AppDBContext>()
+              .AddDefaultTokenProviders();
+                
 
             /* Lifetime */
             services.AddTransient<IAllCatalog, CatalogRepository>();
-            services.AddTransient<IEmailSender, EmailSenderService>();
+            services.AddSingleton<EmailSenderService>();
 
 
             /* IMPOTANT */

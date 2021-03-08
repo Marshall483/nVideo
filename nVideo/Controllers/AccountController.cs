@@ -9,6 +9,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using MailKit;
+using nVideo.DATA.Extentions;
+using nVideo.DATA.Services;
 
 namespace nVideo.Controllers
 {
@@ -16,10 +18,10 @@ namespace nVideo.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IEmailSender _sender;
+        private readonly EmailSenderService _sender;
         private readonly ILogger<AccountController> _logger;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signManager, IEmailSender sender, ILogger<AccountController> logger){
+        public AccountController(UserManager<User> userManager, SignInManager<User> signManager, EmailSenderService sender, ILogger<AccountController> logger){
             _userManager = userManager;
             _signInManager = signManager;
             _sender = sender;
@@ -38,7 +40,7 @@ namespace nVideo.Controllers
                 var user = await _userManager.FindByNameAsync(registerModel.Email);
                
                 if (user != null) {
-                    ModelState.AddModelError("EmailWarning", "User wich this login already exist");
+                    ModelState.AddModelError("UniqMailError", "User wich such login already exist");
                     return View();
                 }
 
@@ -47,15 +49,15 @@ namespace nVideo.Controllers
                     UserName = registerModel.Email
                 };
 
-                var res = await _userManager.CreateAsync(newUser);
+                var res = await _userManager.CreateAsync(newUser, registerModel.Password);
 
                 if (res.Succeeded){
                     // генерация токена для пользователя
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
                     var callbackUrl = Url.Action(
                         "ConfirmEmail",
                         "Account",
-                        new { userId = user.Id, code = code },
+                        new { userId = newUser.Id, code = code },
                         protocol: HttpContext.Request.Scheme);
 
                     try{
@@ -63,12 +65,12 @@ namespace nVideo.Controllers
                             $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
                     }
                     catch (CommandException cEx){
-                        _logger.LogError($"Err wich User - {user.Email}. \n {cEx.Message}");
+                        _logger.LogError($"Err wich User - {newUser.Email}. \n {cEx.Message}");
                         ModelState.AddModelError(string.Empty, "Указанный Email не существует");
                         return View(registerModel);
                     }
                     catch (Exception suddenEx){
-                        _logger.LogError($"Err wich User - {user.Email}. \n {suddenEx.Message}");
+                        _logger.LogError($"Err wich User - {newUser.Email}. \n {suddenEx.Message}");
                         ModelState.AddModelError(string.Empty, "При попытке отправки письма произошла ошибка.");
                         return View(registerModel);
                     }
@@ -81,22 +83,27 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
+        public IActionResult VerifyEmail(string Email){
+            return Json(_userManager.IsNameAlreadyExist(Email));
+        }
+
+        [HttpGet]
         public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
             if (userId == null || code == null)
             {
-                return View("Error");
+                return View("Error", new ErrorViewModel());
             }
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return View("Error");
+                return View("Error", new ErrorViewModel());
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
             if (result.Succeeded)
                 return RedirectToAction("Profile", "Office");
             else
-                return View("Error");
+                return View("Error", new ErrorViewModel());
         }
 
         [HttpPost]

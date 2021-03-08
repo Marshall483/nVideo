@@ -14,7 +14,5 @@ namespace nVideo.DATA.ViewModels
         public IEnumerable<Catalog_Entity> ForThumbnailBlock { get; set; }
         //3 items by raiting
         public IEnumerable<Catalog_Entity> ForFeaturedBlock { get; set; }
-
-        public LoginModel LoginModel = new LoginModel();
     }
 }
