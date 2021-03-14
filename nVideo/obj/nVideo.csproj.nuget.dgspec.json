@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\NewProgram\\GithubRep\\nVideo\\nVideo\\nVideo.csproj": {}
+    "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj": {}
   },
   "projects": {
-    "C:\\NewProgram\\GithubRep\\nVideo\\nVideo\\nVideo.csproj": {
+    "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\NewProgram\\GithubRep\\nVideo\\nVideo\\nVideo.csproj",
+        "projectUniqueName": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj",
         "projectName": "nVideo",
-        "projectPath": "C:\\NewProgram\\GithubRep\\nVideo\\nVideo\\nVideo.csproj",
-        "packagesPath": "C:\\Users\\Fies\\.nuget\\packages\\",
-        "outputPath": "C:\\NewProgram\\GithubRep\\nVideo\\nVideo\\obj\\",
+        "projectPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj",
+        "packagesPath": "C:\\Users\\danik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Fies\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danik\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,7 +27,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\Services\\Services.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -91,7 +95,67 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\Services\\Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\Services\\Services.csproj",
+        "projectName": "Services",
+        "projectPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\danik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\danik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "IpInfo": {
+              "target": "Package",
+              "version": "[1.0.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

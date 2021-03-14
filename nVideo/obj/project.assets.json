@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "IpInfo/1.0.5.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "System.ComponentModel.Annotations": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/IpInfo.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/IpInfo.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.3": {
         "type": "package",
         "compile": {
@@ -536,6 +549,15 @@
             "assetType": "runtime",
             "rid": "win"
           }
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "popper.js/1.16.1": {
@@ -1500,10 +1522,39 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "IpInfo": "1.0.5.1"
+        },
+        "compile": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "IpInfo/1.0.5.1": {
+      "sha512": "HVk5ST/WBUVkO/+CtQtoHrczaNunYKKSTCrt4XBupnLnE5SC3QO4+Hvg7hfPzo5z9BlJfP2g7CshTTCdE7BH2Q==",
+      "type": "package",
+      "path": "ipinfo/1.0.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ipinfo.1.0.5.1.nupkg.sha512",
+        "ipinfo.nuspec",
+        "lib/net45/IpInfo.dll",
+        "lib/net45/IpInfo.xml",
+        "lib/netstandard2.0/IpInfo.dll",
+        "lib/netstandard2.0/IpInfo.xml",
+        "nuget_icon.png"
+      ]
+    },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.3": {
       "sha512": "DIF+4a32iHJIri2T2bnGXzjMramSs6rxijIAInYpdLoBqKNUHkUnOkklRVFae20pnuFi7l8VwEe/gPNt+xq7EQ==",
       "type": "package",
@@ -2275,6 +2326,37 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
       ]
     },
     "popper.js/1.16.1": {
@@ -5568,6 +5650,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "path": "../Services/Services.csproj",
+      "msbuildProject": "../Services/Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5578,23 +5665,24 @@
       "Microsoft.EntityFrameworkCore.Design >= 3.1.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.3",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.3",
+      "Services >= 1.0.0",
       "popper.js >= 1.16.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Fies\\.nuget\\packages\\": {}
+    "C:\\Users\\danik\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\NewProgram\\GithubRep\\nVideo\\nVideo\\nVideo.csproj",
+      "projectUniqueName": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj",
       "projectName": "nVideo",
-      "projectPath": "C:\\NewProgram\\GithubRep\\nVideo\\nVideo\\nVideo.csproj",
-      "packagesPath": "C:\\Users\\Fies\\.nuget\\packages\\",
-      "outputPath": "C:\\NewProgram\\GithubRep\\nVideo\\nVideo\\obj\\",
+      "projectPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj",
+      "packagesPath": "C:\\Users\\danik\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Fies\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\danik\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5607,7 +5695,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\Services\\Services.csproj": {
+              "projectPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\Services\\Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -5671,7 +5763,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

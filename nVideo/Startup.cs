@@ -1,20 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using nVideo.DATA;
 using nVideo.Models;
 using nVideo.DATA.Interfaces;
 using nVideo.DATA.Repository;
+using Services.Locating;
 
 namespace nVideo
 {
@@ -24,8 +18,8 @@ namespace nVideo
 
         public Startup(IConfiguration configuration){
             Configuration = configuration;
-            // Не будет запсано, если не создан файл с секретами содержащий строку подключения с 
-            // именем ConnectionStrings:dbConnectionString
+            // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 
+            // пїЅпїЅпїЅпїЅпїЅпїЅ ConnectionStrings:dbConnectionString
             _dbConnection = Configuration["ConnectionStrings:dbConnectionString"];
         }
 
@@ -36,8 +30,8 @@ namespace nVideo
 
             services.AddHttpContextAccessor();
             services.AddDbContext<AppDBContext>(options =>
-                options.UseSqlServer(_dbConnection)); // Подключить контекст бд
-
+                options.UseSqlServer(_dbConnection)); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
+            services.AddSingleton<IDetector, Detector>();
             services.AddIdentity<User, IdentityRole>().
                 AddEntityFrameworkStores<AppDBContext>().
                 AddDefaultTokenProviders();
@@ -48,15 +42,15 @@ namespace nVideo
 
 
             /* IMPOTANT */
-            services.AddMvc(option => option.EnableEndpointRouting = false); // Добавть MVC
-            services.AddMemoryCache(); // Подлючить библиотеку с кешами
-            services.AddSession(); // Подлючить дополнительную библиотеку с сессиями
+            services.AddMvc(option => option.EnableEndpointRouting = false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ MVC
+            services.AddMemoryCache(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+            services.AddSession(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env){
 
             app.UseDeveloperExceptionPage();
-            app.UseStatusCodePages();  // Отображение ошибок 400,404,500...
+            app.UseStatusCodePages();  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 400,404,500...
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
