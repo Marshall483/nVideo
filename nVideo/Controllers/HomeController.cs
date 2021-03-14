@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using nVideo.DATA.Interfaces;
 using nVideo.Models;
 using nVideo.DATA.ViewModels;
+using Services.Locating;
 
 namespace nVideo.Controllers
 {
@@ -15,6 +16,7 @@ namespace nVideo.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IAllCatalog _catalog;
+        private readonly IDetector _detector;
 
         private IEnumerable<Catalog_Entity> GetThridRandom{
             get{
@@ -26,19 +28,20 @@ namespace nVideo.Controllers
             }
         }
 
-        public HomeController(ILogger<HomeController> logger, IAllCatalog catalog){
+        public HomeController(ILogger<HomeController> logger, IAllCatalog catalog, IDetector detector){
             _logger = logger;
             _catalog = catalog;
+            _detector = detector;
         }
 
         public IActionResult Index(){
-            var model = new HomeViewModel();
-
-            model.ForCarousel = _catalog.GetCarouselItems;
-            model.ForFeaturedBlock = _catalog.GetFeaturedItems;
-            model.ForNewProductsBlock = _catalog.GetNewItems;
-            model.ForThumbnailBlock = GetThridRandom;
-
+            var model = new HomeViewModel
+            {
+                ForCarousel = _catalog.GetCarouselItems,
+                ForFeaturedBlock = _catalog.GetFeaturedItems,
+                ForNewProductsBlock = _catalog.GetNewItems,
+                ForThumbnailBlock = GetThridRandom
+            };
             return View(model);
         }      
 
