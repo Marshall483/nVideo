@@ -1,36 +1,13 @@
-<<<<<<< HEAD
 ﻿using Microsoft.AspNetCore.Mvc;
-=======
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using nVideo.DATA.ControllerModels;
-using nVideo.Models;
-using nVideo.DATA.Interfaces;
->>>>>>> iss19
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-<<<<<<< HEAD
-
-namespace nVideo.Controllers
-{
-  public class AccountController : Controller
-  {
-    public IActionResult PersonalPage()
-    {
-      return View();
-    }
-    public IActionResult Registration()
-    {
-      return View();
-    }
-  }
-=======
 using Microsoft.Extensions.Logging;
 using MailKit;
 using nVideo.DATA.Extentions;
 using nVideo.DATA.Services;
+using nVideo.Models;
+using nVideo.DATA.ControllerModels;
+using System.Threading.Tasks;
+using System;
 
 namespace nVideo.Controllers
 {
@@ -157,5 +134,4 @@ namespace nVideo.Controllers
             return View(model);
         }
     }
->>>>>>> iss19
 }
