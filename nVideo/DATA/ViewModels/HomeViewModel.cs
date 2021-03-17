@@ -1,8 +1,6 @@
-﻿using nVideo.Models;
-using System;
+﻿using nVideo.DATA.ControllerModels;
+using nVideo.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace nVideo.DATA.ViewModels
 {

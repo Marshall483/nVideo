@@ -15,11 +15,8 @@ namespace nVideo.DATA.Repository
         private static IQueryable<Catalog_Entity> _entities;
         public IQueryable<Catalog_Entity> Entities {
             get {
-                if (_entities == _entities) {
-                    _entities = _context.Entities
-                        .Include(e => e.Images);
-                }
-                return _entities;
+                return _context.Entities
+                               .Include(e => e.Images);
             }
         }
 
@@ -54,7 +51,7 @@ namespace nVideo.DATA.Repository
             }
         }
 
-        public IEnumerable<Catalog_Entity> GetCategoryMembers(string category) {
+        public IEnumerable<Catalog_Entity> GetCategoryMembers(string  category) {
             return Entities.Include(e => e.Category)
                 .Where(e => e.Category.CategoryName.Equals(category));
         }
@@ -68,7 +65,7 @@ namespace nVideo.DATA.Repository
                                               ? throw new ArgumentException("Id is not exit")
                                               : target.Include(t => t.Attributes)
                                                       .ThenInclude(t => t.Value)
-                                                      .First();                                            
+                                                      .First();
             }
             throw new ArgumentNullException("Missing parameter: int id");
         }
