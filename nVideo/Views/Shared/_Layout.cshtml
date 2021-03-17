@@ -26,11 +26,9 @@
                         <a href="#"><span class="icon-youtube"></span></a>
                         <a href="#"><span class="icon-tumblr"></span></a>
                     </div>
-                    <a class="active" href="index.html"> <span class="icon-home"></span> Home</a>
-                    <a href="#"><span class="icon-user"></span> My Account</a>
-                    <a href="register.html"><span class="icon-edit"></span> Free Register </a>
-                    <a href="contact.html"><span class="icon-envelope"></span> Contact us</a>
-                    <a href="cart.html"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>
+                    <a asp-action="Index" asp-controller="Home"> <span class="icon-home"></span> Home</a>
+                    <a asp-action="Profile" asp-controller="Office"><span class="icon-user"></span> My Account</a>
+                    <a asp-action="Register" asp-controller="Account"><span class="icon-edit"></span> Free Register </a>
                 </div>
             </div>
         </div>
@@ -49,14 +47,6 @@
                             <img src="~/assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
                         </a>
                     </h1>
-                </div>
-
-                <div class="span4 alignR">
-                    <p><br> <strong> Support (24/7) :  0800 1234 678 </strong><br><br></p>
-                    <span class="btn btn-mini">[ 2 ] <span class="icon-shopping-cart"></span></span>
-                    <span class="btn btn-warning btn-mini">$</span>
-                    <span class="btn btn-mini">&pound;</span>
-                    <span class="btn btn-mini">&euro;</span>
                 </div>
             </div>
         </header>
