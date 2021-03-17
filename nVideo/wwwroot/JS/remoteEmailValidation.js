@@ -7,7 +7,7 @@ $("#regForm").validate({
                 url: "/Account/VerifyEmail?username=" + function () {
                     return $("#username").val();
                 },
-                type: "post",
+                type: "get",
             }
         }
     }

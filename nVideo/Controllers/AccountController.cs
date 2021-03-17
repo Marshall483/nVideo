@@ -62,16 +62,16 @@ namespace nVideo.Controllers
 
                     try{
                         await _sender.SendEmailAsync(registerModel.Email, "Confirm your account",
-                            $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
+                            $"Verify your email on click by <a href='{callbackUrl}'>link</a>");
                     }
                     catch (CommandException cEx){
                         _logger.LogError($"Err wich User - {newUser.Email}. \n {cEx.Message}");
-                        ModelState.AddModelError(string.Empty, "Указанный Email не существует");
+                        ModelState.AddModelError("SenderError", "Specified Email is not exist");
                         return View(registerModel);
                     }
                     catch (Exception suddenEx){
                         _logger.LogError($"Err wich User - {newUser.Email}. \n {suddenEx.Message}");
-                        ModelState.AddModelError(string.Empty, "При попытке отправки письма произошла ошибка.");
+                        ModelState.AddModelError("SenderError", "An error occured while sending email.");
                         return View(registerModel);
                     }
 
@@ -88,22 +88,26 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ConfirmEmail(string userId, string code)
-        {
-            if (userId == null || code == null)
-            {
-                return View("Error", new ErrorViewModel());
+        public async Task<IActionResult> ConfirmEmail(string userId, string code){
+            if (userId == null || code == null){
+                ViewBag.Message = "Incorrect input parameters";
+                return View("OnConfirmationFailed");
             }
             var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return View("Error", new ErrorViewModel());
+
+            if (user == null){
+                ViewBag.Message = "User not exist, or token expired";
+                return View("OnConfirmationFailed");
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
-            if (result.Succeeded)
+
+            if (result.Succeeded) // redirect on cabinet
                 return RedirectToAction("Profile", "Office");
             else
-                return View("Error", new ErrorViewModel());
+            {
+                ViewBag.Message = "I`m don`t know what hapening, but resuld !Succeeded";
+                return View("OnConfirmationFailed");
+            }
         }
 
         [HttpPost]
@@ -123,7 +127,7 @@ namespace nVideo.Controllers
                         false);
 
                     if (res.Succeeded){
-                        return RedirectToAction("Profile", "Office");
+                        return RedirectToAction("Office", "Profile");
                     }
                 }
                 else{
