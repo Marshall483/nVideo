@@ -13,7 +13,6 @@ namespace nVideo.Controllers
     [Authorize]
     public class OfficeController : Controller
     {
-
         private readonly UserManager<User> _userManager;
         public OfficeController(UserManager<User> manager){
             _userManager = manager;
