@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace nVideo.Controllers
 {
+
+    // Personal Cabinet func.
     [Authorize]
     public class OfficeController : Controller
     {

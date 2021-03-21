@@ -11,6 +11,7 @@ using System;
 
 namespace nVideo.Controllers
 {
+    //Registration and authorization func.
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;

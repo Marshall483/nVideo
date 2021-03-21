@@ -2,6 +2,13 @@
 *.d
 *.cache
 
+/bin
+/obj
+
+*.dtcache.v2
+*.suo
+*.pdb
+
 # Compiled Object files
 *.slo
 *.lo
