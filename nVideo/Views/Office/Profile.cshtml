@@ -4,40 +4,79 @@
 
     <div class="span9">
 
-        <div class="well well-small">
-            <!-- LEFT-CONTAINER -->
-                <div class="weather block clear">
-                    <!-- WEATHER (MIDDLE-CONTAINER) -->
-                    <h2 class="titular"><span class="icon entypo-location"></span><strong>Welcome back, @User.Identity.Name!</strong></h2>
-                    <div class="current-day">
-                        <p class="current-day-date">Current date - @DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year</p>
-                    </div>
-                </div>
+        <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4>Information block</h4>
+            @{
+                if (ViewBag.Messages != null)
+                {
+                    foreach (string message in ViewBag.Messages)
+                    {
+                        @message
+                    }
+                }
+                else
+                {
+                    <small>No messages for you...</small>
+                }
+            }
         </div>
 
         <div class="well well-small">
             <!-- MIDDLE-CONTAINER -->
-                <div class="profile block">
-                    <!-- PROFILE (MIDDLE-CONTAINER) -->
-                    <div class="profile-picture big-profile-picture clear">
-                        <img width="150px" alt="Anne Hathaway picture" src="http://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Hathaway_Face.jpg">
-                    </div>
-                    <h1 class="user-name">Anne Hathaway</h1>
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object img-polaroid" alt="128x128" src="https://avatars.mds.yandex.net/get-zen_doc/1588093/pub_5d5a8f698c5be800ae71f522_5d5a8f789515ee00aecbac45/scale_1200" style="width: 128px; height: 128px;border-color:burlywood; border:3px;">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Welocme back, @Model.User.Email!</h4>
+                    <small>Here`s your status!</small>
+                    <p>Options: </p>
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li class="profile-options"><button class="btn btn-primary profile-options">Logout</button></li>
+                        <li class="profile-options"><button class="btn btn-danger">Change password</button></li>
+                    </ul>
                 </div>
+            </div>
         </div>
 
         <div class="well well-small">
-            <!-- RIGHT-CONTAINER -->
-                <div class="join-newsletter block">
-                    <!-- JOIN NEWSLETTER (RIGHT-CONTAINER) -->
-                    <h2 class="titular">Resend confirmation message</h2>
-                    <div class="input-container">
-                        <input type="text" id="resend-confirn" placeholder="yourmail@mail.com" class="email text-input">
-                        <div class="input-icon envelope-icon-newsletter"><span class="fontawesome-envelope scnd-font-color"></span></div>
-                    </div>
-                    <a class="subscribe button" style="color: black;" href="#21">Send</a>
+            <div class="tab-pane fade active in" id="home">
+                <h4>Your Information</h4>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr class="techSpecRow"><td class="techSpecTD1">First Name:</td><td class="techSpecTD2">@{if (Model.User.Profile.Name != null) @Model.User.Profile.Name else
+                        { <p>Not Set</p> } }</td></tr>
+                        <tr class="techSpecRow"><td class="techSpecTD1">Last Name:</td><td class="techSpecTD2">@{if (Model.User.Profile.LastName != null) @Model.User.Profile.LastName else
+                        { <p>Not Set</p> } }</td></tr>
+                        <tr class="techSpecRow"><td class="techSpecTD1">Age:</td><td class="techSpecTD2">@{if (Model.User.Profile.Age != null) @Model.User.Profile.Age else
+                        { <p>Not Set</p> } }</td></tr>
+                        <tr class="techSpecRow"><td class="techSpecTD1">Phone:</td><td class="techSpecTD2">@{if (Model.User.Profile.Phone != null) @Model.User.Profile.Phone else
+                        { <p>Not Set</p> } }</td></tr>
+                        <tr class="techSpecRow"><td class="techSpecTD1">City:</td><td class="techSpecTD2">@{if (Model.User.Profile.City != null) @Model.User.Profile.City else
+                        { <p>Not Set</p> } }</td></tr>
+                        <tr class="techSpecRow"><td class="techSpecTD1">Address:</td><td class="techSpecTD2">@{if (Model.User.Profile.Address != null) @Model.User.Profile.Address else
+                        { <p>Not Set</p> } }</td></tr>
+                    </tbody>
+                </table>
+                <hr>
+                <p class="flex-grow-1">You can <a href="#myModal" role="button" class="btn" data-toggle="modal">Edit your profile</a> or <button class="btn btn-danger">Resend Email confirmation message</button></p>
             </div>
+        </div>
+        <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
 
-
-        </div> <!-- end calendar-month block -->
-    </div> <!-- end right-container -->
+        <!-- Modal -->
+        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Modal header</h3>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>

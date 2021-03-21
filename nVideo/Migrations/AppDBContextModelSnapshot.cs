@@ -8,7 +8,7 @@ using nVideo.DATA;
 
 namespace nVideo.Migrations
 {
-    [DbContext(typeof(AppDBContext))]
+    [DbContext(typeof(AppDbContext))]
     partial class AppDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -344,6 +344,9 @@ namespace nVideo.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("ProfileId")
+                        .HasColumnType("int");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -365,6 +368,44 @@ namespace nVideo.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("nVideo.Models.UserProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<short>("Age")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("AspNetUsers")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AspNetUsers")
+                        .IsUnique()
+                        .HasFilter("[AspNetUsers] IS NOT NULL");
+
+                    b.ToTable("Profiles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -455,6 +496,13 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
                         .WithMany("Images")
                         .HasForeignKey("Catalog_EntityId");
+                });
+
+            modelBuilder.Entity("nVideo.Models.UserProfile", b =>
+                {
+                    b.HasOne("nVideo.Models.User", "User")
+                        .WithOne("Profile")
+                        .HasForeignKey("nVideo.Models.UserProfile", "AspNetUsers");
                 });
 #pragma warning restore 612, 618
         }

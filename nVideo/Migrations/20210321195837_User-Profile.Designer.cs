@@ -10,8 +10,8 @@ using nVideo.DATA;
 namespace nVideo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210223192006_INIT")]
-    partial class INIT
+    [Migration("20210321195837_User-Profile")]
+    partial class UserProfile
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -172,7 +172,7 @@ namespace nVideo.Migrations
 
                     b.HasIndex("EntityId");
 
-                    b.ToTable("Catalog_Attribute");
+                    b.ToTable("Attributes");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Category", b =>
@@ -187,7 +187,7 @@ namespace nVideo.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Catalog_Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Entity", b =>
@@ -228,7 +228,7 @@ namespace nVideo.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Catalog_Entity");
+                    b.ToTable("Entities");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Value", b =>
@@ -253,7 +253,7 @@ namespace nVideo.Migrations
                         .IsUnique()
                         .HasFilter("[Catalog_Attribute] IS NOT NULL");
 
-                    b.ToTable("Catalog_Value");
+                    b.ToTable("Values");
                 });
 
             modelBuilder.Entity("nVideo.Models.Comment", b =>
@@ -281,10 +281,10 @@ namespace nVideo.Migrations
 
                     b.HasIndex("UserId1");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("nVideo.Models.Image", b =>
+            modelBuilder.Entity("nVideo.Models.Picture", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -301,7 +301,7 @@ namespace nVideo.Migrations
 
                     b.HasIndex("Catalog_EntityId");
 
-                    b.ToTable("Image");
+                    b.ToTable("Pictures");
                 });
 
             modelBuilder.Entity("nVideo.Models.User", b =>
@@ -346,6 +346,9 @@ namespace nVideo.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("ProfileId")
+                        .HasColumnType("int");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -367,6 +370,44 @@ namespace nVideo.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("nVideo.Models.UserProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<short>("Age")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("AspNetUsers")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AspNetUsers")
+                        .IsUnique()
+                        .HasFilter("[AspNetUsers] IS NOT NULL");
+
+                    b.ToTable("Profiles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -452,11 +493,18 @@ namespace nVideo.Migrations
                         .HasForeignKey("UserId1");
                 });
 
-            modelBuilder.Entity("nVideo.Models.Image", b =>
+            modelBuilder.Entity("nVideo.Models.Picture", b =>
                 {
                     b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
                         .WithMany("Images")
                         .HasForeignKey("Catalog_EntityId");
+                });
+
+            modelBuilder.Entity("nVideo.Models.UserProfile", b =>
+                {
+                    b.HasOne("nVideo.Models.User", "User")
+                        .WithOne("Profile")
+                        .HasForeignKey("nVideo.Models.UserProfile", "AspNetUsers");
                 });
 #pragma warning restore 612, 618
         }

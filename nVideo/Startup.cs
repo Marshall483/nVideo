@@ -16,6 +16,7 @@ using nVideo.Models;
 using nVideo.DATA.Interfaces;
 using nVideo.DATA.Repository;
 using nVideo.DATA.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace nVideo
 {
@@ -36,7 +37,7 @@ namespace nVideo
             services.AddControllersWithViews();
 
             services.AddHttpContextAccessor();
-            services.AddDbContext<AppDBContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(_dbConnection)); // Подключить контекст бд
 
             services.AddIdentity<User, IdentityRole>(opts => {
@@ -46,7 +47,7 @@ namespace nVideo
                 opts.Password.RequireUppercase = false; // требуются ли символы в верхнем регистре
                 opts.Password.RequireDigit = false; // требуются ли цифры
             })
-              .AddEntityFrameworkStores<AppDBContext>()
+              .AddEntityFrameworkStores<AppDbContext>()
               .AddDefaultTokenProviders();
                 
 
@@ -59,6 +60,11 @@ namespace nVideo
             services.AddMvc(option => option.EnableEndpointRouting = false); // Добавть MVC
             services.AddMemoryCache(); // Подлючить библиотеку с кешами
             services.AddSession(); // Подлючить дополнительную библиотеку с сессиями
+            services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme) //Redirect to login
+                .AddCookie(options => // CookieConfigurationOptions
+                {
+                    options.LoginPath = new PathString("/Account/Register");
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env){

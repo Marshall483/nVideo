@@ -9,7 +9,7 @@ using nVideo.DATA;
 
 namespace nVideo.Migrations
 {
-    [DbContext(typeof(AppDBContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20210225151504_FixPicture")]
     partial class FixPicture
     {
