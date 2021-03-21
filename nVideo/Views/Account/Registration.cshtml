@@ -1,53 +1,171 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+  For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
+<style>
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+
+  .form-registration {
+    padding: 40px;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 4px;
+    
+  }
+
+  h1 {
+    text-align: center;
+    color: #13232f;
+    font-weight: 300;
+    margin: 0 0 40px;
+  }
+
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    margin: 1 0 12px;
+  }
+
+  .field-wrap-registration {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .top-row-registration {
+  > div {
+    float: left;
+    width: 48%;
+    margin-right: 4%;
+        }
+  }
+
+  .button-registration {
+    border: 0;
+    outline: none;
+    border-radius: 0;
+    padding: 15px 0;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: #f89406;
+    color: #ffffff;
+    transition: all.5s ease;
+    -webkit-appearance: none;
+  }
+
+  .button-block-registration {
+    display: block;
+    width: 100%;
+    height: 55px;
+  }
+</style>
+<script>
+  $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+
+    var $this = $(this),
+      label = $this.prev('label');
+
+    if (e.type === 'keyup') {
+      if ($this.val() === '') {
+        label.removeClass('active highlight');
+      } else {
+        label.addClass('active highlight');
+      }
+    } else if (e.type === 'blur') {
+      if ($this.val() === '') {
+        label.removeClass('active highlight');
+      } else {
+        label.removeClass('highlight');
+      }
+    } else if (e.type === 'focus') {
+
+      if ($this.val() === '') {
+        label.removeClass('highlight');
+      }
+      else if ($this.val() !== '') {
+        label.addClass('highlight');
+      }
+    }
+
+  });
+
+  $('.tab a').on('click', function (e) {
+
+    e.preventDefault();
+
+    $(this).parent().addClass('active');
+    $(this).parent().siblings().removeClass('active');
+
+    target = $(this).attr('href');
+
+    $('.tab-content > div').not(target).hide();
+
+    $(target).fadeIn(600);
+
+  });
+</script>
+
 <div class="span9">
   <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
     <li class="active">Registration</li>
   </ul>
-  <h3> Registration</h3>
-  <hr class="soft" />
   <div class="well">
-    <form class="form-horizontal">
-      <h3>Your Personal Details</h3>
-      <div class="control-group">
-        <label class="control-label" for="inputFname">First name <sup>*</sup></label>
-        <div class="controls">
-          <input type="text" id="inputFname" placeholder="First Name">
+    <div class="form-registration">
+      <div class="tab-content">
+        <div id="signup">
+          <h1>Sign Up for Free</h1>
+
+          <form action="/" method="post">
+
+            <div class="top-row-registration">
+              <label>
+                <strong>First Name:</strong>
+              </label>
+              <div class="field-wrap-registration">
+                <input type="text" class="input-block-level" required autocomplete="off" />
+              </div>
+
+              <div class="field-wrap-registration">
+                <label>
+                  <strong>Last Name:</strong>
+                </label>
+                <input type="text" class="input-block-level" required autocomplete="off" />
+              </div>
+            </div>
+
+            <div class="field-wrap-registration">
+              <label>
+                <strong>Email Address:</strong>
+              </label>
+              <input type="email" class="input-block-level" required autocomplete="off" />
+            </div>
+
+            <div class="field-wrap-registration">
+              <label>
+                <strong>Set A Password:</strong>
+              </label>
+              <input type="password" class="input-block-level" required autocomplete="off" />
+            </div>
+            <div class="control-group">
+              <label class="checkbox">
+                <input type="checkbox"> <strong> Remember me</strong>
+              </label>
+            </div>
+            <button type="submit" class="shopBtn button-block-registration"><h2>Registration</h2></button>
+
+          </form>
         </div>
       </div>
-      <div class="control-group">
-        <label class="control-label" for="inputLname">Last name <sup>*</sup></label>
-        <div class="controls">
-          <input type="text" id="inputLname" placeholder="Last Name">
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="inputEmail">Email <sup>*</sup></label>
-        <div class="controls">
-          <input type="text" placeholder="Email">
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label">Password <sup>*</sup></label>
-        <div class="controls">
-          <input type="password" placeholder="Password">
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label">Billing Details <sup>*</sup></label>
-        <div class="controls">
-          <input type="text" placeholder="Address">
-        </div>
-      </div>
-      <div class="control-group">
-        <div class="controls">
-          <input type="submit" name="submitAccount" value="Register" class="exclusive shopBtn">
-        </div>
-      </div>
-    </form>
+
+    </div>
   </div>
 </div>
+
