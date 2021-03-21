@@ -11,6 +11,7 @@ using System;
 
 namespace nVideo.Controllers
 {
+    //Registration and authorization func.
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -124,14 +125,14 @@ namespace nVideo.Controllers
                         false);
 
                     if (res.Succeeded){
-                        return RedirectToAction("Office", "Profile");
+                        return RedirectToAction("Profile", "Office");
                     }
                 }
                 else{
                     ModelState.AddModelError(string.Empty, "Неверный логин и/или пароль.");
                 }
             }
-            return View(model);
+            return RedirectToAction("Register", "Account");
         }
     }
 }
