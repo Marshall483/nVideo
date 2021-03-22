@@ -318,3 +318,4 @@ C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\bin\Debug\netcoreapp3.1\Np
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Error\Forbidden.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Error\NotFound.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Error\Status.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\bin\Debug\netcoreapp3.1\DbSettings.json
