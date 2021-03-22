@@ -11,8 +11,12 @@
                     if (Model.Value.IntegerValue.HasValue)
                     @Model.Value.IntegerValue
                     else
-                    @Model.Value.StringValue
+                    {
+                        @Model.Value.StringValue;
                     }
+
+
+                }
                 }
         </td>
     </tr>
