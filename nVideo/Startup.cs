@@ -38,7 +38,7 @@ namespace nVideo
 
             services.AddHttpContextAccessor();
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(_dbConnection)); // Подключить контекст бд
+                options.UseNpgsql(_dbConnection)); // Подключить контекст бд
 
             services.AddIdentity<User, IdentityRole>(opts => {
                 opts.Password.RequiredLength = 5;   // минимальная длина
@@ -70,8 +70,7 @@ namespace nVideo
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env){
 
             app.UseDeveloperExceptionPage();
-            app.UseStatusCodePages();  // Отображение ошибок 400,404,500...
-            app.UseHttpsRedirection();
+            app.UseStatusCodePagesWithReExecute("/Error/status", "?code={0}"); app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
 

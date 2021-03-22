@@ -9,5 +9,6 @@ namespace nVideo.DATA.ControllerModels
     public class ProfileModel
     {
         public User User { get; set; }
+        public UserProfile Profile { get; set; }
     }
 }

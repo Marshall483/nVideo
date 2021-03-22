@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using nVideo.DATA;
 using nVideo.DATA.ControllerModels;
 using nVideo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -45,11 +46,23 @@ namespace nVideo.Controllers
                 var model = new ProfileModel{
                     User = user
                 };
-            
-                return View(model);
+
+                var tuple = new Tuple<User, UserProfile>(user, new UserProfile());
+                return View(tuple);
             };
             ViewBag.Message = "Not Authenticated";
             return View("Error", new ErrorViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditProfile(string id, UserProfile profileModel)
+        {
+            if (ModelState.IsValid)
+            {
+                //TODO
+            }
+            return Ok("Ok");
         }
     }
 }
