@@ -22,23 +22,22 @@ namespace nVideo
 {
     public class Startup
     {
-        private protected readonly string _dbConnection;
+        private readonly IConfigurationRoot _connectionString;
 
-        public Startup(IConfiguration configuration){
-            Configuration = configuration;
-            // Не будет запсано, если не создан файл с секретами содержащий строку подключения с 
-            // именем ConnectionStrings:dbConnectionString
-            _dbConnection = Configuration["ConnectionStrings:dbConnectionString"];
+        public Startup(IWebHostEnvironment hostEnvironment)
+        {
+            _connectionString = new ConfigurationBuilder().
+                                    SetBasePath(hostEnvironment.ContentRootPath). // Получить путь к корневой папке
+                                    AddJsonFile("DbSettings.json"). // Имя самого файла
+                                    Build();
         }
-
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services){
             services.AddControllersWithViews();
 
             services.AddHttpContextAccessor();
             services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(_dbConnection)); // Подключить контекст бд
+                options.UseNpgsql(_connectionString.GetConnectionString("DefaultConnection"))); // Подключить контекст бд
 
             services.AddIdentity<User, IdentityRole>(opts => {
                 opts.Password.RequiredLength = 5;   // минимальная длина
