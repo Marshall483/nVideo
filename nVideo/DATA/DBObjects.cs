@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace nVideo.DATA
 {
-    public class DBObjects
+    public class DbObjects
     {
         private static Dictionary<string, Catalog_Category> _categories;
         private static Dictionary<string, Catalog_Entity> _entities;
@@ -15,7 +15,7 @@ namespace nVideo.DATA
 
         private static List<Picture> _images;
 
-        public static void Initial(AppDBContext content)
+        public static void Initial(AppDbContext content)
         {
             //if (!content.Cities.Any()) ---> Задел на геолокацию
             //    content.Cities.AddRange(Cities);

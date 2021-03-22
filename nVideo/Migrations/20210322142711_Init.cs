@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace nVideo.Migrations
 {
-    public partial class INIT : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,7 +40,8 @@ namespace nVideo.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    ProfileId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,16 +49,16 @@ namespace nVideo.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Catalog_Category",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CategoryName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Catalog_Category", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -64,7 +66,7 @@ namespace nVideo.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -85,7 +87,7 @@ namespace nVideo.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -166,11 +168,36 @@ namespace nVideo.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Catalog_Entity",
+                name: "Profiles",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Age = table.Column<short>(nullable: false),
+                    Phone = table.Column<string>(nullable: true),
+                    City = table.Column<string>(maxLength: 20, nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    AspNetUsers = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Profiles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Profiles_AspNetUsers_AspNetUsers",
+                        column: x => x.AspNetUsers,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Entities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(nullable: true),
                     Articul = table.Column<string>(nullable: true),
                     Price = table.Column<long>(nullable: false),
@@ -183,42 +210,42 @@ namespace nVideo.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Catalog_Entity", x => x.Id);
+                    table.PrimaryKey("PK_Entities", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Catalog_Entity_Catalog_Category_CategoryId",
+                        name: "FK_Entities_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Catalog_Category",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Catalog_Attribute",
+                name: "Attributes",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     AttributeName = table.Column<string>(nullable: true),
                     EntityId = table.Column<int>(nullable: true),
                     ValueId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Catalog_Attribute", x => x.Id);
+                    table.PrimaryKey("PK_Attributes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Catalog_Attribute_Catalog_Entity_EntityId",
+                        name: "FK_Attributes_Entities_EntityId",
                         column: x => x.EntityId,
-                        principalTable: "Catalog_Entity",
+                        principalTable: "Entities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comment",
+                name: "Comments",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Content = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: true),
                     UserId1 = table.Column<string>(nullable: true),
@@ -226,15 +253,15 @@ namespace nVideo.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comment", x => x.Id);
+                    table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comment_Catalog_Entity_EntityId",
+                        name: "FK_Comments_Entities_EntityId",
                         column: x => x.EntityId,
-                        principalTable: "Catalog_Entity",
+                        principalTable: "Entities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Comment_AspNetUsers_UserId1",
+                        name: "FK_Comments_AspNetUsers_UserId1",
                         column: x => x.UserId1,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -242,42 +269,42 @@ namespace nVideo.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Image",
+                name: "Pictures",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Patch = table.Column<string>(nullable: true),
                     Catalog_EntityId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Image", x => x.Id);
+                    table.PrimaryKey("PK_Pictures", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Image_Catalog_Entity_Catalog_EntityId",
+                        name: "FK_Pictures_Entities_Catalog_EntityId",
                         column: x => x.Catalog_EntityId,
-                        principalTable: "Catalog_Entity",
+                        principalTable: "Entities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Catalog_Value",
+                name: "Values",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     IntegerValue = table.Column<int>(nullable: true),
                     StringValue = table.Column<string>(nullable: true),
                     Catalog_Attribute = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Catalog_Value", x => x.Id);
+                    table.PrimaryKey("PK_Values", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Catalog_Value_Catalog_Attribute_Catalog_Attribute",
+                        name: "FK_Values_Attributes_Catalog_Attribute",
                         column: x => x.Catalog_Attribute,
-                        principalTable: "Catalog_Attribute",
+                        principalTable: "Attributes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -291,8 +318,7 @@ namespace nVideo.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -318,40 +344,44 @@ namespace nVideo.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Catalog_Attribute_EntityId",
-                table: "Catalog_Attribute",
+                name: "IX_Attributes_EntityId",
+                table: "Attributes",
                 column: "EntityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Catalog_Entity_CategoryId",
-                table: "Catalog_Entity",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Catalog_Value_Catalog_Attribute",
-                table: "Catalog_Value",
-                column: "Catalog_Attribute",
-                unique: true,
-                filter: "[Catalog_Attribute] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comment_EntityId",
-                table: "Comment",
+                name: "IX_Comments_EntityId",
+                table: "Comments",
                 column: "EntityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_UserId1",
-                table: "Comment",
+                name: "IX_Comments_UserId1",
+                table: "Comments",
                 column: "UserId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Image_Catalog_EntityId",
-                table: "Image",
+                name: "IX_Entities_CategoryId",
+                table: "Entities",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pictures_Catalog_EntityId",
+                table: "Pictures",
                 column: "Catalog_EntityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Profiles_AspNetUsers",
+                table: "Profiles",
+                column: "AspNetUsers",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Values_Catalog_Attribute",
+                table: "Values",
+                column: "Catalog_Attribute",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -372,28 +402,31 @@ namespace nVideo.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Catalog_Value");
+                name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "Comment");
+                name: "Pictures");
 
             migrationBuilder.DropTable(
-                name: "Image");
+                name: "Profiles");
+
+            migrationBuilder.DropTable(
+                name: "Values");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Catalog_Attribute");
-
-            migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Catalog_Entity");
+                name: "Attributes");
 
             migrationBuilder.DropTable(
-                name: "Catalog_Category");
+                name: "Entities");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }

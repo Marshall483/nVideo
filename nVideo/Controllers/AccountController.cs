@@ -44,8 +44,10 @@ namespace nVideo.Controllers
 
                 var newUser = new User{
                     Email = registerModel.Email,
-                    UserName = registerModel.Email
+                    UserName = registerModel.Email,
+                    Profile = new UserProfile()
                 };
+
 
                 var res = await _userManager.CreateAsync(newUser, registerModel.Password);
 

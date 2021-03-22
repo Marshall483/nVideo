@@ -2,9 +2,6 @@
 using Microsoft.Extensions.Logging;
 using nVideo.DATA.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using nVideo.DATA.ViewModels;
 
 namespace nVideo.Controllers
