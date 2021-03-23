@@ -67,8 +67,10 @@ namespace nVideo
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env){
+            if (env.IsDevelopment()){
+                app.UseDeveloperExceptionPage();
+            }
 
-            app.UseDeveloperExceptionPage();
             app.UseStatusCodePagesWithReExecute("/Error/status", "?code={0}"); app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
@@ -82,7 +84,7 @@ namespace nVideo
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=Register}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
