@@ -13,6 +13,7 @@
         </e>
         <e p="Controllers" t="Include">
           <e p="AccountController.cs" t="Include" />
+          <e p="CartController.cs" t="Include" />
           <e p="CatalogController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
           <e p="OfficeController.cs" t="Include" />
