@@ -44,19 +44,7 @@
             @Model.Short_Desc
           </p>
           <p>
-            <div class="well">
-                <h3>
-                    <strong>@Model.Name</strong>
-                    <span class="pull-right label label-primary">@Model.Price.ToString("# руб")</span>
-                </h3>
-                @using (Html.BeginForm("AddToCart", "Cart"))
-                {
-                    <div class="pull-right">
-                        @Html.HiddenFor(x => x.Id)
-                        <input type="submit" class="btn btn-success" value="Добавить в корзину" />
-                    </div>
-                }
-            </div>
+            <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span>Добавить в корзину</button>
           </p>
         </form>
       </div>

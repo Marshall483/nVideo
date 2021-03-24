@@ -29,10 +29,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00c14728-dd12-4371-b91f-bdbeb9130dee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/nVideo/Controllers/CartController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nVideo/Models/Cart.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nVideo/Models/CartLine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.runtimeconfig.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/project.nuget.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +67,6 @@
       <list>
         <option value="$PROJECT_DIR$/nVideo/Models/CartLine.cs" />
         <option value="$PROJECT_DIR$/nVideo/Models/Cart.cs" />
-        <option value="$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml" />
-        <option value="$PROJECT_DIR$/nVideo/Controllers/CartController.cs" />
       </list>
     </option>
   </component>
@@ -109,7 +127,7 @@
       <option name="presentableId" value="Default" />
       <updated>1616363087610</updated>
       <workItem from="1616363111964" duration="951000" />
-      <workItem from="1616444386061" duration="3378000" />
+      <workItem from="1616444386061" duration="954000" />
     </task>
     <servers />
   </component>
