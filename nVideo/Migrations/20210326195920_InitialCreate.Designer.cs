@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using nVideo.DATA;
@@ -9,9 +10,10 @@ using nVideo.DATA;
 namespace nVideo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210326195920_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,6 +149,28 @@ namespace nVideo.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("nVideo.Models.Cart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("EntityId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ShopCartId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntityId");
+
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Attribute", b =>
@@ -298,28 +322,6 @@ namespace nVideo.Migrations
                     b.HasIndex("Catalog_EntityId");
 
                     b.ToTable("Pictures");
-                });
-
-            modelBuilder.Entity("nVideo.Models.ShopCartItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<int?>("EntityId")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("Quanity")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("ShopCartId")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EntityId");
-
-                    b.ToTable("ShopCartItems");
                 });
 
             modelBuilder.Entity("nVideo.Models.User", b =>
@@ -477,6 +479,13 @@ namespace nVideo.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("nVideo.Models.Cart", b =>
+                {
+                    b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityId");
+                });
+
             modelBuilder.Entity("nVideo.Models.Catalog_Attribute", b =>
                 {
                     b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
@@ -514,13 +523,6 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
                         .WithMany("Images")
                         .HasForeignKey("Catalog_EntityId");
-                });
-
-            modelBuilder.Entity("nVideo.Models.ShopCartItem", b =>
-                {
-                    b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
-                        .WithMany()
-                        .HasForeignKey("EntityId");
                 });
 
             modelBuilder.Entity("nVideo.Models.UserProfile", b =>

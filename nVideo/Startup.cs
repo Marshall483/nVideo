@@ -26,8 +26,6 @@ namespace nVideo
 
         public Startup(IConfiguration configuration){
             Configuration = configuration;
-            // Не будет запсано, если не создан файл с секретами содержащий строку подключения с 
-            // именем ConnectionStrings:dbConnectionString
             _dbConnection = Configuration["ConnectionStrings:dbConnectionString"];
         }
 
@@ -38,30 +36,24 @@ namespace nVideo
 
             services.AddHttpContextAccessor();
             services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(_dbConnection)); // Подключить контекст бд
-
-            services.AddIdentity<User, IdentityRole>(opts => {
-                opts.Password.RequiredLength = 5;   // минимальная длина
-                opts.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы
-                opts.Password.RequireLowercase = false; // требуются ли символы в нижнем регистре
-                opts.Password.RequireUppercase = false; // требуются ли символы в верхнем регистре
-                opts.Password.RequireDigit = false; // требуются ли цифры
+                options.UseNpgsql(_dbConnection));
+            services.AddIdentity<User, IdentityRole>(opts =>
+            {
+                Options(opts);
             })
               .AddEntityFrameworkStores<AppDbContext>()
               .AddDefaultTokenProviders();
-                
-
-            /* Lifetime */
             services.AddTransient<IAllCatalog, CatalogRepository>();
             services.AddSingleton<EmailSenderService>();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(x => ShopCart.GetCart(x));
 
-            /* IMPOTANT */
-            services.AddMvc(option => option.EnableEndpointRouting = false); // Добавть MVC
-            services.AddMemoryCache(); // Подлючить библиотеку с кешами
-            services.AddSession(); // Подлючить дополнительную библиотеку с сессиями
-            services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme) //Redirect to login
-                .AddCookie(options => // CookieConfigurationOptions
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
                 {
                     options.LoginPath = new PathString("/Account/Register");
                 });
@@ -85,6 +77,15 @@ namespace nVideo
                     name: "default",
                     pattern: "{controller=Account}/{action=Register}/{id?}");
             });
+        }
+
+        private static void Options(IdentityOptions opts)
+        {
+            opts.Password.RequiredLength = 5;
+            opts.Password.RequireNonAlphanumeric = false;
+            opts.Password.RequireLowercase = false;
+            opts.Password.RequireUppercase = false;
+            opts.Password.RequireDigit = false;
         }
     }
 }
