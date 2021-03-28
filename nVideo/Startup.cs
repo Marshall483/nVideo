@@ -26,8 +26,8 @@ namespace nVideo
 
         public Startup(IConfiguration configuration){
             Configuration = configuration;
-            // Не будет запсано, если не создан файл с секретами содержащий строку подключения с 
-            // именем ConnectionStrings:dbConnectionString
+            // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 
+            // пїЅпїЅпїЅпїЅпїЅпїЅ ConnectionStrings:dbConnectionString
             _dbConnection = Configuration["ConnectionStrings:dbConnectionString"];
         }
 
@@ -38,14 +38,14 @@ namespace nVideo
 
             services.AddHttpContextAccessor();
             services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(_dbConnection)); // Подключить контекст бд
+                options.UseNpgsql(_dbConnection)); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 
             services.AddIdentity<User, IdentityRole>(opts => {
-                opts.Password.RequiredLength = 5;   // минимальная длина
-                opts.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы
-                opts.Password.RequireLowercase = false; // требуются ли символы в нижнем регистре
-                opts.Password.RequireUppercase = false; // требуются ли символы в верхнем регистре
-                opts.Password.RequireDigit = false; // требуются ли цифры
+                opts.Password.RequiredLength = 5;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+                opts.Password.RequireNonAlphanumeric = false;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                opts.Password.RequireLowercase = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                opts.Password.RequireUppercase = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                opts.Password.RequireDigit = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             })
               .AddEntityFrameworkStores<AppDbContext>()
               .AddDefaultTokenProviders();
@@ -57,9 +57,9 @@ namespace nVideo
 
 
             /* IMPOTANT */
-            services.AddMvc(option => option.EnableEndpointRouting = false); // Добавть MVC
-            services.AddMemoryCache(); // Подлючить библиотеку с кешами
-            services.AddSession(); // Подлючить дополнительную библиотеку с сессиями
+            services.AddMvc(option => option.EnableEndpointRouting = false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ MVC
+            services.AddMemoryCache(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+            services.AddSession(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme) //Redirect to login
                 .AddCookie(options => // CookieConfigurationOptions
                 {
