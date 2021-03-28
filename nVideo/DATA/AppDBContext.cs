@@ -17,6 +17,5 @@ namespace nVideo.DATA
         public DbSet<Picture> Pictures { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<UserProfile> Profiles { get; set; }
-        public DbSet<ShopCartItem> ShopCartItems { get; set; }
     }
 }

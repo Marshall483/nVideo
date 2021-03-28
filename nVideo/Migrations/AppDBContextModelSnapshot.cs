@@ -300,28 +300,6 @@ namespace nVideo.Migrations
                     b.ToTable("Pictures");
                 });
 
-            modelBuilder.Entity("nVideo.Models.ShopCartItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<int?>("EntityId")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("Quanity")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("ShopCartId")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EntityId");
-
-                    b.ToTable("ShopCartItems");
-                });
-
             modelBuilder.Entity("nVideo.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -514,13 +492,6 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
                         .WithMany("Images")
                         .HasForeignKey("Catalog_EntityId");
-                });
-
-            modelBuilder.Entity("nVideo.Models.ShopCartItem", b =>
-                {
-                    b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
-                        .WithMany()
-                        .HasForeignKey("EntityId");
                 });
 
             modelBuilder.Entity("nVideo.Models.UserProfile", b =>
