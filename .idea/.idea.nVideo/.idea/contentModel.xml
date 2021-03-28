@@ -13,6 +13,7 @@
         </e>
         <e p="Controllers" t="Include">
           <e p="AccountController.cs" t="Include" />
+          <e p="CartController.cs" t="Include" />
           <e p="CatalogController.cs" t="Include" />
           <e p="ErrorController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
@@ -50,11 +51,13 @@
         <e p="Migrations" t="Include">
           <e p="20210322142711_Init.cs" t="Include" />
           <e p="20210322142711_Init.Designer.cs" t="Include" />
+          <e p="20210326195920_InitialCreate.cs" t="Include" />
+          <e p="20210326195920_InitialCreate.Designer.cs" t="Include" />
+          <e p="20210327073913_ShopCart.cs" t="Include" />
+          <e p="20210327073913_ShopCart.Designer.cs" t="Include" />
           <e p="AppDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
-          <e p="Cart.cs" t="Include" />
-          <e p="CartLine.cs" t="Include" />
           <e p="Catalog_Attribute.cs" t="Include" />
           <e p="Catalog_Category.cs" t="Include" />
           <e p="Catalog_Entity.cs" t="Include" />
@@ -62,6 +65,9 @@
           <e p="Comment.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
           <e p="Picture.cs" t="Include" />
+          <e p="ShopCart.cs" t="Include" />
+          <e p="ShopCartItem.cs" t="Include" />
+          <e p="ShopCartView.cs" t="Include" />
           <e p="User.cs" t="Include" />
           <e p="UserProfile.cs" t="Include" />
         </e>
