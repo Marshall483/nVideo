@@ -18,12 +18,14 @@ namespace nVideo.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly EmailSenderService _sender;
         private readonly ILogger<AccountController> _logger;
+        private readonly ShopCart _shopCart;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signManager, EmailSenderService sender, ILogger<AccountController> logger){
+        public AccountController(UserManager<User> userManager, SignInManager<User> signManager, EmailSenderService sender, ILogger<AccountController> logger, ShopCart shopCart){
             _userManager = userManager;
             _signInManager = signManager;
             _sender = sender;
             _logger = logger;
+            _shopCart = shopCart;
         }
 
         [HttpGet]
