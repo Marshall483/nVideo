@@ -22,23 +22,34 @@ namespace nVideo
 {
     public class Startup
     {
-        private protected readonly string _dbConnection;
+        private readonly IConfigurationRoot _connectionString;
 
+<<<<<<< HEAD
         public Startup(IConfiguration configuration){
             Configuration = configuration;
             // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 
             // пїЅпїЅпїЅпїЅпїЅпїЅ ConnectionStrings:dbConnectionString
             _dbConnection = Configuration["ConnectionStrings:dbConnectionString"];
+=======
+        public Startup(IWebHostEnvironment hostEnvironment)
+        {
+            _connectionString = new ConfigurationBuilder().
+                                    SetBasePath(hostEnvironment.ContentRootPath). // Получить путь к корневой папке
+                                    AddJsonFile("DbSettings.json"). // Имя самого файла
+                                    Build();
+>>>>>>> iss30
         }
-
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services){
             services.AddControllersWithViews();
 
             services.AddHttpContextAccessor();
             services.AddDbContext<AppDbContext>(options =>
+<<<<<<< HEAD
                 options.UseNpgsql(_dbConnection)); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
+=======
+                options.UseNpgsql(_connectionString.GetConnectionString("DefaultConnection"))); // Подключить контекст бд
+>>>>>>> iss30
 
             services.AddIdentity<User, IdentityRole>(opts => {
                 opts.Password.RequiredLength = 5;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
@@ -63,7 +74,7 @@ namespace nVideo
             services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme) //Redirect to login
                 .AddCookie(options => // CookieConfigurationOptions
                 {
-                    options.LoginPath = new PathString("/Account/Register");
+                    options.LoginPath = new PathString("~/Account/Register");
                 });
         }
 

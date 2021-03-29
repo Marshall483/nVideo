@@ -26,6 +26,12 @@ namespace nVideo.Controllers
             _logger = logger;
         }
 
+        //Standart patch to regirect non-auth is ~/Account/Login
+        [HttpGet]
+        public IActionResult Login(){
+            return View("Register");
+        }
+
         [HttpGet]
         public IActionResult Register(){
             return View();
@@ -49,9 +55,10 @@ namespace nVideo.Controllers
                 };
 
 
-                var res = await _userManager.CreateAsync(newUser, registerModel.Password);
+                 var res = await _userManager.CreateAsync(newUser, registerModel.Password);
 
-                if (res.Succeeded){
+                if (res.Succeeded)
+                {
                     // генерация токена для пользователя
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
                     var callbackUrl = Url.Action(
