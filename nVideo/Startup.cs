@@ -62,7 +62,7 @@ namespace nVideo
             services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme) //Redirect to login
                 .AddCookie(options => // CookieConfigurationOptions
                 {
-                    options.LoginPath = new PathString("/Account/Register");
+                    options.LoginPath = new PathString("~/Account/Register");
                 });
         }
 

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "kJEK/9+6/4EKuMW+rkCl8YSH9XqNDrylov4ntWO+17qJvszMtXvMxAjMuQ0gX/lhExRnHEBAH+rRsoBZR3FjyQ==",
+  "dgSpecHash": "lMvN+no2hkr0NDfAgkhWRwCqVQD4uh3wEFY7d3pxEbKXPrEZ6352foFXibPQdliapZ5XFrhtnLKFyl4N7Hy/Mg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Alexander Putilin\\.nuget\\packages\\jquery\\1.12.4\\jquery.1.12.4.nupkg.sha512",
+    "C:\\Users\\Alexander Putilin\\.nuget\\packages\\jquery.ui.combined\\1.12.1\\jquery.ui.combined.1.12.1.nupkg.sha512",
     "C:\\Users\\Alexander Putilin\\.nuget\\packages\\mailkit\\2.10.1\\mailkit.2.10.1.nupkg.sha512",
     "C:\\Users\\Alexander Putilin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.3\\microsoft.aspnetcore.cryptography.internal.3.1.3.nupkg.sha512",
     "C:\\Users\\Alexander Putilin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.3\\microsoft.aspnetcore.cryptography.keyderivation.3.1.3.nupkg.sha512",

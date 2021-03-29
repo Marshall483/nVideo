@@ -319,3 +319,7 @@ C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Ra
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Error\NotFound.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Error\Status.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\bin\Debug\netcoreapp3.1\DbSettings.json
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\EditProfile.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChangePasswordModalPartial.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\EditProfileModalPartial.cshtml.g.cs
+C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\OnEmailConfirm.cshtml.g.cs
