@@ -41,6 +41,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "3.1.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL.Design": "1.1.0",
+          "jQuery.UI.Combined": "1.12.1",
           "popper.js": "1.16.1",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
@@ -317,6 +318,7 @@
           "nVideo.dll": {}
         }
       },
+<<<<<<< HEAD
       "IpInfo/1.0.5.2": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.3",
@@ -330,6 +332,12 @@
         },
         "compile": {
           "lib/netstandard2.0/IpInfo.dll": {}
+=======
+      "jQuery/1.12.4": {},
+      "jQuery.UI.Combined/1.12.1": {
+        "dependencies": {
+          "jQuery": "1.12.4"
+>>>>>>> iss30
         }
       },
       "MailKit/2.10.1": {
@@ -3449,12 +3457,28 @@
       "serviceable": false,
       "sha512": ""
     },
+<<<<<<< HEAD
     "IpInfo/1.0.5.2": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-jRCQ2PHM3X8mdIVBKvz2HNW8XMZnUhKAWZgK0Z/tjvjHZghzEN4vJeybwdd9lw6DC8vi0w0mzH5Eqcz1671oSg==",
       "path": "ipinfo/1.0.5.2",
       "hashPath": "ipinfo.1.0.5.2.nupkg.sha512"
+=======
+    "jQuery/1.12.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pIYtWlFI5PGlJVB8jm9H96pAQ27jQhA9sCxMeGweeC3ByQRaB8BwkIuGdTt4go3IEKTmmfRC2y5k0FLFizWDQg==",
+      "path": "jquery/1.12.4",
+      "hashPath": "jquery.1.12.4.nupkg.sha512"
+    },
+    "jQuery.UI.Combined/1.12.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5B0LrPZ0TLlwplPRu43h7fgMtDxMMEF31HajUqHSOJ7bC6nyJUJy7AkcuGaJdBrrZAZutnSBgXT01BGiIIC4TQ==",
+      "path": "jquery.ui.combined/1.12.1",
+      "hashPath": "jquery.ui.combined.1.12.1.nupkg.sha512"
+>>>>>>> iss30
     },
     "MailKit/2.10.1": {
       "type": "package",
