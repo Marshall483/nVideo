@@ -23,14 +23,21 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
-        public void AddtoCart(int id)
-        { 
-            _shopCart.AddToCart(id);
+        public void AddToCart(int id)
+        {
+            if (User.Identity.IsAuthenticated)
+                _shopCart.AddToCart(id);
+            else
+                _shopCart.AddToCartAnon(id);
         }
         [HttpGet]
         public void RemoveFromCart(int id)
         {
-            _shopCart.RevomeFromCart(id);
+            if (User.Identity.IsAuthenticated)
+                _shopCart.RevomeFromCart(id);
+            else
+                _shopCart.RemoveFromCartAnon(id);
+            
 
         }
     }

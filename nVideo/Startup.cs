@@ -24,61 +24,50 @@ namespace nVideo
     {
         private readonly IConfigurationRoot _connectionString;
 
-<<<<<<< HEAD
-        public Startup(IConfiguration configuration){
-            Configuration = configuration;
-            // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 
-            // пїЅпїЅпїЅпїЅпїЅпїЅ ConnectionStrings:dbConnectionString
-            _dbConnection = Configuration["ConnectionStrings:dbConnectionString"];
-=======
         public Startup(IWebHostEnvironment hostEnvironment)
         {
             _connectionString = new ConfigurationBuilder().
-                                    SetBasePath(hostEnvironment.ContentRootPath). // Получить путь к корневой папке
-                                    AddJsonFile("DbSettings.json"). // Имя самого файла
+                                    SetBasePath(hostEnvironment.ContentRootPath).
+                                    AddJsonFile("DbSettings.json").
                                     Build();
->>>>>>> iss30
         }
 
-        public void ConfigureServices(IServiceCollection services){
+        public void ConfigureServices(IServiceCollection services)
+        {
             services.AddControllersWithViews();
 
             services.AddHttpContextAccessor();
             services.AddDbContext<AppDbContext>(options =>
-<<<<<<< HEAD
-                options.UseNpgsql(_dbConnection)); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
-=======
-                options.UseNpgsql(_connectionString.GetConnectionString("DefaultConnection"))); // Подключить контекст бд
->>>>>>> iss30
+                options.UseNpgsql(_connectionString.GetConnectionString("DefaultConnection"))); 
 
             services.AddIdentity<User, IdentityRole>(opts => {
-                opts.Password.RequiredLength = 5;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
-                opts.Password.RequireNonAlphanumeric = false;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-                opts.Password.RequireLowercase = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-                opts.Password.RequireUppercase = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-                opts.Password.RequireDigit = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+                opts.Password.RequiredLength = 5;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireDigit = false;
             })
               .AddEntityFrameworkStores<AppDbContext>()
               .AddDefaultTokenProviders();
-                
 
-            /* Lifetime */
+
             services.AddTransient<IAllCatalog, CatalogRepository>();
             services.AddSingleton<EmailSenderService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(x => ShopCart.GetCart(x));
 
-
-            /* IMPOTANT */
-            services.AddMvc(option => option.EnableEndpointRouting = false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ MVC
-            services.AddMemoryCache(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-            services.AddSession(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-            services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme) //Redirect to login
-                .AddCookie(options => // CookieConfigurationOptions
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
                 {
                     options.LoginPath = new PathString("~/Account/Register");
                 });
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env){
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
 
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePagesWithReExecute("/Error/status", "?code={0}"); app.UseHttpsRedirection();
@@ -87,8 +76,8 @@ namespace nVideo
 
             app.UseRouting();
 
-            app.UseAuthentication(); 
-            app.UseAuthorization(); 
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
