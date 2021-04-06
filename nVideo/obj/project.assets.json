@@ -2,7 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-<<<<<<< HEAD
       "IpInfo/1.0.5.2": {
         "type": "package",
         "dependencies": {
@@ -14,7 +13,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/IpInfo.dll": {}
-=======
+        }
+      },
       "jQuery/1.12.4": {
         "type": "package"
       },
@@ -22,7 +22,6 @@
         "type": "package",
         "dependencies": {
           "jQuery": "1.12.4"
->>>>>>> iss30
         }
       },
       "MailKit/2.10.1": {
@@ -2294,7 +2293,6 @@
     }
   },
   "libraries": {
-<<<<<<< HEAD
     "IpInfo/1.0.5.2": {
       "sha512": "jRCQ2PHM3X8mdIVBKvz2HNW8XMZnUhKAWZgK0Z/tjvjHZghzEN4vJeybwdd9lw6DC8vi0w0mzH5Eqcz1671oSg==",
       "type": "package",
@@ -2309,7 +2307,8 @@
         "lib/netstandard2.0/IpInfo.dll",
         "lib/netstandard2.0/IpInfo.xml",
         "nuget_icon.png"
-=======
+      ]
+    },
     "jQuery/1.12.4": {
       "sha512": "pIYtWlFI5PGlJVB8jm9H96pAQ27jQhA9sCxMeGweeC3ByQRaB8BwkIuGdTt4go3IEKTmmfRC2y5k0FLFizWDQg==",
       "type": "package",
@@ -2386,7 +2385,6 @@
         "Tools/uninstall.ps1",
         "jquery.ui.combined.1.12.1.nupkg.sha512",
         "jquery.ui.combined.nuspec"
->>>>>>> iss30
       ]
     },
     "MailKit/2.10.1": {
@@ -8000,5 +7998,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Ошибка чтения файла кэша C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

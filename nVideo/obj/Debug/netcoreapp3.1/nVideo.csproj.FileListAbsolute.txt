@@ -318,7 +318,6 @@ C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\bin\Debug\netcoreapp3.1\Np
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Error\Forbidden.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Error\NotFound.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Error\Status.cshtml.g.cs
-<<<<<<< HEAD
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\bin\Debug\netcoreapp3.1\nVideo.exe
@@ -387,8 +386,6 @@ C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\s
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\nVideo.TagHelpers.input.cache
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\nVideo.TagHelpers.output.cache
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\nVideo.RazorCoreGenerate.cache
-C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Account\OnConfirmationFailed.cshtml.g.cs
-C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Account\OnEmailConfirm.cshtml.g.cs
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Account\PersonalPage.cshtml.g.cs
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Account\Registration.cshtml.g.cs
@@ -420,10 +417,13 @@ C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\n
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\nVideo.dll
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\nVideo.pdb
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\nVideo.genruntimeconfig.cache
-=======
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\bin\Debug\netcoreapp3.1\DbSettings.json
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\EditProfile.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChangePasswordModalPartial.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\EditProfileModalPartial.cshtml.g.cs
 C:\Users\Alexander Putilin\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\OnEmailConfirm.cshtml.g.cs
 >>>>>>> iss30
+C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\bin\Debug\netcoreapp3.1\DbSettings.json
+C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChangePasswordModalPartial.cshtml.g.cs
+C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\EditProfileModalPartial.cshtml.g.cs
+C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\OnEmailConfirm.cshtml.g.cs
