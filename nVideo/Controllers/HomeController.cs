@@ -18,11 +18,7 @@ namespace nVideo.Controllers
 
         private IEnumerable<Catalog_Entity> GetThridRandom{
             get{
-                var rand = new List<Catalog_Entity>();
-                for (int i = 0; i < 3; i++)
-                    rand.Add(_catalog.GetRandomItem);
-
-                return rand;
+                return _catalog.GetRandomItem();
             }
         }
 
@@ -34,9 +30,9 @@ namespace nVideo.Controllers
         public IActionResult Index(){
             var model = new HomeViewModel();
 
-            model.ForCarousel = _catalog.GetCarouselItems;
-            model.ForFeaturedBlock = _catalog.GetFeaturedItems;
-            model.ForNewProductsBlock = _catalog.GetNewItems;
+            model.ForCarousel = _catalog.GetCarouselItems();
+            model.ForFeaturedBlock = _catalog.GetFeaturedItems();
+            model.ForNewProductsBlock = _catalog.GetNewItems();
             model.ForThumbnailBlock = GetThridRandom;
 
             return View(model);
