@@ -1,16 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using nVideo.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace nVideo.DATA
 {
-    public class AppDBContext : IdentityDbContext<User>
+    public class AppDbContext : IdentityDbContext<User>
     {
-        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options){
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options){
 
         }
 
@@ -20,5 +16,6 @@ namespace nVideo.DATA
         public DbSet<Catalog_Value> Values { get; set; }
         public DbSet<Picture> Pictures { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<UserProfile> Profiles { get; set; }
     }
 }

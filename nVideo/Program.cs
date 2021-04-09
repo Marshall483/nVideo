@@ -21,8 +21,8 @@ namespace nVideo
 
             using (var serviceScope = host.Services.CreateScope()){
                 try{
-                    var context = serviceScope.ServiceProvider.GetRequiredService<AppDBContext>();
-                    DBObjects.Initial(context);
+                    var context = serviceScope.ServiceProvider.GetRequiredService<AppDbContext>();
+                    DbObjects.Initial(context);
 
                     var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
                     var rolesManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();

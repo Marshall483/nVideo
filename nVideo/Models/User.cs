@@ -11,5 +11,7 @@ namespace nVideo.Models
 
         public List<Comment> Comments  { get; set; }
 
+        public int? ProfileId { get; set; }
+        public UserProfile Profile { get; set; }
     }
 }

@@ -16,28 +16,28 @@ using nVideo.Models;
 using nVideo.DATA.Interfaces;
 using nVideo.DATA.Repository;
 using nVideo.DATA.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace nVideo
 {
     public class Startup
     {
-        private protected readonly string _dbConnection;
+        private readonly IConfigurationRoot _connectionString;
 
-        public Startup(IConfiguration configuration){
-            Configuration = configuration;
-            // Не будет запсано, если не создан файл с секретами содержащий строку подключения с 
-            // именем ConnectionStrings:dbConnectionString
-            _dbConnection = Configuration["ConnectionStrings:dbConnectionString"];
+        public Startup(IWebHostEnvironment hostEnvironment)
+        {
+            _connectionString = new ConfigurationBuilder().
+                                    SetBasePath(hostEnvironment.ContentRootPath). // Получить путь к корневой папке
+                                    AddJsonFile("DbSettings.json"). // Имя самого файла
+                                    Build();
         }
-
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services){
             services.AddControllersWithViews();
 
             services.AddHttpContextAccessor();
-            services.AddDbContext<AppDBContext>(options =>
-                options.UseSqlServer(_dbConnection)); // Подключить контекст бд
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseNpgsql(_connectionString.GetConnectionString("DefaultConnection"))); // Подключить контекст бд
 
             services.AddIdentity<User, IdentityRole>(opts => {
                 opts.Password.RequiredLength = 5;   // минимальная длина
@@ -46,7 +46,7 @@ namespace nVideo
                 opts.Password.RequireUppercase = false; // требуются ли символы в верхнем регистре
                 opts.Password.RequireDigit = false; // требуются ли цифры
             })
-              .AddEntityFrameworkStores<AppDBContext>()
+              .AddEntityFrameworkStores<AppDbContext>()
               .AddDefaultTokenProviders();
                 
 
@@ -59,13 +59,17 @@ namespace nVideo
             services.AddMvc(option => option.EnableEndpointRouting = false); // Добавть MVC
             services.AddMemoryCache(); // Подлючить библиотеку с кешами
             services.AddSession(); // Подлючить дополнительную библиотеку с сессиями
+            services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme) //Redirect to login
+                .AddCookie(options => // CookieConfigurationOptions
+                {
+                    options.LoginPath = new PathString("/Account/Register");
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env){
 
             app.UseDeveloperExceptionPage();
-            app.UseStatusCodePages();  // Отображение ошибок 400,404,500...
-            app.UseHttpsRedirection();
+            app.UseStatusCodePagesWithReExecute("/Error/status", "?code={0}"); app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
 

@@ -10,7 +10,7 @@ namespace nVideo.DATA.Repository
 {
     public class CatalogRepository : IAllCatalog
     {
-        private readonly AppDBContext _context;
+        private readonly AppDbContext _context;
 
         private static IQueryable<Catalog_Entity> _entities;
         public IQueryable<Catalog_Entity> Entities {
@@ -20,7 +20,7 @@ namespace nVideo.DATA.Repository
             }
         }
 
-        public CatalogRepository(AppDBContext context) {
+        public CatalogRepository(AppDbContext context) {
             _context = context;
         }
 
