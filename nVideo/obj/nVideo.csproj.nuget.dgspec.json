@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj": {}
+    "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/nVideo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj": {
+    "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/nVideo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
+        "projectUniqueName": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/nVideo.csproj",
         "projectName": "nVideo",
-        "projectPath": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
-        "packagesPath": "C:\\Users\\Alexander Putilin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\obj\\",
+        "projectPath": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/nVideo.csproj",
+        "packagesPath": "/Users/Marshall483/.nuget/packages/",
+        "outputPath": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Alexander Putilin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/Marshall483/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -99,6 +93,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.8, 3.1.8]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -107,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }
