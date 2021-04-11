@@ -7728,42 +7728,20 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\User\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\Alexander Putilin\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
->>>>>>> main
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj",
       "projectName": "nVideo",
       "projectPath": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
-      "projectName": "nVideo",
-      "projectPath": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
-      "packagesPath": "C:\\Users\\Alexander Putilin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\nVideo\\obj\\",
->>>>>>> main
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-<<<<<<< HEAD
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-        "C:\\Users\\Alexander Putilin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
->>>>>>> main
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -7851,11 +7829,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
->>>>>>> main
       }
     }
   }
