@@ -23,49 +23,52 @@ namespace nVideo
     public class Startup
     {
         private readonly IConfigurationRoot _connectionString;
+
         public Startup(IWebHostEnvironment hostEnvironment)
         {
             _connectionString = new ConfigurationBuilder().
-                                    SetBasePath(hostEnvironment.ContentRootPath). 
-                                    AddJsonFile("DbSettings.json"). 
+                                    SetBasePath(hostEnvironment.ContentRootPath).
+                                    AddJsonFile("DbSettings.json").
                                     Build();
         }
 
-        public void ConfigureServices(IServiceCollection services){
+        public void ConfigureServices(IServiceCollection services)
+        {
             services.AddControllersWithViews();
 
             services.AddHttpContextAccessor();
             services.AddDbContext<AppDbContext>(options =>
-                    options.UseNpgsql(_connectionString.GetConnectionString("DefaultConnection"))); 
+
+                options.UseNpgsql(_connectionString.GetConnectionString("DefaultConnection"))); 
 
             services.AddIdentity<User, IdentityRole>(opts => {
-                opts.Password.RequiredLength = 5;   
-                opts.Password.RequireNonAlphanumeric = false;   
-                opts.Password.RequireLowercase = false; 
-                opts.Password.RequireUppercase = false; 
-                opts.Password.RequireDigit = false; 
+                opts.Password.RequiredLength = 5;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireDigit = false;
             })
               .AddEntityFrameworkStores<AppDbContext>()
               .AddDefaultTokenProviders();
-                
 
-            /* Lifetime */
+
             services.AddTransient<IAllCatalog, CatalogRepository>();
             services.AddSingleton<EmailSenderService>();
-
-
-            /* IMPOTANT */
-            services.AddMvc(option => option.EnableEndpointRouting = false); 
-            services.AddMemoryCache(); 
-            services.AddSession(); 
-            services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme) 
-                .AddCookie(options => 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(x => ShopCart.GetCart(x));
+            
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
                 {
                     options.LoginPath = new PathString("~/Account/Register");
                 });
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env){
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
 
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePagesWithReExecute("/Error/status", "?code={0}"); app.UseHttpsRedirection();
@@ -74,8 +77,8 @@ namespace nVideo
 
             app.UseRouting();
 
-            app.UseAuthentication(); 
-            app.UseAuthorization(); 
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

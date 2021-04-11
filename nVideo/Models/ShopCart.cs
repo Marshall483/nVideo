@@ -11,10 +11,12 @@ namespace nVideo.Models
     public class ShopCart
     {
         private readonly AppDbContext _context;
+        private readonly HttpContext _httpContext;
         private string ShopCartId { get; set; }
-        public ShopCart(AppDbContext context)
+        public ShopCart(AppDbContext context, HttpContext httpContext)
         {
             _context = context;
+            _httpContext = httpContext;
         }
         public static ShopCart GetCart(IServiceProvider service)
         {
@@ -22,37 +24,44 @@ namespace nVideo.Models
             var session = httpContext.Session;            
             var context = service.GetService<AppDbContext>();           
             var userName = httpContext.User.Identity.Name;
-            var shopCartId = session.GetString("CartId");
-            if (shopCartId != null)
+            var cartInfo = session.GetString("CartId");
+            if (cartInfo != null)
             {
                 if (userName != null)
                 {
-                    if (shopCartId != userName)
-                    {
-                        var items = context.ShopCartItems.Where(x => x.ShopCartId == shopCartId).Include(x => x.Entity).ToList();
-                        shopCartId = userName;
-                        AddToCartRange(context, shopCartId, items);
-                        context.ShopCartItems.RemoveRange(items);
+                    List<ShopCartItem> items = GetCartItemFromSession(userName, cartInfo, context);
+                    cartInfo = userName;
+                    AddToCartRange(context, cartInfo, items);
+                    session.SetString("CartId", cartInfo);
 
-                        context.SaveChanges();
-                    }
+                    context.SaveChanges();
                 }
-                else if (!Guid.TryParse(shopCartId, out Guid guid))
-                {
-                    shopCartId = Guid.NewGuid().ToString();
-                }
-
             }
-            else
+            else if (userName != null)
             {
-                if (userName != null)
-                    shopCartId = userName;
-                else
-                    shopCartId = Guid.NewGuid().ToString();
+                cartInfo = userName;
+                session.SetString("CartId", cartInfo);
             }
-            session.SetString("CartId", shopCartId);
 
-            return new ShopCart(context) { ShopCartId = shopCartId };
+            return new ShopCart(context, httpContext) { ShopCartId = cartInfo };
+        }
+
+        private static List<ShopCartItem> GetCartItemFromSession(string userInfo, string cartInfo, AppDbContext context)
+        {
+            var list = new List<ShopCartItem>();
+            var dict = cartInfo.Split().GroupBy(x => x)
+                .Where(x => x.Any())
+                .ToDictionary(x=> x.Key, x=> x.Count());
+            foreach (var item in dict)
+            {
+                list.Add(new ShopCartItem
+                {
+                    ShopCartId = userInfo,
+                    Entity = context.Entities.Find(int.Parse(item.Key)),
+                    Quanity = (uint)item.Value
+                });
+            }
+            return list;
         }
 
         private static void AddToCartRange(AppDbContext context, string shopCartId, IEnumerable<ShopCartItem> items)
@@ -87,10 +96,18 @@ namespace nVideo.Models
 
         public void AddToCart(int id)
         {
+            if (_httpContext.User.Identity.IsAuthenticated)
+                AddToCartAuth(id);
+            else
+                AddToCartAnon(id);
+            _context.SaveChanges();
+        }
+
+        private void AddToCartAuth(int id)
+        {
             var entity = _context.Entities.Find(id);
 
             var item = _context.ShopCartItems.FirstOrDefault(x => x.Entity == entity && x.ShopCartId == ShopCartId);
-
             if (item != null)
             {
                 item.Quanity += 1;
@@ -98,18 +115,37 @@ namespace nVideo.Models
             }
             else
             {
-                _context.ShopCartItems.Add(new ShopCartItem
+                var shopCartItem = new ShopCartItem
                 {
                     ShopCartId = ShopCartId,
                     Entity = entity,
                     Quanity = 1
-                });
+                };
+                _context.ShopCartItems.Add(shopCartItem);
             }
+        }
 
-            _context.SaveChanges();
+        private void AddToCartAnon(int id)
+        {
+            var session = _httpContext.Session;
+            var cartInfo = session.GetString("CartId");
+            if (cartInfo == null)
+                cartInfo += $"{id}";
+            else
+                cartInfo += $" {id}";
+            session.SetString($"CartId", cartInfo);
         }
 
         public void RevomeFromCart(int id)
+        {
+            if (_httpContext.User.Identity.IsAuthenticated)
+                RemoveFromCartAuth(id);
+            else
+                RemoveFromCartAnon(id);
+            _context.SaveChanges();
+        }
+
+        private void RemoveFromCartAuth(int id)
         {
             var entity = _context.Entities.Find(id);
 
@@ -124,8 +160,14 @@ namespace nVideo.Models
                 item.Quanity -= 1;
                 _context.ShopCartItems.Update(item);
             }
+        }
 
-            _context.SaveChanges();
+        private void RemoveFromCartAnon(int id)
+        {
+            var session = _httpContext.Session;
+            var cartInfo = session.GetString("CartId");
+            cartInfo = cartInfo.Replace($" {id}", string.Empty);
+            session.SetString($"CartId", cartInfo);
         }
 
         public long GeComputeTotalValue()
