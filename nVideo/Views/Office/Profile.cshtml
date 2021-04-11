@@ -104,7 +104,14 @@
                 </table>
                 <hr>
                 <p class="flex-grow-1">
-                    You can <a href="#myModal" role="button" class="btn" data-toggle="modal">Edit your profile</a> or <a asp-action="ResendEmailCofirm" asp-controller="Office" class="btn btn-danger">Resend Email confirmation message</a>
+                    You can <a href="#myModal" role="button" class="btn" data-toggle="modal">Edit your profile</a>
+                    @{
+                        if (!@Model.Item1.EmailConfirmed){
+                            <p>
+                                 or <a asp-action="ResendEmailCofirm" asp-controller="Office" class="btn btn-danger">Resend Email confirmation message</a>
+                            </p>
+                        }
+                    }
                 </p>
 
 
