@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using MailKit;
 using nVideo.DATA.Extentions;
@@ -8,6 +8,7 @@ using nVideo.Models;
 using nVideo.DATA.ControllerModels;
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 namespace nVideo.Controllers
 {
@@ -26,7 +27,7 @@ namespace nVideo.Controllers
             _logger = logger;
         }
 
-        //Standart patch to regirect non-auth is ~/Account/Login
+        //Standard patch to redirect non-auth is ~/Account/Login
         [HttpGet]
         public IActionResult Login(){
             return View("Register");
@@ -44,7 +45,7 @@ namespace nVideo.Controllers
                 var user = await _userManager.FindByNameAsync(registerModel.Email);
                
                 if (user != null) {
-                    ModelState.AddModelError("UniqMailError", "User wich such login already exist");
+                    ModelState.AddModelError("UniqMailError", "User with such login already exist");
                     return View();
                 }
 
@@ -59,7 +60,7 @@ namespace nVideo.Controllers
 
                 if (res.Succeeded)
                 {
-                    // генерация токена для пользователя
+                    // token generation
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
                     var callbackUrl = Url.Action(
                         "ConfirmEmail",
@@ -72,17 +73,17 @@ namespace nVideo.Controllers
                             $"Verify your email on click by <a href='{callbackUrl}'>link</a>");
                     }
                     catch (CommandException cEx){
-                        _logger.LogError($"Err wich User - {newUser.Email}. \n {cEx.Message}");
+                        _logger.LogError($"Err with User - {newUser.Email}. \n {cEx.Message}");
                         ModelState.AddModelError("SenderError", "Specified Email is not exist");
                         return View(registerModel);
                     }
                     catch (Exception suddenEx){
-                        _logger.LogError($"Err wich User - {newUser.Email}. \n {suddenEx.Message}");
+                        _logger.LogError($"Err with User - {newUser.Email}. \n {suddenEx.Message}");
                         ModelState.AddModelError("SenderError", "An error occured while sending email.");
                         return View(registerModel);
                     }
 
-                    ViewBag.Message = "Для завершения регистрации проверьте электронную почту и перейдите по ссылке, указанной в письме";
+                    ViewBag.Message = "To complete the registration, check your email address and follow the link provided in the email";
                     return View("OnEmailConfirm");
                 }
             }
@@ -90,30 +91,35 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
-        public IActionResult VerifyEmail(string Email){
-            return Json(_userManager.IsNameAlreadyExist(Email));
+        public IActionResult VerifyEmail(string email){
+            return Json(_userManager.IsNameAlreadyExist(email));
         }
 
         [HttpGet]
         public async Task<IActionResult> ConfirmEmail(string userId, string code){
-            if (userId == null || code == null){
-                ViewBag.Message = "Incorrect input parameters";
-                return View("OnConfirmationFailed");
+            ViewBag.Errors = new List<string>();
+
+            if (userId == null || code == null)
+            {
+                ViewBag.Errors.Add("Incorrect input parameters");
+                return View("OnEmailConfirm");
             }
+            
             var user = await _userManager.FindByIdAsync(userId);
 
             if (user == null){
-                ViewBag.Message = "User not exist, or token expired";
-                return View("OnConfirmationFailed");
+                ViewBag.Message.Add("User not exist, or token expired");
+                return View("OnEmailConfirm");
             }
+            
             var result = await _userManager.ConfirmEmailAsync(user, code);
 
             if (result.Succeeded) // redirect on cabinet
                 return RedirectToAction("Profile", "Office");
             else
             {
-                ViewBag.Message = "I`m don`t know what hapening, but resuld !Succeeded";
-                return View("OnConfirmationFailed");
+                ViewBag.Message.Add("I`m don`t know what happening, but result !Succeeded");
+                return View("OnEmailConfirm");
             }
         }
 
@@ -125,7 +131,7 @@ namespace nVideo.Controllers
                 if (user != null){
 
                     if (!await _userManager.IsEmailConfirmedAsync(user)){
-                        ModelState.AddModelError(string.Empty, "У вас не потверждена почта");
+                        ModelState.AddModelError(string.Empty, "Please confirm your email!");
                     }
 
                     var res = await _signInManager.PasswordSignInAsync(model.Email,
@@ -138,7 +144,7 @@ namespace nVideo.Controllers
                     }
                 }
                 else{
-                    ModelState.AddModelError(string.Empty, "Неверный логин и/или пароль.");
+                    ModelState.AddModelError(string.Empty, "Incorrect login or password.");
                 }
             }
             return RedirectToAction("Register", "Account");
