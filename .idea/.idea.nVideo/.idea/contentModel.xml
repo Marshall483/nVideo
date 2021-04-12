@@ -16,6 +16,7 @@
         <e p="Controllers" t="Include">
           <e p="AccountController.cs" t="Include" />
           <e p="AdminPanelController.cs" t="Include" />
+          <e p="CartController.cs" t="Include" />
           <e p="CatalogController.cs" t="Include" />
           <e p="ErrorController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
@@ -24,6 +25,7 @@
         <e p="DATA" t="Include">
           <e p="AppDBContext.cs" t="Include" />
           <e p="ControllerModels" t="Include">
+            <e p="ChangePasswordViewModel.cs" t="Include" />
             <e p="LoginModel.cs" t="Include" />
             <e p="ProfileModel.cs" t="Include" />
             <e p="RegisterModel.cs" t="Include" />
@@ -43,6 +45,7 @@
           <e p="RoleInitilyzer.cs" t="Include" />
           <e p="Services" t="Include">
             <e p="EmailSenderService.cs" t="Include" />
+            <e p="LocatorService.cs" t="Include" />
           </e>
           <e p="ViewModels" t="Include">
             <e p="CatalogViewModel.cs" t="Include" />
@@ -53,16 +56,26 @@
         <e p="Migrations" t="Include">
           <e p="20210322142711_Init.cs" t="Include" />
           <e p="20210322142711_Init.Designer.cs" t="Include" />
+          <e p="20210326195920_InitialCreate.cs" t="Include" />
+          <e p="20210326195920_InitialCreate.Designer.cs" t="Include" />
+          <e p="20210327073913_ShopCart.cs" t="Include" />
+          <e p="20210327073913_ShopCart.Designer.cs" t="Include" />
+          <e p="20210412085415_Orders.cs" t="Include" />
+          <e p="20210412085415_Orders.Designer.cs" t="Include" />
           <e p="AppDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Catalog_Attribute.cs" t="Include" />
           <e p="Catalog_Category.cs" t="Include" />
           <e p="Catalog_Entity.cs" t="Include" />
+          <e p="Catalog_Order.cs" t="Include" />
           <e p="Catalog_Value.cs" t="Include" />
           <e p="Comment.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
           <e p="Picture.cs" t="Include" />
+          <e p="ShopCart.cs" t="Include" />
+          <e p="ShopCartItem.cs" t="Include" />
+          <e p="ShopCartView.cs" t="Include" />
           <e p="User.cs" t="Include" />
           <e p="UserProfile.cs" t="Include" />
         </e>
@@ -86,8 +99,6 @@
           <e p="_ViewImports.cshtml" t="Include" />
           <e p="_ViewStart.cshtml" t="Include" />
           <e p="Account" t="Include">
-            <e p="OnConfirmationFailed.cshtml" t="Include" />
-            <e p="OnEmailConfirm.cshtml" t="Include" />
             <e p="PersonalPage.cshtml" t="Include" />
             <e p="Register.cshtml" t="Include" />
             <e p="Registration.cshtml" t="Include" />
@@ -115,11 +126,13 @@
             <e p="AdminPanelLayout.cshtml" t="Include" />
             <e p="AlsoBoughtPartial.cshtml" t="Include" />
             <e p="AttributesPartial.cshtml" t="Include" />
+            <e p="ChangePasswordModalPartial.cshtml" t="Include" />
             <e p="Components" t="Include">
               <e p="Login" t="Include">
                 <e p="LoginForm.cshtml" t="Include" />
               </e>
             </e>
+            <e p="EditProfileModalPartial.cshtml" t="Include" />
             <e p="Error.cshtml" t="Include" />
             <e p="FeaturedPartial.cshtml" t="Include" />
             <e p="HomeCarouselPartial.cshtml" t="Include" />
@@ -127,6 +140,7 @@
             <e p="ListCatalogPartial.cshtml" t="Include" />
             <e p="LoginPartial.cshtml" t="Include" />
             <e p="NewProductPartial.cshtml" t="Include" />
+            <e p="OnEmailConfirm.cshtml" t="Include" />
             <e p="ThumbnailsPartial.cshtml" t="Include" />
           </e>
         </e>
@@ -217,6 +231,8 @@
               <e p="visa.png" t="Include" />
               <e p="white_leather.png" t="Include" />
             </e>
+            <e p="jquery-ui-1-11-0.js" t="Include" />
+            <e p="jQuery-v1.12.4.js" t="Include" />
             <e p="js" t="Include">
               <e p="bootstrap.js" t="Include" />
               <e p="bootstrap.min.js" t="Include" />
@@ -391,6 +407,9 @@
                   <e p="3.png" t="Include" />
                 </e>
               </e>
+            </e>
+            <e p="ProfileImages" t="Include">
+              <e p="man.png" t="Include" />
             </e>
             <e p="TV&amp;Audio" t="Include">
               <e p="Novex" t="Include">

@@ -25,7 +25,7 @@ namespace nVideo.DATA.Services
         public async Task SendEmailAsync(string email, string subject, string message){
             var emailMessage = new MimeMessage();
 
-            emailMessage.From.Add(new MailboxAddress("Администрация nVideo", _secrets.SourceEmail));
+            emailMessage.From.Add(new MailboxAddress("Admimistration nVideo", _secrets.SourceEmail));
             emailMessage.To.Add(new MailboxAddress("", email));
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html){
