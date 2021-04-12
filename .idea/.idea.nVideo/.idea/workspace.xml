@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="721f500a-e1b7-4f5a-9832-f6f28cd93bf5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +81,7 @@
       <workItem from="1618151480182" duration="40000" />
       <workItem from="1618167147127" duration="2629000" />
       <workItem from="1618212202618" duration="1316000" />
+      <workItem from="1618218631889" duration="99000" />
     </task>
     <servers />
   </component>
@@ -180,7 +180,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs</url>
-          <line>27</line>
+          <line>26</line>
           <properties documentPath="C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\Controllers\CatalogController.cs" initialLine="27" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
