@@ -9,6 +9,7 @@ using nVideo.DATA.ControllerModels;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace nVideo.Controllers
 {
