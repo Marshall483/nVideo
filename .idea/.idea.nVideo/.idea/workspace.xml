@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="721f500a-e1b7-4f5a-9832-f6f28cd93bf5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/nVideo/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/nVideo/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/AdminPanel/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/AdminPanel/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +15,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/nVideo/DATA/Interfaces/IAllCatalog.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1qGfvagzJUfSXSDX0zBJSbZDYxI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -83,6 +80,8 @@
       <workItem from="1618058787434" duration="64000" />
       <workItem from="1618058902408" duration="5000" />
       <workItem from="1618151480182" duration="40000" />
+      <workItem from="1618167147127" duration="2629000" />
+      <workItem from="1618212202618" duration="1316000" />
     </task>
     <servers />
   </component>

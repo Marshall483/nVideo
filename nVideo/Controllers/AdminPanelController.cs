@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using nVideo.Models;
 
 namespace nVideo.Controllers
 {
@@ -6,10 +11,18 @@ namespace nVideo.Controllers
 
     public class AdminPanelController : Controller
     {
-        // GET
-        public IActionResult Index()
+        private readonly UserManager<User> _userManager;
+
+        public AdminPanelController(UserManager<User> userManager)
         {
-            
+            _userManager = userManager;
+        }
+        // GET
+        public async Task<IActionResult> Index()
+        {
+            var principal = new ClaimsPrincipal(User.Identities);
+            var _admin = await _userManager.GetUserAsync(principal);
+            ViewBag.Admin = _admin;
             return View();
         }
     }
