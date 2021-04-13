@@ -8,15 +8,15 @@ namespace nVideo.Models
     {
         public int Id { get; set; }
 
-
-        [RegularExpression(@"[A-Za-zА-Яа-я]", ErrorMessage = "Name must contain only letters")]
+        [MaxLength(20, ErrorMessage = "Line length exceeded")]
         public string Name { get; set; }
-        [RegularExpression(@"[A-Za-zА-Яа-я]", ErrorMessage = "Name must contain only letters")]
+
+        [MaxLength(20, ErrorMessage = "Line length exceeded")]
         public string LastName { get; set; }
 
         [Range(1, 110, ErrorMessage = "Incoffect Age")]
         public sbyte Age { get; set; }
-        [Phone]
+        [MaxLength(20, ErrorMessage = "Max length 10")]
         public string Phone { get; set; }
         [MaxLength(20, ErrorMessage = "Max length 20")]
         public string City { get; set; }

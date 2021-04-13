@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using nVideo.DATA;
@@ -9,9 +10,10 @@ using nVideo.DATA;
 namespace nVideo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210327073913_ShopCart")]
+    partial class ShopCart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -212,9 +214,6 @@ namespace nVideo.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("integer");
-
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
 
@@ -228,29 +227,7 @@ namespace nVideo.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("OrderId");
-
                     b.ToTable("Entities");
-                });
-
-            modelBuilder.Entity("nVideo.Models.Catalog_Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<DateTime>("Oreder_Time")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Value", b =>
@@ -435,16 +412,13 @@ namespace nVideo.Migrations
                         .HasMaxLength(20);
 
                     b.Property<string>("LastName")
-                        .HasColumnType("character varying(20)")
-                        .HasMaxLength(20);
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasColumnType("character varying(20)")
-                        .HasMaxLength(20);
+                        .HasColumnType("text");
 
                     b.Property<string>("Phone")
-                        .HasColumnType("character varying(20)")
-                        .HasMaxLength(20);
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -517,17 +491,6 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.Catalog_Category", "Category")
                         .WithMany("Entities")
                         .HasForeignKey("CategoryId");
-
-                    b.HasOne("nVideo.Models.Catalog_Order", "Order")
-                        .WithMany("Items")
-                        .HasForeignKey("OrderId");
-                });
-
-            modelBuilder.Entity("nVideo.Models.Catalog_Order", b =>
-                {
-                    b.HasOne("nVideo.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Value", b =>

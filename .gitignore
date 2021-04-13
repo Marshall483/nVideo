@@ -342,3 +342,15 @@ node_modules/
 **/*.Server/ModelManifest.xml
 _Pvt_Extensions
 
+#problematic folders
+\.vs
+\.idea
+\.DS_Store
+.vs/
+.idea/
+nVideo/.DS_Store
+nVideo/.vs
+nVideo/.idea
+nVideo/bin
+nVideo/obj
+

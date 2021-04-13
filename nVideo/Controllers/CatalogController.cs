@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using nVideo.DATA.Interfaces;
 using System;
 using nVideo.DATA.ViewModels;
+using nVideo.Models;
 
 namespace nVideo.Controllers
 {
@@ -19,7 +20,7 @@ namespace nVideo.Controllers
 
         public ViewResult List(){
             var model = new CatalogViewModel();
-            model.Entities = _catalog.GetAllEntnty;
+            model.Entities = _catalog.GetAllEntity();
 
             return View(model);
         }
@@ -27,9 +28,11 @@ namespace nVideo.Controllers
         [Route("Catalog/CategoryFilter/{category}")]
         public IActionResult CategoryFilter(string category){
             if (!string.IsNullOrEmpty(category)){
-                var model = new CatalogViewModel();
 
-                model.Entities = _catalog.GetCategoryMembers(category);
+                var model = new CatalogViewModel
+                {
+                    Entities = _catalog.GetCategoryMembers(category),
+                };
 
                 return View("List", model);
             }

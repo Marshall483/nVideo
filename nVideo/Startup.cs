@@ -27,62 +27,68 @@ namespace nVideo
         public Startup(IWebHostEnvironment hostEnvironment)
         {
             _connectionString = new ConfigurationBuilder().
-                                    SetBasePath(hostEnvironment.ContentRootPath). // Получить путь к корневой папке
-                                    AddJsonFile("DbSettings.json"). // Имя самого файла
+                                    SetBasePath(hostEnvironment.ContentRootPath).
+                                    AddJsonFile("DbSettings.json").
                                     Build();
         }
 
-        public void ConfigureServices(IServiceCollection services){
+        public void ConfigureServices(IServiceCollection services)
+        {
             services.AddControllersWithViews();
 
             services.AddHttpContextAccessor();
             services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(_connectionString.GetConnectionString("DefaultConnection"))); // Подключить контекст бд
+                options.UseNpgsql(_connectionString.GetConnectionString("DefaultConnection"))); 
 
             services.AddIdentity<User, IdentityRole>(opts => {
-                opts.Password.RequiredLength = 5;   // минимальная длина
-                opts.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы
-                opts.Password.RequireLowercase = false; // требуются ли символы в нижнем регистре
-                opts.Password.RequireUppercase = false; // требуются ли символы в верхнем регистре
-                opts.Password.RequireDigit = false; // требуются ли цифры
+                opts.Password.RequiredLength = 5;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireDigit = false;
             })
               .AddEntityFrameworkStores<AppDbContext>()
               .AddDefaultTokenProviders();
-                
 
-            /* Lifetime */
+
             services.AddTransient<IAllCatalog, CatalogRepository>();
             services.AddSingleton<EmailSenderService>();
-
-
-            /* IMPOTANT */
-            services.AddMvc(option => option.EnableEndpointRouting = false); // Добавть MVC
-            services.AddMemoryCache(); // Подлючить библиотеку с кешами
-            services.AddSession(); // Подлючить дополнительную библиотеку с сессиями
-            services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme) //Redirect to login
-                .AddCookie(options => // CookieConfigurationOptions
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(x => ShopCart.GetCart(x));
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
                 {
-                    options.LoginPath = new PathString("/Account/Register");
+                    options.LoginPath = new PathString("~/Account/Register");
                 });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env){
+            if (env.IsDevelopment()){
+                app.UseDeveloperExceptionPage();
+            }
 
-            app.UseDeveloperExceptionPage();
             app.UseStatusCodePagesWithReExecute("/Error/status", "?code={0}"); app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
 
             app.UseRouting();
 
-            app.UseAuthentication(); 
-            app.UseAuthorization(); 
-
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Cookies.ContainsKey("City"))
+                    context.Response.Cookies.Append("City", await LocatorService.GetyCityAsync());
+                await next.Invoke();
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=Register}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
