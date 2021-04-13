@@ -55,7 +55,6 @@ namespace nVideo
             services.AddSingleton<EmailSenderService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(x => ShopCart.GetCart(x));
-
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddMemoryCache();
             services.AddSession();
@@ -78,7 +77,12 @@ namespace nVideo
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Cookies.ContainsKey("City"))
+                    context.Response.Cookies.Append("City", await LocatorService.GetyCityAsync());
+                await next.Invoke();
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
