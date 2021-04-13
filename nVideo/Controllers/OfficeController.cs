@@ -80,7 +80,7 @@ namespace nVideo.Controllers
                     }
                 }
             }
-            return View(profileModel);
+            return View("EditProfileModalPartial", profileModel);
         }
 
         [HttpPost]
@@ -122,13 +122,18 @@ namespace nVideo.Controllers
                     ModelState.AddModelError(string.Empty, "User not found");
                 }
             }
-            return View(model);
+            return View("ChangePasswordModalPartial", model);
         }
 
         public async Task<IActionResult> ResendEmailCofirm()
         {
             var user = GetAuthorizedUser();
 
+            if (user.EmailConfirmed)
+            {
+                return RedirectToAction("Profile");
+            }
+            
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var callbackUrl = Url.Action(
                 "ConfirmEmail",
@@ -151,7 +156,7 @@ namespace nVideo.Controllers
             {
                 ViewBag.Errors ??= new List<string>();
                 ViewBag.Errors.Add("An error occured while sending email.");
-                return View("OnEmailCofirm");
+                return View("OnEmailConfirm");
             }
 
             return View("OnEmailConfirm");

@@ -21,9 +21,15 @@ namespace nVideo.Models
 
         public virtual List<Picture> Images { get; set; }
         public virtual List<Catalog_Attribute> Attributes { get; set; }
+        
         public virtual List<Comment> Comments { get; set; }
 
+        
         public int? CategoryId { get; set; }
         public Catalog_Category Category { get; set; }
+        
+        
+        public int? OrderId { get; set; }
+        public Catalog_Order Order { get; set; }
     }
 }
