@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\User\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\User\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_nVideo.-551903272.00" t="ExcludeRecursive" />
-    <e p="C:\Users\User\AppData\Roaming\JetBrains\Rider2020.3\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\User\AppData\Roaming\JetBrains\Rider2020.3\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\User\Desktop\nVideo" t="IncludeFlat">
+    <e p="C:\Users\danik\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\danik\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_nVideo.373522135.00" t="ExcludeRecursive" />
+    <e p="C:\Users\danik\OneDrive\Documents\GIthub\nVideo" t="IncludeFlat">
       <e p="nVideo" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
@@ -15,7 +13,6 @@
         </e>
         <e p="Controllers" t="Include">
           <e p="AccountController.cs" t="Include" />
-          <e p="AdminPanelController.cs" t="Include" />
           <e p="CartController.cs" t="Include" />
           <e p="CatalogController.cs" t="Include" />
           <e p="ErrorController.cs" t="Include" />
@@ -60,15 +57,12 @@
           <e p="20210326195920_InitialCreate.Designer.cs" t="Include" />
           <e p="20210327073913_ShopCart.cs" t="Include" />
           <e p="20210327073913_ShopCart.Designer.cs" t="Include" />
-          <e p="20210412085415_Orders.cs" t="Include" />
-          <e p="20210412085415_Orders.Designer.cs" t="Include" />
           <e p="AppDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Catalog_Attribute.cs" t="Include" />
           <e p="Catalog_Category.cs" t="Include" />
           <e p="Catalog_Entity.cs" t="Include" />
-          <e p="Catalog_Order.cs" t="Include" />
           <e p="Catalog_Value.cs" t="Include" />
           <e p="Comment.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
@@ -103,11 +97,6 @@
             <e p="Register.cshtml" t="Include" />
             <e p="Registration.cshtml" t="Include" />
           </e>
-          <e p="AdminPanel" t="Include">
-            <e p="Banhammer.cshtml" t="Include" />
-            <e p="Editing.cshtml" t="Include" />
-            <e p="Index.cshtml" t="Include" />
-          </e>
           <e p="Catalog" t="Include">
             <e p="About.cshtml" t="Include" />
             <e p="List.cshtml" t="Include" />
@@ -125,7 +114,6 @@
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
-            <e p="AdminPanelLayout.cshtml" t="Include" />
             <e p="AlsoBoughtPartial.cshtml" t="Include" />
             <e p="AttributesPartial.cshtml" t="Include" />
             <e p="ChangePasswordModalPartial.cshtml" t="Include" />
@@ -245,7 +233,6 @@
             </e>
           </e>
           <e p="css" t="Include">
-            <e p="AdminPanel_style.css" t="Include" />
             <e p="Layout_style.css" t="Include" />
             <e p="Profile_styles.css" t="Include" />
           </e>
@@ -434,7 +421,6 @@
             </e>
           </e>
           <e p="js" t="Include">
-            <e p="AdminPanelJS.js" t="Include" />
             <e p="jquery3-2-1-full.js" t="Include" />
             <e p="popper-utils.min.js" t="Include" />
             <e p="popper-utils.min.js.map" t="Include" />
