@@ -25,5 +25,15 @@ namespace nVideo.Controllers
             ViewBag.Admin = _admin;
             return View();
         }
+
+        public IActionResult Banhammer()
+        {
+            return View();
+        }
+
+        public IActionResult Ban(string useremail)
+        {
+            
+        }
     }
 }
