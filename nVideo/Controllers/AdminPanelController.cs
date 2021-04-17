@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -28,12 +29,28 @@ namespace nVideo.Controllers
 
         public IActionResult Banhammer()
         {
+            
             return View();
         }
 
-        public IActionResult Ban(string useremail)
+        public async Task<IActionResult> Ban(string useremail)
         {
-            
+            if(useremail== null) return View("AdminFail");
+            var user = await _userManager.FindByEmailAsync(useremail);
+            if (user != null) return View("AdminFail");
+            await _userManager.AddToRoleAsync(user, "baned");
+            return View("Sucksess");
         }
+        public async Task<IActionResult> UnBan(string useremail)
+        {
+            if(useremail== null) return View("AdminFail");
+            var user = await _userManager.FindByEmailAsync(useremail);
+            if (user != null) return View("AdminFail");
+            await _userManager.AddToRoleAsync(user, "user");
+            return View("Sucksess");
+        }
+        
+        
+        
     }
 }

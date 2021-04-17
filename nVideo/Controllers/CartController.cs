@@ -12,15 +12,15 @@ namespace nVideo.Controllers
             _shopCart = shopCart;
         }
 
-        [HttpGet]
-        public ViewResult Cart()
+        /* [HttpGet]
+       public ViewResult Cart()
         {
             var items = _shopCart.GetShopItems();
             var total = _shopCart.GeComputeTotalValue();
 
             var viewModel = new ShopCartView(items, total);
             return View(viewModel);
-        }
+        }*/
 
         [HttpGet]
         public void AddToCart(int id)
