@@ -56,30 +56,37 @@ namespace nVideo.DATA.Repository
 
         public Catalog_Entity GetItemById(int? id)
         {
-            if (id.HasValue)
-            {
-                IQueryable<Catalog_Entity> target;
+            if (!id.HasValue) 
+                throw new ArgumentNullException("Missing parameter: int id");
 
-                return (target = _context.Entities.Include(i => i.Images).Where(e => e.Id.Equals(id)))
-                .Count() == 0
+            IQueryable<Catalog_Entity> target;
+
+            return !(target = _context.Entities
+                .Where(e => e.Id.Equals(id))).Any()
                 ? throw new ArgumentException("Id is not exit")
-                : target.Include(t => t.Category)
+                : target.Include(t => t.Images)
+                    .Include(t => t.Category) // According to load related items
+                    .Include(t => t.Comments)
+                    .ThenInclude(t => t.User)
                     .Include(t => t.Attributes)
                     .ThenInclude(t => t.Value)
-                    .First();
-            }
-            throw new ArgumentNullException("Missing parameter: int id");
+                    .Single();// Must return only one 
         }
 
         public IEnumerable<Catalog_Entity> GetNewItems()
         {
-            return _context.Entities.Include(i => i.Images).OrderByDescending(e => e.InStock)
-            .Take(8);
+            return _context.Entities
+                .Include(i => i.Images)
+                .OrderByDescending(e => e.InStock)
+                .Take(8);
         }
 
         public IEnumerable<Catalog_Entity> GetRandomItem()
         {
-            return _context.Entities.Include(i => i.Images).AsParallel().Take(3);
+            return _context.Entities
+                .Include(i => i.Images)
+                .AsParallel()
+                .Take(3);
         }
 
     }

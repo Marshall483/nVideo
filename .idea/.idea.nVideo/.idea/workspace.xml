@@ -5,28 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="721f500a-e1b7-4f5a-9832-f6f28cd93bf5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/nVideo/Views/Shared/CommentsPartial.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/nVideo/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/nVideo/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/nVideo/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/nVideo/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Controllers/CartController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Controllers/CartController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Models/ShopCart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Models/ShopCart.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/nVideo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/nVideo.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/DATA/Extentions/UserManagerExtentions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/DATA/Extentions/UserManagerExtentions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/DATA/Repository/CatalogRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/DATA/Repository/CatalogRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,39 +24,50 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C870CA06-9021-47A9-A402-5993CEEFDC2D/36/String.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/D5ABA840-78D6-48AF-AC98-F1F73BC0272D/3E/ReflectTypeDescriptionProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18FD0280-F595-4534-A864-9C11E9235D85/9E/Nullable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F28FCF51-A23A-4BE2-9092-1D96F3CDEC05/8/Queryable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B5C0ECE9-48E9-456E-A76D-60AC6F690356/C/Controller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A3DBE483-6645-4FDB-B51D-FEEB0B5C4997/12/DbSet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nVideo/Views/Office/Profile.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99616C2B-6172-4417-8AB8-C7F663C3D577/5/DiagnosticListener.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/nVideo/DATA/AppDBContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/D5ABA840-78D6-48AF-AC98-F1F73BC0272D/3F/ReflectTypeDescriptionProvider.ReflectedTypeData.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/87CA269E-D756-4FE7-92B2-4A1A7E219F81/13/EndpointMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9A632E68-9B9E-49FA-91C2-CA7F88CAC46B/6D/ActionEndpointFactory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C870CA06-9021-47A9-A402-5993CEEFDC2D/16B/Task.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9A632E68-9B9E-49FA-91C2-CA7F88CAC46B/11C/ResourceInvoker.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C870CA06-9021-47A9-A402-5993CEEFDC2D/178/ValueTask.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9A632E68-9B9E-49FA-91C2-CA7F88CAC46B/137/ControllerActionFilter.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9A632E68-9B9E-49FA-91C2-CA7F88CAC46B/FE/ControllerActionInvoker.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9FB2FA56-0B70-4749-A696-8D2CE1FE1FD0/C/Controller.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9A632E68-9B9E-49FA-91C2-CA7F88CAC46B/F3/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9A632E68-9B9E-49FA-91C2-CA7F88CAC46B/194/ObjectMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/D5ABA840-78D6-48AF-AC98-F1F73BC0272D/41/TypeDescriptor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B8092AA-7E14-412C-97AF-F24FD338E5F7/1D/UserManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18FD0280-F595-4534-A864-9C11E9235D85/3A4/List.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/14F77EE4-639B-4CE9-849B-C8F1BB98D456/F3/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nVideo/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B5C0ECE9-48E9-456E-A76D-60AC6F690356/58/HtmlHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/14F77EE4-639B-4CE9-849B-C8F1BB98D456/FE/ControllerActionInvoker.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/nVideo/Startup.cs" />
-      </list>
-    </option>
+    <changedPaths>
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/Components/CommentsPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/CommentsPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/DATA/Interfaces/ICommentsRepository.cs" />
+      <option value="$PROJECT_DIR$/nVideo/DATA/Repository/CatalogRepository.cs" />
+      <option value="$PROJECT_DIR$/nVideo/DATA/Extentions/UserManagerExtentions.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1qGfvagzJUfSXSDX0zBJSbZDYxI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30010834" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34962717" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.38018018" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.nVideo">
@@ -117,6 +115,7 @@
       <workItem from="1616966828963" duration="80000" />
       <workItem from="1617689583175" duration="6000" />
       <workItem from="1617698315337" duration="320000" />
+      <workItem from="1618748076235" duration="12968000" />
     </task>
     <servers />
   </component>
@@ -125,119 +124,82 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1877" height="375" key="GridCell.Tab.0.bottom" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.0.center" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.0.left" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.0.right" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.1.bottom" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.1.center" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.1.left" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.1.right" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.2.bottom" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.2.center" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.2.left" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.2.right" timestamp="1617698637789">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637789" />
-    <state width="1877" height="375" key="GridCell.Tab.3.bottom" timestamp="1617698637790">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637790" />
-    <state width="1877" height="375" key="GridCell.Tab.3.center" timestamp="1617698637790">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637790" />
-    <state width="1877" height="375" key="GridCell.Tab.3.left" timestamp="1617698637790">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637790" />
-    <state width="1877" height="375" key="GridCell.Tab.3.right" timestamp="1617698637790">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637790" />
-    <state width="1877" height="375" key="GridCell.Tab.4.bottom" timestamp="1617698637790">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.4.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637790" />
-    <state width="1877" height="375" key="GridCell.Tab.4.center" timestamp="1617698637790">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.4.center/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637790" />
-    <state width="1877" height="375" key="GridCell.Tab.4.left" timestamp="1617698637790">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.4.left/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637790" />
-    <state width="1877" height="375" key="GridCell.Tab.4.right" timestamp="1617698637790">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="375" key="GridCell.Tab.4.right/0.0.1920.1040@0.0.1920.1040" timestamp="1617698637790" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs</url>
-          <line>27</line>
-          <properties documentPath="C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\Controllers\CatalogController.cs" initialLine="27">
-            <startOffsets>
-              <option value="792" />
-            </startOffsets>
-            <endOffsets>
-              <option value="793" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/nVideo/Controllers/CartController.cs</url>
           <line>27</line>
-          <properties documentPath="C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\Controllers\CartController.cs" initialLine="27">
+          <properties documentPath="C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\Controllers\CartController.cs" initialLine="27" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs</url>
+          <line>73</line>
+          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" initialLine="72" containingFunctionPresentation="method 'AddCommentAsync'">
             <startOffsets>
-              <option value="640" />
+              <option value="2396" />
             </startOffsets>
             <endOffsets>
-              <option value="674" />
+              <option value="2397" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml</url>
+          <line>116</line>
+          <properties documentPath="$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml" initialLine="121" isMultiMethodBreakpoint="true">
+            <option name="multiMethodBreakpoint" value="true" />
+            <startOffsets>
+              <option value="-1" />
+            </startOffsets>
+            <endOffsets>
+              <option value="-1" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/DATA/Extentions/UserManagerExtentions.cs</url>
+          <line>19</line>
+          <properties documentPath="$PROJECT_DIR$/nVideo/DATA/Extentions/UserManagerExtentions.cs" initialLine="19" containingFunctionPresentation="method 'GetUserIncludeProfile'">
+            <startOffsets>
+              <option value="727" />
+            </startOffsets>
+            <endOffsets>
+              <option value="878" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs</url>
+          <line>38</line>
+          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs" initialLine="38" containingFunctionPresentation="method 'Profile'">
+            <startOffsets>
+              <option value="1188" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1189" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
