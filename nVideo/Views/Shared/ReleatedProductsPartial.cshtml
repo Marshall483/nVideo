@@ -1,0 +1,27 @@
+@model Catalog_Entity
+
+<hr>
+
+<div class="row-fluid">
+    <div class="span2">
+        <img src="@Model.Images.First().Patch" alt="sexy-image">
+    </div>
+    <div class="span6">
+        <h5>@Model.Name</h5>
+        <p>
+            @String.Concat(Model.Long_Desc.Take(150)
+                .Append('.').Append('.').Append('.').ToArray())
+        </p>
+    </div>
+    <div class="span4 alignR">
+        <form class="form-horizontal qtyFrm">
+            <h3> $@Model.Price.ToString("#")</h3>
+            <br>
+            <div class="btn-group">
+                <a class="shopBtn" asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id">VIEW</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr>
