@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\danik\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\danik\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_nVideo.373522135.00" t="ExcludeRecursive" />
-    <e p="C:\Users\danik\OneDrive\Documents\GIthub\nVideo" t="IncludeFlat">
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="nVideo" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
@@ -22,6 +20,7 @@
         <e p="DATA" t="Include">
           <e p="AppDBContext.cs" t="Include" />
           <e p="ControllerModels" t="Include">
+            <e p="AboutViewModel.cs" t="Include" />
             <e p="ChangePasswordViewModel.cs" t="Include" />
             <e p="LoginModel.cs" t="Include" />
             <e p="ProfileModel.cs" t="Include" />
@@ -57,12 +56,15 @@
           <e p="20210326195920_InitialCreate.Designer.cs" t="Include" />
           <e p="20210327073913_ShopCart.cs" t="Include" />
           <e p="20210327073913_ShopCart.Designer.cs" t="Include" />
+          <e p="20210412085415_Orders.cs" t="Include" />
+          <e p="20210412085415_Orders.Designer.cs" t="Include" />
           <e p="AppDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Catalog_Attribute.cs" t="Include" />
           <e p="Catalog_Category.cs" t="Include" />
           <e p="Catalog_Entity.cs" t="Include" />
+          <e p="Catalog_Order.cs" t="Include" />
           <e p="Catalog_Value.cs" t="Include" />
           <e p="Comment.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
@@ -114,9 +116,9 @@
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
-            <e p="AlsoBoughtPartial.cshtml" t="Include" />
             <e p="AttributesPartial.cshtml" t="Include" />
             <e p="ChangePasswordModalPartial.cshtml" t="Include" />
+            <e p="CommentsPartial.cshtml" t="Include" />
             <e p="Components" t="Include">
               <e p="Login" t="Include">
                 <e p="LoginForm.cshtml" t="Include" />
@@ -131,6 +133,7 @@
             <e p="LoginPartial.cshtml" t="Include" />
             <e p="NewProductPartial.cshtml" t="Include" />
             <e p="OnEmailConfirm.cshtml" t="Include" />
+            <e p="ReleatedProductsPartial.cshtml" t="Include" />
             <e p="ThumbnailsPartial.cshtml" t="Include" />
           </e>
         </e>
@@ -473,5 +476,8 @@
       <e p="nVideo.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
     </e>
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_nVideo.-1519290015.00" t="ExcludeRecursive" />
   </component>
 </project>
