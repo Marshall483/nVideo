@@ -17,7 +17,10 @@ namespace nVideo.DATA.Repository
         }
         public IEnumerable<Catalog_Entity> GetAllEntity()
         {
-            return _context.Entities.Include(i => i.Images).Include(a => a.Attributes).ThenInclude(v => v.Value);
+            return _context.Entities
+                .Include(i => i.Images)
+                .Include(a => a.Attributes)
+                .ThenInclude(v => v.Value);
         }
 
         public List<Catalog_Attribute> GetAttributes(string category)
@@ -25,12 +28,15 @@ namespace nVideo.DATA.Repository
             var attibutes = from a in _context.Entities 
                             where a.Category.CategoryName.Equals(category) 
                             select a.Attributes;
+            
             return attibutes.First();
         }
 
         public IEnumerable<Catalog_Entity> GetCarouselItems()
         {
-            return _context.Entities.Include(i => i.Images).OrderByDescending(r => r.Raiting);
+            return _context.Entities
+                .Include(i => i.Images)
+                .OrderByDescending(r => r.Raiting);
         }
 
         public IEnumerable<Catalog_Entity> GetCategoryMembers(string category)
@@ -57,9 +63,10 @@ namespace nVideo.DATA.Repository
                 return (target = _context.Entities.Include(i => i.Images).Where(e => e.Id.Equals(id)))
                 .Count() == 0
                 ? throw new ArgumentException("Id is not exit")
-                : target.Include(t => t.Attributes)
-                .ThenInclude(t => t.Value)
-                .First();
+                : target.Include(t => t.Category)
+                    .Include(t => t.Attributes)
+                    .ThenInclude(t => t.Value)
+                    .First();
             }
             throw new ArgumentNullException("Missing parameter: int id");
         }
