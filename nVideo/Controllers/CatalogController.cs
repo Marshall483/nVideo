@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using nVideo.DATA.Interfaces;
 using System;
+using nVideo.DATA.ControllerModels;
 using nVideo.DATA.ViewModels;
 using nVideo.Models;
 
@@ -41,8 +42,16 @@ namespace nVideo.Controllers
 
         [Route("Catalog/About/{id}")]
         public ViewResult About(int? id){
-            if (id.HasValue){
-                return View(_catalog.GetItemById(id));
+            if (id.HasValue)
+            {
+                var entity = _catalog.GetItemById(id);
+                
+                var aboutVM = new AboutViewModel();
+                
+                aboutVM.Entity = entity;
+                aboutVM.Related_Products = _catalog.GetCategoryMembers(entity.Category.CategoryName);
+                
+                return View(aboutVM);
             }
             throw new ArgumentNullException("Missing parameter: int id");
         }
