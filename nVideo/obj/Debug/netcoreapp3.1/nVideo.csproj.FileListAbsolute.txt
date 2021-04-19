@@ -427,3 +427,14 @@ C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\bin\Debug\netcoreapp3.1\D
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChangePasswordModalPartial.cshtml.g.cs
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\EditProfileModalPartial.cshtml.g.cs
 C:\Users\danik\OneDrive\Documents\GIthub\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\OnEmailConfirm.cshtml.g.cs
+C:\NewProgram\GithubRepository\nVideo\nVideo\bin\Debug\netcoreapp3.1\DbSettings.json
+C:\NewProgram\GithubRepository\nVideo\nVideo\bin\Debug\netcoreapp3.1\IpInfo.dll
+C:\NewProgram\GithubRepository\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\NewProgram\GithubRepository\nVideo\nVideo\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\NewProgram\GithubRepository\nVideo\nVideo\bin\Debug\netcoreapp3.1\Npgsql.dll
+C:\NewProgram\GithubRepository\nVideo\nVideo\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\NewProgram\GithubRepository\nVideo\nVideo\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll
+C:\NewProgram\GithubRepository\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Error\Status.cshtml.g.cs
+C:\NewProgram\GithubRepository\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChangePasswordModalPartial.cshtml.g.cs
+C:\NewProgram\GithubRepository\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\EditProfileModalPartial.cshtml.g.cs
+C:\NewProgram\GithubRepository\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\OnEmailConfirm.cshtml.g.cs

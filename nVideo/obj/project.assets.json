@@ -7886,19 +7886,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\danik\\.nuget\\packages\\": {}
+    "C:\\Users\\Fies\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj",
+      "projectUniqueName": "C:\\NewProgram\\GithubRepository\\nVideo\\nVideo\\nVideo.csproj",
       "projectName": "nVideo",
-      "projectPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj",
-      "packagesPath": "C:\\Users\\danik\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\obj\\",
+      "projectPath": "C:\\NewProgram\\GithubRepository\\nVideo\\nVideo\\nVideo.csproj",
+      "packagesPath": "C:\\Users\\Fies\\.nuget\\packages\\",
+      "outputPath": "C:\\NewProgram\\GithubRepository\\nVideo\\nVideo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\danik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Fies\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7995,16 +7995,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Ошибка чтения файла кэша C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
