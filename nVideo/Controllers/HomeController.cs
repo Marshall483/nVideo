@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using nVideo.DATA.Interfaces;
 using nVideo.Models;
 using nVideo.DATA.ViewModels;
+using nVideo.DATA.Services;
 
 namespace nVideo.Controllers
 {
@@ -40,6 +41,11 @@ namespace nVideo.Controllers
 
         public IActionResult Privacy(){
             return View();
+        }
+
+        public void City(string city)
+        {
+            HttpContext.Response.Cookies.Append("City", city);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

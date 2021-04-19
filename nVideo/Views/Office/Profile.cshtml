@@ -48,50 +48,70 @@
                         <tr class="techSpecRow">
                             <td class="techSpecTD1">First Name:</td>
                             <td class="techSpecTD2">
-                                @{if (Model.Item1.Profile.Name != null) @Model.Item1.Profile.Name else
-                                { <p>Not Set</p> } }
+                                @{if (Model.Item1.Profile.Name != null)
+                                    { @Model.Item1.Profile.Name} 
+                                  else
+                                    { <p>Not Set</p> } }
                             </td>
                         </tr>
                         <tr class="techSpecRow">
                             <td class="techSpecTD1">Last Name:</td>
                             <td class="techSpecTD2">
-                                @{if (Model.Item1.Profile.LastName != null) @Model.Item1.Profile.LastName else
-                                { <p>Not Set</p> } }
+                                @{if (Model.Item1.Profile.LastName != null)
+                                    { @Model.Item1.Profile.LastName} 
+                                  else
+                                    { <p>Not Set</p> } }
                             </td>
                         </tr>
                         <tr class="techSpecRow">
                             <td class="techSpecTD1">Age:</td>
                             <td class="techSpecTD2">
-                                @{if (Model.Item1.Profile.Age != null) @Model.Item1.Profile.Age else
-                                { <p>Not Set</p> } }
+                                @{
+                                    if (Model.Item1.Profile.Age != null)
+                                        { @Model.Item1.Profile.Age} 
+                                    else
+                                        { <p>Not Set</p> } }
                             </td>
                         </tr>
                         <tr class="techSpecRow">
                             <td class="techSpecTD1">Phone:</td>
                             <td class="techSpecTD2">
-                                @{if (Model.Item1.Profile.Phone != null) @Model.Item1.Profile.Phone else
-                                { <p>Not Set</p> } }
+                                @{if (Model.Item1.Profile.Phone != null)
+                                    { @Model.Item1.Profile.Phone} 
+                                  else
+                                    { <p>Not Set</p> } }
                             </td>
                         </tr>
                         <tr class="techSpecRow">
                             <td class="techSpecTD1">City:</td>
                             <td class="techSpecTD2">
-                                @{if (Model.Item1.Profile.City != null) @Model.Item1.Profile.City else
-                                { <p>Not Set</p> } }
+                                @{if (Model.Item1.Profile.City != null)
+                                    { @Model.Item1.Profile.City} 
+                                  else
+                                    { <p>Not Set</p> } }
                             </td>
                         </tr>
                         <tr class="techSpecRow">
                             <td class="techSpecTD1">Address:</td>
                             <td class="techSpecTD2">
-                                @{if (Model.Item1.Profile.Address != null) @Model.Item1.Profile.Address else
-                                { <p>Not Set</p> } }
+                                @{if (Model.Item1.Profile.Address != null)
+                                    { @Model.Item1.Profile.Address} 
+                                  else
+                                    { <p>Not Set</p> } }
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <hr>
                 <p class="flex-grow-1">
-                    You can <a href="#myModal" role="button" class="btn" data-toggle="modal">Edit your profile</a> or <a asp-action="ResendEmailCofirm" asp-controller="Office" class="btn btn-danger">Resend Email confirmation message</a>
+                    You can <a href="#myModal" role="button" class="btn" data-toggle="modal">Edit your profile</a>
+                    @{
+                        if (!@Model.Item1.EmailConfirmed){
+                            <p>
+                                 or <a asp-action="ResendEmailCofirm" asp-controller="Office" class="btn btn-danger">Resend Email confirmation message</a>
+                            </p>
+                        }
+                    }
                 </p>
 
 
@@ -105,7 +125,7 @@
                     </div>
                 </div>
 
-                <!-- Edit Profile Modal -->
+                <!-- Edit Password Modal -->
                 <div id="changePassword" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

@@ -1,5 +1,6 @@
 ﻿using nVideo.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,5 @@ namespace nVideo.DATA.Interfaces
         public IEnumerable<Catalog_Entity> GetRandomItem();
         public IEnumerable<Catalog_Entity> GetCategoryMembers(string category);
         public Catalog_Entity GetItemById(int? id);
-
     }
 }

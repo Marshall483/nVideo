@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using nVideo.DATA.Extentions;
 
 namespace nVideo.Controllers
 {
@@ -38,13 +39,15 @@ namespace nVideo.Controllers
         public async Task<IActionResult> Profile() {
             if (User.Identity.IsAuthenticated)
             {
-                User user = GetAuthorizedUser();
+                var user = _userManager
+                    .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
 
                 ViewBag.Messages ??= new List<string>();
 
                 if (!user.EmailConfirmed)
                     ViewBag.Messages.Add("Please confirm your mail!");
-
+                
+                
                 var model = new ProfileModel
                 {
                     User = user
@@ -63,73 +66,81 @@ namespace nVideo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditProfile(UserProfile profileModel)
         {
-            if (ModelState.IsValid){
-                User user = GetAuthorizedUser();
+            if (!ModelState.IsValid) return View("EditProfileModalPartial", profileModel);
+            
+            var user = _userManager
+                .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
+                
+            user.Profile = profileModel;
+            var res = await _userManager.UpdateAsync(user);
 
-                user.Profile = profileModel;
-                var res = await _userManager.UpdateAsync(user);
-
-                if (res.Succeeded){
-                    return RedirectToAction("Profile");
-                }
-                else
+            if (res.Succeeded){
+                return RedirectToAction("Profile");
+            }
+            else
+            {
+                foreach (var error in res.Errors)
                 {
-                    foreach (var error in res.Errors)
-                    {
-                        ModelState.AddModelError("UpdateErrors", error.Description);
-                    }
+                    ModelState.AddModelError("UpdateErrors", error.Description);
                 }
             }
-            return View(profileModel);
+            return View("EditProfileModalPartial", profileModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View("ChangePasswordModalPartial", model);
+            
+            var user = _userManager
+                .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
+
+            if (user != null)
             {
-                User user = GetAuthorizedUser();
+                var passwordValidator =
+                    HttpContext.RequestServices.GetService(typeof(IPasswordValidator<User>)) as IPasswordValidator<User>;
+                var passwordHasher =
+                    HttpContext.RequestServices.GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
 
-                if (user != null)
+                IdentityResult result =
+                    await passwordValidator.ValidateAsync(_userManager, user, model.NewPassword);
+                if (result.Succeeded)
                 {
-                    var _passwordValidator =
-                        HttpContext.RequestServices.GetService(typeof(IPasswordValidator<User>)) as IPasswordValidator<User>;
-                    var _passwordHasher =
-                        HttpContext.RequestServices.GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
+                    user.PasswordHash = passwordHasher.HashPassword(user, model.NewPassword);
+                    await _userManager.UpdateAsync(user);
 
-                    IdentityResult result =
-                        await _passwordValidator.ValidateAsync(_userManager, user, model.NewPassword);
-                    if (result.Succeeded)
-                    {
-                        user.PasswordHash = _passwordHasher.HashPassword(user, model.NewPassword);
-                        await _userManager.UpdateAsync(user);
+                    ViewBag.Messages = new List<string>();
+                    ViewBag.Messages.Add("Password changed successfully");
 
-                        ViewBag.Messages = new List<string>();
-                        ViewBag.Messages.Add("Password changed succefully");
-
-                        return RedirectToAction("Profile");
-                    }
-                    else
-                    {
-                        foreach (var error in result.Errors)
-                        {
-                            ModelState.AddModelError(string.Empty, error.Description);
-                        }
-                    }
+                    return RedirectToAction("Profile");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "User not found");
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
                 }
             }
-            return View(model);
+            else
+            {
+                ModelState.AddModelError(string.Empty, "User not found");
+            }
+            return View("ChangePasswordModalPartial", model);
         }
 
         public async Task<IActionResult> ResendEmailCofirm()
         {
-            var user = GetAuthorizedUser();
+            var user = _userManager
+                .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
 
+            if (user.EmailConfirmed)
+            {
+                return RedirectToAction("Profile");
+            }
+            
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            
             var callbackUrl = Url.Action(
                 "ConfirmEmail",
                 "Account",
@@ -151,7 +162,7 @@ namespace nVideo.Controllers
             {
                 ViewBag.Errors ??= new List<string>();
                 ViewBag.Errors.Add("An error occured while sending email.");
-                return View("OnEmailCofirm");
+                return View("OnEmailConfirm");
             }
 
             return View("OnEmailConfirm");

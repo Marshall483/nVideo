@@ -17,7 +17,10 @@ namespace nVideo.DATA.Repository
         }
         public IEnumerable<Catalog_Entity> GetAllEntity()
         {
-            return _context.Entities.Include(i => i.Images).Include(a => a.Attributes).ThenInclude(v => v.Value);
+            return _context.Entities
+                .Include(i => i.Images)
+                .Include(a => a.Attributes)
+                .ThenInclude(v => v.Value);
         }
 
         public List<Catalog_Attribute> GetAttributes(string category)
@@ -25,12 +28,15 @@ namespace nVideo.DATA.Repository
             var attibutes = from a in _context.Entities 
                             where a.Category.CategoryName.Equals(category) 
                             select a.Attributes;
+            
             return attibutes.First();
         }
 
         public IEnumerable<Catalog_Entity> GetCarouselItems()
         {
-            return _context.Entities.Include(i => i.Images).OrderByDescending(r => r.Raiting);
+            return _context.Entities
+                .Include(i => i.Images)
+                .OrderByDescending(r => r.Raiting);
         }
 
         public IEnumerable<Catalog_Entity> GetCategoryMembers(string category)
@@ -50,29 +56,37 @@ namespace nVideo.DATA.Repository
 
         public Catalog_Entity GetItemById(int? id)
         {
-            if (id.HasValue)
-            {
-                IQueryable<Catalog_Entity> target;
+            if (!id.HasValue) 
+                throw new ArgumentNullException("Missing parameter: int id");
 
-                return (target = _context.Entities.Include(i => i.Images).Where(e => e.Id.Equals(id)))
-                .Count() == 0
+            IQueryable<Catalog_Entity> target;
+
+            return !(target = _context.Entities
+                .Where(e => e.Id.Equals(id))).Any()
                 ? throw new ArgumentException("Id is not exit")
-                : target.Include(t => t.Attributes)
-                .ThenInclude(t => t.Value)
-                .First();
-            }
-            throw new ArgumentNullException("Missing parameter: int id");
+                : target.Include(t => t.Images)
+                    .Include(t => t.Category) // According to load related items
+                    .Include(t => t.Comments)
+                    .ThenInclude(t => t.User)
+                    .Include(t => t.Attributes)
+                    .ThenInclude(t => t.Value)
+                    .Single();// Must return only one 
         }
 
         public IEnumerable<Catalog_Entity> GetNewItems()
         {
-            return _context.Entities.Include(i => i.Images).OrderByDescending(e => e.InStock)
-            .Take(8);
+            return _context.Entities
+                .Include(i => i.Images)
+                .OrderByDescending(e => e.InStock)
+                .Take(8);
         }
 
         public IEnumerable<Catalog_Entity> GetRandomItem()
         {
-            return _context.Entities.Include(i => i.Images).AsParallel().Take(3);
+            return _context.Entities
+                .Include(i => i.Images)
+                .AsParallel()
+                .Take(3);
         }
 
     }
