@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using MailKit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Core.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using nVideo.DATA.ControllerModels;
 using nVideo.DATA.Services;
@@ -44,29 +47,30 @@ namespace nVideo.Controllers
         [HttpPost]
         public async Task<IActionResult> Ban(string useremail)
         {
-            if(useremail== null) return View("AdminFail");
+            if(useremail== null) return Result(2);
             var user = await _userManager.FindByEmailAsync(useremail);
-            if (user != null) return View("AdminFail");
+            if (user == null) return Result(1);
             await _userManager.AddToRoleAsync(user, "baned");
-            return View("Success");
+            //Indian codding mod: ON
+            return Result(0);
         }
         [HttpPost]
         public async Task<IActionResult> UnBan(string useremail)
         {
-            if(useremail== null) return View("AdminFail");
+            if(useremail== null) return Result(2);
             var user = await _userManager.FindByEmailAsync(useremail);
-            if (user != null) return View("AdminFail");
+            if (user == null) return Result(1);
             await _userManager.AddToRoleAsync(user, "user");
-            return View("Success");
+            return Result(0);
         }
         [HttpPost]
         public async Task<IActionResult> AddAdmin(string useremail)
         {
-            if(useremail== null) return View("AdminFail");
+            if(useremail== null) return Result(2);
             var user = await _userManager.FindByEmailAsync(useremail);
-            if (user != null) return View("AdminFail");
+            if (user == null) return Result(1);
             await _userManager.AddToRoleAsync(user, "admin");
-            return View("Success");
+            return Result(0);
         }
         
         [HttpPost]
@@ -77,7 +81,7 @@ namespace nVideo.Controllers
                
                 if (user != null) {
                     ModelState.AddModelError("UniqMailError", "User with such login already exist");
-                    return View();
+                    return Result(10);
                 }
 
                 var newUser = new User{
@@ -106,20 +110,71 @@ namespace nVideo.Controllers
                     catch (CommandException cEx){
                         _logger.LogError($"Err with User - {newUser.Email}. \n {cEx.Message}");
                         ModelState.AddModelError("SenderError", "Specified Email is not exist");
-                        return View(registerModel);
+                        return Result(10);
                     }
                     catch (Exception suddenEx){
                         _logger.LogError($"Err with User - {newUser.Email}. \n {suddenEx.Message}");
                         ModelState.AddModelError("SenderError", "An error occured while sending email.");
-                        return View(registerModel);
+                        return Result(10);
                     }
 
                     ViewBag.Message = "To complete the registration, check your email address and follow the link provided in the email";
                     return View("OnEmailConfirm");
                 }
             }
+            return Result(0);
+        }
+
+        [HttpPost]
+        public IActionResult AddEntity(AdminPanelModel adminPanelModel)
+        {
+            bool isFail = false;
+            Catalog_Entity catalogEntity = adminPanelModel.CatalogEntity;
+            
+            List<string> list = adminPanelModel.CategoryAndValue.Split(';').ToList();
+            foreach (string s in list)
+            {
+                List<string> values = s.Split('|').ToList();
+                string Attribute = values[0];
+                string Value = values[1];
+                //add attribute in db
+                //add value in db
+            }
+             //add catalog entity in db
+             return Result(0);
+        }
+
+        public IActionResult Result(int exepNum)
+        {
+            switch (exepNum)
+            {
+                case 0:
+                    ViewBag.Message = "The action ended successfully!";
+                    break;
+                case 1:
+                    ViewBag.Message = "ERROR:Cant find the user!";
+                    break;
+                case 2: 
+                    ViewBag.Message = "ERROR:Check forms!";
+                    break;
+                case 3: 
+                    ViewBag.Message = "ERROR: Write normal attribute!";
+                    break;
+                default:
+                    ViewBag.Message = "ERROR:Something wrong happen!";
+                    break;
+                
+            }
+
             return View();
         }
+
+        public bool AddAttributeAndValueInDB(string a, string value,DbContext _context )
+        {
+
+            return true;
+        }
+        
         
         
     }

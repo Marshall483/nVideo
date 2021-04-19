@@ -25,6 +25,8 @@
         <e p="DATA" t="Include">
           <e p="AppDBContext.cs" t="Include" />
           <e p="ControllerModels" t="Include">
+            <e p="AboutViewModel.cs" t="Include" />
+            <e p="AdminPanelModel.cs" t="Include" />
             <e p="ChangePasswordViewModel.cs" t="Include" />
             <e p="LoginModel.cs" t="Include" />
             <e p="ProfileModel.cs" t="Include" />
@@ -126,7 +128,6 @@
             <e p="_Layout.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
             <e p="AdminPanelLayout.cshtml" t="Include" />
-            <e p="AlsoBoughtPartial.cshtml" t="Include" />
             <e p="AttributesPartial.cshtml" t="Include" />
             <e p="ChangePasswordModalPartial.cshtml" t="Include" />
             <e p="Components" t="Include">
@@ -143,6 +144,7 @@
             <e p="LoginPartial.cshtml" t="Include" />
             <e p="NewProductPartial.cshtml" t="Include" />
             <e p="OnEmailConfirm.cshtml" t="Include" />
+            <e p="ReleatedProductsPartial.cshtml" t="Include" />
             <e p="ThumbnailsPartial.cshtml" t="Include" />
           </e>
         </e>
