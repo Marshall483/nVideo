@@ -2,14 +2,23 @@
 
 
 <div class="span9">
-    <div class="well well-small">
-
-        @{
-            foreach (Catalog_Entity e in Model.Entities)
-            {
-                @Html.Partial("ListCatalogPartial", e)
-            }
+  <div class="well well-small">
+    <h5>Фильтры</h5>
+    <hr class="soften">
+    <button id="sort-asc" class="btn">Цена по возрастанию</button>
+    <button id="sort-desc" class="btn">Цена по убыванию</button>
+    <button id="sort-raiting" class="btn">По рейтингу</button>
+  </div>
+  <div class="well well-small">
+    <div class="goods-wrap">
+      @{
+        foreach (Catalog_Entity e in Model.Entities)
+        {
+          @Html.Partial("ListCatalogPartial", e)
         }
-
+      }
     </div>
+  </div>
 </div>
+
+<script src="~/JS/sortList.js"></script>
