@@ -13,16 +13,18 @@
     </p>
   </div>
   <div class="span4 alignR wrap-goods">
-    <form class="form-horizontal qtyFrm">
+    <div class="form-horizontal qtyFrm">
       <h3> @Model.Price.ToString("# руб") </h3>
       <label class="checkbox">
         <input type="checkbox">  Adds product to compair
       </label><br>
       <div class="btn-group">
-        <a asp-controller="Cart" asp-action="AddtoCart" asp-route-id="@Model.Id" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-        <a asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" class="shopBtn">VIEW</a>
+          <form asp-controller="Cart" asp-action="AddToCart">
+              <input type="hidden" asp-for="@Model.Id" />
+              <input type="submit" value="AddToCart" class="defaultBtn" <span class=" icon-shopping-cart"></span> /> 
+          </form>
       </div>
-    </form>
+    </div>
   </div>
   <hr class="soften">
 </div>
