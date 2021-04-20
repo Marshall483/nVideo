@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using nVideo.DATA;
 using nVideo.DATA.ControllerModels;
 using nVideo.DATA.Services;
 using nVideo.Models;
@@ -23,12 +24,14 @@ namespace nVideo.Controllers
         private readonly UserManager<User> _userManager;
         private readonly EmailSenderService _sender;
         private readonly ILogger<AccountController> _logger;
+        private readonly AppDbContext _context;
 
-        public AdminPanelController(UserManager<User> userManager, EmailSenderService sender, ILogger<AccountController> logger)
+        public AdminPanelController(UserManager<User> userManager, EmailSenderService sender, ILogger<AccountController> logger, AppDbContext context)
         {
             _userManager = userManager;
             _sender = sender;
             _logger = logger;
+            _context = context;
         }
         // GET
         public async Task<IActionResult> Index()
@@ -45,103 +48,51 @@ namespace nVideo.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Ban(string useremail)
+        public async Task<IActionResult> Ban(string BanEmail)
         {
-            if(useremail== null) return Result(2);
-            var user = await _userManager.FindByEmailAsync(useremail);
+            if(BanEmail== null) return Result(2);
+            var user = await _userManager.FindByEmailAsync(BanEmail);
             if (user == null) return Result(1);
             await _userManager.AddToRoleAsync(user, "baned");
             //Indian codding mod: ON
             return Result(0);
         }
         [HttpPost]
-        public async Task<IActionResult> UnBan(string useremail)
+        public async Task<IActionResult> UnBan(string UnbanEmail)
         {
-            if(useremail== null) return Result(2);
-            var user = await _userManager.FindByEmailAsync(useremail);
+            if(UnbanEmail== null) return Result(2);
+            var user = await _userManager.FindByEmailAsync(UnbanEmail);
             if (user == null) return Result(1);
             await _userManager.AddToRoleAsync(user, "user");
             return Result(0);
         }
         [HttpPost]
-        public async Task<IActionResult> AddAdmin(string useremail)
+        public async Task<IActionResult> AddAdmin(string AdminEmail)
         {
-            if(useremail== null) return Result(2);
-            var user = await _userManager.FindByEmailAsync(useremail);
+            if(AdminEmail== null) return Result(2);
+            var user = await _userManager.FindByEmailAsync(AdminEmail);
             if (user == null) return Result(1);
             await _userManager.AddToRoleAsync(user, "admin");
             return Result(0);
         }
         
+        
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterModel registerModel){
-            if (ModelState.IsValid){
-                var user = await _userManager.FindByNameAsync(registerModel.Email);
-               
-                if (user != null) {
-                    ModelState.AddModelError("UniqMailError", "User with such login already exist");
-                    return Result(10);
-                }
-
-                var newUser = new User{
-                    Email = registerModel.Email,
-                    UserName = registerModel.Email,
-                    Profile = new UserProfile()
-                };
-
-
-                 var res = await _userManager.CreateAsync(newUser, registerModel.Password);
-
-                if (res.Succeeded)
-                {
-                    // token generation
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
-                    var callbackUrl = Url.Action(
-                        "ConfirmEmail",
-                        "Account",
-                        new { userId = newUser.Id, code = code },
-                        protocol: HttpContext.Request.Scheme);
-
-                    try{
-                        await _sender.SendEmailAsync(registerModel.Email, "Confirm your account",
-                            $"Verify your email on click by <a href='{callbackUrl}'>link</a>");
-                    }
-                    catch (CommandException cEx){
-                        _logger.LogError($"Err with User - {newUser.Email}. \n {cEx.Message}");
-                        ModelState.AddModelError("SenderError", "Specified Email is not exist");
-                        return Result(10);
-                    }
-                    catch (Exception suddenEx){
-                        _logger.LogError($"Err with User - {newUser.Email}. \n {suddenEx.Message}");
-                        ModelState.AddModelError("SenderError", "An error occured while sending email.");
-                        return Result(10);
-                    }
-
-                    ViewBag.Message = "To complete the registration, check your email address and follow the link provided in the email";
-                    return View("OnEmailConfirm");
-                }
-            }
-            return Result(0);
-        }
-
-        [HttpPost]
-        public IActionResult AddEntity(AdminPanelModel adminPanelModel)
+        public IActionResult AddEntity()
         {
-            bool isFail = false;
+            AdminPanelModel adminPanelModel = new AdminPanelModel();
             Catalog_Entity catalogEntity = adminPanelModel.CatalogEntity;
             
             List<string> list = adminPanelModel.CategoryAndValue.Split(';').ToList();
-            foreach (string s in list)
+            Dictionary<string, string> AttributeValuePaires = new Dictionary<string, string>();
+            if (list.Count() % 2 != 0)
             {
-                List<string> values = s.Split('|').ToList();
-                string Attribute = values[0];
-                string Value = values[1];
-                //add attribute in db
-                //add value in db
+                return Result(10);
             }
-             //add catalog entity in db
-             return Result(0);
+            for(int i = 0;i<list.Count();i++) 
+                AttributeValuePaires[list[i]] = list[++i];
+            AddAttributeAndValueInDB(AttributeValuePaires.Keys, AttributeValuePaires.Values,adminPanelModel.CatalogEntity);
+            return Result(0);
         }
 
         public IActionResult Result(int exepNum)
@@ -169,9 +120,34 @@ namespace nVideo.Controllers
             return View();
         }
 
-        public bool AddAttributeAndValueInDB(string a, string value,DbContext _context )
+        private async Task<bool>AddAttributeAndValueInDB(IEnumerable<string> Attributes, IEnumerable<string> Value, Catalog_Entity catalogEntity)
         {
+            List<Catalog_Attribute> AttrList = new List<Catalog_Attribute>();
+            List<Catalog_Value> ValList = new List<Catalog_Value>();
+            foreach (string s in Value)
+            {
+                ValList.Add(new Catalog_Value
+                {
+                    StringValue = s
+                });
+            }
 
+            int i = 0;
+            
+            foreach (string s in Attributes)
+            {
+                AttrList.Add(new Catalog_Attribute
+                {
+                    AttributeName = s,
+                    Entity = catalogEntity,
+                    Value = ValList[i++]
+                });
+            }
+
+            catalogEntity.Attributes = AttrList;
+            await _context.AddRangeAsync(ValList);
+            await _context.AddRangeAsync(AttrList);
+            await _context.AddAsync(catalogEntity);
             return true;
         }
         

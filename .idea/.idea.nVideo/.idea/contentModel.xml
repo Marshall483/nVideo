@@ -106,9 +106,10 @@
             <e p="Registration.cshtml" t="Include" />
           </e>
           <e p="AdminPanel" t="Include">
+            <e p="AddEntity.cshtml" t="Include" />
             <e p="Banhammer.cshtml" t="Include" />
-            <e p="Editing.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="Result.cshtml" t="Include" />
           </e>
           <e p="Catalog" t="Include">
             <e p="About.cshtml" t="Include" />
