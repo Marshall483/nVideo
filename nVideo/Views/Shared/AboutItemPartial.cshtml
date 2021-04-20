@@ -1,0 +1,22 @@
+﻿@model Catalog_Entity
+
+<div class="span7">
+    <h3>@Model.Name</h3>
+    <hr class="soft">
+
+    <div class="form-horizontal qtyFrm">
+        <div class="control-group">
+            <label class="control-label"><span>@Model.Price.ToString("# $")</span></label>
+        </div>
+
+        <h4>@Model.InStock in stock now</h4>
+        <p>
+            @Model.Short_Desc
+        </p>
+
+        <form asp-controller="Cart" asp-action="AddToCart">
+            <input type="hidden" asp-for="@Model.Id" />
+            <input type="submit" value="Add to cart" class="defaultBtn" <span class=" icon-shopping-cart"></span>
+        </form>
+    </div>
+</div>

@@ -44,6 +44,8 @@ namespace nVideo.Models
 
         private static List<ShopCartItem> GetCartItemFromCookie(string userInfo, string cartInfo, AppDbContext context)
         {
+            if (cartInfo == null)
+                return null;
             var list = new List<ShopCartItem>();
             var dict = cartInfo.Split().GroupBy(x => x)
                 .Where(x => x.Any())
@@ -53,7 +55,7 @@ namespace nVideo.Models
                 list.Add(new ShopCartItem
                 {
                     UserName = userInfo,
-                    Entity = context.Entities.Find(int.Parse(item.Key)),
+                    Entity = context.Entities.Include(x => x.Images).FirstOrDefault(x => x.Id == int.Parse(item.Key)),
                     Quanity = (uint)item.Value
                 });
             }
@@ -93,10 +95,14 @@ namespace nVideo.Models
         public void AddToCart(int id)
         {
             if (_httpContext.User.Identity.IsAuthenticated)
+            {
                 AddToCartAuth(id);
+                _context.SaveChanges();
+            }
+
             else
                 AddToCartAnon(id);
-            _context.SaveChanges();
+
         }
 
         private void AddToCartAuth(int id)
@@ -134,10 +140,14 @@ namespace nVideo.Models
         public void RevomeFromCart(int id)
         {
             if (_httpContext.User.Identity.IsAuthenticated)
+            {
                 RemoveFromCartAuth(id);
+                _context.SaveChanges();
+            }
+
             else
                 RemoveFromCartAnon(id);
-            _context.SaveChanges();
+
         }
 
         private void RemoveFromCartAuth(int id)
@@ -160,19 +170,20 @@ namespace nVideo.Models
         private void RemoveFromCartAnon(int id)
         {
             var cartInfo = _httpContext.Request.Cookies["CartId"];
-            cartInfo = cartInfo.Replace($" {id}", string.Empty);
-            _httpContext.Response.Cookies.Append("CartId", cartInfo);
-        }
-
-        public long GeComputeTotalValue()
-        {
-            return _context.ShopCartItems.Sum(x => x.Entity.Price * x.Quanity);
+            if (cartInfo.Length == 1)
+                _httpContext.Response.Cookies.Delete("CartId");
+            else
+            {
+                cartInfo = cartInfo.Replace($" {id}", string.Empty);
+                _httpContext.Response.Cookies.Append("CartId", cartInfo);
+            }
         }
 
         public IEnumerable<ShopCartItem> GetShopItems()
         {
             if (_httpContext.User.Identity.IsAuthenticated)
-                return _context.ShopCartItems.Where(x => x.UserName == ShopCartId).Include(x => x.Entity);
+                return _context.ShopCartItems.Where(x => x.UserName == _httpContext.User.Identity.Name)
+                    .Include(x => x.Entity).Include(x => x.Entity.Images);
             else
             {
                 var cartInfo = _httpContext.Request.Cookies["CartId"];

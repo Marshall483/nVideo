@@ -17,11 +17,18 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
-        public ViewResult Cart()
+        public ViewResult Index()
         {
             var items = _shopCart.GetShopItems();
-            var total = _shopCart.GeComputeTotalValue();
-
+            long total;
+            if (items != null)
+            {
+                total = items.Sum(x => x.Entity.Price * x.Quanity);
+            }
+            else
+            {
+                total = 0;
+            }
             var viewModel = new ShopCartView(items, total);
             return View(viewModel);
         }
@@ -29,21 +36,16 @@ namespace nVideo.Controllers
         [HttpPost]
         public IActionResult AddToCart(int id)
         {
-
             _shopCart.AddToCart(id);
 
-            var entity = _context.Entities.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
-
-            return RedirectToAction("CategoryFilter", "Catalog", new { category = entity.Category.CategoryName });
+            return RedirectToAction("Index", "Cart");
         }
         [HttpPost]
         public IActionResult RemoveFromCart(int id)
         {
             _shopCart.RevomeFromCart(id);
 
-            var entity = _context.Entities.Find(id);
-
-            return RedirectToAction("CategoryFilter", "Catalog", new { category = entity.Category.CategoryName });
+            return RedirectToAction("Index", "Cart");
         }
     }
 }
