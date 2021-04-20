@@ -1,0 +1,26 @@
+﻿@model ShopCartView
+
+<div class="span9">
+    <div class="well well-small">
+        <div class="goods-wrap">
+            @{
+                if (Model.ShopCartItems != null)
+                {
+                    foreach (var shopCartItem in Model.ShopCartItems)
+                    {
+                        @Html.Partial("ListShopCartPartial", shopCartItem.Entity)
+                        <h3>@shopCartItem.Quanity.ToString()</h3>
+                    }
+                    <h3>
+                        Товара в корзине на сумму @Model.TotalValue
+                    </h3>
+                }
+                else
+                {
+                    @:В корзине пока ничего нет
+                }
+            }
+
+        </div>
+    </div>
+</div>
