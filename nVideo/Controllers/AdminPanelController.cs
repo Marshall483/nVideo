@@ -75,12 +75,26 @@ namespace nVideo.Controllers
             await _userManager.AddToRoleAsync(user, "admin");
             return Result(0);
         }
-        
-        
+
+
+        public string CatalogAndValue;
+        public string Name;
+        public string Articul;
+        public string  Price;
+        public string Short_Desc;
+        public string Long_Desc;
+        public string  InStock;
         [HttpPost]
         public IActionResult AddEntity()
         {
             AdminPanelModel adminPanelModel = new AdminPanelModel();
+            adminPanelModel.CategoryAndValue = CatalogAndValue;
+            adminPanelModel.CatalogEntity.Name = Name;
+            adminPanelModel.CatalogEntity.Articul = Articul;
+            adminPanelModel.CatalogEntity.Price = uint.Parse(Price);
+            adminPanelModel.CatalogEntity.Short_Desc = Short_Desc;
+            adminPanelModel.CatalogEntity.Long_Desc = Long_Desc;
+            adminPanelModel.CatalogEntity.InStock = ushort.Parse(InStock);  
             Catalog_Entity catalogEntity = adminPanelModel.CatalogEntity;
             
             List<string> list = adminPanelModel.CategoryAndValue.Split(';').ToList();

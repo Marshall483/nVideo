@@ -1,6 +1,7 @@
 ﻿@{
   Layout = "AdminPanelLayout";
 }
+@model AdminPanelModel;
 <div class="p-4">
   <div class="welcome">
     <div class="content rounded-3 p-3">
@@ -14,20 +15,17 @@
 <section class="charts mt-4">
   <div class="chart-container p-3">
     <h3 class="fs-6 mb-3">Add</h3>
-    @{
-      AdminPanelModel adminPanel = new AdminPanelModel();
-    }
     <form method="post" asp-action="AddEntity">
-          <input type="text" maxlength="50" placeholder="Name"></input>
-          <input type="text" maxlength="50" placeholder="Articul"></input>
-          <input type="text" maxlength="50" placeholder="Price"></input>
-          <input type="text" maxlength="50" placeholder="Short Descr"></input>
-          <input type="text" maxlength="200" placeholder="Long Descr"></input>
-          <input type="text" maxlength="50" placeholder="InStock"></input>
-          <input type="text" maxlength="50" placeholder="Attribute;Value"></input>
+          <input asp-for="CatalogEntity.Name" type="text" maxlength="50" placeholder="Name"></input>
+          <input asp-for="CatalogEntity.Articul" type="text" maxlength="50" placeholder="Articul"></input>
+          <input asp-for="CatalogEntity.Price" type="text" maxlength="50" placeholder="Price"></input>
+          <input asp-for="CatalogEntity.Short_Desc" type="text" maxlength="50" placeholder="Short Descr"></input>
+          <input asp-for="CatalogEntity.Long_Desc" type="text" maxlength="200" placeholder="Long Descr"></input>
+          <input asp-for="CatalogEntity.InStock" type="text" maxlength="50" placeholder="InStock"></input>
+          <input asp-for="CategoryAndValue" type="text" maxlength="50" placeholder="Attribute;Value"></input>
           <input type="submit"></input>
         </form>
     <div style="height: 300px">
     </div>
   </div>
-</section>
+</section>    
