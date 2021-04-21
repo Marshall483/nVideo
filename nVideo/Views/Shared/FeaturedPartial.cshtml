@@ -9,7 +9,7 @@
                 <h4>
                     <a class="defaultBtn" title="Click to view" asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id"><span class="icon-zoom-in"></span></a> 
                     <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-                    <span class="pull-right">@Model.Price.ToString("# руб")</span>
+                    <span class="pull-right">$ @(Model.Price/75)</span>
                 </h4>
             </div>
         </div>

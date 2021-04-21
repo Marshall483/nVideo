@@ -70,7 +70,7 @@ namespace nVideo.Controllers
         [ActionName("AddCommentAsync")]
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddCommentAsync([FromForm] int entityId, [FromForm] string content)
+        public async Task<IActionResult> AddCommentAsync([FromForm] int entityId, [FromForm] string content, [FromBody] string raiting)
         {
             if (content != null && entityId != null )
             {
@@ -81,11 +81,14 @@ namespace nVideo.Controllers
                         routeValues: new {id = entityId});
                 }
                 
+                
+                
                 var comment = new Comment()
                 {
                     User = await _userManager.GetUserAsync(new ClaimsPrincipal(User.Identities)),
                     Content = content,
-                    Entity = _catalog.GetItemById(entityId)
+                    Entity = _catalog.GetItemById(entityId),
+                    Raiting = 1
                 };
 
                 try

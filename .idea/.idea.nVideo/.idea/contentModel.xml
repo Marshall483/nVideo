@@ -43,6 +43,9 @@
             <e p="EmailSenderService.cs" t="Include" />
             <e p="LocatorService.cs" t="Include" />
           </e>
+          <e p="Validation" t="Include">
+            <e p="Validator.cs" t="Include" />
+          </e>
           <e p="ViewModels" t="Include">
             <e p="CatalogViewModel.cs" t="Include" />
             <e p="HomeViewModel.cs" t="Include" />
@@ -58,6 +61,8 @@
           <e p="20210327073913_ShopCart.Designer.cs" t="Include" />
           <e p="20210412085415_Orders.cs" t="Include" />
           <e p="20210412085415_Orders.Designer.cs" t="Include" />
+          <e p="20210419151113_AddRaitingCol.cs" t="Include" />
+          <e p="20210419151113_AddRaitingCol.Designer.cs" t="Include" />
           <e p="AppDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">

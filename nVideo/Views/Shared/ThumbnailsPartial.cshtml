@@ -1,13 +1,12 @@
 ﻿@model Catalog_Entity
-
-    <li class="span4">
+<li class="span4">
         <div class="thumbnail">
-            <a class="zoomTool" asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" title="more-info"><span class="icon-search"></span>Подробнее</a>
+            <a class="zoomTool" asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" title="more-info"><span class="icon-search"></span>About</a>
             <a asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id"><img src="@Model.Images.First().Patch" alt="ProdImg"></a>
             <div class="caption cntr">
                 <p>@Model.Name</p>
-                <p><strong>@Model.Price.ToString("# руб")</strong></p>
-                <h4><a class="shopBtn" href="#" title="add to cart"> Добавить в корзину </a></h4>
+                <p><strong>$ @(Model.Price/75)</strong></p>
+                <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
                 <div class="actionList">
                     <!--Empty actions-->
                 </div>

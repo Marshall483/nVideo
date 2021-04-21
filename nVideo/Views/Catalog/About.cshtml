@@ -30,10 +30,20 @@
       <div class="span7">
         <h3>@Model.Entity.Name</h3>
         <hr class="soft">
-
+        
+        <div class="btn-group">
+          @{
+            for (int i = 0; i < Model.Entity.Raiting; i++)
+            {
+              <div><span class="icon-star"></span></div>
+            }
+            
+          }
+        </div>
+        
         <form class="form-horizontal qtyFrm">
           <div class="control-group">
-            <label class="control-label"><span>@Model.Entity.Price.ToString("# $")</span></label>
+            <label class="control-label"><span>$ @(Model.Entity.Price/75)</span></label>
           </div>
 
           <h4>@Model.Entity.InStock in stock now</h4>
@@ -97,7 +107,7 @@
       
          <div class="col-md-12">
            <div class="panel">
-             
+             Rating: @Html.DropDownList("raiting", new SelectList(new []{ 1,2,3,4,5 }))
              <div class="panel-body">
                @Html.TextArea("content", value: "", rows: 5, columns: 200, null)
                <div class="mar-top clearfix">
@@ -123,7 +133,7 @@
       }
       else
       {
-        <h2>Here is no comments now... Be First!</h2>
+        <h4>Here is no comments now... Be First!</h4>
       }
     }
   </div>

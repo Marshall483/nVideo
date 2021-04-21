@@ -13,6 +13,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using nVideo.DATA.Extentions;
+using nVideo.DATA.Validation;
 
 namespace nVideo.Controllers
 {
@@ -60,8 +61,6 @@ namespace nVideo.Controllers
             return View("Error", new ErrorViewModel());
         }
 
-        
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditProfile(UserProfile profileModel)
@@ -70,7 +69,15 @@ namespace nVideo.Controllers
             
             var user = _userManager
                 .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
+
+            var either = Validator.ValidateProfile(profileModel);
                 
+            if (either.Result != Result.Success)
+            {
+                ModelState.AddModelError("ValidationError", $"{either.Error}" );
+                return View("EditProfileModalPartial" ,profileModel);
+            }
+            
             user.Profile = profileModel;
             var res = await _userManager.UpdateAsync(user);
 
@@ -173,18 +180,6 @@ namespace nVideo.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-
-        private User GetAuthorizedUser()
-        {
-            var principal = new ClaimsPrincipal(User.Identities);
-            var id = _userManager.GetUserId(principal);
-
-            var user = _dbContext.Users.
-                Where(u => u.Id.Equals(id)).
-                Include(u => u.Profile).
-                First();
-
-            return user;
-        }
+        
     }
 }
