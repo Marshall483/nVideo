@@ -80,7 +80,7 @@ namespace nVideo
             app.UseAuthorization();
             app.Use(async (context, next) =>
             {
-                if (context.Request.Cookies.ContainsKey("City"))
+                if (!context.Request.Cookies.ContainsKey("City"))
                     context.Response.Cookies.Append("City", await LocatorService.GetyCityAsync());
                 await next.Invoke();
             });

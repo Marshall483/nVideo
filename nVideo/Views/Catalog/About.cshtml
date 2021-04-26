@@ -9,117 +9,104 @@
   </ul>
 
   <div class="well well-small">
-    <div class="row-fluid">
-      <div class="span5">
-        <div id="myCarousel" class="carousel slide cntr">
-          <div class="carousel-inner">
+      <div class="row-fluid">
+          <div class="span5">
+              <div id="myCarousel" class="carousel slide cntr">
+                  <div class="carousel-inner">
 
-            @{ foreach (var p in Model.Entity.Images)
-              {
-                @Html.Partial("ItemCarouselPartial", p)
-              }
-            }
+                      @{ foreach (var p in Model.Entity.Images)
+                          {
+                              @await Html.PartialAsync("ItemCarouselPartial", p)
+                          }
+                      }
+
+                  </div>
+                  <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                  <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+              </div>
+          </div>
+          @await Html.PartialAsync("AboutItemPartial", Model.Entity)
+      </div>
+
+      <hr class="softn clr">
+
+      <ul id="productDetail" class="nav nav-tabs">
+          <li class="active"><a href="#home" data-toggle="tab">Product Details</a></li>
+          <li class=""><a href="#profile" data-toggle="tab">Related Products </a></li>
+      </ul>
+
+      <div id="myTabContent" class="tab-content tabWrapper">
+          <div class="tab-pane fade active in" id="home">
+              <h4>More info</h4>
+              <table class="table table-striped">
+                  <tbody>
+                      @{ foreach (var atr in Model.Entity.Attributes)
+                          {
+                              @await Html.PartialAsync("AttributesPartial", atr)
+                          }
+                      }
+                  </tbody>
+              </table>
+
+              @Model.Entity.Long_Desc
 
           </div>
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-        </div>
-      </div>
+          <div class="tab-pane fade" id="profile">
+              <div class="row-fluid">
 
+                  @{
+                      foreach (var product in Model.Related_Products)
+                      {
+                          @await Html.PartialAsync("ReleatedProductsPartial", product)
+                      }
+                  }
 
-      <div class="span7">
-        <h3>@Model.Entity.Name</h3>
-        <hr class="soft">
-
-        <form class="form-horizontal qtyFrm">
-          <div class="control-group">
-            <label class="control-label"><span>@Model.Entity.Price.ToString("# $")</span></label>
+              </div>
           </div>
 
-          <h4>@Model.Entity.InStock in stock now</h4>
-          <p>
-            @Model.Entity.Short_Desc
-          </p>
-          
-          <p>
-            <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span>Add to cart</button>
-          </p>
-        </form>
       </div>
-    </div>
 
-    <hr class="softn clr">
+      <h4>Comments</h4>
+      @Html.ValidationMessage("Error")
+      @using (Html.BeginForm(actionName: "AddCommentAsync",
+       controllerName: "Catalog",
+       FormMethod.Post))
+      {
 
-    <ul id="productDetail" class="nav nav-tabs">
-      <li class="active"><a href="#home" data-toggle="tab">Product Details</a></li>
-      <li class=""><a href="#profile" data-toggle="tab">Related Products </a></li>
-    </ul>
+          <!-- Begin Comment Form -->
+          @Html.Hidden("EntityId", $"{Model.Entity.Id}")
 
-    <div id="myTabContent" class="tab-content tabWrapper">
-      <div class="tab-pane fade active in" id="home">
-        <h4>More info</h4>
-        <table class="table table-striped">
-          <tbody>
-            @{ foreach (var atr in Model.Entity.Attributes)
+          <div class="col-md-12">
+              <div class="panel">
+
+                  <div class="panel-body">
+                      @Html.TextArea("content", value: "", rows: 5, columns: 200, null)
+                      <div class="mar-top clearfix">
+                          <p><input type="submit" value="Add" /></p>
+                      </div>
+
+                  </div>
+
+              </div>
+
+          </div>
+      }
+
+      <hr class="softn clr" />
+
+      @{
+          if (Model.Entity.Comments.Any())
+          {
+              foreach (var comment in Model.Entity.Comments)
               {
-                @Html.Partial("AttributesPartial", atr)
+                  @await Html.PartialAsync("CommentsPartial", comment)
               }
-            }
-          </tbody>
-        </table>
-
-        @Model.Entity.Long_Desc
-
-      </div>
-      <div class="tab-pane fade" id="profile">
-        <div class="row-fluid">
-          
-          @{
-            foreach (var product in Model.Related_Products)
-            {
-              @Html.Partial("ReleatedProductsPartial", product)
-            }
           }
-          
-        </div>
-      </div>
-      
-    </div>
-
-  <hr class="softn clr" />
-    <h4>Comments</h4>
-    <div class="col-md-12">
-      <div class="panel">
-        <div class="panel-body">
-          <textarea class="form-control" rows="2" style="margin: 0px 0px 10px; width: 665px; height: 48px;" placeholder="Leave your comment here"> </textarea>
-          <div class="mar-top clearfix">
-            <button class="shopBtn" type="submit">Add</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <hr class="softn clr" />
-
-    <div class="panel">
-      <div class="panel-body">
-
-        <div class="media-block">
-          <a class="media-left" href="#"><img class="img-circle img-sm" alt="User Profile" src="https://bootstraptema.ru/snippets/icons/2016/mia/1.png"></a>
-          <div class="media-body">
-            <div class="mar-btm">
-              <a href="#" class="btn-link text-semibold media-heading box-inline">Max</a>
-              <p class="text-muted text-sm"> 19-06-2020</p>
-            </div>
-            
-            <p>Lorem ipsum dolor sit amet consectetur... </p>
-
-            <hr>
-          </div>
-        </div>
-      </div>
-    </div>
-
+          else
+          {
+              <h2>Here is no comments now... Be First!</h2>
+          }
+      }
   </div>
 </div>
 <style>

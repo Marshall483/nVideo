@@ -43,9 +43,11 @@ namespace nVideo.Controllers
             return View();
         }
 
-        public void City(string city)
+        public IActionResult City(string city)
         {
             HttpContext.Response.Cookies.Append("City", city);
+
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

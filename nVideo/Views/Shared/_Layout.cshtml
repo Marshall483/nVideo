@@ -27,12 +27,16 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         @foreach (var item in LocatorService.GetCities())
                         {
-                            <a id="btnCity" asp-action="City" asp-controller="Home" asp-route-city="@item">@item</a>
+                            <form asp-action="City" asp-controller="Home" asp-route-city="@item">
+                                <input type="hidden" asp-for="@item" />
+                                <input type="submit" value="@item" />
+                            </form>
                         }
                     </div>
                     <a asp-action="Index" asp-controller="Home"> <span class="icon-home"></span> Home</a>
                     <a asp-action="Profile" asp-controller="Office"><span class="icon-user"></span> My Account</a>
                     <a asp-action="Register" asp-controller="Account"><span class="icon-edit"></span> Free Register </a>
+                    <a asp-action="Index" asp-controller="Cart"><span class=" icon-shopping-cart"></span>Shop Cart</a>
                 </div>
             </div>
         </div>

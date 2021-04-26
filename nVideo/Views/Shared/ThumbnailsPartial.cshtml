@@ -7,7 +7,10 @@
             <div class="caption cntr">
                 <p>@Model.Name</p>
                 <p><strong>@Model.Price.ToString("# руб")</strong></p>
-                <h4><a class="shopBtn" href="#" title="add to cart"> Добавить в корзину </a></h4>
+                <form asp-controller="Cart" asp-action="AddToCart">
+                    <input type="hidden" asp-for="@Model.Id" />
+                    <input type="submit" value="AddToCart" class="defaultBtn" <span class=" icon-shopping-cart"></span>
+                </form>
                 <div class="actionList">
                     <!--Empty actions-->
                 </div>
