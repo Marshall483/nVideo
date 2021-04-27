@@ -97,29 +97,38 @@
     </div>
     
     <h4>Comments</h4>
+
     @Html.ValidationMessage("Error")
-    @using(Html.BeginForm(actionName: "AddCommentAsync", 
-      controllerName: "Catalog", 
-      FormMethod.Post )){
-        
-         <!-- Begin Comment Form -->
-      @Html.Hidden("EntityId" ,$"{Model.Entity.Id}")
-      
-         <div class="col-md-12">
-           <div class="panel">
-             Rating: @Html.DropDownList("raiting", new SelectList(new []{ 1,2,3,4,5 }))
-             <div class="panel-body">
-               @Html.TextArea("content", value: "", rows: 5, columns: 200, null)
-               <div class="mar-top clearfix">
-                 <p><input type="submit" value="Add"/></p> 
-               </div>
-               
-             </div>
-             
-           </div>
+       <!-- Begin Comment Form -->
+          @Html.Hidden("EntityId" ,$"{Model.Entity.Id}")
           
-              </div>
-    }
+    <div class="col-md-12">
+      <div class="panel">
+        Rating: @Html.DropDownList("raiting", 
+                  ViewData["Raiting"] as SelectList, 
+                  new { required = "", id = "rating" })
+        <div class="panel-body">
+          @Html.TextArea("content", value: "", rows: 5, columns: 200, null)
+          <div class="mar-top clearfix">
+            <p><input type="submit" value="Add"/></p> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    
+    var select = document.getElementById("rating");
+    var selected = select.options[select.selectedIndex].value();
+    alert(selected)
+    
+    
+    var comment = {
+      EntityId: @Model.Entity.Id
+      content: select
+      Raiting: 1
+    };
+    
+    </script>
 
     <hr class="softn clr" />
     

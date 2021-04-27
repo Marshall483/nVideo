@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using nVideo.DATA;
 using nVideo.DATA.ControllerModels;
 using nVideo.DATA.ViewModels;
@@ -56,7 +57,8 @@ namespace nVideo.Controllers
             if (id.HasValue)
             {
                 var entity = _catalog.GetItemById(id);
-                
+
+                ViewData["Raiting"] = new SelectList(new[] {1, 2, 3, 4, 5});
                 var aboutVM = new AboutViewModel();
                 
                 aboutVM.Entity = entity;
@@ -70,8 +72,10 @@ namespace nVideo.Controllers
         [ActionName("AddCommentAsync")]
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddCommentAsync([FromForm] int entityId, [FromForm] string content, [FromBody] string raiting)
+        public async Task<IActionResult> AddCommentAsync([FromForm] Comment comment)
         {
+            var com = comment;
+            /*
             if (content != null && entityId != null )
             {
                 if (content.Length > 1000)
@@ -107,7 +111,9 @@ namespace nVideo.Controllers
             
             ModelState.AddModelError("Error", "Incorrect Comment");
             return RedirectToAction(actionName: "About", 
-                routeValues: new {id = entityId});
+                routeValues: new {id = entityId}); */
+
+            return Ok("Im work!");
         }
     }
 }

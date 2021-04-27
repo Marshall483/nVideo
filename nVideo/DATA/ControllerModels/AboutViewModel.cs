@@ -8,5 +8,6 @@ namespace nVideo.DATA.ControllerModels
     {
         public Catalog_Entity Entity { get; set; }
         public IEnumerable<Catalog_Entity> Related_Products { get; set; }
+
     }
 }

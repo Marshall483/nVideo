@@ -67,7 +67,7 @@
                             <td class="techSpecTD1">Age:</td>
                             <td class="techSpecTD2">
                                 @{
-                                    if (Model.Item1.Profile.Age != null)
+                                    if (Model.Item1.Profile.Age != 0)
                                         { @Model.Item1.Profile.Age} 
                                     else
                                         { <p>Not Set</p> } }
