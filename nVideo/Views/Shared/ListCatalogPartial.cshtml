@@ -14,7 +14,15 @@
     </div>
     <div class="span4 alignR">
         <form class="form-horizontal qtyFrm">
-            <h3> <span class="icon-star">@Model.Raiting</span> </h3>
+            <h3>
+                @{
+                    for (int i = 0; i < Model.Raiting; i++)
+                    {
+                        <span class="icon-star"></span>
+                    }
+                }
+            </h3>
+            
             <h3> $ @(Model.Price/75) </h3>
             <label class="checkbox">
                 <input type="checkbox">  Adds product to compair

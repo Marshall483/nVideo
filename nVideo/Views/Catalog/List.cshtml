@@ -7,7 +7,7 @@
         @{
             foreach (Catalog_Entity e in Model.Entities)
             {
-                @Html.Partial("ListCatalogPartial", e)
+                @await Html.PartialAsync("ListCatalogPartial", e)
             }
         }
 

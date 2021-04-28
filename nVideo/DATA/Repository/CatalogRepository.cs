@@ -68,6 +68,7 @@ namespace nVideo.DATA.Repository
                     .Include(t => t.Category) //According to load related items.
                     .Include(t => t.Comments)
                     .ThenInclude(t => t.User)
+                    .ThenInclude(u => u.Profile)
                     .Include(t => t.Attributes)
                     .ThenInclude(t => t.Value)
                     .Single(); //Must return only one. 
