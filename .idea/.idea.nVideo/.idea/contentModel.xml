@@ -48,6 +48,7 @@
           </e>
           <e p="ViewModels" t="Include">
             <e p="CatalogViewModel.cs" t="Include" />
+            <e p="ChangeAvatarViewModel.cs" t="Include" />
             <e p="HomeViewModel.cs" t="Include" />
           </e>
         </e>
@@ -63,6 +64,8 @@
           <e p="20210412085415_Orders.Designer.cs" t="Include" />
           <e p="20210419151113_AddRaitingCol.cs" t="Include" />
           <e p="20210419151113_AddRaitingCol.Designer.cs" t="Include" />
+          <e p="20210428084616_Avatar.cs" t="Include" />
+          <e p="20210428084616_Avatar.Designer.cs" t="Include" />
           <e p="AppDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -122,6 +125,7 @@
             <e p="_Layout.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
             <e p="AttributesPartial.cshtml" t="Include" />
+            <e p="ChangeAvatarPartial.cshtml" t="Include" />
             <e p="ChangePasswordModalPartial.cshtml" t="Include" />
             <e p="CommentsPartial.cshtml" t="Include" />
             <e p="Components" t="Include">

@@ -5,25 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="721f500a-e1b7-4f5a-9832-f6f28cd93bf5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/nVideo/DATA/Validation/Validator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/DATA/Extentions/UserManagerExtentions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/DATA/Extentions/UserManagerExtentions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Migrations/AppDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Migrations/AppDBContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Models/Comment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Models/Comment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Models/UserProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Models/UserProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/Account/Register.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/Shared/CommentsPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/Shared/CommentsPartial.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/Shared/EditProfileModalPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/Shared/EditProfileModalPartial.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/Shared/FeaturedPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/Shared/FeaturedPartial.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/Shared/NewProductPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/Shared/NewProductPartial.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/Shared/OnEmailConfirm.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/Shared/OnEmailConfirm.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/Shared/ThumbnailsPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/Shared/ThumbnailsPartial.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,28 +33,36 @@
     <setting file="file://$PROJECT_DIR$/nVideo/Startup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B5C0ECE9-48E9-456E-A76D-60AC6F690356/58/HtmlHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/14F77EE4-639B-4CE9-849B-C8F1BB98D456/FE/ControllerActionInvoker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5767338A-2F30-4DD0-B49D-2155C60C2F16/1D/UserManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/nVideo/Views/Shared/Components/CommentsPartial.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/DATA/Interfaces/ICommentsRepository.cs" />
-      <option value="$PROJECT_DIR$/nVideo/DATA/Repository/CatalogRepository.cs" />
-      <option value="$PROJECT_DIR$/nVideo/Models/UserProfile.cs" />
-      <option value="$PROJECT_DIR$/nVideo/Views/Shared/EditProfileModalPartial.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/Shared/NewProductPartial.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/Home/Index.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/Shared/ThumbnailsPartial.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/Shared/FeaturedPartial.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Models/Comment.cs" />
-      <option value="$PROJECT_DIR$/nVideo/Views/Shared/CommentsPartial.cshtml" />
-      <option value="$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml" />
-      <option value="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" />
-      <option value="$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs" />
       <option value="$PROJECT_DIR$/nVideo/DATA/Validation/Validator.cs" />
       <option value="$PROJECT_DIR$/nVideo/Views/Shared/OnEmailConfirm.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/Account/Register.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Controllers/AccountController.cs" />
       <option value="$PROJECT_DIR$/nVideo/DATA/Extentions/UserManagerExtentions.cs" />
+      <option value="$PROJECT_DIR$/nVideo/DATA/ControllerModels/AboutViewModel.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Models/UserProfile.cs" />
+      <option value="$PROJECT_DIR$/nVideo/DATA/ViewModels/ChangeAvatarViewModel.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/ChangeAvatarPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/ChangePasswordModalPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/EditProfileModalPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Catalog/About.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/DATA/Repository/CatalogRepository.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Office/Profile.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/CommentsPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/ListCatalogPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Catalog/List.cshtml" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1qGfvagzJUfSXSDX0zBJSbZDYxI" />
@@ -141,7 +132,14 @@
       <workItem from="1618748076235" duration="13398000" />
       <workItem from="1618817669125" duration="10601000" />
       <workItem from="1618932404802" duration="491000" />
-      <workItem from="1619008808371" duration="4611000" />
+      <workItem from="1619008808371" duration="8713000" />
+      <workItem from="1619097647489" duration="2154000" />
+      <workItem from="1619512752774" duration="2738000" />
+      <workItem from="1619522919910" duration="2693000" />
+      <workItem from="1619538714006" duration="2000" />
+      <workItem from="1619540429287" duration="618000" />
+      <workItem from="1619544037779" duration="11543000" />
+      <workItem from="1619608617501" duration="1529000" />
     </task>
     <servers />
   </component>
@@ -175,45 +173,6 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs</url>
-          <line>73</line>
-          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" initialLine="72" containingFunctionPresentation="method 'AddCommentAsync'">
-            <startOffsets>
-              <option value="2423" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2424" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/nVideo/DATA/Extentions/UserManagerExtentions.cs</url>
-          <line>19</line>
-          <properties documentPath="$PROJECT_DIR$/nVideo/DATA/Extentions/UserManagerExtentions.cs" initialLine="19" containingFunctionPresentation="method 'GetUserIncludeProfile'">
-            <startOffsets>
-              <option value="712" />
-            </startOffsets>
-            <endOffsets>
-              <option value="863" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs</url>
-          <line>39</line>
-          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs" initialLine="38" containingFunctionPresentation="method 'Profile'">
-            <startOffsets>
-              <option value="1218" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1219" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/nVideo/Controllers/AccountController.cs</url>
           <line>45</line>
           <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/AccountController.cs" initialLine="45" containingFunctionPresentation="method 'Register'">
@@ -225,6 +184,58 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs</url>
+          <line>79</line>
+          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" initialLine="80" containingFunctionPresentation="method 'AddCommentAsync'">
+            <startOffsets>
+              <option value="2574" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2615" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs</url>
+          <line>126</line>
+          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" initialLine="126" containingFunctionPresentation="method 'UpdateRating'">
+            <startOffsets>
+              <option value="4414" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4460" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs</url>
+          <line>183</line>
+          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs" initialLine="183" containingFunctionPresentation="method 'ChangeAvatar'">
+            <startOffsets>
+              <option value="6466" />
+            </startOffsets>
+            <endOffsets>
+              <option value="6467" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs</url>
+          <line>215</line>
+          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/OfficeController.cs" initialLine="210" containingFunctionPresentation="method 'AssertThatImage'">
+            <startOffsets>
+              <option value="7613" />
+            </startOffsets>
+            <endOffsets>
+              <option value="7638" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
