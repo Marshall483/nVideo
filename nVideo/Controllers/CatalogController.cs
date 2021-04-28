@@ -58,11 +58,11 @@ namespace nVideo.Controllers
             {
                 var entity = _catalog.GetItemById(id);
 
-                ViewData["Raiting"] = new SelectList(new[] {1, 2, 3, 4, 5});
                 var aboutVM = new AboutViewModel();
                 
                 aboutVM.Entity = entity;
                 aboutVM.Related_Products = _catalog.GetCategoryMembers(entity.Category.CategoryName);
+                aboutVM.SelectRating = new SelectList(new [] {1,2,3,4,5});
                 
                 return View(aboutVM);
             }
@@ -72,10 +72,11 @@ namespace nVideo.Controllers
         [ActionName("AddCommentAsync")]
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddCommentAsync([FromForm] Comment comment)
+        public async Task<IActionResult> AddCommentAsync(
+            [FromForm] int entityId,
+            [FromForm] string rating,
+            [FromForm] string content)
         {
-            var com = comment;
-            /*
             if (content != null && entityId != null )
             {
                 if (content.Length > 1000)
@@ -84,20 +85,23 @@ namespace nVideo.Controllers
                     return RedirectToAction(actionName: "About", 
                         routeValues: new {id = entityId});
                 }
-                
+
+                var entity = _catalog.GetItemById(entityId);
+                entity.Raiting = UpdateRating(entity, Convert.ToByte(rating));
                 
                 
                 var comment = new Comment()
                 {
                     User = await _userManager.GetUserAsync(new ClaimsPrincipal(User.Identities)),
                     Content = content,
-                    Entity = _catalog.GetItemById(entityId),
-                    Raiting = 1
+                    Entity = entity,
+                    Raiting = Convert.ToUInt16(rating)
                 };
 
                 try
                 {
                     await _dbContext.Comments.AddAsync(comment);
+                    _dbContext.Entities.Update(entity);
                     await _dbContext.SaveChangesAsync();
                 }
                 catch (Exception exc)
@@ -111,9 +115,21 @@ namespace nVideo.Controllers
             
             ModelState.AddModelError("Error", "Incorrect Comment");
             return RedirectToAction(actionName: "About", 
-                routeValues: new {id = entityId}); */
+                routeValues: new {id = entityId}); 
+        }
 
-            return Ok("Im work!");
+        private byte UpdateRating(Catalog_Entity entity, byte rating)
+        {
+            //Calculate Average.
+            var commentsCount = entity.Comments.Count;
+            var currentRating = entity.Raiting;
+
+            var beforeSmm = currentRating * commentsCount;
+            var newCommentsCount = ++commentsCount;
+            var newSum = beforeSmm + rating;
+
+            return Convert.ToByte(newSum / newCommentsCount);
+            
         }
     }
 }

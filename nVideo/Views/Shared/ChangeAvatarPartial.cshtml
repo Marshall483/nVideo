@@ -1,0 +1,40 @@
+@model ChangeAvatarViewModel
+
+<div class="row">
+    
+@{
+    if (Model.Error != null)
+    {
+        <div class="span9">
+
+            <div class="alert alert-info">
+
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+                <h4>@Model.Error</h4>
+
+            </div>
+        </div>
+    }
+}
+
+    <div class="span8 well well-small">
+        
+        <h2> Change @User.Identity.Name avatar</h2>
+        
+        <form asp-action="ChangeAvatar" asp-controller="Office" method="post" enctype="multipart/form-data">
+            
+            <p>
+                <strong>Avatar</strong>
+                <input name="Avatar" type="file" class="form-control"/>
+            </p>
+
+            <p>
+                <input type="submit" value="Apply"/>
+            </p>
+
+        </form>
+        
+    </div>
+
+</div>

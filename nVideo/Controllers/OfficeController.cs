@@ -9,11 +9,15 @@ using nVideo.DATA.Services;
 using nVideo.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using nVideo.DATA.Extentions;
 using nVideo.DATA.Validation;
+using nVideo.DATA.ViewModels;
 
 namespace nVideo.Controllers
 {
@@ -175,11 +179,49 @@ namespace nVideo.Controllers
             return View("OnEmailConfirm");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ChangeAvatar(ChangeAvatarViewModel avatarVM)
+        {
+            if (avatarVM.Avatar == null || !AssertThatImage(avatarVM.Avatar))
+            {
+                string error = "Invalid file format. \n " +
+                                    "Must be .png, .jpg, .jpeg ";
+                return View($"ChangeAvatarPartial", new ChangeAvatarViewModel { Error = error });
+            }
+
+            var user = _userManager
+                .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
+
+            byte[] imageData = null; 
+            using (var binaryReader = new BinaryReader(avatarVM.Avatar.OpenReadStream()))
+            { 
+                imageData = binaryReader.ReadBytes((int) avatarVM.Avatar.Length);
+            }
+            user.Profile.Avatar = imageData;
+            
+            _dbContext.Users.Update(user); 
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction("Profile");
+        }
+
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-        
+
+        private bool AssertThatImage(IFormFile file)
+        {
+            var name = file.FileName;
+            var extension = name //Extract extension
+                .Substring(name.LastIndexOf('.'), name.Length - name.LastIndexOf('.')) 
+                .ToLower();
+
+            if (extension == ".png" || extension == ".jpg" || extension == ".jpeg")
+                return 1 != 0;
+
+            return false;
+        }
     }
 }

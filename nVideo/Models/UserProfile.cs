@@ -21,7 +21,8 @@ namespace nVideo.Models
         [MaxLength(20, ErrorMessage = "Max length 20")]
         public string City { get; set; }
         public string Address { get; set; }
-
+        
+        public byte[] Avatar { get; set; }
 
         [ForeignKey("AspNetUsers")]
         public User User { get; set; }

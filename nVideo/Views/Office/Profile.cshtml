@@ -26,7 +26,17 @@
             <!-- MIDDLE-CONTAINER -->
             <div class="media">
                 <a class="pull-left" href="#">
-                    <img class="media-object img-polaroid" alt="128x128" src="~/IMG/ProfileImages/man.png" style="width: 128px; height: 128px;border-color:burlywood; border:3px;">
+                    @{
+                        if (Model.Item1.Profile.Avatar != null)
+                        {
+                            <img class="media-object img-polaroid" alt="128x128" src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Item1.Profile.Avatar))" style="width: 128px; height: 128px;border-color:burlywood; border:3px;"/>
+                        }
+                        else
+                        {
+                            <img class="media-object img-polaroid" alt="128x128" src="@Url.Content("~/IMG/ProfileImages/man.png")" style="width: 128px; height: 128px;border-color:burlywood; border:3px;" />
+                        }
+                    }
+                    
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">Welocme back, @Model.Item1.Email!</h4>
@@ -105,6 +115,7 @@
                 <hr>
                 <p class="flex-grow-1">
                     You can <a href="#myModal" role="button" class="btn" data-toggle="modal">Edit your profile</a>
+                    <a href="#changeAvatar" class="btn" data-toggle="modal">Change avatar</a>
                     @{
                         if (!@Model.Item1.EmailConfirmed){
                             <p>
@@ -121,7 +132,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
-                        @Html.Partial("EditProfileModalPartial", new UserProfile())
+                        @await Html.PartialAsync("EditProfileModalPartial", new UserProfile())
                     </div>
                 </div>
 
@@ -131,7 +142,17 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
-                        @Html.Partial("ChangePasswordModalPartial", new ChangePasswordViewModel())
+                        @await Html.PartialAsync("ChangePasswordModalPartial", new ChangePasswordViewModel())
+                    </div>
+                </div>
+                
+                <!-- Change Avatar Modal -->
+                <div id="changeAvatar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        @await Html.PartialAsync("ChangeAvatarPartial", new ChangeAvatarViewModel())
                     </div>
                 </div>
 

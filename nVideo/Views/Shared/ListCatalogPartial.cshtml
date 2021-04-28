@@ -3,7 +3,7 @@
  
 <div class="row-fluid">
     <div class="span2">
-        <img src="@Model.Images.First().Patch" alt="">
+        <img src="@Model.Images.First().Patch" alt="sexy-image">
     </div>
     <div class="span6">
         <h5>@Model.Name </h5>
@@ -14,7 +14,8 @@
     </div>
     <div class="span4 alignR">
         <form class="form-horizontal qtyFrm">
-            <h3> @Model.Price.ToString("# руб") </h3>
+            <h3> <span class="icon-star">@Model.Raiting</span> </h3>
+            <h3> $ @(Model.Price/75) </h3>
             <label class="checkbox">
                 <input type="checkbox">  Adds product to compair
             </label><br>
