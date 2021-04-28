@@ -1,36 +1,51 @@
 ﻿using nVideo.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using nVideo.DATA;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace nVideo.Controllers
 {
     public class CartController : Controller
     {
         private readonly ShopCart _shopCart;
-        public CartController(ShopCart shopCart)
+        private readonly AppDbContext _context;
+        public CartController(ShopCart shopCart, AppDbContext context)
         {
             _shopCart = shopCart;
+            _context = context;
         }
 
         [HttpGet]
-        public ViewResult Cart()
+        public ViewResult Index()
         {
             var items = _shopCart.GetShopItems();
-            var total = _shopCart.GeComputeTotalValue();
-
+            long total;
+            if (items != null)
+            {
+                total = items.Sum(x => x.Entity.Price * x.Quanity);
+            }
+            else
+            {
+                total = 0;
+            }
             var viewModel = new ShopCartView(items, total);
             return View(viewModel);
         }
 
-        [HttpGet]
-        public void AddToCart(int id)
+        [HttpPost]
+        public IActionResult AddToCart(int id)
         {
             _shopCart.AddToCart(id);
+
+            return RedirectToAction("Index", "Cart");
         }
-        [HttpGet]
-        public void RemoveFromCart(int id)
+        [HttpPost]
+        public IActionResult RemoveFromCart(int id)
         {
-            _shopCart.RevomeFromCart(id);          
+            _shopCart.RevomeFromCart(id);
+
+            return RedirectToAction("Index", "Cart");
         }
     }
 }
