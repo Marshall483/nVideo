@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using nVideo.DATA;
 using nVideo.DATA.ControllerModels;
 using nVideo.DATA.ViewModels;
@@ -56,11 +57,12 @@ namespace nVideo.Controllers
             if (id.HasValue)
             {
                 var entity = _catalog.GetItemById(id);
-                
+
                 var aboutVM = new AboutViewModel();
                 
                 aboutVM.Entity = entity;
                 aboutVM.Related_Products = _catalog.GetCategoryMembers(entity.Category.CategoryName);
+                aboutVM.SelectRating = new SelectList(new [] {1,2,3,4,5});
                 
                 return View(aboutVM);
             }
@@ -70,7 +72,10 @@ namespace nVideo.Controllers
         [ActionName("AddCommentAsync")]
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddCommentAsync([FromForm] int entityId, [FromForm] string content)
+        public async Task<IActionResult> AddCommentAsync(
+            [FromForm] int entityId,
+            [FromForm] string rating,
+            [FromForm] string content)
         {
             if (content != null && entityId != null )
             {
@@ -80,17 +85,23 @@ namespace nVideo.Controllers
                     return RedirectToAction(actionName: "About", 
                         routeValues: new {id = entityId});
                 }
+
+                var entity = _catalog.GetItemById(entityId);
+                entity.Raiting = UpdateRating(entity, Convert.ToByte(rating));
+                
                 
                 var comment = new Comment()
                 {
                     User = await _userManager.GetUserAsync(new ClaimsPrincipal(User.Identities)),
                     Content = content,
-                    Entity = _catalog.GetItemById(entityId)
+                    Entity = entity,
+                    Raiting = Convert.ToUInt16(rating)
                 };
 
                 try
                 {
                     await _dbContext.Comments.AddAsync(comment);
+                    _dbContext.Entities.Update(entity);
                     await _dbContext.SaveChangesAsync();
                 }
                 catch (Exception exc)
@@ -104,7 +115,21 @@ namespace nVideo.Controllers
             
             ModelState.AddModelError("Error", "Incorrect Comment");
             return RedirectToAction(actionName: "About", 
-                routeValues: new {id = entityId});
+                routeValues: new {id = entityId}); 
+        }
+
+        private byte UpdateRating(Catalog_Entity entity, byte rating)
+        {
+            //Calculate Average.
+            var commentsCount = entity.Comments.Count;
+            var currentRating = entity.Raiting;
+
+            var beforeSmm = currentRating * commentsCount;
+            var newCommentsCount = ++commentsCount;
+            var newSum = beforeSmm + rating;
+
+            return Convert.ToByte(newSum / newCommentsCount);
+            
         }
     }
 }
