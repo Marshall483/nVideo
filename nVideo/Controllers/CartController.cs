@@ -16,13 +16,10 @@ namespace nVideo.Controllers
             _context = context;
         }
 
-<<<<<<< HEAD
-        /* [HttpGet]
-       public ViewResult Cart()
-=======
+
         [HttpGet]
         public ViewResult Index()
->>>>>>> NoProduction
+
         {
             var items = _shopCart.GetShopItems();
             long total;
@@ -36,7 +33,7 @@ namespace nVideo.Controllers
             }
             var viewModel = new ShopCartView(items, total);
             return View(viewModel);
-        }*/
+        }
 
         [HttpPost]
         public IActionResult AddToCart(int id)

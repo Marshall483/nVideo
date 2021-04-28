@@ -84,8 +84,15 @@ namespace nVideo.Controllers
         public string Short_Desc;
         public string Long_Desc;
         public string  InStock;
-        [HttpPost]
+
+
         public IActionResult AddEntity()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult AddEntityToDB()
         {
             AdminPanelModel adminPanelModel = new AdminPanelModel();
             adminPanelModel.CategoryAndValue = CatalogAndValue;

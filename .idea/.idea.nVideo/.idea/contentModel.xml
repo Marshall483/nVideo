@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$PROJECT_DIR$" t="IncludeFlat">
+    <e p="C:\Users\User\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\User\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_nVideo.-551903272.00" t="ExcludeRecursive" />
+    <e p="C:\Users\User\AppData\Roaming\JetBrains\Rider2020.3\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\User\AppData\Roaming\JetBrains\Rider2020.3\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\User\Desktop\nVideo" t="IncludeFlat">
       <e p="nVideo" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
@@ -11,6 +15,7 @@
         </e>
         <e p="Controllers" t="Include">
           <e p="AccountController.cs" t="Include" />
+          <e p="AdminPanelController.cs" t="Include" />
           <e p="CartController.cs" t="Include" />
           <e p="CatalogController.cs" t="Include" />
           <e p="ErrorController.cs" t="Include" />
@@ -21,6 +26,7 @@
           <e p="AppDBContext.cs" t="Include" />
           <e p="ControllerModels" t="Include">
             <e p="AboutViewModel.cs" t="Include" />
+            <e p="AdminPanelModel.cs" t="Include" />
             <e p="ChangePasswordViewModel.cs" t="Include" />
             <e p="LoginModel.cs" t="Include" />
             <e p="ProfileModel.cs" t="Include" />
@@ -99,6 +105,15 @@
             <e p="Register.cshtml" t="Include" />
             <e p="Registration.cshtml" t="Include" />
           </e>
+          <e p="AdminPanel" t="Include">
+            <e p="AddEntity.cshtml" t="Include" />
+            <e p="Banhammer.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="Result.cshtml" t="Include" />
+          </e>
+          <e p="Cart" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
           <e p="Catalog" t="Include">
             <e p="About.cshtml" t="Include" />
             <e p="List.cshtml" t="Include" />
@@ -116,6 +131,8 @@
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="AboutItemPartial.cshtml" t="Include" />
+            <e p="AdminPanelLayout.cshtml" t="Include" />
             <e p="AttributesPartial.cshtml" t="Include" />
             <e p="ChangePasswordModalPartial.cshtml" t="Include" />
             <e p="CommentsPartial.cshtml" t="Include" />
@@ -130,6 +147,7 @@
             <e p="HomeCarouselPartial.cshtml" t="Include" />
             <e p="ItemCarouselPartial.cshtml" t="Include" />
             <e p="ListCatalogPartial.cshtml" t="Include" />
+            <e p="ListShopCartPartial.cshtml" t="Include" />
             <e p="LoginPartial.cshtml" t="Include" />
             <e p="NewProductPartial.cshtml" t="Include" />
             <e p="OnEmailConfirm.cshtml" t="Include" />
@@ -236,6 +254,7 @@
             </e>
           </e>
           <e p="css" t="Include">
+            <e p="AdminPanel_style.css" t="Include" />
             <e p="Layout_style.css" t="Include" />
             <e p="Profile_styles.css" t="Include" />
           </e>
@@ -424,12 +443,14 @@
             </e>
           </e>
           <e p="js" t="Include">
+            <e p="AdminPanelJS.js" t="Include" />
             <e p="jquery3-2-1-full.js" t="Include" />
             <e p="popper-utils.min.js" t="Include" />
             <e p="popper-utils.min.js.map" t="Include" />
             <e p="popper.min.js" t="Include" />
             <e p="popper.min.js.map" t="Include" />
             <e p="remoteEmailValidation.js" t="Include" />
+            <e p="sortList.js" t="Include" />
           </e>
           <e p="lib" t="Include">
             <e p="bootstrap" t="Include">
@@ -476,8 +497,5 @@
       <e p="nVideo.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
     </e>
-    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_nVideo.-1519290015.00" t="ExcludeRecursive" />
   </component>
 </project>
