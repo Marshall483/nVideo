@@ -34,66 +34,73 @@ namespace nVideo.Controllers
             return View("Register");
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterModel regModel)
+        {
+
+            if (!ModelState.IsValid)
+                return View();
+            
+            if (_userManager.IsNameAlreadyExist(regModel.Email))
+            {
+                ModelState.AddModelError("Uniq_Mail", "User with such login already exist");
+                return View();
+            }
+
+            var user = new User
+            {
+                Email = regModel.Email,
+                UserName = regModel.Email,
+                Profile = new UserProfile()
+            };
+
+            await _userManager.CreateAsync(user, regModel.Password);
+            var res = await _signInManager
+                .PasswordSignInAsync(user, regModel.ConfirmPassword,false, false);
+
+            if (!res.Succeeded)
+            {
+                ModelState.AddModelError("Creator_Error", "Unable to create user.");
+                return View();
+            }
+                
+            if (await TrySendVerification(user))
+                return View("OnEmailConfirm");
+            
+            return RedirectToAction("Profile", "Office");
+        }
+        
+        
         [HttpGet]
         public IActionResult Register(){
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterModel registerModel){
-            if (ModelState.IsValid){
-                var user = await _userManager.FindByNameAsync(registerModel.Email);
-               
-                if (user != null) {
-                    ModelState.AddModelError("UniqMailError", "User with such login already exist");
-                    return View();
-                }
+        private async Task<bool> TrySendVerification(User user)
+        {
+            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            
+            var callbackUrl = Url.Action(
+                "ConfirmEmail",
+                "Account",
+                new { userId = user.Id, code = code },
+                protocol: HttpContext.Request.Scheme);
 
-                var newUser = new User{
-                    Email = registerModel.Email,
-                    UserName = registerModel.Email,
-                    Profile = new UserProfile()
-                };
-
-
-                 var res = await _userManager.CreateAsync(newUser, registerModel.Password);
-
-                if (res.Succeeded)
-                {
-                    // token generation
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
-                    var callbackUrl = Url.Action(
-                        "ConfirmEmail",
-                        "Account",
-                        new { userId = newUser.Id, code = code },
-                        protocol: HttpContext.Request.Scheme);
-
-                    try{
-                        await _sender.SendEmailAsync(registerModel.Email, "Confirm your account",
-                            $"Verify your email on click by <a href='{callbackUrl}'>link</a>");
-                    }
-                    catch (CommandException cEx){
-                        _logger.LogError($"Err with User - {newUser.Email}. \n {cEx.Message}");
-                        ModelState.AddModelError("SenderError", "Specified Email is not exist");
-                        return View(registerModel);
-                    }
-                    catch (Exception suddenEx){
-                        _logger.LogError($"Err with User - {newUser.Email}. \n {suddenEx.Message}");
-                        ModelState.AddModelError("SenderError", "An error occured while sending email.");
-                        return View(registerModel);
-                    }
-
-                    ViewBag.Message = "To complete the registration, check your email address and follow the link provided in the email";
-                    return View("OnEmailConfirm");
-                }
+            try{
+                await _sender.SendEmailAsync(user.Email, "Confirm your account",
+                    $"Verify your email on click by <a href='{callbackUrl}'>link</a>");
+                return true;
             }
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult VerifyEmail(string email){
-            return Json(_userManager.IsNameAlreadyExist(email));
+            catch (CommandException cEx){
+                _logger.LogError($"Err with User - {user.Email}. \n {cEx.Message}");
+                return false;
+            }
+            catch (Exception suddenEx){
+                _logger.LogError($"Err with User - {user.Email}. \n {suddenEx.Message}");
+                return false;
+            }
         }
 
         [HttpGet]

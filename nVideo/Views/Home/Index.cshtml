@@ -8,8 +8,8 @@
             <div id="myCarousel" class="carousel slide homCar">
                 <div class="carousel-inner">
 
-                    @{foreach(var e in Model.ForCarousel) { 
-                            @Html.Partial("HomeCarouselPartial", e)
+                    @{foreach(var e in Model.ForCarousel) {
+                          @await Html.PartialAsync("HomeCarouselPartial", e)
                       }
                     }
 
@@ -22,7 +22,7 @@
         <!--New Products-->
 
         <div class="well well-small">
-            <h3>Новые товары</h3>
+            <h3>New Items</h3>
             <hr class="soften" />
             <div class="row-fluid">
                 <div id="newProductCar" class="carousel slide">
@@ -31,7 +31,7 @@
                             <ul class="thumbnails">
 
                                 @{foreach (var e in Model.ForNewProductsBlock.Take(4)){
-                                        @Html.Partial("NewProductPartial", e)
+                                      @await Html.PartialAsync("NewProductPartial", e)
                                   }
                                 }
 
@@ -41,7 +41,7 @@
                             <ul class="thumbnails">
 
                                 @{foreach (var e in Model.ForNewProductsBlock.Skip(4)){
-                                        @Html.Partial("NewProductPartial", e)
+                                      @await Html.PartialAsync("NewProductPartial", e)
                                   }
                                 }
 
@@ -57,7 +57,7 @@
                 <ul class="thumbnails">
 
                     @{foreach (var e in Model.ForThumbnailBlock){
-                            @Html.Partial("ThumbnailsPartial", e)
+                          @await Html.PartialAsync("ThumbnailsPartial", e)
                       }
                     }      
                     
@@ -68,13 +68,12 @@
         <!--Featured Products-->
 
         <div class="well well-small">
-            <h3><a class="btn btn-mini pull-right" href="products.html" title="View more">View More<span class="icon-plus"></span></a> Featured Products  </h3>
             <hr class="soften" />
             <div class="row-fluid">
                 <ul class="thumbnails">
 
                     @{foreach (var e in Model.ForFeaturedBlock){
-                            @Html.Partial("FeaturedPartial", e)
+                          @await Html.PartialAsync("FeaturedPartial", e)
                       }
                     }
 

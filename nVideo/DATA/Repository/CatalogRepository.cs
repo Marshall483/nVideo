@@ -65,12 +65,13 @@ namespace nVideo.DATA.Repository
                 .Where(e => e.Id.Equals(id))).Any()
                 ? throw new ArgumentException("Id is not exit")
                 : target.Include(t => t.Images)
-                    .Include(t => t.Category) // According to load related items
+                    .Include(t => t.Category) //According to load related items.
                     .Include(t => t.Comments)
                     .ThenInclude(t => t.User)
+                    .ThenInclude(u => u.Profile)
                     .Include(t => t.Attributes)
                     .ThenInclude(t => t.Value)
-                    .Single();// Must return only one 
+                    .Single(); //Must return only one. 
         }
 
         public IEnumerable<Catalog_Entity> GetNewItems()
