@@ -1,192 +1,114 @@
 ﻿@model AboutViewModel
 <div class="span9">
 
-  <ul class="breadcrumb">
-    <li><a asp-controller="Home">Home</a> <span class="divider">/</span></li>
-    <li><a asp-controller="Catalog" asp-action="List">Items</a> <span class="divider">/</span></li>
-    <li class="active">About</li>
-  </ul>
+    <ul class="breadcrumb">
+        <li><a asp-controller="Home">Home</a> <span class="divider">/</span></li>
+        <li><a asp-controller="Catalog" asp-action="List">Items</a> <span class="divider">/</span></li>
+        <li class="active">About</li>
+    </ul>
 
-  <div class="well well-small">
-      <div class="row-fluid">
-          <div class="span5">
-              <div id="myCarousel" class="carousel slide cntr">
-                  <div class="carousel-inner">
-
-                      @{ foreach (var p in Model.Entity.Images)
-                          {
-                              @await Html.PartialAsync("ItemCarouselPartial", p)
-                          }
-                      }
-
-                  </div>
-                  <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-                  <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-              </div>
-          </div>
-          @await Html.PartialAsync("AboutItemPartial", Model.Entity)
-      </div>
-
-      <hr class="softn clr">
-
-      <ul id="productDetail" class="nav nav-tabs">
-          <li class="active"><a href="#home" data-toggle="tab">Product Details</a></li>
-          <li class=""><a href="#profile" data-toggle="tab">Related Products </a></li>
-      </ul>
-
-      <div id="myTabContent" class="tab-content tabWrapper">
-          <div class="tab-pane fade active in" id="home">
-              <h4>More info</h4>
-              <table class="table table-striped">
-                  <tbody>
-                      @{ foreach (var atr in Model.Entity.Attributes)
-                          {
-                              @await Html.PartialAsync("AttributesPartial", atr)
-                          }
-                      }
-                  </tbody>
-              </table>
-
-<<<<<<< HEAD
-      <div class="span7">
-        <h3>@Model.Entity.Name</h3>
-        <hr class="soft">
-        
-        <div class="btn-toolbar">
-          <div class="btn-toolbar">
-          @{
-            for (int i = 0; i < Model.Entity.Raiting; i++)
-            {
-              <bitton class="btn" diasbled="disabled"><span class="icon-star"></span></bitton>
-            }
-
-          }
-          </div>
-        </div>
-        
-        <form class="form-horizontal qtyFrm">
-          <div class="control-group">
-            <label class="control-label"><span>$ @(Model.Entity.Price/75)</span></label>
-=======
-              @Model.Entity.Long_Desc
-
-          </div>
-          <div class="tab-pane fade" id="profile">
-              <div class="row-fluid">
-
-                  @{
-                      foreach (var product in Model.Related_Products)
-                      {
-                          @await Html.PartialAsync("ReleatedProductsPartial", product)
-                      }
-                  }
-
-              </div>
->>>>>>> NoProduction
-          </div>
-
-      </div>
-
-      <h4>Comments</h4>
-      @Html.ValidationMessage("Error")
-      @using (Html.BeginForm(actionName: "AddCommentAsync",
-       controllerName: "Catalog",
-       FormMethod.Post))
-      {
-
-          <!-- Begin Comment Form -->
-          @Html.Hidden("EntityId", $"{Model.Entity.Id}")
-
-          <div class="col-md-12">
-              <div class="panel">
-
-                  <div class="panel-body">
-                      @Html.TextArea("content", value: "", rows: 5, columns: 200, null)
-                      <div class="mar-top clearfix">
-                          <p><input type="submit" value="Add" /></p>
-                      </div>
-
-                  </div>
-
-<<<<<<< HEAD
-      </div>
-      <div class="tab-pane fade" id="profile">
+    <div class="well well-small">
         <div class="row-fluid">
-          
-          @{
-            foreach (var product in Model.Related_Products)
-            {
-              @await Html.PartialAsync("ReleatedProductsPartial", product)
-            }
-          }
-          
+            <div class="span5">
+                <div id="myCarousel" class="carousel slide cntr">
+                    <div class="carousel-inner">
+
+                        @{ foreach (var p in Model.Entity.Images)
+                           {
+                               @await Html.PartialAsync("ItemCarouselPartial", p)
+                           }
+                        }
+
+                    </div>
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                </div>
+            </div>
+            @await Html.PartialAsync("AboutItemPartial", Model.Entity)
         </div>
-      </div>
-      
+
+        <hr class="softn clr">
+
+        <ul id="productDetail" class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab">Product Details</a></li>
+            <li class=""><a href="#profile" data-toggle="tab">Related Products </a></li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content tabWrapper">
+            <div class="tab-pane fade active in" id="home">
+                <h4>More info</h4>
+                <table class="table table-striped">
+                    <tbody>
+                    @{ foreach (var atr in Model.Entity.Attributes)
+                       {
+                           @await Html.PartialAsync("AttributesPartial", atr)
+                       }
+                    }
+                    </tbody>
+                </table>
+            </div>
+
+            @Model.Entity.Long_Desc
+
+            <div class="tab-pane fade" id="profile">
+                <div class="row-fluid">
+
+                    @{
+                        foreach (var product in Model.Related_Products)
+                        {
+                            @await Html.PartialAsync("ReleatedProductsPartial", product)
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
     </div>
     
     <h4>Comments</h4>
     
-    @using (Html.BeginForm("AddCommentAsync", "Catalog", FormMethod.Post))
-    {
+    <div class="span9">
+        @using (Html.BeginForm("AddCommentAsync", "Catalog", FormMethod.Post))
+        {
       
-      @Html.ValidationMessage("Error")
-      @Html.Hidden("entityId", Model.Entity.Id)
+            @Html.ValidationMessage("Error")
+            @Html.Hidden("entityId", Model.Entity.Id)
       
-        <div class="col-md-12">
-          <div class="panel">Raiting
+            <div class="col-md-12">
+                <div class="panel">Raiting
 
-            @Html.DropDownList("rating", Model.SelectRating, new { required="" })
+                    @Html.DropDownList("rating", Model.SelectRating, new { required="" })
 
-            <div class="panel-body">
-              @Html.TextArea("content", value: "", rows: 5, columns: 200, null)
-              <div class="mar-top clearfix">
-                <p><input type="submit" value="Add"/></p>
-              </div>
-            </div>
+                    <div class="panel-body">
+                        @Html.TextArea("content", value: "", rows: 5, columns: 200, null)
+                        <div class="mar-top clearfix">
+                            <p><input type="submit" value="Add"/></p>
+                        </div>
+                    </div>
             
-          </div>
-        </div>
-    }
-
-
-    <hr class="softn clr"/>
-
-      @{if (Model.Entity.Comments.Any()){
-          foreach (var comment in Model.Entity.Comments)
-          {
-            @await Html.PartialAsync("CommentsPartial", comment)
-          }
+                </div>
+            </div>
         }
-        else
-        {<h4>Here is no comments now... Be First!</h4>}
-      }
+      
+
+        <hr class="softn clr" />
+
+        @{
+            if (Model.Entity.Comments.Any())
+            {
+                foreach (var comment in Model.Entity.Comments)
+                {
+                    @await Html.PartialAsync("CommentsPartial", comment)
+                }
+            }
+            else
+            {
+                <h2>Here is no comments now... Be First!</h2>
+            }
+        }
+      
     </div>
-=======
-              </div>
-
-          </div>
-      }
-
-      <hr class="softn clr" />
-
-      @{
-          if (Model.Entity.Comments.Any())
-          {
-              foreach (var comment in Model.Entity.Comments)
-              {
-                  @await Html.PartialAsync("CommentsPartial", comment)
-              }
-          }
-          else
-          {
-              <h2>Here is no comments now... Be First!</h2>
-          }
-      }
-  </div>
->>>>>>> NoProduction
 </div>
-
 <style>
   .img-sm {
     width: 46px;
