@@ -85,7 +85,7 @@ namespace nVideo.Controllers
         public string Long_Desc;
         public string  InStock;
 
-
+        [HttpGet]
         public IActionResult AddEntity()
         {
             return View();
