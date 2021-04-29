@@ -7,18 +7,9 @@
             <div class="caption">
                 <h5>@Model.Name</h5>
                 <h4>
-<<<<<<< HEAD
                     <a class="defaultBtn" title="Click to view" asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id"><span class="icon-zoom-in"></span></a> 
                     <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
                     <span class="pull-right">$ @(Model.Price/75)</span>
-=======
-                    <a class="defaultBtn" title="Click to view" asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id"><span class="icon-zoom-in"></span></a>
-                    <form asp-controller="Cart" asp-action="AddToCart">
-                        <input type="hidden" asp-for="@Model.Id" />
-                        <input type="submit" value="AddToCart" class="defaultBtn" <span class=" icon-shopping-cart"></span>
-                    </form>
-                    <span class="pull-right">@Model.Price.ToString("# руб")</span>
->>>>>>> NoProduction
                 </h4>
             </div>
         </div>
