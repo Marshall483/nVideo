@@ -14,7 +14,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace nVideo.Controllers
 {
     //Registration and authorization func.
-    public class AccountController : Controller
+    public class 
+    AccountController : Controller
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;

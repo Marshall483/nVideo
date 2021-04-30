@@ -377,3 +377,11 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background-color: rgba(0, 0, 0, 0.3);
 }
+.tablenav{
+    color:white;
+    background: #fbbd2c;
+
+}
+input{
+    margin-top:10px;
+}

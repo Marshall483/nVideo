@@ -39,6 +39,7 @@ namespace nVideo.Controllers
             var principal = new ClaimsPrincipal(User.Identities);
             var _admin = await _userManager.GetUserAsync(principal);
             ViewBag.Admin = _admin;
+            
             return View();
         }
 
@@ -170,6 +171,12 @@ namespace nVideo.Controllers
             await _context.AddRangeAsync(AttrList);
             await _context.AddAsync(catalogEntity);
             return true;
+        }
+
+        [HttpPost]
+        public ActionResult AddEntityPartial()
+        {
+            return PartialView();
         }
         
         

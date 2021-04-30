@@ -115,6 +115,7 @@
           </e>
           <e p="AdminPanel" t="Include">
             <e p="AddEntity.cshtml" t="Include" />
+            <e p="AddEntityPartial.cshtml" t="Include" />
             <e p="Banhammer.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
             <e p="Result.cshtml" t="Include" />
@@ -146,6 +147,7 @@
             <e p="ChangePasswordModalPartial.cshtml" t="Include" />
             <e p="CommentsPartial.cshtml" t="Include" />
             <e p="Components" t="Include">
+              <e p="AddEntityPartial.cshtml" t="Include" />
               <e p="Login" t="Include">
                 <e p="LoginForm.cshtml" t="Include" />
               </e>

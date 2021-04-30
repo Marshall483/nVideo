@@ -1,0 +1,29 @@
+﻿@model AdminPanelModel;
+
+
+
+
+<form method="post" asp-action="AddEntity">
+    <input asp-for="CatalogEntity.Name" type="text" maxlength="50" placeholder="Name"></input>
+    <br>
+    <input asp-for="CatalogEntity.Articul" type="text" maxlength="50" placeholder="Articul"></input>
+    <br>
+    <input asp-for="CatalogEntity.Price" type="text" maxlength="50" placeholder="Price"></input>
+    <br>
+    <input asp-for="CatalogEntity.Short_Desc" type="text" maxlength="50" placeholder="Short Descr"></input>
+    <br>
+    <input asp-for="CatalogEntity.Long_Desc" type="text" maxlength="200" placeholder="Long Descr"></input>
+    <br>
+    <input asp-for="CatalogEntity.InStock" type="text" maxlength="50" placeholder="InStock"></input>
+    <br>
+
+    @{
+        int i = Int32.Parse(ViewBag.NumberOfAttributes);
+        for (int j = 0; j < i; j++)
+        {
+            <input asp-for="CategoryAndValue[j]" type="text" maxlength="50" placeholder="Attribute num @j"><input/>
+             <br>                                                                                          
+        }
+    }
+    <input type="submit"></input>
+</form>

@@ -27,39 +27,7 @@
   </div>
 
 
-  <ul class="categories list-unstyled">
-    <li class="has-dropdown">
-      <i class="uil-estate fa-fw"></i><a href="#"> Dashboard</a>
-      <ul class="sidebar-dropdown list-unstyled">
-        <li><a href="/AdminPanel">Main</a></li>
-      </ul>
-    </li>
-    <li class="has-dropdown">
-      <i class="uil-shopping-cart-alt"></i><a href="#"> Ecommerce</a>
-      <ul class="sidebar-dropdown list-unstyled">
-        <li><form method="get" asp-controller="AdminPanel"><input type="submit">Add product<input></form></li>
-        <li><a href="#">Editing product</a></li>
-        <li><a href="#">Delete product</a></li>
-      </ul>
-    </li>
-    <li class="has-dropdown">
-      <i class="uil-bag"></i><a href="#">Order management</a>
-      <ul class="sidebar-dropdown list-unstyled">
-        <li><a href="#">Orderlist</a></li>
-        <li><a href="#">Change status</a></li>
-        <li><a href="#">Order history</a></li>
-      </ul>
-    </li>
-    
-    <li class="has-dropdown">
-      <i class="uil-chart-pie-alt"></i><a href="#">Users management</a>
-      <ul class="sidebar-dropdown list-unstyled">
-        <li><a href="#">Editing profile</a></li>
-        <li><a href="/AdminPanel/Banhammer">Banhammer</a></li>
-      </ul>
-    </li>
-    
-  </ul>
+  
 </aside>
 
 <section id="wrapper">
@@ -91,8 +59,27 @@
       </div>
     </div>
   </nav>
+  <div class="p-4">
+      <div class="welcome">
+        <div class="content rounded-3 p-3">
+          <h1 class="fs-3">Welcome to Dashboard</h1>
+          <p class="mb-0">Hello Admin! 
+  Remember, with great power comes great responsibility.</p>
+          <div>
+          <table>
+          <tr>
+          <td class="tablenav"><a class="nav-link" href="/AdminPanel/AddEntity">Add Entity</a></td>
+          <td class="tablenav"><a class="nav-link" href="/AdminPanel/Banhammer">Banhammer</a></td>
+            <td class="tablenav"><a class="nav-link" href="/AdminPanel/Orders">Orders</a></td>
+          </tr>
+            
+          </table> 
+          </div>
+        </div>
+      </div>
 
-@RenderBody();  
+  @RenderBody(); 
+  </div>
 </section>
 <!-- partial -->
   <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
