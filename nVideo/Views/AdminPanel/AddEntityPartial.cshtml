@@ -18,7 +18,7 @@
     <br>
 
     @{
-        int i = Int32.Parse(ViewBag.NumberOfAttributes);
+        int i = ViewBag.Number;
         for (int j = 0; j < i; j++)
         {
             <input asp-for="CategoryAndValue[j]" type="text" maxlength="50" placeholder="Attribute num @j"><input/>

@@ -174,8 +174,9 @@ namespace nVideo.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddEntityPartial()
+        public ActionResult AddEntityPartial(string Number)
         {
+            ViewBag.Number = Int32.Parse(Number);
             return PartialView();
         }
         

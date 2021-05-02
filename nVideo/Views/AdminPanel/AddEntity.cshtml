@@ -4,13 +4,16 @@
 @model AdminPanelModel;
 
 
+
 <section class="charts mt-4">
   <div class="chart-container p-3">
     <h3 class="fs-6 mb-3">Add</h3>
-    @using (Ajax.BeginForm("BookSearch", new AjaxOptions { UpdateTargetId = "results"}))
+    <form dadotnet add package Microsoft.jQuery.Unobtrusive.Ajax --version 3.2.6ta-ajax="true"  data-ajax-mode="replace">>
+        <input type="text" placeholder="Number of attributes">
+        <input type="submit">
+      </form>
+
     <div style="height: 300px">
     </div>
   </div>
 </section>   
-@Scripts.Render("~/scripts/jquery-1.10.2.min.js")
-@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js") 
