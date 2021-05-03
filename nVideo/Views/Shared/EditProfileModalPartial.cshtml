@@ -2,7 +2,7 @@
 
 <div class="row">
 
-    <div class="span" >
+    <div class="span8 well well-small" >
 
         <h2>Edit @User.Identity.Name profile</h2>
 
@@ -11,6 +11,7 @@
 
             <div style="display: inline-block;">
                 @Html.ValidationMessage("UpdateErrors")
+                @Html.ValidationMessage("ValidationError")
                 <div class="form-group">
                     <label asp-for="Name" , class="sr-only">Name</label>
                     <div>

@@ -14,14 +14,15 @@ namespace nVideo.Models
         [MaxLength(20, ErrorMessage = "Line length exceeded")]
         public string LastName { get; set; }
 
-        [Range(1, 110, ErrorMessage = "Incoffect Age")]
+        [Range(1, 110, ErrorMessage = "Incorrect Age")]
         public sbyte Age { get; set; }
-        [MaxLength(20, ErrorMessage = "Max length 10")]
+        [MaxLength(20, ErrorMessage = "Max length 20")]
         public string Phone { get; set; }
         [MaxLength(20, ErrorMessage = "Max length 20")]
         public string City { get; set; }
         public string Address { get; set; }
-
+        
+        public byte[] Avatar { get; set; }
 
         [ForeignKey("AspNetUsers")]
         public User User { get; set; }

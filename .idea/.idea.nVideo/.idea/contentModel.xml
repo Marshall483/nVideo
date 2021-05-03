@@ -43,8 +43,12 @@
             <e p="EmailSenderService.cs" t="Include" />
             <e p="LocatorService.cs" t="Include" />
           </e>
+          <e p="Validation" t="Include">
+            <e p="Validator.cs" t="Include" />
+          </e>
           <e p="ViewModels" t="Include">
             <e p="CatalogViewModel.cs" t="Include" />
+            <e p="ChangeAvatarViewModel.cs" t="Include" />
             <e p="HomeViewModel.cs" t="Include" />
           </e>
         </e>
@@ -58,6 +62,10 @@
           <e p="20210327073913_ShopCart.Designer.cs" t="Include" />
           <e p="20210412085415_Orders.cs" t="Include" />
           <e p="20210412085415_Orders.Designer.cs" t="Include" />
+          <e p="20210419151113_AddRaitingCol.cs" t="Include" />
+          <e p="20210419151113_AddRaitingCol.Designer.cs" t="Include" />
+          <e p="20210428084616_Avatar.cs" t="Include" />
+          <e p="20210428084616_Avatar.Designer.cs" t="Include" />
           <e p="AppDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -99,6 +107,9 @@
             <e p="Register.cshtml" t="Include" />
             <e p="Registration.cshtml" t="Include" />
           </e>
+          <e p="Cart" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
           <e p="Catalog" t="Include">
             <e p="About.cshtml" t="Include" />
             <e p="List.cshtml" t="Include" />
@@ -116,7 +127,9 @@
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="AboutItemPartial.cshtml" t="Include" />
             <e p="AttributesPartial.cshtml" t="Include" />
+            <e p="ChangeAvatarPartial.cshtml" t="Include" />
             <e p="ChangePasswordModalPartial.cshtml" t="Include" />
             <e p="CommentsPartial.cshtml" t="Include" />
             <e p="Components" t="Include">
@@ -130,6 +143,7 @@
             <e p="HomeCarouselPartial.cshtml" t="Include" />
             <e p="ItemCarouselPartial.cshtml" t="Include" />
             <e p="ListCatalogPartial.cshtml" t="Include" />
+            <e p="ListShopCartPartial.cshtml" t="Include" />
             <e p="LoginPartial.cshtml" t="Include" />
             <e p="NewProductPartial.cshtml" t="Include" />
             <e p="OnEmailConfirm.cshtml" t="Include" />
@@ -430,6 +444,7 @@
             <e p="popper.min.js" t="Include" />
             <e p="popper.min.js.map" t="Include" />
             <e p="remoteEmailValidation.js" t="Include" />
+            <e p="sortList.js" t="Include" />
           </e>
           <e p="lib" t="Include">
             <e p="bootstrap" t="Include">

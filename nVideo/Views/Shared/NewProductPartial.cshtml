@@ -2,8 +2,8 @@
 
     <li class="span3">
         <div class="thumbnail">
-            <a class="zoomTool" asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" title="more info"><span class="icon-search"></span>Подробнее</a>
+            <a class="zoomTool" asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" title="more info"><span class="icon-search"></span>About</a>
             <a href="#" class="tag"></a>
-            <a href="product_details.html"><img src="@Model.Images.First().Patch" alt="bootstrap-entity"></a>
+            <img src="@Model.Images.First().Patch" alt="bootstrap-entity">
         </div>
     </li>

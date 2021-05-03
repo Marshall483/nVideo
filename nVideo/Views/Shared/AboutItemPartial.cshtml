@@ -3,7 +3,18 @@
 <div class="span7">
     <h3>@Model.Name</h3>
     <hr class="soft">
-
+    
+    <div class="btn-toolbar">
+        <div class="btn-toolbar">
+            @{
+                for (int i = 0; i < Model.Raiting; i++)
+                {
+                    <bitton class="btn" diasbled="disabled"><span class="icon-star"></span></bitton>
+                }
+            }
+        </div>
+    </div>
+    
     <div class="form-horizontal qtyFrm">
         <div class="control-group">
             <label class="control-label"><span>@Model.Price.ToString("# $")</span></label>
@@ -16,7 +27,7 @@
 
         <form asp-controller="Cart" asp-action="AddToCart">
             <input type="hidden" asp-for="@Model.Id" />
-            <input type="submit" value="Add to cart" class="defaultBtn" <span class=" icon-shopping-cart"></span>
+            <input type="submit" value="Add to cart" class="defaultBtn"/> <span class=" icon-shopping-cart"></span>
         </form>
     </div>
 </div>

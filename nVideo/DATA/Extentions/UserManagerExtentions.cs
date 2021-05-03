@@ -10,7 +10,7 @@ namespace nVideo.DATA.Extentions
     public static class UserManagerExtentions
     {
         public static bool IsNameAlreadyExist(this UserManager<User> manager, string email) =>
-            manager.FindByEmailAsync(email) == null ? true : false;
+            manager.FindByEmailAsync(email) == null;
 
         public static async Task<User> GetUserAsync(this UserManager<User> manager, ClaimsPrincipal principal) =>
             await manager.GetUserAsync(principal);
