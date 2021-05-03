@@ -277,6 +277,20 @@ namespace nVideo.Migrations
                     b.ToTable("Values");
                 });
 
+            modelBuilder.Entity("nVideo.Models.City", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
+
             modelBuilder.Entity("nVideo.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -337,7 +351,7 @@ namespace nVideo.Migrations
                     b.Property<long>("Quanity")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ShopCartId")
+                    b.Property<string>("UserName")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
