@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using MailKit;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Core.Infrastructure;
@@ -25,13 +28,15 @@ namespace nVideo.Controllers
         private readonly EmailSenderService _sender;
         private readonly ILogger<AccountController> _logger;
         private readonly AppDbContext _context;
+        IWebHostEnvironment _appEnvironment;
 
-        public AdminPanelController(UserManager<User> userManager, EmailSenderService sender, ILogger<AccountController> logger, AppDbContext context)
+        public AdminPanelController(UserManager<User> userManager, EmailSenderService sender, ILogger<AccountController> logger, AppDbContext context,IWebHostEnvironment appEnvironment)
         {
             _userManager = userManager;
             _sender = sender;
             _logger = logger;
             _context = context;
+            _appEnvironment = appEnvironment;
         }
         // GET
         public async Task<IActionResult> Index()
@@ -78,13 +83,7 @@ namespace nVideo.Controllers
         }
 
 
-        public string CatalogAndValue;
-        public string Name;
-        public string Articul;
-        public string  Price;
-        public string Short_Desc;
-        public string Long_Desc;
-        public string  InStock;
+        
 
         [HttpGet]
         public IActionResult AddEntity()
@@ -93,27 +92,65 @@ namespace nVideo.Controllers
         }
         
         [HttpPost]
-        public IActionResult AddEntityToDB()
+        public async Task<IActionResult> AddEntityToDB(string Name,string Articul, string Price,
+            string Short_Desc, string Long_Desc, string  InStock, List<string> Attributes, 
+            List<string> Values, string Category, IFormFileCollection Imgs)
         {
-            AdminPanelModel adminPanelModel = new AdminPanelModel();
-            adminPanelModel.CategoryAndValue = CatalogAndValue;
-            adminPanelModel.CatalogEntity.Name = Name;
-            adminPanelModel.CatalogEntity.Articul = Articul;
-            adminPanelModel.CatalogEntity.Price = uint.Parse(Price);
-            adminPanelModel.CatalogEntity.Short_Desc = Short_Desc;
-            adminPanelModel.CatalogEntity.Long_Desc = Long_Desc;
-            adminPanelModel.CatalogEntity.InStock = ushort.Parse(InStock);  
-            Catalog_Entity catalogEntity = adminPanelModel.CatalogEntity;
-            
-            List<string> list = adminPanelModel.CategoryAndValue.Split(';').ToList();
-            Dictionary<string, string> AttributeValuePaires = new Dictionary<string, string>();
-            if (list.Count() % 2 != 0)
+            var category = _context.Categories
+                .First(a => a.CategoryName == Category);
+
+            var ce = new Catalog_Entity();
+
+
+            foreach (var pic in Imgs)
             {
-                return Result(10);
+                string path = "/wwwroot/Img/"+ "Home"+"/" +Name+"/"+ pic.FileName;
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await pic.CopyToAsync(fileStream);
+                }
             }
-            for(int i = 0;i<list.Count();i++) 
-                AttributeValuePaires[list[i]] = list[++i];
-            AddAttributeAndValueInDB(AttributeValuePaires.Keys, AttributeValuePaires.Values,adminPanelModel.CatalogEntity);
+
+            List<Picture> pictures = new List<Picture>();
+            
+            List<Catalog_Attribute> AttrList = new List<Catalog_Attribute>();
+            List<Catalog_Value> ValList = new List<Catalog_Value>();
+            foreach (string s in Values)
+            {
+                ValList.Add(new Catalog_Value
+                {
+                    StringValue = s
+                });
+            }
+
+            int i = 0;
+            
+            foreach (string s in Attributes)
+            {
+                AttrList.Add(new Catalog_Attribute
+                {
+                    AttributeName = s,
+                    Entity = ce,
+                    Value = ValList[i++]
+                });
+            }
+
+            ce.Attributes = AttrList;
+            ce.Category = category;
+            ce.Name = Name;
+            ce.Articul = Articul;
+            ce.Price = uint.Parse(Price);
+            ce.Short_Desc = Short_Desc;
+            ce.Long_Desc = Long_Desc;
+            ce.InStock = ushort.Parse(InStock);
+            ce.Images = pictures;
+
+            _context.Categories.Update(category);
+            _context.Entities.Add(ce);
+            _context.Pictures.AddRange(pictures);
+            _context.Values.AddRange(ValList);
+            _context.Attributes.AddRange(AttrList);
+            _context.SaveChangesAsync();
             return Result(0);
         }
 
@@ -142,42 +179,22 @@ namespace nVideo.Controllers
             return View();
         }
 
-        private async Task<bool>AddAttributeAndValueInDB(IEnumerable<string> Attributes, IEnumerable<string> Value, Catalog_Entity catalogEntity)
+        private async Task<bool>AddAttributeAndValueInDB(Catalog_Entity catalogEntity)
         {
-            List<Catalog_Attribute> AttrList = new List<Catalog_Attribute>();
-            List<Catalog_Value> ValList = new List<Catalog_Value>();
-            foreach (string s in Value)
-            {
-                ValList.Add(new Catalog_Value
-                {
-                    StringValue = s
-                });
-            }
-
-            int i = 0;
             
-            foreach (string s in Attributes)
-            {
-                AttrList.Add(new Catalog_Attribute
-                {
-                    AttributeName = s,
-                    Entity = catalogEntity,
-                    Value = ValList[i++]
-                });
-            }
-
-            catalogEntity.Attributes = AttrList;
-            await _context.AddRangeAsync(ValList);
-            await _context.AddRangeAsync(AttrList);
-            await _context.AddAsync(catalogEntity);
             return true;
         }
 
         [HttpPost]
-        public ActionResult AddEntityPartial(string Number)
+        public ActionResult AddEntityPartial(string Number, string Imgs)
         {
+            if (( Int32.Parse(Number)< 1)||( Int32.Parse(Imgs)<1) || ( Int32.Parse(Number)>15) || ( Int32.Parse(Imgs) > 5))
+            {
+                return (ActionResult) Result(3);
+            }
             ViewBag.Number = Int32.Parse(Number);
-            return PartialView();
+            ViewBag.NumImg = Int32.Parse(Imgs);
+            return View();
         }
         
         

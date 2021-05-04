@@ -1,29 +1,47 @@
 ﻿@model AdminPanelModel;
+@{
+    Layout = "AdminPanelLayout";
+}
 
 
+<section class="charts mt-4">
+  <div class="chart-container p-3">
+    <h3 class="fs-6 mb-3">Add</h3>
+  <form method="post" asp-action="AddEntityToDB">
+      <input name="Name" type="text" maxlength="50" placeholder="Name">
+      <br>
+      <input name="Category" type="text" maxlength="50" placeholder="Category">
+      <br>
+      <input name="Articul" type="text" maxlength="50" placeholder="Articul">
+      <br>
+      <input name="Price" type="text" maxlength="50" placeholder="Price">
+      <br>
+      <input name="Short_Desc" type="text" maxlength="50" placeholder="Short Descr">
+      <br>
+      <input name="Long_Desc" type="text" maxlength="200" placeholder="Long Descr">
+      <br>
+      <input name="InStock" type="text" maxlength="50" placeholder="InStock">
+      <br>
 
-
-<form method="post" asp-action="AddEntity">
-    <input asp-for="CatalogEntity.Name" type="text" maxlength="50" placeholder="Name"></input>
-    <br>
-    <input asp-for="CatalogEntity.Articul" type="text" maxlength="50" placeholder="Articul"></input>
-    <br>
-    <input asp-for="CatalogEntity.Price" type="text" maxlength="50" placeholder="Price"></input>
-    <br>
-    <input asp-for="CatalogEntity.Short_Desc" type="text" maxlength="50" placeholder="Short Descr"></input>
-    <br>
-    <input asp-for="CatalogEntity.Long_Desc" type="text" maxlength="200" placeholder="Long Descr"></input>
-    <br>
-    <input asp-for="CatalogEntity.InStock" type="text" maxlength="50" placeholder="InStock"></input>
-    <br>
-
-    @{
-        int i = ViewBag.Number;
-        for (int j = 0; j < i; j++)
-        {
-            <input asp-for="CategoryAndValue[j]" type="text" maxlength="50" placeholder="Attribute num @j"><input/>
-             <br>                                                                                          
-        }
-    }
-    <input type="submit"></input>
-</form>
+      @{
+          int i = ViewBag.Number;
+          for (int j = 0; j < i; j++)
+          {
+              <input name="Attributes[@j]" type="text" maxlength="50" placeholder="Attribute  name  @j">
+              <input name="Values[@j]" type="text" maxlength="50" placeholder="Attribute  value @j">
+              <br>                                                                                          
+          }
+      }
+      @{
+          int s = ViewBag.NumImg;
+          for (int j = 0; j < s; j++)
+          {
+              <input type="file" name="Imgs" /><br>
+          }
+      }
+      <input type="submit">
+  </form>
+      <div style="height: 300px">
+      </div>
+  </div>
+</section>   
