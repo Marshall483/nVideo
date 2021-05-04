@@ -1,0 +1,21 @@
+﻿@model AttributeModel
+
+
+<select name="attributes" class="form-select" aria-label="Default select example">
+    <option selected>@Model.Name</option>
+    @foreach (var item in Model.Values)
+    {
+        if (item != null)
+        {
+            @if (item.IntegerValue.HasValue)
+            {
+                <option value="@item.IntegerValue">@item.IntegerValue</option>
+            }
+            else
+            {
+                <option value="@item.StringValue">@item.StringValue</option>
+            }
+        }
+    }
+</select>
+
