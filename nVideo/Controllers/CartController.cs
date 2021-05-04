@@ -3,17 +3,16 @@ using Microsoft.AspNetCore.Mvc;
 using nVideo.DATA;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace nVideo.Controllers
 {
     public class CartController : Controller
     {
         private readonly ShopCart _shopCart;
-        private readonly AppDbContext _context;
-        public CartController(ShopCart shopCart, AppDbContext context)
+        public CartController(ShopCart shopCart)
         {
             _shopCart = shopCart;
-            _context = context;
         }
 
 

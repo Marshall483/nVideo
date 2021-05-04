@@ -21,18 +21,7 @@
         <div class="topNav">
             <div class="container">
                 <div class="alignR">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                        @Context.Request.Cookies["City"]
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        @foreach (var item in LocatorService.GetCities())
-                        {
-                            <form asp-action="City" asp-controller="Home" asp-route-city="@item">
-                                <input type="hidden" asp-for="@item" />
-                                <input type="submit" value="@item" />
-                            </form>
-                        }
-                    </div>
+                   @await Component.InvokeAsync("Cities") 
                     <a asp-action="Index" asp-controller="Home"> <span class="icon-home"></span> Home</a>
                     <a asp-action="Profile" asp-controller="Office"><span class="icon-user"></span> My Account</a>
                     <a asp-action="Register" asp-controller="Account"><span class="icon-edit"></span> Free Register </a>

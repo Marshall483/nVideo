@@ -11,6 +11,7 @@ using nVideo.DATA;
 using nVideo.DATA.ControllerModels;
 using nVideo.DATA.ViewModels;
 using nVideo.Models;
+using System.Collections.Generic;
 
 namespace nVideo.Controllers
 {
@@ -38,6 +39,11 @@ namespace nVideo.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult EntityByFilter(List<AttributeModel> attributes)
+        {
+            return View();
+        }
         [Route("Catalog/CategoryFilter/{category}")]
         public IActionResult CategoryFilter(string category){
             if (!string.IsNullOrEmpty(category)){
