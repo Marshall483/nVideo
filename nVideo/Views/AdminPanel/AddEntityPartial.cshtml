@@ -8,27 +8,27 @@
   <div class="chart-container p-3">
     <h3 class="fs-6 mb-3">Add</h3>
   <form method="post" asp-action="AddEntityToDB" enctype="multipart/form-data">
-      <input name="Name" type="text" maxlength="50" placeholder="Name">
+      <input name="Name" minlength="1" type="text" maxlength="20" placeholder="Name">
       <br>
-      <input name="Category" type="text" maxlength="50" placeholder="Category">
+      <input name="Category" minlength="1"  type="text" maxlength="30" placeholder="Category">
       <br>
-      <input name="Articul" type="text" maxlength="50" placeholder="Articul">
+      <input name="Articul" minlength="1"  type="text" maxlength="20" placeholder="Articul">
       <br>
-      <input name="Price" type="text" maxlength="50" placeholder="Price">
+      <input name="Price" minlength="1"  type="text" maxlength="10" placeholder="Price">
       <br>
-      <input name="Short_Desc" type="text" maxlength="50" placeholder="Short Descr">
+      <input name="Short_Desc" minlength="1"  type="text" maxlength="50" placeholder="Short Descr">
       <br>
-      <input name="Long_Desc" type="text" maxlength="200" placeholder="Long Descr">
+      <input name="Long_Desc" minlength="1"  type="text" maxlength="200" placeholder="Long Descr">
       <br>
-      <input name="InStock" type="text" maxlength="50" placeholder="InStock">
+      <input name="InStock" minlength="1"  type="text" maxlength="8" placeholder="InStock">
       <br>
 
       @{
           int i = ViewBag.Number;
           for (int j = 0; j < i; j++)
           {
-              <input name="Attributes[@j]" type="text" maxlength="50" placeholder="Attribute  name  @j">
-              <input name="Values[@j]" type="text" maxlength="50" placeholder="Attribute  value @j">
+              <input minlength="1" name="Attributes[@j]" type="text" maxlength="20" placeholder="Attribute  name  @j">
+              <input minlength="1"  name="Values[@j]" type="text" maxlength="20" placeholder="Attribute  value @j">
               <br>                                                                                          
           }
       

@@ -101,16 +101,30 @@ namespace nVideo.Controllers
             string Short_Desc, string Long_Desc, string  InStock, List<string> Attributes, 
             List<string> Values, string Category,  IFormFileCollection images)
         {
+
+            if (InStock != null || (Price != null || int.TryParse(Price, out _) || (int.TryParse(InStock, out _))))
+            {
+                return RedirectToAction(Result(2).ToString());
+            }
             var category = _context.Categories
                 .First(a => a.CategoryName == Category);
 
             var ce = new Catalog_Entity();
 
-            
+            Directory.CreateDirectory(_appEnvironment.WebRootPath + "/IMG/" + "Home");
+            Directory.CreateDirectory(_appEnvironment.WebRootPath + "/IMG/" + "Home/" + Name);
+            List<Picture> pictures = new List<Picture>();
                 foreach (var pic in images)
             {
+                if (!AssertThatImage(pic))
+                {
+                    return RedirectToAction(Result((2)).ToString());
+                }
                 string path = "/IMG/"+ "Home"+"/" +Name+"/"+ pic.FileName;
-                
+                Picture picture = new Picture();
+                picture.Patch = path;
+                picture.Entity = ce;
+                pictures.Add(picture);
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
                     await pic.CopyToAsync(fileStream);
@@ -118,7 +132,7 @@ namespace nVideo.Controllers
                 }
             }
 
-            List<Picture> pictures = new List<Picture>();
+            
             
             List<Catalog_Attribute> AttrList = new List<Catalog_Attribute>();
             List<Catalog_Value> ValList = new List<Catalog_Value>();
@@ -153,10 +167,10 @@ namespace nVideo.Controllers
             ce.Images = pictures;
 
             _context.Categories.Update(category);
-            _context.Entities.Add(ce);
-            _context.Pictures.AddRange(pictures);
-            _context.Values.AddRange(ValList);
-            _context.Attributes.AddRange(AttrList);
+            await _context.Entities.AddAsync(ce);
+            await _context.Pictures.AddRangeAsync(pictures);
+            await _context.Values.AddRangeAsync(ValList);
+            await _context.Attributes.AddRangeAsync(AttrList);
             await _context.SaveChangesAsync();
             return View("Index");
         }
@@ -210,6 +224,18 @@ namespace nVideo.Controllers
             return null;
         }
         
+        private bool AssertThatImage(IFormFile file)
+        {
+            var name = file.FileName;
+            var extension = name //Extract extension
+                .Substring(name.LastIndexOf('.'), name.Length - name.LastIndexOf('.')) 
+                .ToLower();
+
+            if (extension == ".png" || extension == ".jpg" || extension == ".jpeg")
+                return 1 != 0;
+
+            return false;
+        }
         
     }
 }

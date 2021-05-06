@@ -350,6 +350,10 @@
                 <e p="1.png" t="Include" />
                 <e p="2.png" t="Include" />
               </e>
+              <e p="test" t="Include">
+                <e p="1.png" t="Include" />
+                <e p="2.png" t="Include" />
+              </e>
               <e p="VacuumCL" t="Include">
                 <e p="1.png" t="Include" />
                 <e p="2.png" t="Include" />
