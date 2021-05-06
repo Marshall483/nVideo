@@ -1,4 +1,4 @@
-﻿@model AdminPanelModel;
+﻿
 @{
     Layout = "AdminPanelLayout";
 }
@@ -7,7 +7,7 @@
 <section class="charts mt-4">
   <div class="chart-container p-3">
     <h3 class="fs-6 mb-3">Add</h3>
-  <form method="post" asp-action="AddEntityToDB">
+  <form method="post" asp-action="AddEntityToDB" enctype="multipart/form-data">
       <input name="Name" type="text" maxlength="50" placeholder="Name">
       <br>
       <input name="Category" type="text" maxlength="50" placeholder="Category">
@@ -31,17 +31,16 @@
               <input name="Values[@j]" type="text" maxlength="50" placeholder="Attribute  value @j">
               <br>                                                                                          
           }
-      }
-      @{
+      
           int s = ViewBag.NumImg;
           for (int j = 0; j < s; j++)
           {
-              <input type="file" name="Imgs" /><br>
+              <input name="images" type="file"  /><br>
           }
       }
       <input type="submit">
   </form>
-      <div style="height: 300px">
+      <div style="height: 300px"> 
       </div>
   </div>
 </section>   

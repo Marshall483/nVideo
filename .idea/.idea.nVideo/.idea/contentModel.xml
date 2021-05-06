@@ -11,6 +11,8 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Components" t="Include">
+          <e p="AttributeViewComponent.cs" t="Include" />
+          <e p="CitiesViewComponent.cs" t="Include" />
           <e p="Login.cs" t="Include" />
         </e>
         <e p="Controllers" t="Include">
@@ -40,7 +42,6 @@
             <e p="IAllCatalog.cs" t="Include" />
             <e p="IEmailSender.cs" t="Include" />
           </e>
-          <e p="Locator" t="Include" />
           <e p="Repository" t="Include">
             <e p="CatalogRepository.cs" t="Include" />
           </e>
@@ -70,16 +71,21 @@
           <e p="20210412085415_Orders.Designer.cs" t="Include" />
           <e p="20210419151113_AddRaitingCol.cs" t="Include" />
           <e p="20210419151113_AddRaitingCol.Designer.cs" t="Include" />
+          <e p="20210425215430_CityTable.cs" t="Include" />
+          <e p="20210425215430_CityTable.Designer.cs" t="Include" />
           <e p="20210428084616_Avatar.cs" t="Include" />
           <e p="20210428084616_Avatar.Designer.cs" t="Include" />
           <e p="AppDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
+          <e p="AttributeModel.cs" t="Include" />
           <e p="Catalog_Attribute.cs" t="Include" />
           <e p="Catalog_Category.cs" t="Include" />
           <e p="Catalog_Entity.cs" t="Include" />
           <e p="Catalog_Order.cs" t="Include" />
           <e p="Catalog_Value.cs" t="Include" />
+          <e p="CitiesViewModel.cs" t="Include" />
+          <e p="City.cs" t="Include" />
           <e p="Comment.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
           <e p="Picture.cs" t="Include" />
@@ -148,6 +154,12 @@
             <e p="CommentsPartial.cshtml" t="Include" />
             <e p="Components" t="Include">
               <e p="AddEntityPartial.cshtml" t="Include" />
+              <e p="Attribute" t="Include">
+                <e p="Default.cshtml" t="Include" />
+              </e>
+              <e p="Cities" t="Include">
+                <e p="Default.cshtml" t="Include" />
+              </e>
               <e p="Login" t="Include">
                 <e p="LoginForm.cshtml" t="Include" />
               </e>
@@ -155,6 +167,7 @@
             <e p="EditProfileModalPartial.cshtml" t="Include" />
             <e p="Error.cshtml" t="Include" />
             <e p="FeaturedPartial.cshtml" t="Include" />
+            <e p="FilterPartial.cshtml" t="Include" />
             <e p="HomeCarouselPartial.cshtml" t="Include" />
             <e p="ItemCarouselPartial.cshtml" t="Include" />
             <e p="ListCatalogPartial.cshtml" t="Include" />

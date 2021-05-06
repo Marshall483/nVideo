@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using nVideo.DATA;
 using nVideo.DATA.ControllerModels;
+using nVideo.DATA.Interfaces;
 using nVideo.DATA.Services;
 using nVideo.Models;
 
@@ -29,14 +30,16 @@ namespace nVideo.Controllers
         private readonly ILogger<AccountController> _logger;
         private readonly AppDbContext _context;
         IWebHostEnvironment _appEnvironment;
+        private readonly IAllCatalog _catalog;
 
-        public AdminPanelController(UserManager<User> userManager, EmailSenderService sender, ILogger<AccountController> logger, AppDbContext context,IWebHostEnvironment appEnvironment)
+        public AdminPanelController(UserManager<User> userManager, EmailSenderService sender, ILogger<AccountController> logger, AppDbContext context,IWebHostEnvironment appEnvironment, IAllCatalog catalog)
         {
             _userManager = userManager;
             _sender = sender;
             _logger = logger;
             _context = context;
             _appEnvironment = appEnvironment;
+            _catalog = catalog;
         }
         // GET
         public async Task<IActionResult> Index()
@@ -91,23 +94,27 @@ namespace nVideo.Controllers
             return View();
         }
         
+        
+        
         [HttpPost]
         public async Task<IActionResult> AddEntityToDB(string Name,string Articul, string Price,
             string Short_Desc, string Long_Desc, string  InStock, List<string> Attributes, 
-            List<string> Values, string Category, IFormFileCollection Imgs)
+            List<string> Values, string Category,  IFormFileCollection images)
         {
             var category = _context.Categories
                 .First(a => a.CategoryName == Category);
 
             var ce = new Catalog_Entity();
 
-
-            foreach (var pic in Imgs)
+            
+                foreach (var pic in images)
             {
-                string path = "/wwwroot/Img/"+ "Home"+"/" +Name+"/"+ pic.FileName;
+                string path = "/IMG/"+ "Home"+"/" +Name+"/"+ pic.FileName;
+                
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
                     await pic.CopyToAsync(fileStream);
+                    
                 }
             }
 
@@ -150,8 +157,8 @@ namespace nVideo.Controllers
             _context.Pictures.AddRange(pictures);
             _context.Values.AddRange(ValList);
             _context.Attributes.AddRange(AttrList);
-            _context.SaveChangesAsync();
-            return Result(0);
+            await _context.SaveChangesAsync();
+            return View("Index");
         }
 
         public IActionResult Result(int exepNum)
@@ -179,14 +186,10 @@ namespace nVideo.Controllers
             return View();
         }
 
-        private async Task<bool>AddAttributeAndValueInDB(Catalog_Entity catalogEntity)
-        {
-            
-            return true;
-        }
+       
 
         [HttpPost]
-        public ActionResult AddEntityPartial(string Number, string Imgs)
+        public IActionResult AddEntityPartial(string Number, string Imgs)
         {
             if (( Int32.Parse(Number)< 1)||( Int32.Parse(Imgs)<1) || ( Int32.Parse(Number)>15) || ( Int32.Parse(Imgs) > 5))
             {
@@ -196,7 +199,16 @@ namespace nVideo.Controllers
             ViewBag.NumImg = Int32.Parse(Imgs);
             return View();
         }
-        
+
+        [HttpPost]
+        public IActionResult EditEntity()
+        {
+
+            var ent = _context.Entities
+                .OrderBy(e=> e.Id)
+                .Select(e => e);
+            return null;
+        }
         
         
     }
