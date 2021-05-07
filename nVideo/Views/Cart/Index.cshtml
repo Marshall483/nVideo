@@ -1,26 +1,49 @@
 ﻿@model ShopCartView
 
 <div class="span9">
-    <div class="well well-small">
-        <div class="goods-wrap">
-            @{
-                if (Model.ShopCartItems != null)
-                {
-                    foreach (var shopCartItem in Model.ShopCartItems)
-                    {
-                        @Html.Partial("ListShopCartPartial", shopCartItem.Entity)
-                        <h3>@shopCartItem.Quanity.ToString()</h3>
-                    }
-                    <h3>
-                        Товара в корзине на сумму @Model.TotalValue
-                    </h3>
-                }
-                else
-                {
-                    @:В корзине пока ничего нет
-                }
+  <div class="well well-small">
+    <h1>Check Out </h1>
+    <hr class="soften" />
+    <div class="goods-wrap">
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Unit price</th>
+            <th>Qty </th>
+            <th>Items</th>
+          </tr>
+        </thead>
+        <tbody>
+          @{
+            if (Model.ShopCartItems != null)
+            {
+              foreach (var shopCartItem in Model.ShopCartItems)
+              {
+                <tr>
+                  @Html.Partial("ListShopCartPartial", shopCartItem.Entity)
+                  <td>
+                    <h3><small> @shopCartItem.Quanity.ToString() </small></h3>
+                  </td>
+                </tr>
+              }
             }
-
-        </div>
+            else
+            {
+              @: Cart is empty
+            }
+          }
+        </tbody>
+      </table>
+      <hr class="soften" />
+      <h3>Total products: @Model.TotalValue</h3>
+      @{
+        if (Model.ShopCartItems != null)
+        {
+          <a class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
+        }
+      }
     </div>
+  </div>
 </div>
