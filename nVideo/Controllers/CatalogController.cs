@@ -12,6 +12,9 @@ using nVideo.DATA.ControllerModels;
 using nVideo.DATA.ViewModels;
 using nVideo.Models;
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace nVideo.Controllers
 {
@@ -40,10 +43,65 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
-        public IActionResult EntityByFilter(List<AttributeModel> attributes)
+        public IActionResult EntityByFilter(Dictionary<string, string> attributes)
         {
-            return View();
+
+            var attr = _dbContext.Attributes.Include(x => x.Value).ToList();
+
+            var attrResult = new List<Catalog_Attribute>();
+            var count = 0;
+            foreach (var pair in attributes)
+            {
+                if (pair.Value != null)
+                {
+                    count++;
+                    var temp = attr
+                        .Where(a => a.AttributeName.Equals(pair.Key))
+                        .Where(a =>
+                        {
+                            var flag = false;
+                            if (a.Value.IntegerValue.HasValue)
+                            {
+                                if (int.TryParse(pair.Value, out int result))
+                                    if (a.Value.IntegerValue.Value == result)
+                                        flag = true;
+                            }
+                            if (!string.IsNullOrEmpty(a.Value.StringValue))
+                            {
+                                if (a.Value.StringValue.Equals(pair.Value))
+                                    flag = true;
+                            }
+                            return flag;
+                        })
+                        .ToList();
+                    attrResult.AddRange(temp);
+                }
+            }
+            var dict = new Dictionary<int, int>();
+            foreach (var item in attrResult)
+            {
+                if (!dict.ContainsKey(item.EntityId.Value))
+                    dict.Add(item.EntityId.Value, 1);
+                else
+                    dict[item.EntityId.Value] += 1;
+            }
+            var dictresult = dict.Where(x => x.Value == count);
+            var result = new List<Catalog_Entity>();
+            foreach (var pair in dictresult)
+            {
+                result.AddRange(_dbContext.Entities.Where(x => x.Id == pair.Key).Include(i => i.Images)
+                .Include(a => a.Attributes)
+                .ThenInclude(v => v.Value).ToList());
+            }
+            var model = new CatalogViewModel
+            {
+                Entities = result
+            };
+
+            return View("List", model);
         }
+
+
         [Route("Catalog/CategoryFilter/{category}")]
         public IActionResult CategoryFilter(string category){
             if (!string.IsNullOrEmpty(category)){

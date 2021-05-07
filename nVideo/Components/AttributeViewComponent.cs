@@ -19,7 +19,7 @@ namespace nVideo.Components
         }
         public async Task<IViewComponentResult> InvokeAsync(Catalog_Entity entity)
         {
-            var category = entity.Category?.CategoryName;
+            var category = _context.Categories.FirstOrDefault(x => x.Entities.Any(x => x.Id == entity.Id)).CategoryName;
             var attributesDict = new Dictionary<string, List<Catalog_Value>>();
             List<Catalog_Attribute> attributes = new List<Catalog_Attribute>();
             if (string.IsNullOrEmpty(category))
