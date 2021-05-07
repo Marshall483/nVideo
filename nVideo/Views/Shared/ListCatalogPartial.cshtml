@@ -13,7 +13,7 @@
         </p>
     </div>
     <div class="span4 alignR">
-        <form class="form-horizontal qtyFrm">
+        <form class="form-horizontal qtyFrm" asp-controller="Cart" asp-action="AddToCart">
             <h3>
                 @{
                     for (int i = 0; i < Model.Raiting; i++)
@@ -27,10 +27,11 @@
             <label class="checkbox">
                 <input type="checkbox">  Adds product to compair
             </label><br>
-            <div class="btn-group">
-                <a asp-controller="Cart" asp-action="AddtoCart" asp-route-id="@Model.Id" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-                <a asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" class="shopBtn">VIEW</a>
-            </div>
+                    <div class="btn-group">
+                        <input type="hidden" asp-for="@Model.Id" />
+                        <input type="submit" value="Add to cart" class="defaultBtn" /> <span class=" icon-shopping-cart"></span>
+                        <a asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" class="shopBtn">VIEW</a>
+                    </div>
         </form>
     </div>
   </div>
