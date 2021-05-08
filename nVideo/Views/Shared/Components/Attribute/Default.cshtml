@@ -3,7 +3,8 @@
 <form method="get" asp-controller="Catalog" asp-action="EntityByFilter">
     @foreach (var pair in Model)
     {
-        @await Html.PartialAsync("FilterPartial", new AttributeModel(pair.Key, pair.Value))
+        @pair.Key
+        @await Html.PartialAsync("FilterPartial", new AttributeView(pair.Key, pair.Value))
     }
     <input type="submit" value="Search" class="btn">
 </form>

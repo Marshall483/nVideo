@@ -47,7 +47,7 @@ namespace nVideo.Models
             if (cartInfo == null)
                 return null;
             var list = new List<ShopCartItem>();
-            var dict = cartInfo.Split().GroupBy(x => x)
+            var dict = cartInfo.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(x => int.Parse(x)).GroupBy(x => x)
                 .Where(x => x.Any())
                 .ToDictionary(x=> x.Key, x=> x.Count());
             foreach (var item in dict)
@@ -55,7 +55,7 @@ namespace nVideo.Models
                 list.Add(new ShopCartItem
                 {
                     UserName = userInfo,
-                    Entity = context.Entities.Include(x => x.Images).FirstOrDefault(x => x.Id == int.Parse(item.Key)),
+                    Entity = context.Entities.Include(x => x.Images).FirstOrDefault(x => x.Id == item.Key),
                     Quanity = (uint)item.Value
                 });
             }
@@ -129,12 +129,16 @@ namespace nVideo.Models
 
         private void AddToCartAnon(int id)
         {
-            var cartInfo = _httpContext.Request.Cookies["CartId"];
+            var cartInfo = _httpContext.Request.Cookies["CartId"]?.Split().ToList();
             if (cartInfo == null)
-                cartInfo += $"{id}";
-            else
-                cartInfo += $" {id}";
-            _httpContext.Response.Cookies.Append("CartId", cartInfo);
+                cartInfo = new List<string>();
+            cartInfo.Add(id.ToString());
+            var output = string.Empty;
+            foreach (var item in cartInfo)
+            {
+                output += item + " ";
+            }
+            _httpContext.Response.Cookies.Append("CartId", output);
         }
 
         public void RevomeFromCart(int id)
@@ -169,13 +173,18 @@ namespace nVideo.Models
 
         private void RemoveFromCartAnon(int id)
         {
-            var cartInfo = _httpContext.Request.Cookies["CartId"];
-            if (cartInfo.Length == 1)
+            var cartInfo = _httpContext.Request.Cookies["CartId"].Split().ToList();
+            if (cartInfo.Count() == 1)
                 _httpContext.Response.Cookies.Delete("CartId");
             else
             {
-                cartInfo = cartInfo.Replace($" {id}", string.Empty);
-                _httpContext.Response.Cookies.Append("CartId", cartInfo);
+                cartInfo.Remove(id.ToString());
+                var output = string.Empty;
+                foreach (var item in cartInfo)
+                {
+                    output += item + " ";
+                }
+                _httpContext.Response.Cookies.Append("CartId", output);
             }
         }
 

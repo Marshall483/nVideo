@@ -1,8 +1,8 @@
-﻿@model AttributeModel
+﻿@model AttributeView
 
 
-<select name="attributes" class="form-select" aria-label="Default select example">
-    <option selected>@Model.Name</option>
+<select name="attributes[@Model.Name]" class="form-select" aria-label="Default select example">
+    <option selected>@string.Empty</option>
     @foreach (var item in Model.Values)
     {
         if (item != null)
