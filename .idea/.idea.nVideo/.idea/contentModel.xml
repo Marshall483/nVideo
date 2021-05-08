@@ -78,7 +78,7 @@
           <e p="AppDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
-          <e p="AttributeModel.cs" t="Include" />
+          <e p="AttributeView.cs" t="Include" />
           <e p="Catalog_Attribute.cs" t="Include" />
           <e p="Catalog_Category.cs" t="Include" />
           <e p="Catalog_Entity.cs" t="Include" />
@@ -129,6 +129,7 @@
             <e p="Result.cshtml" t="Include" />
           </e>
           <e p="Cart" t="Include">
+            <e p="Checkout.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
           </e>
           <e p="Catalog" t="Include">

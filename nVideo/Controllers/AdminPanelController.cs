@@ -102,10 +102,7 @@ namespace nVideo.Controllers
             List<string> Values, string Category,  IFormFileCollection images)
         {
 
-            if (InStock != null || (Price != null || int.TryParse(Price, out _) || (int.TryParse(InStock, out _))))
-            {
-                return RedirectToAction("Result", new {exepNum =2});
-            }
+            
             var category = _context.Categories
                 .First(a => a.CategoryName == Category);
 
@@ -245,36 +242,56 @@ namespace nVideo.Controllers
              ViewBag.Ent = ent;
              return View();
         }
-
+        
         [HttpPost]
-        public async Task<IActionResult> DeleteById(int Id)
+        public  async Task<IActionResult> DeleteById(int eid)
         {
-           var ent = await _context.Entities.FindAsync(Id);
-           IEnumerable<Catalog_Attribute> att = _context.Attributes
-               .Where(x => x.EntityId == Id);
-          
-           
-           foreach (var attribute in att)
-           {
-               var value = _context.Values
-                   .Where(x => x.Attribute.Id == attribute.Id);
-               _context.Attributes.Remove(attribute);
-               _context.Values.RemoveRange(value);
-               
+            var e = _catalog.GetItemById(eid);
+            var orders =_context.Orders.Select(o => o);
 
-           }
-           IEnumerable<Picture> pics = _context.Pictures
-               .Where(x => x.Entity == ent);
-           foreach (var p in pics)
-           {
-               _context.Pictures.Remove(p);
-               Directory.Delete(_appEnvironment.WebRootPath + p.Patch);
-           }
-           
+            var res = orders 
+                .ToList()
+                .Select(o => o.Items)
+                .Any(en =>
+                    en.Exists(ent =>
+                        ent.Id.Equals(eid)))
+                ? false
+                : await RemoveEntity(e); //You can't delete item, if customer order it.
 
-           _context.Entities.Remove(ent);
-           await _context.SaveChangesAsync();
-           return RedirectToAction("Result", new {exepNum = 0});
+            return Redirect( res ? "Success" : "Fail");
         }
+
+        private async Task<bool> RemoveEntity(Catalog_Entity e)
+        {
+            try
+            {
+                _context.Values
+                    .RemoveRange(e.Attributes.Select(a => a.Value));
+
+                _context.Attributes
+                    .RemoveRange(e.Attributes);
+
+                if (e.Images.Any())
+                {
+                    //Здесь удаление папки с пикчами
+                    _context.Pictures
+                        .RemoveRange(e.Images);
+
+                }
+
+                if (e.Comments.Any())
+                    _context.Comments
+                        .RemoveRange(e.Comments);
+                _context.Entities.Remove(e);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        
     }
 }
