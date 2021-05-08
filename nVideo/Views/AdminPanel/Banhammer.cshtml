@@ -16,17 +16,17 @@
     <h3 class="fs-6 mb-3">Ban/Unban user(Email)</h3>
         <p>Ban</p>
         <form method="post" asp-action="Ban">
-          <input  type="text" maxlength="50" name="BanEmail" ></input>
+          <input required minlength="1" type="text" maxlength="50" name="BanEmail" ></input>
           <input type="submit"></input>
         </form>
         <p>Unban</p>
         <form method="post" asp-action="UnBan">
-          <input type="text" maxlength="50" name="UnbanEmail"></input>
-          <input type="submit"></input>
+          <input required minlength="1" type="text" maxlength="50" name="UnbanEmail"></input>
+          <input  type="submit"></input>
           </form>
         <h3 class="fs-6 mb-3">Make users role Admin(Email)</h3>
             <form method="post" asp-action="AddAdmin">
-              <input type="text" maxlength="50" name="AdminEmail"></input>
+              <input required minlength="1" type="text" maxlength="50" name="AdminEmail"></input>
               <input type="submit"></input>
             </form>
     <div style="height: 300px">

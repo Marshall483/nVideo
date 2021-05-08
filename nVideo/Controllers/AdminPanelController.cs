@@ -59,21 +59,21 @@ namespace nVideo.Controllers
         [HttpPost]
         public async Task<IActionResult> Ban(string BanEmail)
         {
-            if(BanEmail== null) return Result(2);
+            if(BanEmail== null) return RedirectToAction("Result", new {exepNum =2});
             var user = await _userManager.FindByEmailAsync(BanEmail);
-            if (user == null) return Result(1);
+            if (user == null) return RedirectToAction("Result", new {exepNum =1});
             await _userManager.AddToRoleAsync(user, "baned");
             //Indian codding mod: ON
-            return Result(0);
+            return RedirectToAction("Result", new {exepNum =0});
         }
         [HttpPost]
         public async Task<IActionResult> UnBan(string UnbanEmail)
         {
-            if(UnbanEmail== null) return Result(2);
+            if(UnbanEmail== null) return RedirectToAction("Result", new {exepNum =2});
             var user = await _userManager.FindByEmailAsync(UnbanEmail);
-            if (user == null) return Result(1);
+            if (user == null) return RedirectToAction("Result", new {exepNum = 1});
             await _userManager.AddToRoleAsync(user, "user");
-            return Result(0);
+            return RedirectToAction("Result", new {exepNum =0});
         }
         [HttpPost]
         public async Task<IActionResult> AddAdmin(string AdminEmail)
@@ -82,7 +82,7 @@ namespace nVideo.Controllers
             var user = await _userManager.FindByEmailAsync(AdminEmail);
             if (user == null) return Result(1);
             await _userManager.AddToRoleAsync(user, "admin");
-            return Result(0);
+            return RedirectToAction("Result", new {exepNum =0});
         }
 
 
@@ -104,7 +104,7 @@ namespace nVideo.Controllers
 
             if (InStock != null || (Price != null || int.TryParse(Price, out _) || (int.TryParse(InStock, out _))))
             {
-                return RedirectToAction(Result(2).ToString());
+                return RedirectToAction("Result", new {exepNum =2});
             }
             var category = _context.Categories
                 .First(a => a.CategoryName == Category);
@@ -118,7 +118,7 @@ namespace nVideo.Controllers
             {
                 if (!AssertThatImage(pic))
                 {
-                    return RedirectToAction(Result((2)).ToString());
+                    return RedirectToAction("Result", new {exepNum =2});
                 }
                 string path = "/IMG/"+ "Home"+"/" +Name+"/"+ pic.FileName;
                 Picture picture = new Picture();
@@ -172,7 +172,7 @@ namespace nVideo.Controllers
             await _context.Values.AddRangeAsync(ValList);
             await _context.Attributes.AddRangeAsync(AttrList);
             await _context.SaveChangesAsync();
-            return View("Index");
+            return RedirectToAction("Result", new {exepNum = 0});
         }
 
         public IActionResult Result(int exepNum)
@@ -207,21 +207,22 @@ namespace nVideo.Controllers
         {
             if (( Int32.Parse(Number)< 1)||( Int32.Parse(Imgs)<1) || ( Int32.Parse(Number)>15) || ( Int32.Parse(Imgs) > 5))
             {
-                return (ActionResult) Result(3);
+                return RedirectToAction("Result", new {exepNum =3});
             }
             ViewBag.Number = Int32.Parse(Number);
             ViewBag.NumImg = Int32.Parse(Imgs);
             return View();
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult EditEntity()
         {
 
-            var ent = _context.Entities
+           IEnumerable<Catalog_Entity> ent = _context.Entities
                 .OrderBy(e=> e.Id)
                 .Select(e => e);
-            return null;
+           ViewBag.Entities = ent;
+            return View();
         }
         
         private bool AssertThatImage(IFormFile file)
@@ -236,6 +237,44 @@ namespace nVideo.Controllers
 
             return false;
         }
-        
+
+        [HttpGet]
+        public  async Task<IActionResult> DeleteEntities(int Id)
+        {
+             Catalog_Entity ent =  await _context.Entities.FindAsync(Id);
+             ViewBag.Ent = ent;
+             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteById(int Id)
+        {
+           var ent = await _context.Entities.FindAsync(Id);
+           IEnumerable<Catalog_Attribute> att = _context.Attributes
+               .Where(x => x.EntityId == Id);
+          
+           
+           foreach (var attribute in att)
+           {
+               var value = _context.Values
+                   .Where(x => x.Attribute.Id == attribute.Id);
+               _context.Attributes.Remove(attribute);
+               _context.Values.RemoveRange(value);
+               
+
+           }
+           IEnumerable<Picture> pics = _context.Pictures
+               .Where(x => x.Entity == ent);
+           foreach (var p in pics)
+           {
+               _context.Pictures.Remove(p);
+               Directory.Delete(_appEnvironment.WebRootPath + p.Patch);
+           }
+           
+
+           _context.Entities.Remove(ent);
+           await _context.SaveChangesAsync();
+           return RedirectToAction("Result", new {exepNum = 0});
+        }
     }
 }

@@ -8,34 +8,34 @@
   <div class="chart-container p-3">
     <h3 class="fs-6 mb-3">Add</h3>
   <form method="post" asp-action="AddEntityToDB" enctype="multipart/form-data">
-      <input name="Name" minlength="1" type="text" maxlength="20" placeholder="Name">
+      <input required name="Name" minlength="1" type="text" maxlength="20" placeholder="Name">
       <br>
-      <input name="Category" minlength="1"  type="text" maxlength="30" placeholder="Category">
+      <input  required name="Category" minlength="1"  type="text" maxlength="30" placeholder="Category">
       <br>
-      <input name="Articul" minlength="1"  type="text" maxlength="20" placeholder="Articul">
+      <input required name="Articul" minlength="1"  type="text" maxlength="20" placeholder="Articul">
       <br>
-      <input name="Price" minlength="1"  type="text" maxlength="10" placeholder="Price">
+      <input required name="Price" minlength="1"  type="text" maxlength="10" placeholder="Price">
       <br>
-      <input name="Short_Desc" minlength="1"  type="text" maxlength="50" placeholder="Short Descr">
+      <input required name="Short_Desc" minlength="1"  type="text" maxlength="50" placeholder="Short Descr">
       <br>
-      <input name="Long_Desc" minlength="1"  type="text" maxlength="200" placeholder="Long Descr">
+      <input required name="Long_Desc" minlength="1"  type="text" maxlength="200" placeholder="Long Descr">
       <br>
-      <input name="InStock" minlength="1"  type="text" maxlength="8" placeholder="InStock">
+      <input required name="InStock" minlength="1"  type="text" maxlength="8" placeholder="InStock">
       <br>
 
       @{
           int i = ViewBag.Number;
           for (int j = 0; j < i; j++)
           {
-              <input minlength="1" name="Attributes[@j]" type="text" maxlength="20" placeholder="Attribute  name  @j">
-              <input minlength="1"  name="Values[@j]" type="text" maxlength="20" placeholder="Attribute  value @j">
+              <input required minlength="1" name="Attributes[@j]" type="text" maxlength="20" placeholder="Attribute  name  @j">
+              <input required minlength="1"  name="Values[@j]" type="text" maxlength="20" placeholder="Attribute  value @j">
               <br>                                                                                          
           }
       
           int s = ViewBag.NumImg;
           for (int j = 0; j < s; j++)
           {
-              <input name="images" type="file"  /><br>
+              <input required name="images" type="file"  /><br>
           }
       }
       <input type="submit">

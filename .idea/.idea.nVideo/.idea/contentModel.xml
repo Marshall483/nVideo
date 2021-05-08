@@ -123,6 +123,8 @@
             <e p="AddEntity.cshtml" t="Include" />
             <e p="AddEntityPartial.cshtml" t="Include" />
             <e p="Banhammer.cshtml" t="Include" />
+            <e p="DeleteEntities.cshtml" t="Include" />
+            <e p="EditEntity.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
             <e p="Result.cshtml" t="Include" />
           </e>
