@@ -210,9 +210,6 @@
                 <e p="font-awesome.scss" t="Include" />
               </e>
             </e>
-            <e p="ico" t="Include">
-              <e p="favicon.ico" t="Include" />
-            </e>
             <e p="IMG" t="Include">
               <e p="1.png" t="Include" />
               <e p="2.png" t="Include" />
@@ -220,47 +217,20 @@
               <e p="4.png" t="Include" />
               <e p="5.png" t="Include" />
               <e p="6.png" t="Include" />
-              <e p="a.jpg" t="Include" />
               <e p="ax.png" t="Include" />
-              <e p="b.jpg" t="Include" />
-              <e p="bootstrap-ecommerce-templates.PNG" t="Include" />
-              <e p="bootstrap-ring.png" t="Include" />
-              <e p="bootstrap-template.png" t="Include" />
-              <e p="bootstrap-templates.png" t="Include" />
-              <e p="bootstrap_free-ecommerce.png" t="Include" />
-              <e p="bootstrappage_shop.png" t="Include" />
-              <e p="c.jpg" t="Include" />
-              <e p="carousel1.png" t="Include" />
-              <e p="carousel3.png" t="Include" />
-              <e p="d.jpg" t="Include" />
               <e p="disc.png" t="Include" />
-              <e p="e.jpg" t="Include" />
-              <e p="f.jpg" t="Include" />
-              <e p="g.jpg" t="Include" />
-              <e p="h.jpg" t="Include" />
-              <e p="i.jpg" t="Include" />
-              <e p="j.jpg" t="Include" />
               <e p="logo-bootstrap-shoping-cart.png" t="Include" />
               <e p="maestro.png" t="Include" />
               <e p="mc.png" t="Include" />
               <e p="new.png" t="Include" />
               <e p="paypal.jpg" t="Include" />
               <e p="pp.png" t="Include" />
-              <e p="s.png" t="Include" />
-              <e p="shop-cart.PNG" t="Include" />
-              <e p="shopping-cart-template.PNG" t="Include" />
               <e p="visa.png" t="Include" />
               <e p="white_leather.png" t="Include" />
             </e>
-            <e p="jquery-ui-1-11-0.js" t="Include" />
-            <e p="jQuery-v1.12.4.js" t="Include" />
             <e p="JS" t="Include">
               <e p="bootstrap.js" t="Include" />
               <e p="bootstrap.min.js" t="Include" />
-              <e p="jquery.easing-1.3.min.js" t="Include" />
-              <e p="jquery.js" t="Include" />
-              <e p="jquery.scrollTo-1.4.3.1-min.js" t="Include" />
-              <e p="shop.js" t="Include" />
             </e>
           </e>
           <e p="CSS" t="Include">
