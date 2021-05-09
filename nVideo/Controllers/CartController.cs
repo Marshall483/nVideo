@@ -46,5 +46,10 @@ namespace nVideo.Controllers
 
             return RedirectToAction("Index", "Cart");
         }
+
+        public IActionResult Checkout() => 
+            View(new ShopCartView(_shopCart.GetShopItems(),
+                _shopCart.GetShopItems().Sum(i => i.Entity.Price)));
+        
     }
 }

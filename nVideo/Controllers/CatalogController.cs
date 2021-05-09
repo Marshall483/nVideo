@@ -100,8 +100,7 @@ namespace nVideo.Controllers
 
             return View("List", model);
         }
-
-
+        
         [Route("Catalog/CategoryFilter/{category}")]
         public IActionResult CategoryFilter(string category){
             if (!string.IsNullOrEmpty(category)){
