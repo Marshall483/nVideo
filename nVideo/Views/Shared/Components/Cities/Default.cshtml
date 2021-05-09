@@ -1,0 +1,14 @@
+﻿@model CitiesViewModel
+
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+    @Model.City
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    @foreach (var item in Model.Cities)
+    {
+        <form asp-action="City" asp-controller="Home" asp-route-city="@item.Name">
+            <input type="hidden" asp-for="@item.Name" />
+            <input type="submit" value="@item.Name" />
+        </form>
+    }
+</div>

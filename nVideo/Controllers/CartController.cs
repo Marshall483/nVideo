@@ -3,17 +3,16 @@ using Microsoft.AspNetCore.Mvc;
 using nVideo.DATA;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace nVideo.Controllers
 {
     public class CartController : Controller
     {
         private readonly ShopCart _shopCart;
-        private readonly AppDbContext _context;
-        public CartController(ShopCart shopCart, AppDbContext context)
+        public CartController(ShopCart shopCart)
         {
             _shopCart = shopCart;
-            _context = context;
         }
 
         [HttpGet]
@@ -47,5 +46,10 @@ namespace nVideo.Controllers
 
             return RedirectToAction("Index", "Cart");
         }
+
+        public IActionResult Checkout() => 
+            View(new ShopCartView(_shopCart.GetShopItems(),
+                _shopCart.GetShopItems().Sum(i => i.Entity.Price)));
+        
     }
 }

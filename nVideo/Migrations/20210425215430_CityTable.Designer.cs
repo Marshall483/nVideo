@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using nVideo.DATA;
@@ -9,9 +10,10 @@ using nVideo.DATA;
 namespace nVideo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210425215430_CityTable")]
+    partial class CityTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -304,9 +306,6 @@ namespace nVideo.Migrations
                     b.Property<int?>("EntityId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Raiting")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("UserId")
                         .HasColumnType("integer");
 
@@ -446,9 +445,6 @@ namespace nVideo.Migrations
 
                     b.Property<string>("AspNetUsers")
                         .HasColumnType("text");
-
-                    b.Property<byte[]>("Avatar")
-                        .HasColumnType("bytea");
 
                     b.Property<string>("City")
                         .HasColumnType("character varying(20)")

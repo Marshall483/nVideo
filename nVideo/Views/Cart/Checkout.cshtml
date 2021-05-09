@@ -1,0 +1,28 @@
+﻿@model ShopCartView
+
+  <div class="span8 well well-small">
+    <table class="table table-bordered">
+      <tbody>
+        <tr><td>Confirmation of an order:</td></tr>
+        <tr>
+          <td>
+            <div class="control-group">
+              <label class="span2 control-label">Pick-up from: Moscow sity, Leningradskaya 29  </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="control-group">
+              <label class="span2 control-label">To pay: @Model.TotalValue </label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="shopBtn">Checkout</button>
+      </div>
+    </div>
+  </div>
