@@ -126,7 +126,7 @@ namespace nVideo.Controllers
                 aboutVM.Entity = entity;
                 aboutVM.Related_Products = _catalog.GetCategoryMembers(entity.Category.CategoryName);
                 aboutVM.SelectRating = new SelectList(new [] {1,2,3,4,5});
-                
+
                 return View(aboutVM);
             }
             throw new ArgumentNullException("Missing parameter: int id");
@@ -151,7 +151,6 @@ namespace nVideo.Controllers
 
                 var entity = _catalog.GetItemById(entityId);
                 entity.Raiting = UpdateRating(entity, Convert.ToByte(rating));
-                
                 
                 var comment = new Comment()
                 {

@@ -2,7 +2,7 @@
 
 <div class="span9">
   <div class="well well-small">
-    <h1>Check Out </h1>
+    <h1>Checkout </h1>
     <hr class="soften" />
     <div class="goods-wrap">
       <table class="table table-bordered table-condensed">
@@ -24,7 +24,7 @@
                 <tr>
                   @Html.Partial("ListShopCartPartial", shopCartItem.Entity)
                   <td>
-                    <h3><small> @shopCartItem.Quanity.ToString() </small></h3>
+                    <h3><small>$ @(shopCartItem.Quanity / 74) </small></h3>
                   </td>
                 </tr>
               }
@@ -37,7 +37,7 @@
         </tbody>
       </table>
       <hr class="soften" />
-      <h3>Total products: @Model.TotalValue</h3>
+      <h3>Total products:$ @(Model.TotalValue / 74)</h3>
       @{
         if (Model.ShopCartItems != null)
         {

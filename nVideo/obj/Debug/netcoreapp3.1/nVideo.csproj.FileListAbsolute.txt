@@ -66,9 +66,7 @@
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/nVideo.TagHelpers.input.cache
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/nVideo.TagHelpers.output.cache
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/nVideo.RazorCoreGenerate.cache
-/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Account/PersonalPage.cshtml.g.cs
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Account/Register.cshtml.g.cs
-/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Account/Registration.cshtml.g.cs
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Cart/Checkout.cshtml.g.cs
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Cart/Index.cshtml.g.cs
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Catalog/About.cshtml.g.cs
@@ -109,3 +107,7 @@
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/nVideo.dll
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/nVideo.pdb
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/nVideo.genruntimeconfig.cache
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Order/Courier Delivery.cshtml.g.cs
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Order/Self Delivery.cshtml.g.cs
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/AuthCourierDeliveryPartial.cshtml.g.cs
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/CourierDeliveryPartial.cshtml.g.cs
