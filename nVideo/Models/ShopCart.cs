@@ -24,6 +24,7 @@ namespace nVideo.Models
             var context = service.GetService<AppDbContext>();           
             var userName = httpContext.User.Identity.Name;
             var cartInfo = httpContext.Request.Cookies["CartId"];
+            
             if (cartInfo != null)
             {
                 if (userName != null)
@@ -120,7 +121,10 @@ namespace nVideo.Models
         {
             var entity = _context.Entities.Find(id);
 
-            var item = _context.ShopCartItems.FirstOrDefault(x => x.Entity == entity && x.UserName == _httpContext.User.Identity.Name);
+            var item = _context
+                .ShopCartItems
+                .FirstOrDefault(x => x.Entity == entity && x.UserName == _httpContext.User.Identity.Name);
+            
             if (item != null)
             {
                 item.Quanity += 1;
