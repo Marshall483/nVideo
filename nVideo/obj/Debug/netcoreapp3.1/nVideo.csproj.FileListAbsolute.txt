@@ -441,3 +441,4 @@ C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\F
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\AdminPanel\EditEntity.cshtml.g.cs
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\AdminPanel\DeleteEntities.cshtml.g.cs
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Checkout.cshtml.g.cs
+C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\AdminPanel\EditProduct.cshtml.g.cs

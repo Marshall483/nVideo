@@ -101,23 +101,27 @@ namespace nVideo.Controllers
             string Short_Desc, string Long_Desc, string  InStock, List<string> Attributes, 
             List<string> Values, string Category,  IFormFileCollection images)
         {
-
-            
+            string NormalCategory = ChangeLangCategory(Category);
+            if (NormalCategory == null) return RedirectToAction("Result", new {exepNum = 2});
             var category = _context.Categories
-                .First(a => a.CategoryName == Category);
+                .First(a => a.CategoryName == NormalCategory);
 
             var ce = new Catalog_Entity();
 
-            Directory.CreateDirectory(_appEnvironment.WebRootPath + "/IMG/" + "Home");
-            Directory.CreateDirectory(_appEnvironment.WebRootPath + "/IMG/" + "Home/" + Name);
+            Directory.CreateDirectory(_appEnvironment.WebRootPath + "/IMG/" + Category);
+            Directory.CreateDirectory(_appEnvironment.WebRootPath + "/IMG/" + Category+"/" + Name);
             List<Picture> pictures = new List<Picture>();
+            
+            
                 foreach (var pic in images)
             {
                 if (!AssertThatImage(pic))
                 {
                     return RedirectToAction("Result", new {exepNum =2});
                 }
-                string path = "/IMG/"+ "Home"+"/" +Name+"/"+ pic.FileName;
+
+                
+                string path =("/IMG/" + Category +"/" +Name+"/"+ pic.FileName);
                 Picture picture = new Picture();
                 picture.Patch = path;
                 picture.Entity = ce;
@@ -170,6 +174,45 @@ namespace nVideo.Controllers
             await _context.Attributes.AddRangeAsync(AttrList);
             await _context.SaveChangesAsync();
             return RedirectToAction("Result", new {exepNum = 0});
+        }
+
+        private string ChangeLangCategory(string Category)
+        {
+            switch (Category)
+            { 
+                case "Phones&Gadgets":
+                    return "Телефоны и гаджеты ";
+                    break;
+                case "TV&Audio":
+                    return "Телевизоры и аудио";
+                    break;
+                case "Nodebook&Desck":
+                    return "Ноутбуки и компьютеры";
+                    break;
+                case "Kitchen":
+                    return "Техника для кухни";
+                    break;
+                case "Home":
+                    return "Техника для дома";
+                    break;
+                case "Games&Soft":
+                    return "Игры и софт, равлеченияs";
+                    break;
+                case "Beauty&Health":
+                    return "Красота и здоровье";
+                    break;
+                case "Photo&Video":
+                    return "Фото и видео";
+                    break;
+                case "Auto":
+                    return "Авто электроника";
+                    break;
+                case "Accessories":
+                    return "Аксессуары";
+                    break;
+                default:
+                    return null;
+            }
         }
 
         public IActionResult Result(int exepNum)
@@ -292,6 +335,43 @@ namespace nVideo.Controllers
 
             return true;
         }
-        
+
+        [HttpGet]
+        public IActionResult EditProduct(int Id)
+        {
+            var e = _catalog.GetItemById(Id);
+            var a = _context.Attributes
+                .Where(x => x.EntityId == e.Id);
+            ViewBag.Ent = e;
+            ViewBag.Att = a;
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult EditShortDesc(int Id, string Descr)
+        {
+            var e = _catalog.GetItemById(Id);
+            e.Short_Desc = Descr;
+            _context.SaveChanges();
+            return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
+        }
+        public IActionResult EditLongDesc(int Id, string Descr)
+        {
+            var e = _catalog.GetItemById(Id);
+            e.Long_Desc = Descr;
+            _context.SaveChanges();
+            return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
+        }
+        public IActionResult EditPrice(int Id, string Price)
+        {
+            if (!int.TryParse(Price, out _)) {return RedirectToAction("Result", new {exepNum =3});}
+            var e = _catalog.GetItemById(Id);
+            e.Price = uint.Parse(Price);
+            _context.SaveChanges();
+            return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
+        }
     }
+    
+    
 }
