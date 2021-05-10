@@ -3,18 +3,18 @@
 
   <td><img src="@Model.Images.First().Patch" alt=""></td>
   <td><h5>@Model.Name</h5><br> @String.Concat(Model.Long_Desc.Take(150).Append('.').Append('.').Append('.').ToArray())<br></td>
-  <td>@Model.Price.ToString("# руб")</td>
-  <td>
-    <a asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" class="shopBtn">VIEW</a>
-    <br>
-    <div class="input-append">
-      <form asp-controller="Cart" asp-action="AddToCart">
-        <input type="hidden" asp-for="@Model.Id" />
-        <input type="submit" value="Add to cart" class="defaultBtn" />
-      </form>
-      <form asp-controller="Cart" asp-action="RemoveFromCart">
-        <input type="hidden" asp-for="@Model.Id" />
-        <input type="submit" value="Remove from cart" class="defaultBtn" />
-      </form>
-    </div>
-  </td>
+  <td>$ @(Model.Price / 74)</td>
+<td>
+  <a asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" class="shopBtn">VIEW</a>
+  <br>
+  <div class="input-append">
+    <form asp-controller="Cart" asp-action="AddToCart">
+      <input type="hidden" asp-for="@Model.Id" />
+      <input type="submit" value="Add to cart" class="defaultBtn" />
+    </form>
+    <form asp-controller="Cart" asp-action="RemoveFromCart">
+      <input type="hidden" asp-for="@Model.Id" />
+      <input type="submit" value="Remove from cart" class="defaultBtn" />
+    </form>
+  </div>
+</td>
