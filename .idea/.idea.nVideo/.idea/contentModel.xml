@@ -127,6 +127,7 @@
             <e p="EditEntity.cshtml" t="Include" />
             <e p="EditProduct.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="Orders.cshtml" t="Include" />
             <e p="Result.cshtml" t="Include" />
           </e>
           <e p="Cart" t="Include">

@@ -1,0 +1,21 @@
+﻿@{
+  Layout = "AdminPanelLayout";
+}
+
+@foreach (Catalog_Order order in ViewBag.Orders)
+{
+<div class="p-4">
+  <div class="welcome">
+    <div class="content rounded-3 p-3">
+      
+      <h3 color="black"><a class="nav-link" href="~/AdminPanel/OrderById?Id=@order.Id">Order number: @order.Id</a></h3>
+      <p>User: @order.User.Email</p>
+      <h5><a class="nav-link" href="/AdminPanel/EditOrder?Id=@order.Id">Edit</a></h5>
+      <br/>
+      <br/>
+        
+      
+    </div>
+  </div>
+</div>
+} 

@@ -371,7 +371,34 @@ namespace nVideo.Controllers
             _context.SaveChanges();
             return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
         }
+        public IActionResult EditInStock(int Id, string InStock)
+        {
+            if (!int.TryParse(InStock, out _)) {return RedirectToAction("Result", new {exepNum =3});}
+            var e = _catalog.GetItemById(Id);
+            e.InStock = ushort.Parse(InStock);
+            _context.SaveChanges();
+            return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
+        }
+        
+        public IActionResult EditAwailable(int Id, string Awailable)
+        {
+            if (!bool.TryParse(Awailable, out _)) {return RedirectToAction("Result", new {exepNum =3});}
+            var e = _catalog.GetItemById(Id);
+            e.Awailable = bool.Parse(Awailable);
+            _context.SaveChanges();
+            return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
+        }
+
+        public IActionResult Orders()
+        {
+            ViewBag.Oders = _context.Orders
+                .Where(x => x == x)
+                .ToList();
+            return View();
+        }
     }
+    
+    
     
     
 }
