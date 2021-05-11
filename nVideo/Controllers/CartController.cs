@@ -17,8 +17,10 @@ namespace nVideo.Controllers
             _shopCart = shopCart;
         }
 
+
         [HttpGet]
         public ViewResult Index()
+
         {
             var items = _shopCart.GetShopItems();
             long total;

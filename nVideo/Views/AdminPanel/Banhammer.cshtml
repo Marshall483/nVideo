@@ -1,0 +1,35 @@
+﻿@{
+  Layout = "AdminPanelLayout";
+}
+<div class="p-4">
+  <div class="welcome">
+    <div class="content rounded-3 p-3">
+      <h1 class="fs-3">Welcome to Dashboard</h1>
+      <p class="mb-0">Hello Admin! 
+        Remember, with great power comes great responsibility.</p>
+    </div>
+  </div>
+</div>
+
+<section class="charts mt-4">
+  <div class="chart-container p-3">
+    <h3 class="fs-6 mb-3">Ban/Unban user(Email)</h3>
+        <h3 class="fs-6 mb-3">Ban</h3>
+        <form method="post" asp-action="Ban">
+          <input required minlength="1" type="text" maxlength="50" name="BanEmail" ></input>
+          <input type="submit"></input>
+        </form>
+        <h3 class="fs-6 mb-3">Unban</h3>
+        <form method="post" asp-action="UnBan">
+          <input required minlength="1" type="text" maxlength="50" name="UnbanEmail"></input>
+          <input  type="submit"></input>
+          </form>
+        <h3 class="fs-6 mb-3">Make users role Admin(Email)</h3>
+            <form method="post" asp-action="AddAdmin">
+              <input required minlength="1" type="text" maxlength="50" name="AdminEmail"></input>
+              <input type="submit"></input>
+            </form>
+    <div style="height: 300px">
+    </div>
+  </div>
+</section>

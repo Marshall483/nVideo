@@ -1,0 +1,79 @@
+﻿@{
+  Layout = "AdminPanelLayout";
+}
+<div class="p-4">
+  <div class="welcome">
+    <div class="content rounded-3 p-3">
+      <h1 class="fs-3">Edit this?</h1>
+      <br/>
+      <h3 class="fs-6 mb-3">Name: @ViewBag.Ent.Name</h3>
+      <br/>
+      <h3 class="fs-6 mb-3">Short Description: @ViewBag.Ent.Short_Desc</h3>
+      <br/>
+      <h3 class="fs-6 mb-3">Long Description: @ViewBag.Ent.Long_Desc</h3>
+      <br/>
+      <h3 class="fs-6 mb-3">Price: @ViewBag.Ent.Price</h3>
+      <br/>
+      <h3 class="fs-6 mb-3">Is Awailable: @ViewBag.Ent.Awailable</h3>
+      <br/>
+      <h3 class="fs-6 mb-3">In Stock: @ViewBag.Ent.InStock</h3>
+      <br/>
+      @{
+        foreach (var att in ViewBag.Att)
+        {
+          var val = att.Value.IntegerValue == null ? att.Value.StringValue : att.Value.IntegerValue.ToString();
+          
+          <h3 class="fs-6 mb-3">@att.AttributeName : @val </h3>
+         <br/>
+        }
+      }
+      <h3 class="fs-6 mb-3">Change Short Description?</h3>
+            <br/>
+      <form method="post" asp-action="EditShortDesc" >
+        <input required type="hidden" name="Id" value="@ViewBag.Ent.Id"/>
+        <input required type="text" name="Descr" maxlength="30"/>
+        <input type="submit" value="OK!"/>
+      </form>
+      <br>
+      <h3 class="fs-6 mb-3">Change Long Description?</h3>
+                  <br/>
+      <form method="post" asp-action="EditLongDesc" >
+        <input required type="hidden" name="Id" value="@ViewBag.Ent.Id" maxlength="80"/>
+        <input required type="text" name="Descr"/>
+        <input type="submit" value="OK!"/>
+      </form>
+      <br>
+            <h3 class="fs-6 mb-3">Change Price?</h3>
+                        <br/>
+      <form method="post" asp-action="EditPrice" >
+        <input required type="hidden" name="Id" value="@ViewBag.Ent.Id"/>
+        <input required type="text" name="Price" maxlength="6"/>
+        <input type="submit" value="OK!"/>
+      </form>
+      
+      <br>
+                  <h3 class="fs-6 mb-3">Change InStock?</h3>
+                              <br/>
+      <form method="post" asp-action="EditInStock" >
+        <input required type="hidden" name="Id" value="@ViewBag.Ent.Id"/>
+        <input required type="text" name="InStock" maxlength="4"/>
+        <input type="submit" value="OK!"/>
+      </form>
+      
+      <br>
+                  <h3 class="fs-6 mb-3">Change Awailable?</h3>
+                              <br/>
+      <form method="post" asp-action="EditAwailable" >
+        <input required type="hidden" name="Id" value="@ViewBag.Ent.Id"/>
+        <input required type="text" name="Awailable" maxlength="6"/>
+        <input type="submit" value="OK!"/>
+      </form>
+      
+        <br>
+                       
+                  
+      
+    </div>
+  </div>
+</div>
+

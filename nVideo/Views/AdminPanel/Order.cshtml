@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "AdminPanelLayout";
+}
+@{ Catalog_Order order = ViewBag.Order; }
+<div class="p-4">
+    <div class="welcome">
+        <div class="content rounded-3 p-3">
+      
+            <h3 color="black"><a class="nav-link" href="~/AdminPanel/OrderById?Id=@order.Id">Order number: @order.Id</a></h3>
+            <p>Status: @order.State</p>
+            <p></p>
+            <form method="post" asp-action="ChangeOrderStatus">
+                <input type="hidden" name="Id" value="@order.Id">
+                <input type="text" name="Status" required maxlength="20">
+                <input type="submit">
+                </form>
+            <br/>
+            <br/>
+        
+      
+        </div>
+    </div>
+</div>
