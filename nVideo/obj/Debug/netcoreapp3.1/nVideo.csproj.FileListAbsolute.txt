@@ -325,8 +325,6 @@ C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\MailKit.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -335,9 +333,7 @@ C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.EntityFram
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
@@ -352,13 +348,6 @@ C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
-C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
-C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
-C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
-C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
-C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
-C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
-C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\nVideo.csprojAssemblyReference.cache
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\nVideo.AssemblyInfoInputs.cache
@@ -373,9 +362,7 @@ C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\scopedcss\bundle\nVi
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\nVideo.TagHelpers.input.cache
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\nVideo.TagHelpers.output.cache
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\nVideo.RazorCoreGenerate.cache
-C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Account\PersonalPage.cshtml.g.cs
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
-C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Account\Registration.cshtml.g.cs
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\AdminPanel\Index.cshtml.g.cs
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\About.cshtml.g.cs
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Catalog\List.cshtml.g.cs
@@ -443,3 +430,30 @@ C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\AdminPan
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Checkout.cshtml.g.cs
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\AdminPanel\EditProduct.cshtml.g.cs
 C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\AdminPanel\Orders.cshtml.g.cs
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Humanizer.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\User\Desktop\nVideo\nVideo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\AdminPanel\Order.cshtml.g.cs
+C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Order\Complete.cshtml.g.cs
+C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Order\Courier Delivery.cshtml.g.cs
+C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Order\Self Delivery.cshtml.g.cs
+C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AuthCourierDeliveryPartial.cshtml.g.cs
+C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\CourierDeliveryPartial.cshtml.g.cs

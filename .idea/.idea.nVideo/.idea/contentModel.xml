@@ -23,6 +23,7 @@
           <e p="ErrorController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
           <e p="OfficeController.cs" t="Include" />
+          <e p="OrderController.cs" t="Include" />
         </e>
         <e p="DATA" t="Include">
           <e p="AppDBContext.cs" t="Include" />
@@ -56,7 +57,9 @@
           <e p="ViewModels" t="Include">
             <e p="CatalogViewModel.cs" t="Include" />
             <e p="ChangeAvatarViewModel.cs" t="Include" />
+            <e p="CourierDeliveryViewModel.cs" t="Include" />
             <e p="HomeViewModel.cs" t="Include" />
+            <e p="SelfDeliveryViewModel.cs" t="Include" />
           </e>
         </e>
         <e p="DbSettings.json" t="Include" />
@@ -75,6 +78,12 @@
           <e p="20210425215430_CityTable.Designer.cs" t="Include" />
           <e p="20210428084616_Avatar.cs" t="Include" />
           <e p="20210428084616_Avatar.Designer.cs" t="Include" />
+          <e p="20210510191223_CityOfficeLocationAdded.cs" t="Include" />
+          <e p="20210510191223_CityOfficeLocationAdded.Designer.cs" t="Include" />
+          <e p="20210510215621_CustomerDataInOrderAdded.cs" t="Include" />
+          <e p="20210510215621_CustomerDataInOrderAdded.Designer.cs" t="Include" />
+          <e p="20210511003555_fullTextSearch.cs" t="Include" />
+          <e p="20210511003555_fullTextSearch.Designer.cs" t="Include" />
           <e p="AppDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -115,9 +124,7 @@
           <e p="_ViewImports.cshtml" t="Include" />
           <e p="_ViewStart.cshtml" t="Include" />
           <e p="Account" t="Include">
-            <e p="PersonalPage.cshtml" t="Include" />
             <e p="Register.cshtml" t="Include" />
-            <e p="Registration.cshtml" t="Include" />
           </e>
           <e p="AdminPanel" t="Include">
             <e p="AddEntity.cshtml" t="Include" />
@@ -127,6 +134,7 @@
             <e p="EditEntity.cshtml" t="Include" />
             <e p="EditProduct.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="Order.cshtml" t="Include" />
             <e p="Orders.cshtml" t="Include" />
             <e p="Result.cshtml" t="Include" />
           </e>
@@ -148,12 +156,18 @@
           <e p="Office" t="Include">
             <e p="Profile.cshtml" t="Include" />
           </e>
+          <e p="Order" t="Include">
+            <e p="Complete.cshtml" t="Include" />
+            <e p="Courier Delivery.cshtml" t="Include" />
+            <e p="Self Delivery.cshtml" t="Include" />
+          </e>
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
             <e p="AboutItemPartial.cshtml" t="Include" />
             <e p="AdminPanelLayout.cshtml" t="Include" />
             <e p="AttributesPartial.cshtml" t="Include" />
+            <e p="AuthCourierDeliveryPartial.cshtml" t="Include" />
             <e p="ChangeAvatarPartial.cshtml" t="Include" />
             <e p="ChangePasswordModalPartial.cshtml" t="Include" />
             <e p="CommentsPartial.cshtml" t="Include" />
@@ -169,6 +183,7 @@
                 <e p="LoginForm.cshtml" t="Include" />
               </e>
             </e>
+            <e p="CourierDeliveryPartial.cshtml" t="Include" />
             <e p="EditProfileModalPartial.cshtml" t="Include" />
             <e p="Error.cshtml" t="Include" />
             <e p="FeaturedPartial.cshtml" t="Include" />
@@ -247,9 +262,15 @@
               <e p="visa.png" t="Include" />
               <e p="white_leather.png" t="Include" />
             </e>
+            <e p="jquery-ui-1-11-0.js" t="Include" />
+            <e p="jQuery-v1.12.4.js" t="Include" />
             <e p="js" t="Include">
               <e p="bootstrap.js" t="Include" />
               <e p="bootstrap.min.js" t="Include" />
+              <e p="jquery.easing-1.3.min.js" t="Include" />
+              <e p="jquery.js" t="Include" />
+              <e p="jquery.scrollTo-1.4.3.1-min.js" t="Include" />
+              <e p="shop.js" t="Include" />
             </e>
           </e>
           <e p="css" t="Include">

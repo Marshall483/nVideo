@@ -296,7 +296,7 @@ namespace nVideo.Controllers
                 .ToList()
                 .Select(o => o.Items)
                 .Any(en =>
-                    en.Exists(ent =>
+                    en.Any(ent =>
                         ent.Id.Equals(eid)))
                 ? false
                 : await RemoveEntity(e); //You can't delete item, if customer order it.
@@ -389,31 +389,45 @@ namespace nVideo.Controllers
             return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
         }
 
-        public IActionResult Orders()
+        public IActionResult Orders(string Status)
         {
-            ViewBag.Oders = _context.Orders
-                .Where(x => x == x)
-                .ToList();
+            if (Status =="All")
+            {ViewBag.Orders = _context.Orders
+                .Where(x => x ==x);
+                
+            }
+            else
+            {
+                ViewBag.Orders = _context.Orders
+                    .Where(x => x.State == Status);
+
+            }   
+
             return View();
+        }
+
+        public IActionResult Order(int Id)
+        {
+            ViewBag.order = _context.Orders.First(x => x.Id == Id);
+            return View();
+        }
+
+        public IActionResult ChangeOrderStatus(int Id, string Status)
+        {
+            var order = _context.Orders
+                .First(x => x.Id == Id);
+            if(Status!= "Closed" && Status!= "Open" && Status!="InProcess") {return RedirectToAction("Result", new {exepNum =1});}
+                order.State = Status;
+            int x = Id;
+            _context.SaveChanges();
+            return RedirectToAction("Order",new {Id = x});
         }
         
-        [HttpPost]
-        public IActionResult EditPic(int Id, int num)
-        {
-            ViewBag.Id = Id;
-            ViewBag.num = num;
-            return View();
-        }
+        
+ 
+       
 
-        public IActionResult ChangePic(int id, IFormCollection pics)
-        {
-            
-        }
-
-        private void DeleteImgByEntity( Catalog_Entity entity)
-        {
-            entity.Images.
-        }
+       
     }
     
     
