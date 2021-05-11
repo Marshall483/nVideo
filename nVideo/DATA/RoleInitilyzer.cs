@@ -21,6 +21,10 @@ namespace nVideo.DATA
             {
                 await roleManager.CreateAsync(new IdentityRole("user"));
             }
+            if (await roleManager.FindByNameAsync("baned") == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole("baned"));
+            }
             if (await userManager.FindByNameAsync(adminEmail) == null)
             {
                 User admin = new User { Email = adminEmail, UserName = adminEmail, Profile = new UserProfile() };

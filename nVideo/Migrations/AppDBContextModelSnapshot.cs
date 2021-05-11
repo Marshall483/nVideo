@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+using NpgsqlTypes;
 using nVideo.DATA;
 
 namespace nVideo.Migrations
@@ -15,9 +16,9 @@ namespace nVideo.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.3")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63)
+                .HasAnnotation("ProductVersion", "5.0.5")
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -29,18 +30,18 @@ namespace nVideo.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasColumnType("character varying(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("character varying(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex");
+                        .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
                 });
@@ -221,6 +222,12 @@ namespace nVideo.Migrations
                     b.Property<byte>("Raiting")
                         .HasColumnType("smallint");
 
+                    b.Property<NpgsqlTsVector>("SearchVector")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("tsvector")
+                        .HasAnnotation("Npgsql:TsVectorConfig", "english")
+                        .HasAnnotation("Npgsql:TsVectorProperties", new[] { "Name", "Long_Desc" });
+
                     b.Property<string>("Short_Desc")
                         .HasColumnType("text");
 
@@ -229,6 +236,9 @@ namespace nVideo.Migrations
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("OrderId");
+
+                    b.HasIndex("SearchVector")
+                        .HasMethod("GIN");
 
                     b.ToTable("Entities");
                 });
@@ -240,13 +250,22 @@ namespace nVideo.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<DateTime>("Oreder_Time")
+                    b.Property<DateTime>("CreatedTime")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("CustomerDataId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("UserId")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerDataId");
 
                     b.HasIndex("UserId");
 
@@ -284,6 +303,9 @@ namespace nVideo.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("OfficeLocation")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -351,6 +373,9 @@ namespace nVideo.Migrations
                     b.Property<int?>("EntityId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("integer");
+
                     b.Property<long>("Quanity")
                         .HasColumnType("bigint");
 
@@ -360,6 +385,8 @@ namespace nVideo.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EntityId");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("ShopCartItems");
                 });
@@ -377,8 +404,8 @@ namespace nVideo.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
-                        .HasColumnType("character varying(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
@@ -390,12 +417,12 @@ namespace nVideo.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("character varying(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("character varying(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("text");
@@ -416,17 +443,17 @@ namespace nVideo.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("character varying(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
+                        .HasDatabaseName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex");
+                        .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -451,20 +478,20 @@ namespace nVideo.Migrations
                         .HasColumnType("bytea");
 
                     b.Property<string>("City")
-                        .HasColumnType("character varying(20)")
-                        .HasMaxLength(20);
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("character varying(20)")
-                        .HasMaxLength(20);
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("character varying(20)")
-                        .HasMaxLength(20);
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("Phone")
-                        .HasColumnType("character varying(20)")
-                        .HasMaxLength(20);
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.HasKey("Id");
 
@@ -530,6 +557,8 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
                         .WithMany("Attributes")
                         .HasForeignKey("EntityId");
+
+                    b.Navigation("Entity");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Entity", b =>
@@ -539,15 +568,29 @@ namespace nVideo.Migrations
                         .HasForeignKey("CategoryId");
 
                     b.HasOne("nVideo.Models.Catalog_Order", "Order")
-                        .WithMany("Items")
+                        .WithMany()
                         .HasForeignKey("OrderId");
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Order", b =>
                 {
-                    b.HasOne("nVideo.Models.User", "User")
+                    b.HasOne("nVideo.Models.UserProfile", "CustomerData")
                         .WithMany()
+                        .HasForeignKey("CustomerDataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("nVideo.Models.User", "User")
+                        .WithMany("Orders")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("CustomerData");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Value", b =>
@@ -555,6 +598,8 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.Catalog_Attribute", "Attribute")
                         .WithOne("Value")
                         .HasForeignKey("nVideo.Models.Catalog_Value", "Catalog_Attribute");
+
+                    b.Navigation("Attribute");
                 });
 
             modelBuilder.Entity("nVideo.Models.Comment", b =>
@@ -566,6 +611,10 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId1");
+
+                    b.Navigation("Entity");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("nVideo.Models.Picture", b =>
@@ -573,6 +622,8 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
                         .WithMany("Images")
                         .HasForeignKey("Catalog_EntityId");
+
+                    b.Navigation("Entity");
                 });
 
             modelBuilder.Entity("nVideo.Models.ShopCartItem", b =>
@@ -580,6 +631,14 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityId");
+
+                    b.HasOne("nVideo.Models.Catalog_Order", "Order")
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId");
+
+                    b.Navigation("Entity");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("nVideo.Models.UserProfile", b =>
@@ -587,6 +646,41 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.User", "User")
                         .WithOne("Profile")
                         .HasForeignKey("nVideo.Models.UserProfile", "AspNetUsers");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("nVideo.Models.Catalog_Attribute", b =>
+                {
+                    b.Navigation("Value");
+                });
+
+            modelBuilder.Entity("nVideo.Models.Catalog_Category", b =>
+                {
+                    b.Navigation("Entities");
+                });
+
+            modelBuilder.Entity("nVideo.Models.Catalog_Entity", b =>
+                {
+                    b.Navigation("Attributes");
+
+                    b.Navigation("Comments");
+
+                    b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("nVideo.Models.Catalog_Order", b =>
+                {
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("nVideo.Models.User", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Orders");
+
+                    b.Navigation("Profile");
                 });
 #pragma warning restore 612, 618
         }
