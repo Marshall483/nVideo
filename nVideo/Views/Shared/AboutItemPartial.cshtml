@@ -17,7 +17,7 @@
     
     <div class="form-horizontal qtyFrm">
         <div class="control-group">
-            <label class="control-label"><span>@Model.Price.ToString("# $")</span></label>
+            <label class="control-label"><span>$ @(Model.Price/75)</span></label>
         </div>
 
         <h4>@Model.InStock in stock now</h4>

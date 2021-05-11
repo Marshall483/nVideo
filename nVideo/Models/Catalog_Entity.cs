@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NpgsqlTypes;
 using nVideo.Models;
 
 namespace nVideo.Models
@@ -31,5 +32,8 @@ namespace nVideo.Models
         
         public int? OrderId { get; set; }
         public Catalog_Order Order { get; set; }
+
+        public NpgsqlTsVector SearchVector { get; set; }
+
     }
 }

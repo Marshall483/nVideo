@@ -24,6 +24,7 @@ namespace nVideo.Models
             var context = service.GetService<AppDbContext>();           
             var userName = httpContext.User.Identity.Name;
             var cartInfo = httpContext.Request.Cookies["CartId"];
+            
             if (cartInfo != null)
             {
                 if (userName != null)
@@ -46,16 +47,27 @@ namespace nVideo.Models
         {
             if (cartInfo == null)
                 return null;
+            
             var list = new List<ShopCartItem>();
-            var dict = cartInfo.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(x => int.Parse(x)).GroupBy(x => x)
+            
+            var dict = cartInfo
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => int.Parse(x))
+                .GroupBy(x => x)
                 .Where(x => x.Any())
                 .ToDictionary(x=> x.Key, x=> x.Count());
+            
             foreach (var item in dict)
             {
                 list.Add(new ShopCartItem
                 {
                     UserName = userInfo,
-                    Entity = context.Entities.Include(x => x.Images).FirstOrDefault(x => x.Id == item.Key),
+                    
+                    Entity = context
+                        .Entities
+                        .Include(x => x.Images)
+                        .FirstOrDefault(x => x.Id == item.Key),
+                    
                     Quanity = (uint)item.Value
                 });
             }
@@ -109,7 +121,10 @@ namespace nVideo.Models
         {
             var entity = _context.Entities.Find(id);
 
-            var item = _context.ShopCartItems.FirstOrDefault(x => x.Entity == entity && x.UserName == _httpContext.User.Identity.Name);
+            var item = _context
+                .ShopCartItems
+                .FirstOrDefault(x => x.Entity == entity && x.UserName == _httpContext.User.Identity.Name);
+            
             if (item != null)
             {
                 item.Quanity += 1;
@@ -191,8 +206,11 @@ namespace nVideo.Models
         public IEnumerable<ShopCartItem> GetShopItems()
         {
             if (_httpContext.User.Identity.IsAuthenticated)
-                return _context.ShopCartItems.Where(x => x.UserName == _httpContext.User.Identity.Name)
-                    .Include(x => x.Entity).Include(x => x.Entity.Images);
+                return _context
+                    .ShopCartItems
+                    .Where(x => x.UserName == _httpContext.User.Identity.Name)
+                    .Include(x => x.Entity)
+                    .Include(x => x.Entity.Images);
             else
             {
                 var cartInfo = _httpContext.Request.Cookies["CartId"];

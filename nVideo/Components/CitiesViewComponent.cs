@@ -21,15 +21,19 @@ namespace nVideo.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var city = HttpContext.Request.Cookies["City"];
+            
             if (string.IsNullOrEmpty(city))
             {
                 city = await LocatorService.GetyCityAsync();
+                
                 if (_context.Cities.FirstOrDefault(x => x.Name.Equals(city)) == null)
-                    city = "Не удалось определить город";
+                    city = "Sorry, we cant locate you(";
                 HttpContext.Response.Cookies.Append("City", city);
             }
+            
             var cities = _context.Cities;
             var model = new CitiesViewModel(city, cities);
+            
             return View(model);
         }
     }

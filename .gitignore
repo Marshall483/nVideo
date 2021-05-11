@@ -1,6 +1,8 @@
 # Prerequisites
 *.d
 *.DS_Store
+.DS_Store
+
 
 # Compiled Object files
 *.slo
@@ -35,7 +37,7 @@
 *.app
 
 #problematic folders 
-nVideo/nVideo/bin
-nVideo/nVideo/obj
-nVideo/.vs
-nVideo/.idea
+nVideo/bin
+nVideo/obj
+.vs
+.idea

@@ -1,28 +1,54 @@
 ﻿@model ShopCartView
 
-  <div class="span8 well well-small">
-    <table class="table table-bordered">
-      <tbody>
-        <tr><td>Confirmation of an order:</td></tr>
-        <tr>
-          <td>
-            <div class="control-group">
-              <label class="span2 control-label">Pick-up from: Moscow sity, Leningradskaya 29  </label>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="control-group">
-              <label class="span2 control-label">To pay: @Model.TotalValue </label>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="control-group">
-      <div class="controls">
-        <button type="submit" class="shopBtn">Checkout</button>
-      </div>
+<div class="span8 well well-small">
+  <table class="table table-bordered">
+    <tbody>
+    <tr><td>Confirmation of an order:</td></tr>
+    <tr>
+      <td>
+        <div class="control-group">
+          <label class="span2 control-label">Pick-up from: Moscow sity, Leningradskaya 29  </label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="control-group">
+          <label class="span2 control-label">To pay:$ @(Model.TotalValue / 74) </label>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="control-group">
+    <div class="controls">
+      <a href="#selectDelivery" class="btn" data-toggle="modal">Go to checkout |-></a>
     </div>
   </div>
+</div>
+
+<!-- Delivery Select Modal -->
+<div id="selectDelivery" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+<div class="modal-body">
+  <div class="span8 well well-small">
+            
+    <h2> What type of delivery you want? </h2>
+    @using (Html.BeginForm("ProcessOrder", "Order", FormMethod.Get)){
+           
+      <p>
+        <strong>Delivery?</strong>
+        @Html.DropDownList("deliveryType", Model.DeliveryType , new { required="" })
+      </p>
+    
+      <p>
+        <input type="submit" value="Apply"/>
+      </p>
+           
+    }
+       
+  </div>
+</div>
+</div>

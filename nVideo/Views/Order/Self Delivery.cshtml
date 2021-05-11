@@ -1,0 +1,36 @@
+@model SelfDeliveryViewModel
+
+<h1> Self Delivery </h1>
+
+<hr class="soften" />
+
+<div class="span8 well well-small">
+    <table class="table table-bordered table-condensed">
+        
+        <thead>
+        <tr>
+            <th>City</th>
+            <th>Location</th>
+            <th>Select</th>
+        </tr>
+        </thead>
+        
+        <tbody>
+
+        @foreach (City c in Model.Cities)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.OfficeLocation</td>
+                <td>
+                    <form asp-action="ProcessSelfDelivery" asp-controller="Order" method="post">
+                        <input type="hidden" name="cityId" value="@c.Id"/>
+                        <input class="btn-dark" type="submit"/>
+                    </form>
+                </td>
+            </tr>
+        }
+
+        </tbody>
+    </table>
+</div>

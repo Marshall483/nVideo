@@ -4,12 +4,14 @@ using nVideo.DATA;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace nVideo.Controllers
 {
     public class CartController : Controller
     {
         private readonly ShopCart _shopCart;
+        private readonly SelectList _deliverySelect = new SelectList(new string[] { "Self Delivery","Courier Delivery" });
         public CartController(ShopCart shopCart)
         {
             _shopCart = shopCart;
@@ -30,7 +32,7 @@ namespace nVideo.Controllers
             {
                 total = 0;
             }
-            var viewModel = new ShopCartView(items, total);
+            var viewModel = new ShopCartView(items, total, _deliverySelect );
             return View(viewModel);
         }
 
@@ -49,9 +51,10 @@ namespace nVideo.Controllers
             return RedirectToAction("Index", "Cart");
         }
 
-        public IActionResult Checkout() => 
+        public IActionResult Checkout() =>
             View(new ShopCartView(_shopCart.GetShopItems(),
-                _shopCart.GetShopItems().Sum(i => i.Entity.Price)));
-        
+                _shopCart.GetShopItems().Sum(i => i.Entity.Price),
+                _deliverySelect));
+
     }
 }
