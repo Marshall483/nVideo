@@ -63,11 +63,20 @@
       <br>
                   <h3 class="fs-6 mb-3">Change Awailable?</h3>
                               <br/>
-            <form method="post" asp-action="EditAwailable" >
-              <input required type="hidden" name="Id" value="@ViewBag.Ent.Id"/>
-              <input required type="text" name="Awailable" maxlength="6"/>
-              <input type="submit" value="OK!"/>
-            </form>
+      <form method="post" asp-action="EditAwailable" >
+        <input required type="hidden" name="Id" value="@ViewBag.Ent.Id"/>
+        <input required type="text" name="Awailable" maxlength="6"/>
+        <input type="submit" value="OK!"/>
+      </form>
+      
+        <br>
+                        <h3 class="fs-6 mb-3">Change Pic?</h3>
+                                    <br/>
+                  <form method="post" asp-action="EditPic" >
+                    <input required type="hidden" name="Id" value="@ViewBag.Ent.Id"/>
+                    <input required type="text" name="num" maxlength="2" placeholder="Num of pic"/>
+                    <input type="submit" value="OK!"/>
+                  </form>
       
     </div>
   </div>

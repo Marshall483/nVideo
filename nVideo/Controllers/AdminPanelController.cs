@@ -396,6 +396,24 @@ namespace nVideo.Controllers
                 .ToList();
             return View();
         }
+        
+        [HttpPost]
+        public IActionResult EditPic(int Id, int num)
+        {
+            ViewBag.Id = Id;
+            ViewBag.num = num;
+            return View();
+        }
+
+        public IActionResult ChangePic(int id, IFormCollection pics)
+        {
+            
+        }
+
+        private void DeleteImgByEntity( Catalog_Entity entity)
+        {
+            entity.Images.
+        }
     }
     
     

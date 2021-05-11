@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="baa1fcdc-4137-4a97-98ec-35a3ea1ce733" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/nVideo/Views/AdminPanel/Orders.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/Views/AdminPanel/EditProduct.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/AdminPanel/EditProduct.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/EditProduct.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/EditProduct.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,9 +35,9 @@
       <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/Banhammer.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/DeleteEntities.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/EditEntity.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/Orders.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/EditProduct.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs" />
-      <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/Orders.cshtml" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sIb8ncXvsEJxYSKObzMfSblDVV" />
@@ -94,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1620562904986</updated>
-      <workItem from="1620562910287" duration="19252000" />
+      <workItem from="1620562910287" duration="24747000" />
     </task>
     <servers />
   </component>
