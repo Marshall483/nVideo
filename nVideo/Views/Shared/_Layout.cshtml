@@ -63,8 +63,8 @@
                         <ul class="nav">
                             <li class="active"><a asp-controller="Home" asp-action="Index">Home</a></li>
                         </ul>
-                        <form action="#" class="navbar-form pull-right">
-                            <input type="text" class="span2">
+                        <form method="get" asp-controller="Catalog" asp-action="Search" class="navbar-form pull-right">
+                            <input type="text" name="searchString" class="span2">
                             <button type="submit" class="btn">Search</button>
                         </form>
                         <ul class="nav pull-right">

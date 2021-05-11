@@ -43,6 +43,18 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
+        public IActionResult Search(string searchString)
+        {
+            var result = _dbContext.Entities.Where(p => p.SearchVector.Matches(searchString)).Include(i => i.Images)
+                .Include(a => a.Attributes)
+                .ThenInclude(v => v.Value);
+            var model = new CatalogViewModel
+            {
+                Entities = result,
+            };
+            return View("List", model);
+        }
+        [HttpGet]
         public IActionResult EntityByFilter(Dictionary<string, string> attributes)
         {
 
@@ -109,7 +121,6 @@ namespace nVideo.Controllers
                 {
                     Entities = _catalog.GetCategoryMembers(category),
                 };
-
                 return View("List", model);
             }
             throw new ArgumentNullException("Missing parameter: string category");
