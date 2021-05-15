@@ -17,7 +17,6 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Fortran module files
 *.mod
@@ -37,7 +36,7 @@
 *.app
 
 #problematic folders 
-nVideo/nVideo/bin
-nVideo/nVideo/obj
-nVideo/.vs
-nVideo/.idea
+nVideo/bin
+nVideo/obj
+/.vs
+/.idea

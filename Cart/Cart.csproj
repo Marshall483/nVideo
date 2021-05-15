@@ -19,8 +19,4 @@
       <None Remove="ConcreteStates\**" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\nVideo\nVideo.csproj" />
-    </ItemGroup>
-
 </Project>
