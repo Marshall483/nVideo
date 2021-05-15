@@ -22,5 +22,11 @@ namespace nVideo.DATA.Extentions
                 .Include(u => u.Profile)
                 .Single();
 
+        public static User GetUserIncludeShopCart(this UserManager<User> manager, ClaimsPrincipal principal) =>
+            manager.Users
+                .Where(u => u.Id.Equals(manager.GetUserId(principal)))
+                .Include(u => u.Orders)
+                .ThenInclude(o => o.Items)
+                .Single();
     }
 }

@@ -5,6 +5,10 @@ using nVideo.DATA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using nVideo.DATA.Extentions;
 
 namespace nVideo.Models
 {
@@ -62,13 +66,12 @@ namespace nVideo.Models
                 list.Add(new ShopCartItem
                 {
                     UserName = userInfo,
-                    
+                    Quanity = (uint)item.Value,
+
                     Entity = context
                         .Entities
                         .Include(x => x.Images)
                         .FirstOrDefault(x => x.Id == item.Key),
-                    
-                    Quanity = (uint)item.Value
                 });
             }
             return list;
@@ -173,7 +176,9 @@ namespace nVideo.Models
         {
             var entity = _context.Entities.Find(id);
 
-            var item = _context.ShopCartItems.FirstOrDefault(x => x.Entity.Id == entity.Id);
+            var item = _context
+                .ShopCartItems
+                .FirstOrDefault(x => x.Entity.Id == entity.Id);
 
             if (item.Quanity == 1)
             {
@@ -186,9 +191,21 @@ namespace nVideo.Models
             }
         }
 
+        private void FlushCart(Catalog_Order order) =>
+            order
+                .Items
+                .ToList()
+                .ForEach(o=> _context.ShopCartItems.Remove(o));
+        
+        
         private void RemoveFromCartAnon(int id)
         {
-            var cartInfo = _httpContext.Request.Cookies["CartId"].Split().ToList();
+            var cartInfo = _httpContext
+                .Request
+                .Cookies["CartId"]
+                .Split()
+                .ToList();
+            
             if (cartInfo.Count() == 1)
                 _httpContext.Response.Cookies.Delete("CartId");
             else

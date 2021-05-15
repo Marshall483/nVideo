@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="206d4903-e1e8-46d8-a722-be308b6e88d6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/wwwroot/assets/jQuery-v1.12.4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/wwwroot/assets/jquery-ui-1-11-0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/wwwroot/assets/js/jquery.easing-1.3.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/wwwroot/assets/js/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/wwwroot/assets/js/jquery.scrollTo-1.4.3.1-min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/wwwroot/assets/js/shop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +16,43 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5723D2C3-5851-4D78-89A9-838781296FB1/C/CallSiteFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/14F77EE4-639B-4CE9-849B-C8F1BB98D456/F3/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B5C0ECE9-48E9-456E-A76D-60AC6F690356/40/SelectList.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/nVideo/DATA/ViewModels/ProcessOrderVM.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Order/Process.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Models/ShopCartView.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Controllers/CartController.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/AboutItemPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/ListShopCartPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Components/CitiesViewComponent.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Models/City.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Order/Self Delivery.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/DATA/ViewModels/SelfDeliveryViewModel.cs" />
+      <option value="$PROJECT_DIR$/nVideo/DATA/ViewModels/CourierDeliveryViewModel.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/AuthCourierDeliveryPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/CourierDeliveryPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Startup.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Cart/Checkout.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Order/Courier Delivery.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Cart/Index.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Models/User.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Models/ShopCartItem.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Models/Catalog_Order.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Order/Complete.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Models/ShopCart.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Controllers/OrderController.cs" />
+    </changedPaths>
+  </component>
   <component name="ProjectId" id="1sINx0eNiM9LjEVCcI9PLIEiGNn" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -33,6 +63,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.nVideo">
@@ -77,6 +108,9 @@
       <updated>1620556398376</updated>
       <workItem from="1620556420770" duration="106000" />
       <workItem from="1620556923332" duration="92000" />
+      <workItem from="1620664808975" duration="14917000" />
+      <workItem from="1620681061730" duration="6155000" />
+      <workItem from="1620687432998" duration="1712000" />
     </task>
     <servers />
   </component>
@@ -85,7 +119,69 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/OrderController.cs</url>
+          <line>42</line>
+          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/OrderController.cs" initialLine="22" containingFunctionPresentation="method 'ProcessOrder'">
+            <startOffsets>
+              <option value="1280" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1281" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/OrderController.cs</url>
+          <line>73</line>
+          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/OrderController.cs" initialLine="52" containingFunctionPresentation="method 'ProcessCourierDelivery'">
+            <startOffsets>
+              <option value="2468" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2469" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/OrderController.cs</url>
+          <line>58</line>
+          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/OrderController.cs" initialLine="58" containingFunctionPresentation="method 'ProcessSelfDelivery'">
+            <startOffsets>
+              <option value="1990" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1991" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#nVideo.Models.ShopCartItem" memberName="Entity" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

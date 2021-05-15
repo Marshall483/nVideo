@@ -11,7 +11,9 @@ namespace nVideo.Controllers
     public class CartController : Controller
     {
         private readonly ShopCart _shopCart;
-        private readonly SelectList _deliverySelect = new SelectList(new string[] { "Self Delivery","Courier Delivery" });
+        private readonly SelectList _deliverySelect = 
+            new SelectList(
+                new[] { "Self Delivery","Courier Delivery" });
         public CartController(ShopCart shopCart)
         {
             _shopCart = shopCart;
@@ -21,16 +23,13 @@ namespace nVideo.Controllers
         public ViewResult Index()
         {
             var items = _shopCart.GetShopItems();
-            long total;
-            if (items != null)
-            {
-                total = items.Sum(x => x.Entity.Price * x.Quanity);
-            }
-            else
-            {
-                total = 0;
-            }
-            var viewModel = new ShopCartView(items, total, _deliverySelect );
+
+            var shopCartItems = items as ShopCartItem[] ?? items.ToArray();
+            
+            var total = shopCartItems
+                .Sum(x => x.Entity.Price * x.Quanity);
+            
+            var viewModel = new ShopCartView(shopCartItems, total, _deliverySelect );
             return View(viewModel);
         }
 

@@ -2,6 +2,7 @@
 
 
 using System;
+using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Linq;
 using System.Security.Claims;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Npgsql.Logging;
 using nVideo.DATA;
 using nVideo.DATA.Extentions;
 using nVideo.DATA.ViewModels;
@@ -31,7 +33,9 @@ namespace nVideo.Controllers
         private static readonly string ClosedState = "Closed";
         
         
-        public OrderController(AppDbContext context, UserManager<User> userManager, ShopCart cart)
+        public OrderController(AppDbContext context,
+            UserManager<User> userManager,
+            ShopCart cart)
         {
             _userManager = userManager;
             _dbContext = context;
@@ -72,39 +76,57 @@ namespace nVideo.Controllers
         [HttpPost]
         public async Task<IActionResult> ProcessCourierDelivery(UserProfile customerData)
         {
+            // 1. Create an order 
+            // 2. Flush the bucket
+            // 3. Show "Thank ypu page"
+            
+            // 
+
             var order = await PopulateOrderAsync(customerData);
+            var cqItems = new ConcurrentQueue<ShopCartItem>(order.Items);
 
-            foreach (var item in order.Items)
-                item.Order = order;
-            
-            // While removing from cart, another thread modify orders collection.
-            var temp = order.Items.Select(i => i.Entity.Id).ToArray();
-            int[] itemsId = new int[temp.Count()];
-            Array.Copy(temp, itemsId, temp.Count());
-            
-            await _dbContext.Orders.AddAsync(order);
+           // await _dbContext.Orders.AddAsync(order);
 
-            foreach (var id in itemsId)
-                _shopCart.RevomeFromCart(id);
-            
+            ShopCartItem shopCartItem;
+
+            while(cqItems.TryDequeue(out shopCartItem))
+            while (shopCartItem.Quanity-- > 0)
+                shopCartItem.Quanity = 0;
+                   // _shopCart.RevomeFromCart(shopCartItem.Entity.Id);
+
             return View("Complete");
         }
-
-        private async Task<Catalog_Order> PopulateOrderAsync(UserProfile customerData) =>
-            new Catalog_Order()
+        
+         /// <summary>
+        /// Create an order and set reference for each ShopCartItem to Order.
+        /// </summary>
+        /// <param name="customerData">Represents customer data</param>
+        /// <returns> Catalog_Order </returns>
+        private async Task<Catalog_Order> PopulateOrderAsync(UserProfile customerData)
+        {
+            var order = new Catalog_Order
             {
-                User = User.Identity.IsAuthenticated 
-                    ? await _userManager.GetUserAsync(new ClaimsPrincipal(User.Identities))
-                    : null,
                 State = OpenState,
                 CreatedTime = DateTime.Now,
+                CustomerData = customerData,
+                
+                User = User.Identity.IsAuthenticated
+                    ? await _userManager.GetUserAsync(new ClaimsPrincipal(User.Identities))
+                    : null,
+                
                 Items = _dbContext
                     .ShopCartItems
                     .Where(x => x.UserName == User.Identity.Name)
                     .Include(x => x.Entity)
                     .ToList(),
-                CustomerData = customerData  
             };
+            
+            order.Items.
+                ToList().
+                ForEach(i => i.Order = order);
+
+            return order;
+        }
 
     }
 }

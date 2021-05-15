@@ -18,7 +18,6 @@ namespace nVideo.Models
         public UserProfile CustomerData { get; set; } // Del address, phone and etc.
 
         public string State { get; set; } // Open, InProcess, Closed
-
-        public IEnumerable<ShopCartItem> Items { get; set; }
+        public IEnumerable<Catalog_Entity> Items { get; set; }
     }
 }
