@@ -10,6 +10,6 @@ namespace nVideo.Models
         public int? ProfileId { get; set; }
         public UserProfile Profile { get; set; }
         public IEnumerable<Catalog_Order> Orders { get; set; }
-        public State<Cart> Cart { get; set; }
+       // public State<Cart> Cart { get; set; }
     }
 }

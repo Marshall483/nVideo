@@ -7,6 +7,8 @@
     <list default="true" id="206d4903-e1e8-46d8-a722-be308b6e88d6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Models/User.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +20,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5723D2C3-5851-4D78-89A9-838781296FB1/C/CallSiteFactory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/14F77EE4-639B-4CE9-849B-C8F1BB98D456/F3/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B5C0ECE9-48E9-456E-A76D-60AC6F690356/40/SelectList.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/14F77EE4-639B-4CE9-849B-C8F1BB98D456/F3/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -27,7 +29,6 @@
       <option value="$PROJECT_DIR$/nVideo/Views/Order/Process.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Controllers/CatalogController.cs" />
       <option value="$PROJECT_DIR$/nVideo/Models/ShopCartView.cs" />
-      <option value="$PROJECT_DIR$/nVideo/Controllers/CartController.cs" />
       <option value="$PROJECT_DIR$/nVideo/Views/Shared/AboutItemPartial.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/Shared/ListShopCartPartial.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Components/CitiesViewComponent.cs" />
@@ -41,12 +42,23 @@
       <option value="$PROJECT_DIR$/nVideo/Views/Cart/Checkout.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/Order/Courier Delivery.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/Cart/Index.cshtml" />
-      <option value="$PROJECT_DIR$/nVideo/Models/User.cs" />
       <option value="$PROJECT_DIR$/nVideo/Models/ShopCartItem.cs" />
-      <option value="$PROJECT_DIR$/nVideo/Models/Catalog_Order.cs" />
       <option value="$PROJECT_DIR$/nVideo/Views/Order/Complete.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/DATA/Extentions/UserManagerExtentions.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Controllers/CartController.cs" />
       <option value="$PROJECT_DIR$/nVideo/Models/ShopCart.cs" />
       <option value="$PROJECT_DIR$/nVideo/Controllers/OrderController.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Models/Catalog_Order.cs" />
+      <option value="$PROJECT_DIR$/Cart/Class1.cs" />
+      <option value="$PROJECT_DIR$/Cart/Infrastrucuture/StateAttribute.cs" />
+      <option value="$PROJECT_DIR$/Cart/Infrastructure/StateAttribute.cs" />
+      <option value="$PROJECT_DIR$/Cart/Infrastructure/Infrastructure.cs" />
+      <option value="$PROJECT_DIR$/Cart/DomainUsage/nVideoCart.cs" />
+      <option value="$PROJECT_DIR$/Cart/ConcreteStates/CartSates.cs" />
+      <option value="$PROJECT_DIR$/Cart/class.cs" />
+      <option value="$PROJECT_DIR$/Cart/test.cs" />
+      <option value="$PROJECT_DIR$/Cart/DomainUsage/CartSates.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Models/User.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sINx0eNiM9LjEVCcI9PLIEiGNn" />
@@ -111,6 +123,12 @@
       <workItem from="1620664808975" duration="14917000" />
       <workItem from="1620681061730" duration="6155000" />
       <workItem from="1620687432998" duration="1712000" />
+      <workItem from="1620732585093" duration="3537000" />
+      <workItem from="1620745372267" duration="134000" />
+      <workItem from="1620808279850" duration="3727000" />
+      <workItem from="1620823026659" duration="110000" />
+      <workItem from="1620823192147" duration="9877000" />
+      <workItem from="1621069253170" duration="1599000" />
     </task>
     <servers />
   </component>
@@ -133,55 +151,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/nVideo/Controllers/OrderController.cs</url>
-          <line>42</line>
-          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/OrderController.cs" initialLine="22" containingFunctionPresentation="method 'ProcessOrder'">
-            <startOffsets>
-              <option value="1280" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1281" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/nVideo/Controllers/OrderController.cs</url>
-          <line>73</line>
-          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/OrderController.cs" initialLine="52" containingFunctionPresentation="method 'ProcessCourierDelivery'">
-            <startOffsets>
-              <option value="2468" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2469" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/nVideo/Controllers/OrderController.cs</url>
-          <line>58</line>
-          <properties documentPath="$PROJECT_DIR$/nVideo/Controllers/OrderController.cs" initialLine="58" containingFunctionPresentation="method 'ProcessSelfDelivery'">
-            <startOffsets>
-              <option value="1990" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1991" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <pin-to-top-manager>
-      <pinned-members>
-        <PinnedItemInfo parentTag="Type#nVideo.Models.ShopCartItem" memberName="Entity" />
-      </pinned-members>
-    </pin-to-top-manager>
   </component>
 </project>

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="CartStates\**" />
+      <Compile Remove="ConcreteStates\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="CartStates\**" />
+      <EmbeddedResource Remove="ConcreteStates\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="CartStates\**" />
+      <None Remove="ConcreteStates\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\nVideo\nVideo.csproj" />
+    </ItemGroup>
+
+</Project>

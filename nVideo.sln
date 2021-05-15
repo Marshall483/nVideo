@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nVideo", "nVideo\nVideo.csproj", "{D9F182CA-09E8-407A-A35E-AE980255F874}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cart", "Cart\Cart.csproj", "{0F34F57D-6E7B-47F5-AF1E-58BF5D6D9D28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D9F182CA-09E8-407A-A35E-AE980255F874}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9F182CA-09E8-407A-A35E-AE980255F874}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9F182CA-09E8-407A-A35E-AE980255F874}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F34F57D-6E7B-47F5-AF1E-58BF5D6D9D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F34F57D-6E7B-47F5-AF1E-58BF5D6D9D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F34F57D-6E7B-47F5-AF1E-58BF5D6D9D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F34F57D-6E7B-47F5-AF1E-58BF5D6D9D28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
