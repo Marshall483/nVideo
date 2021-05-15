@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/Enetities/Enetities.csproj": {}
+    "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo_BLL/nVideo_BLL.csproj": {}
   },
   "projects": {
-    "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/Enetities/Enetities.csproj": {
+    "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo_BLL/nVideo_BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/Enetities/Enetities.csproj",
-        "projectName": "Enetities",
-        "projectPath": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/Enetities/Enetities.csproj",
+        "projectUniqueName": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo_BLL/nVideo_BLL.csproj",
+        "projectName": "nVideo_BLL",
+        "projectPath": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo_BLL/nVideo_BLL.csproj",
         "packagesPath": "/Users/Marshall483/.nuget/packages/",
-        "outputPath": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/Enetities/obj/",
+        "outputPath": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/nVideo_BLL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/Marshall483/.nuget/NuGet/NuGet.Config"
