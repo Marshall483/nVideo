@@ -5,8 +5,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Library.fs" />
-        <Folder Include="Entities" />
+        <Compile Include="Entities\Catalog_Entity.fs" />
+        <Compile Include="Entities\Catalog_Attribute.fs" />
+        <Compile Include="Entities\Catalog_Category.fs" />
+        <Compile Include="Entities\Catalog_Value.fs" />
+        <Compile Include="Entities\Order.fs" />
+        <Compile Include="Entities\City.fs" />
+        <Compile Include="Entities\Catalog_Comment.fs" />
+        <Compile Include="Entities\Catalog_Picture.fs" />
+        <Compile Include="Entities\User.fs" />
+        <Compile Include="Entities\UserProfile.fs" />
     </ItemGroup>
 
 </Project>
