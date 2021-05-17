@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj": {}
+    "C:\\NewProgram\\GithubRepository\\nVideo\\nVideo\\nVideo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj": {
+    "C:\\NewProgram\\GithubRepository\\nVideo\\nVideo\\nVideo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj",
+        "projectUniqueName": "C:\\NewProgram\\GithubRepository\\nVideo\\nVideo\\nVideo.csproj",
         "projectName": "nVideo",
-        "projectPath": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\obj\\",
+        "projectPath": "C:\\NewProgram\\GithubRepository\\nVideo\\nVideo\\nVideo.csproj",
+        "packagesPath": "C:\\Users\\Fies\\.nuget\\packages\\",
+        "outputPath": "C:\\NewProgram\\GithubRepository\\nVideo\\nVideo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fies\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -111,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

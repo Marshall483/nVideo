@@ -1,0 +1,62 @@
+﻿@{
+  Layout = "AdminPanelLayout";
+}
+
+<section class="charts mt-4">
+  <div class="chart-container p-3">
+    <h3 class="fs-6 mb-3">Add</h3>
+    <form method="post" asp-action="AddEntityPartial">
+      <br>
+      <p>
+        <select class="form-select" >
+          <option selected>Select role</option>
+          <option value="1">User</option>
+          <option value="2">Admin</option>          
+        </select>
+      </p>
+      <br />
+      
+      <br>
+      <h3 class="fs-6 mb-3">Login:</h3>
+      <input required type="text" placeholder="Enter login" name="Descr" maxlength="30" />
+      <br />
+
+      <br>
+      <h3 class="fs-6 mb-3">Password:</h3>
+      <div class="password">
+        <input type="password" id="password-input" placeholder="Enter password" name="password">
+        <br>
+        <button class="password-control" onclick="return show_hide_password(this);">Show/hide password</button>
+        
+      </div>
+
+      <br />
+
+
+
+      <button>Save User</button>
+    </form>
+
+    <div style="height: 300px">
+    </div>
+  </div>
+</section>
+
+<script>
+  function show_hide_password(target) {
+    var input = document.getElementById('password-input');
+    if (input.getAttribute('type') == 'password') {
+      target.classList.add('view');
+      input.setAttribute('type', 'text');
+    } else {
+      target.classList.remove('view');
+      input.setAttribute('type', 'password');
+    }
+    return false;
+  }
+</script>
+<style>
+  .form-select {
+    width: 20%;
+  }
+</style>

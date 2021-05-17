@@ -9,11 +9,47 @@
   <div class="chart-container p-3">
     <h3 class="fs-6 mb-3">Add</h3>
     <form method="post" asp-action="AddEntityPartial">
-      <input required minlength="1" maxlength="2"  name="Number" type="text" placeholder="Number of attributes">
       <br>
-      <input required minlength="1" maxlength="2"  name="Imgs" type="text" placeholder="Number of img">
-        <input type="submit">
-      </form>
+      <h3 class="fs-6 mb-3">Name:</h3>
+      <input required type="text" name="Descr" maxlength="30" />
+      <br />
+
+      <br>
+      <h3 class="fs-6 mb-3">Image:</h3>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+      <br />
+
+      <br>
+      <h3 class="fs-6 mb-3">Short Description:</h3>
+      <input required type="text" name="Descr" maxlength="30" />
+      <br />
+
+      <br>
+      <h3 class="fs-6 mb-3">Long Description:</h3>
+      <input required type="text" name="Descr" />
+      <br />
+
+      <br>
+      <h3 class="fs-6 mb-3">Price:</h3>
+      <input required type="text" name="Price" maxlength="6" />
+      <br />
+
+      <br>
+      <h3 class="fs-6 mb-3">InStock:</h3>
+      <input required type="text" name="InStock" maxlength="4" />
+      <br />
+
+
+      <br>
+      <h3 class="fs-6 mb-3">Awailable:</h3>
+      <input required type="text" name="Awailable" maxlength="6" />
+      <br />
+      <br>
+      <button>Save Entity</button>
+    </form>
 
     <div style="height: 300px">
     </div>

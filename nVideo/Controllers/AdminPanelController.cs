@@ -56,6 +56,13 @@ namespace nVideo.Controllers
             
             return View();
         }
+        public IActionResult AddUser()
+        {
+            
+            return View();
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Ban(string BanEmail)
         {
