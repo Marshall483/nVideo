@@ -7,9 +7,9 @@ open Microsoft.AspNetCore.Identity
 
 type User =
     inherit IdentityUser
-    val Comments: ICollection<Catalog_Comment>
-    val Profile: UserProfile
-    //val State<Cart>: CartState
+        val Comments: ICollection<Catalog_Comment>
+        val Profile: UserProfile
+        //val State<Cart>: CartState
         
 and [<CLIMutable>]
  UserProfile = {
