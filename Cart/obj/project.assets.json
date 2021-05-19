@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "/Users/Marshall483/.nuget/packages/": {}
+    "/Users/Marshall483/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -19,6 +20,9 @@
       "packagesPath": "/Users/Marshall483/.nuget/packages/",
       "outputPath": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/Cart/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "/Users/Marshall483/.nuget/NuGet/NuGet.Config"
       ],

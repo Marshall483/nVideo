@@ -1,11 +1,12 @@
-module nVideo_DAL.Entities.City
+namespace DAL_Models
+
 open System
+open System.ComponentModel.DataAnnotations
 
-
-
-type City (nameIn : string, OfficeLocationIn : string) = 
-    let mutable Id: Guid = Guid.NewGuid()
-    let mutable Name = nameIn
-    let mutable OfficeLocation = OfficeLocationIn
-    
-
+[<CLIMutable>]
+type City = {
+    [<Key>]
+    Id: Guid
+    Name: string
+    OfficeLocation: string
+}

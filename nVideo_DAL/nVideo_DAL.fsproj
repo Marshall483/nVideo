@@ -5,16 +5,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Entities\Catalog_Entity.fs" />
-        <Compile Include="Entities\Catalog_Attribute.fs" />
-        <Compile Include="Entities\Catalog_Category.fs" />
-        <Compile Include="Entities\Catalog_Value.fs" />
-        <Compile Include="Entities\Order.fs" />
         <Compile Include="Entities\City.fs" />
-        <Compile Include="Entities\Catalog_Comment.fs" />
         <Compile Include="Entities\Catalog_Picture.fs" />
-        <Compile Include="Entities\User.fs" />
-        <Compile Include="Entities\UserProfile.fs" />
+        <Compile Include="Entities\CatalogValueAndAttribute.fs" />
+        <Compile Include="Entities\CatalogEntityAndComment.fs" />
+        <Compile Include="Entities\Catalog_Category.fs" />
+        <Compile Include="Entities\UserAndProfile.fs" />
+        <Compile Include="Entities\Catalog_Order.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\nVideo\nVideo.csproj" />
     </ItemGroup>
 
 </Project>

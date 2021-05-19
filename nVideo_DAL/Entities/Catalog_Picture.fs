@@ -1,2 +1,12 @@
-module nVideo_DAL.Entities.Catalog_Picture
+namespace DAL_Models
+
+open System.ComponentModel.DataAnnotations
+
+[<CLIMutable>]
+type Catalog_Picture = {
+    
+    [<Key>]
+    Id: int  
+    Patch: string
+}
 
