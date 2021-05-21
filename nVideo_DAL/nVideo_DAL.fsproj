@@ -10,8 +10,9 @@
         <Compile Include="Entities\CatalogValueAndAttribute.fs" />
         <Compile Include="Entities\CatalogEntityAndComment.fs" />
         <Compile Include="Entities\Catalog_Category.fs" />
-        <Compile Include="Entities\UserAndProfile.fs" />
         <Compile Include="Entities\Catalog_Order.fs" />
+        <Compile Include="Entities\ShopCartItem.fs" />
+        <Compile Include="AppDBContext.fs" />
     </ItemGroup>
 
     <ItemGroup>

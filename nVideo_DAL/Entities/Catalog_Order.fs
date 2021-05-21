@@ -5,7 +5,7 @@ open System.Collections.Generic
 open System.ComponentModel.DataAnnotations
 
 [<CLIMutable>]
-type Order = {
+type Catalog_Order = {
     
     [<Key>]
     Id: int

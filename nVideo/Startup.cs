@@ -17,6 +17,7 @@ using nVideo.DATA.Interfaces;
 using nVideo.DATA.Repository;
 using nVideo.DATA.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using nVideo_DAL;
 
 namespace nVideo
 {
