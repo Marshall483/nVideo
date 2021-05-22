@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj": {}
+    "C:\\Users\\jows1\\source\\repos\\nVideo\\nVideo\\nVideo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj": {
+    "C:\\Users\\jows1\\source\\repos\\nVideo\\nVideo\\nVideo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj",
+        "projectUniqueName": "C:\\Users\\jows1\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
         "projectName": "nVideo",
-        "projectPath": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\obj\\",
+        "projectPath": "C:\\Users\\jows1\\source\\repos\\nVideo\\nVideo\\nVideo.csproj",
+        "packagesPath": "C:\\Users\\jows1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jows1\\source\\repos\\nVideo\\nVideo\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jows1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +29,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -38,7 +40,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "IpInfo": {
               "target": "Package",
@@ -111,7 +112,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
