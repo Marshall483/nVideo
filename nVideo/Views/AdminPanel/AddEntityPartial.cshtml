@@ -1,46 +1,85 @@
-﻿
-@{
+﻿@{
     Layout = "AdminPanelLayout";
 }
 
 
 <section class="charts mt-4">
-  <div class="chart-container p-3">
-    <h3 class="fs-6 mb-3">Add</h3>
-  <form method="post" asp-action="AddEntityToDB" enctype="multipart/form-data">
-      <input required name="Name" minlength="1" type="text" maxlength="20" placeholder="Name">
-      <br>
-      <input  required name="Category" minlength="1"  type="text" maxlength="30" placeholder="Category">
-      <br>
-      <input required name="Articul" minlength="1"  type="text" maxlength="20" placeholder="Articul">
-      <br>
-      <input required name="Price" minlength="1"  type="text" maxlength="10" placeholder="Price">
-      <br>
-      <input required name="Short_Desc" minlength="1"  type="text" maxlength="50" placeholder="Short Descr">
-      <br>
-      <input required name="Long_Desc" minlength="1"  type="text" maxlength="200" placeholder="Long Descr">
-      <br>
-      <input required name="InStock" minlength="1"  type="text" maxlength="8" placeholder="InStock">
-      <br>
+    <div class="chart-container p-3">
+        <h3 class="fs-6 mb-3">Add</h3>
+        <form method="post" asp-action="AddEntityToDB" enctype="multipart/form-data">
+            <br>
+            <h3 class="fs-6 mb-3">Name:</h3>
+            <input required type="text" name="Name" maxlength="20" />
+            <br />
+            <br>
+            <select  required name="Category" class="form-select" >
+                
+                <option selected value="Accessories">Accessories</option>
+                <option value="Auto">Auto</option>      
+                <option value="Beauty&Health">Beauty&Health</option>
+                <option value="Games&Soft">Games&Soft</option>
+                <option value="Home">Home</option>
+                <option value="Kitchen">Kitchen</option>
+                <option value="Nodebook&Desck">Nodebook&Desck</option> 
+                <option value="Phones&Gadgets">Phones&Gadgets</option>
+                <option value="Photo&Video">Photo&Video</option>
+                <option value="ProfileImages">ProfileImages</option>
+                <option value="Tv&Audio">Tv&Audio</option> 
+                </select>
+            <br>
+            <h3 class="fs-6 mb-3">Short Description:</h3>
+            <input required type="text" name="Short_Desc" maxlength="30" />
+            <br />
+           
+            <br>
+            <h3 class="fs-6 mb-3">Long Description:</h3>
+            <input required type="text" name="Long_Desc" />
+            <br />
+           
+            <br>
+            <h3 class="fs-6 mb-3">Price:</h3>
+            <input required type="number" name="Price" maxlength="6" min="1" max="10000"/>
+            <br />
+           
+            <br>
+            <h3 class="fs-6 mb-3">InStock:</h3>
+            <input required type="number" name="InStock" maxlength="3" min="0" max="100" />
+            <br />
+           
+           
+            <br>
+            <h3 class="fs-6 mb-3">Awailable:</h3>
+            <select  required name="Awailable" class="form-select" >
+                            
+                <option selected value="True">True</option>
+                <option value="False">False</option>
+            </select>
+            <br />
+            <br>
 
-      @{
-          int i = ViewBag.Number;
-          for (int j = 0; j < i; j++)
-          {
-              <input required minlength="1" name="Attributes[@j]" type="text" maxlength="20" placeholder="Attribute  name  @j">
-              <input required minlength="1"  name="Values[@j]" type="text" maxlength="20" placeholder="Attribute  value @j">
-              <br>                                                                                          
-          }
+            @{
+                int i = ViewBag.Number;
+                for (int j = 0; j < i; j++)
+                {
+                    <input required minlength="1" name="Attributes[@j]" type="text" maxlength="20" placeholder="Attribute  name  @j">
+                    <input required minlength="1"  name="Values[@j]" type="text" maxlength="20" placeholder="Attribute  value @j">
+                    <br>                                                                                          
+                }
       
-          int s = ViewBag.NumImg;
-          for (int j = 0; j < s; j++)
-          {
-              <input required name="images" type="file"  /><br>
-          }
-      }
-      <input type="submit">
-  </form>
-      <div style="height: 300px"> 
-      </div>
-  </div>
-</section>   
+                int s = ViewBag.NumImg;
+                for (int j = 0; j < s; j++)
+                {
+                    <input required name="images" type="file" accept="image/png, image/gif, image/jpeg" /><br>
+                }
+            }
+            
+            
+            
+            <input type="submit">
+        </form>
+        <div style="height: 300px"> 
+        </div>
+    </div>
+</section>
+ 
+

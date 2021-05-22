@@ -5,33 +5,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="baa1fcdc-4137-4a97-98ec-35a3ea1ce733" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/nVideo/Views/AdminPanel/Order.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nVideo/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/Views/AdminPanel/AddEntity.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/AdminPanel/AddEntity.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/Views/AdminPanel/AddEntityPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/AdminPanel/AddEntityPartial.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/Views/AdminPanel/AddUser.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/AdminPanel/AddUser.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/Views/AdminPanel/EditProduct.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/AdminPanel/EditProduct.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/Views/AdminPanel/Orders.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/AdminPanel/Orders.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/Views/AdminPanel/Order.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/Views/AdminPanel/Order.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Account/PersonalPage.cshtml.g.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Account/Registration.cshtml.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/bin/Debug/netcoreapp3.1/nVideo.runtimeconfig.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Account/Register.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Account/Register.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/AddEntity.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/AddEntity.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/AddEntityPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/AddEntityPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/Banhammer.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/Banhammer.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/DeleteEntities.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/DeleteEntities.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/EditEntity.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/EditEntity.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/EditProduct.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/EditProduct.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/Index.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/Index.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/Orders.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/Orders.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/Result.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/AdminPanel/Result.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Cart/Checkout.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Cart/Checkout.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Cart/Index.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Cart/Index.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Catalog/About.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Catalog/About.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Catalog/List.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Catalog/List.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Error/Status.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Error/Status.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Office/Profile.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Office/Profile.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/AboutItemPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/AboutItemPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/AdminPanelLayout.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/AdminPanelLayout.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/AttributesPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/AttributesPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ChangeAvatarPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ChangeAvatarPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ChangePasswordModalPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ChangePasswordModalPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/CommentsPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/CommentsPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/AddEntityPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/AddEntityPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Attribute/Default.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Attribute/Default.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Cities/Default.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Cities/Default.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Login/LoginForm.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Login/LoginForm.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/EditProfileModalPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/EditProfileModalPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/FeaturedPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/FeaturedPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/FilterPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/FilterPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/HomeCarouselPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/HomeCarouselPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ItemCarouselPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ItemCarouselPartial.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ListCatalogPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ListCatalogPartial.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ListShopCartPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ListShopCartPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/LoginPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/LoginPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/NewProductPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/NewProductPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/OnEmailConfirm.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/OnEmailConfirm.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ReleatedProductsPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ReleatedProductsPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ThumbnailsPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/ThumbnailsPartial.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/Debug/netcoreapp3.1/nVideo.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/nVideo.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nVideo/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nVideo/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/nVideo/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,13 +85,27 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/747E2306-23CB-4286-BBC6-3A9BB7DD0F27/3/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A81C4DA1-62C3-4E23-B9E2-DD58FD753244/F3/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A81C4DA1-62C3-4E23-B9E2-DD58FD753244/194/ObjectMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/226F32A0-7CE1-439E-93A4-F5D17DA7E5A2/6/AuthenticationMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A09F3348-F127-4FC1-A514-FCF2CBB5FB03/16/EndpointRoutingMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A81C4DA1-62C3-4E23-B9E2-DD58FD753244/FE/ControllerActionInvoker.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/Banhammer.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/DeleteEntities.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/EditEntity.cshtml" />
-      <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/EditProduct.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/Orders.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/DATA/RoleInitilyzer.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/Shared/AdminPanelLayout.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/AddEntity.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/AddEntityPartial.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/AddUser.cshtml" />
+      <option value="$PROJECT_DIR$/nVideo/Startup.cs" />
+      <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/EditProduct.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Views/AdminPanel/Order.cshtml" />
       <option value="$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs" />
     </changedPaths>
@@ -68,6 +117,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3502052" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.3002736" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -115,6 +166,12 @@
       <updated>1620562904986</updated>
       <workItem from="1620562910287" duration="24747000" />
       <workItem from="1620720572674" duration="8462000" />
+      <workItem from="1621236857084" duration="7405000" />
+      <workItem from="1621413076969" duration="4192000" />
+      <workItem from="1621421032719" duration="2495000" />
+      <workItem from="1621504110857" duration="1670000" />
+      <workItem from="1621602848894" duration="25756000" />
+      <workItem from="1621669136489" duration="4791000" />
     </task>
     <servers />
   </component>
@@ -143,16 +200,120 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs</url>
-          <line>332</line>
+          <line>353</line>
           <properties documentPath="C:\Users\User\Desktop\nVideo\nVideo\Controllers\AdminPanelController.cs" initialLine="289" containingFunctionPresentation="method 'RemoveEntity'">
             <startOffsets>
-              <option value="11274" />
+              <option value="11880" />
             </startOffsets>
             <endOffsets>
-              <option value="11287" />
+              <option value="11893" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs</url>
+          <line>315</line>
+          <properties documentPath="C:\Users\User\Desktop\nVideo\nVideo\Controllers\AdminPanelController.cs" initialLine="304" containingFunctionPresentation="method 'DeleteById'">
+            <startOffsets>
+              <option value="10783" />
+            </startOffsets>
+            <endOffsets>
+              <option value="10967" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs</url>
+          <line>307</line>
+          <properties documentPath="C:\Users\User\Desktop\nVideo\nVideo\Controllers\AdminPanelController.cs" initialLine="301" containingFunctionPresentation="method 'DeleteById'">
+            <startOffsets>
+              <option value="10453" />
+            </startOffsets>
+            <endOffsets>
+              <option value="10487" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs</url>
+          <line>308</line>
+          <properties documentPath="C:\Users\User\Desktop\nVideo\nVideo\Controllers\AdminPanelController.cs" initialLine="302" containingFunctionPresentation="method 'DeleteById'">
+            <startOffsets>
+              <option value="10500" />
+            </startOffsets>
+            <endOffsets>
+              <option value="10586" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs</url>
+          <line>383</line>
+          <properties documentPath="C:\Users\User\Desktop\nVideo\nVideo\Controllers\AdminPanelController.cs" initialLine="370" containingFunctionPresentation="method 'EditProductDb'">
+            <startOffsets>
+              <option value="12957" />
+            </startOffsets>
+            <endOffsets>
+              <option value="12982" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs</url>
+          <line>391</line>
+          <properties documentPath="C:\Users\User\Desktop\nVideo\nVideo\Controllers\AdminPanelController.cs" initialLine="378" containingFunctionPresentation="method 'EditProductDb'">
+            <startOffsets>
+              <option value="13246" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13312" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs</url>
+          <line>387</line>
+          <properties documentPath="C:\Users\User\Desktop\nVideo\nVideo\Controllers\AdminPanelController.cs" initialLine="374" containingFunctionPresentation="method 'EditProductDb'">
+            <startOffsets>
+              <option value="13087" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13166" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs</url>
+          <line>380</line>
+          <properties documentPath="C:\Users\User\Desktop\nVideo\nVideo\Controllers\AdminPanelController.cs" initialLine="369" containingFunctionPresentation="method 'EditProductDb'">
+            <startOffsets>
+              <option value="12844" />
+            </startOffsets>
+            <endOffsets>
+              <option value="12944" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/nVideo/Controllers/AdminPanelController.cs</url>
+          <line>385</line>
+          <properties documentPath="C:\Users\User\Desktop\nVideo\nVideo\Controllers\AdminPanelController.cs" initialLine="374" containingFunctionPresentation="method 'EditProductDb'">
+            <startOffsets>
+              <option value="13011" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13044" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

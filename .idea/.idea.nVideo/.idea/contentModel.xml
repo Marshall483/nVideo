@@ -129,6 +129,7 @@
           <e p="AdminPanel" t="Include">
             <e p="AddEntity.cshtml" t="Include" />
             <e p="AddEntityPartial.cshtml" t="Include" />
+            <e p="AddUser.cshtml" t="Include" />
             <e p="Banhammer.cshtml" t="Include" />
             <e p="DeleteEntities.cshtml" t="Include" />
             <e p="EditEntity.cshtml" t="Include" />
@@ -293,6 +294,16 @@
               </e>
               <e p="SaveGlass" t="Include">
                 <e p="1.jpg" t="Include" />
+              </e>
+              <e p="TEST1" t="Include">
+                <e p="29008585-old-american-car-in-black-and-white-wide-angle.jpg" t="Include" />
+              </e>
+              <e p="test123" t="Include">
+                <e p="29008585-old-american-car-in-black-and-white-wide-angle.jpg" t="Include" />
+              </e>
+              <e p="TestTest" t="Include">
+                <e p="29008585-old-american-car-in-black-and-white-wide-angle.jpg" t="Include" />
+                <e p="An_American_in_Cuba_in_Black_and_White_-_Copyright_2010_Ralph_Velasco1.jpg" t="Include" />
               </e>
             </e>
             <e p="Auto" t="Include">
