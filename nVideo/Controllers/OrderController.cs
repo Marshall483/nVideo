@@ -96,14 +96,16 @@ namespace nVideo.Controllers
                 User = User.Identity.IsAuthenticated 
                     ? await _userManager.GetUserAsync(new ClaimsPrincipal(User.Identities))
                     : null,
+
                 State = OpenState,
                 CreatedTime = DateTime.Now,
+                CustomerData = customerData,
+
                 Items = _dbContext
                     .ShopCartItems
                     .Where(x => x.UserName == User.Identity.Name)
                     .Include(x => x.Entity)
                     .ToList(),
-                CustomerData = customerData  
             };
 
     }

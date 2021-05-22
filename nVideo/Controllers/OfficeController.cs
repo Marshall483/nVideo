@@ -45,7 +45,7 @@ namespace nVideo.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var user = _userManager
-                    .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
+                    .GetUserIncludeProfileAndOreders(new ClaimsPrincipal(User.Identities));
 
                 ViewBag.Messages ??= new List<string>();
 
@@ -61,7 +61,9 @@ namespace nVideo.Controllers
                 var tuple = new Tuple<User, UserProfile>(user, new UserProfile());
                 return View(tuple);
             };
+
             ViewBag.Message = "Not Authenticated";
+
             return View("Error", new ErrorViewModel());
         }
 

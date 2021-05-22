@@ -1,0 +1,6 @@
+﻿@model Catalog_Entity
+
+
+<td><img src="@Model.Images.First().Patch" alt=""></td>
+<td><h5>@Model.Name</h5><br> @String.Concat(Model.Long_Desc.Take(150).Append('.').Append('.').Append('.').ToArray())<br></td>
+<td>$ @(Model.Price / 74)</td>

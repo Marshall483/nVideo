@@ -17,10 +17,20 @@ namespace nVideo.DATA.Extentions
 
         public static User GetUserIncludeProfile(this UserManager<User> manager,
             ClaimsPrincipal principal) =>
-            manager.Users
+                 manager.Users
                 .Where(u => u.Id.Equals(manager.GetUserId(principal)))
                 .Include(u => u.Profile)
                 .Single();
 
+        public static User GetUserIncludeProfileAndOreders(this UserManager<User> manager,
+            ClaimsPrincipal principal) =>
+                 manager.Users
+                .Where(u => u.Id.Equals(manager.GetUserId(principal)))
+                .Include(u => u.Orders)
+                .ThenInclude(i => i.Items)
+                .ThenInclude(e => e.Entity)
+                .ThenInclude(p => p.Images)
+                .Include(u => u.Profile)
+                .Single();
     }
 }

@@ -559,3 +559,4 @@ C:\Users\jows1\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Sh
 C:\Users\jows1\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\OnEmailConfirm.cshtml.g.cs
 C:\Users\jows1\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ReleatedProductsPartial.cshtml.g.cs
 C:\Users\jows1\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ThumbnailsPartial.cshtml.g.cs
+C:\Users\jows1\source\repos\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ProfileOrdersPartial.cshtml.g.cs
