@@ -5,26 +5,25 @@
 <section class="charts mt-4">
   <div class="chart-container p-3">
     <h3 class="fs-6 mb-3">Add</h3>
-    <form method="post" asp-action="AddEntityPartial">
+    <form method="post" asp-action="CreateUser">
       <br>
       <p>
-        <select class="form-select" >
-          <option selected>Select role</option>
-          <option value="1">User</option>
-          <option value="2">Admin</option>          
+        <select name="Role" class="form-select" >
+          <option selected value="user">User</option>
+          <option value="admin">Admin</option>          
         </select>
       </p>
       <br />
       
       <br>
       <h3 class="fs-6 mb-3">Login:</h3>
-      <input required type="text" placeholder="Enter login" name="Descr" maxlength="30" />
+      <input required type="email" placeholder="Enter login" name="Email" maxlength="30" />
       <br />
 
       <br>
       <h3 class="fs-6 mb-3">Password:</h3>
       <div class="password">
-        <input type="password" id="password-input" placeholder="Enter password" name="password">
+        <input type="password" id="password-input" placeholder="Enter password" name="pass">
         <br>
         <button class="password-control" onclick="return show_hide_password(this);">Show/hide password</button>
         

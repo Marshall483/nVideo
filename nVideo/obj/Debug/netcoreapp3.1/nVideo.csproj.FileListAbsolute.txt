@@ -517,3 +517,4 @@ C:\NewProgram\GithubRepository\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views
 C:\NewProgram\GithubRepository\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\OnEmailConfirm.cshtml.g.cs
 C:\NewProgram\GithubRepository\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ReleatedProductsPartial.cshtml.g.cs
 C:\NewProgram\GithubRepository\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\AdminPanel\AddUser.cshtml.g.cs
+C:\Users\User\Desktop\nVideo\nVideo\obj\Debug\netcoreapp3.1\Razor\Views\AdminPanel\AddUser.cshtml.g.cs
