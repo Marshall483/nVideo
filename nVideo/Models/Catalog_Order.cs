@@ -1,4 +1,5 @@
 #nullable enable
+
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -19,6 +20,6 @@ namespace nVideo.Models
 
         public string State { get; set; } // Open, InProcess, Closed
 
-        public IEnumerable<ShopCartItem> Items { get; set; }
+        public IEnumerable<Ordered_Item> OrderedItems { get; set; }
     }
 }

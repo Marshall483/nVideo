@@ -289,17 +289,17 @@ namespace nVideo.Controllers
         [HttpPost]
         public  async Task<IActionResult> DeleteById(int eid)
         {
-            var e = _catalog.GetItemById(eid);
-            var orders =_context.Orders.Select(o => o);
+            var ordered = _context.Orders
+                .Include(i => i.OrderedItems)
+                .ThenInclude(e => e.Entity);
 
-            var res = orders 
-                .ToList()
-                .Select(o => o.Items)
-                .Any(en =>
-                    en.Any(ent =>
-                        ent.Id.Equals(eid)))
-                ? false
-                : await RemoveEntity(e); //You can't delete item, if customer order it.
+            //Check of ent is in cart
+
+            var res = ordered.Any(o => o.Id.Equals(eid));
+
+            if (!res)
+                RemoveEntity(_context.Entities.First(e => e.Id.Equals(eid)));
+
 
             return Redirect( res ? "Success" : "Fail");
         }

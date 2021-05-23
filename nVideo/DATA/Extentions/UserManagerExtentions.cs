@@ -27,7 +27,7 @@ namespace nVideo.DATA.Extentions
                  manager.Users
                 .Where(u => u.Id.Equals(manager.GetUserId(principal)))
                 .Include(u => u.Orders)
-                .ThenInclude(i => i.Items)
+                .ThenInclude(i => i.OrderedItems)
                 .ThenInclude(e => e.Entity)
                 .ThenInclude(p => p.Images)
                 .Include(u => u.Profile)

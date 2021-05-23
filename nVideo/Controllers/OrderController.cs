@@ -74,24 +74,20 @@ namespace nVideo.Controllers
         {
             var order = await PopulateOrderAsync(customerData);
 
-            foreach (var item in order.Items)
-                item.Order = order;
-            
-            // While removing from cart, another thread modify orders collection.
-            var temp = order.Items.Select(i => i.Entity.Id).ToArray();
-            int[] itemsId = new int[temp.Count()];
-            Array.Copy(temp, itemsId, temp.Count());
-            
+            int[] ids = new int[order.OrderedItems.Count()];
+            Array.Copy(order.OrderedItems.Select(o => o.Entity.Id).ToArray(), ids, ids.Length);
+
+             _dbContext.OrderedItem.AddRange(order.OrderedItems.ToList());
             await _dbContext.Orders.AddAsync(order);
 
-            foreach (var id in itemsId)
-                _shopCart.RevomeFromCart(id);
-            
-            return View("Complete");
+            foreach (var id in ids)
+                 _shopCart.RevomeFromCart(id);
+
+                return View("Complete");
         }
 
-        private async Task<Catalog_Order> PopulateOrderAsync(UserProfile customerData) =>
-            new Catalog_Order()
+        private async Task<Catalog_Order> PopulateOrderAsync(UserProfile customerData) {
+            var order = new Catalog_Order()
             {
                 User = User.Identity.IsAuthenticated 
                     ? await _userManager.GetUserAsync(new ClaimsPrincipal(User.Identities))
@@ -101,12 +97,18 @@ namespace nVideo.Controllers
                 CreatedTime = DateTime.Now,
                 CustomerData = customerData,
 
-                Items = _dbContext
+                OrderedItems = _dbContext
                     .ShopCartItems
                     .Where(x => x.UserName == User.Identity.Name)
                     .Include(x => x.Entity)
+                    .Select(x => new Ordered_Item(x.Entity, x.Quanity))
                     .ToList(),
             };
 
+            foreach (var item in order.OrderedItems)
+                item.Order = order;
+
+            return order;
+        }
     }
 }
