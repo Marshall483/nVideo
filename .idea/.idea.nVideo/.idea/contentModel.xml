@@ -97,6 +97,7 @@
           <e p="City.cs" t="Include" />
           <e p="Comment.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
+          <e p="FilterModel.cs" t="Include" />
           <e p="Picture.cs" t="Include" />
           <e p="ShopCart.cs" t="Include" />
           <e p="ShopCartItem.cs" t="Include" />
