@@ -81,7 +81,7 @@ namespace nVideo
             app.Use(async (context, next) =>
             {
                 if (!context.Request.Cookies.ContainsKey("City"))
-                    context.Response.Cookies.Append("City", Locator.Response);
+                    context.Response.Cookies.Append("City", await LocatorService.GetyCityAsync());
                 await next.Invoke();
             });
             app.UseEndpoints(endpoints =>
