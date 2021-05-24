@@ -7,15 +7,13 @@ namespace nVideo.Models
 {
     public class AttributeView
     {
-        public AttributeView(string name, List<Catalog_Value> values, Dictionary<string, string> dict)
+        public AttributeView(string name, List<Catalog_Value> values)
         {
             Name = name;
             Values = values;
-            Dict = dict;
         }
 
         public string Name { get; set; }
         public List<Catalog_Value> Values { get; set; }
-        public Dictionary<string, string> Dict { get; set; }
     }
 }

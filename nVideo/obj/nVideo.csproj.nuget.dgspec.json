@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj": {}
+    "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj": {
+    "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj",
         "projectName": "nVideo",
-        "projectPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\nVideo.csproj",
-        "packagesPath": "C:\\Users\\danik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\danik\\OneDrive\\Documents\\GIthub\\nVideo\\nVideo\\obj\\",
+        "projectPath": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\nVideo.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\nVideo\\nVideo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\danik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -76,10 +76,6 @@
               "target": "Package",
               "version": "[5.0.5, )"
             },
-            "Microsoft.jQuery.Unobtrusive.Ajax": {
-              "target": "Package",
-              "version": "[3.2.6, )"
-            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[5.0.5.1, )"
@@ -115,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
