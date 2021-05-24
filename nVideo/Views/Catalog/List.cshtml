@@ -5,9 +5,22 @@
     <div class="well well-small">
         <h5>Фильтры</h5>
         <hr class="soften">
-        @if (Model.Entities.Count() != 0)
+        @if (!string.IsNullOrEmpty(Context.Request.Cookies["category"]))
         {
-            @await Component.InvokeAsync("Attribute", Model.Entities.First())
+            @if (Model.Entities.Count() != 0)
+            {
+                @await Component.InvokeAsync("Attribute", Model)
+            }
+            else
+            {
+    <h5>
+        No products were found for these parameters.
+        <a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="@Context.Request.Cookies["category"]">
+            reset filters
+        </a>
+    </h5>
+
+            }
         }
         <button id="sort-asc" class="btn">Price by asceding</button>
         <button id="sort-desc" class="btn">Price by desceding</button>
