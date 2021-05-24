@@ -1,13 +1,10 @@
-﻿@model FilterModel
+﻿@model Dictionary<string, List<Catalog_Value>>
 
 <form method="get" asp-controller="Catalog" asp-action="EntityByFilter">
-    @foreach (var pair in Model.Attributes)
+    @foreach (var pair in Model)
     {
         @pair.Key
-        @await Html.PartialAsync("FilterPartial", new AttributeView(pair.Key, pair.Value, Model.DefaultValue))
+        @await Html.PartialAsync("FilterPartial", new AttributeView(pair.Key, pair.Value))
     }
     <input type="submit" value="Search" class="btn">
-    <a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="@Context.Request.Cookies["category"]" class="btn">
-        reset filters
-    </a>
 </form>

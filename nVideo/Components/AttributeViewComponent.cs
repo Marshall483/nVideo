@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using nVideo.DATA;
-using nVideo.DATA.ViewModels;
 using nVideo.Models;
 using System;
 using System.Collections.Generic;
@@ -18,16 +17,26 @@ namespace nVideo.Components
         {
             _context = context;
         }
-        public async Task<IViewComponentResult> InvokeAsync(CatalogViewModel model)
+        public async Task<IViewComponentResult> InvokeAsync(Catalog_Entity entity)
         {
-            var category = model.Entities.First().Category.CategoryName;
-            var attributes = await _context
+            var category = _context.Categories.FirstOrDefault(x => x.Entities.Any(x => x.Id == entity.Id)).CategoryName;
+            var attributesDict = new Dictionary<string, List<Catalog_Value>>();
+            List<Catalog_Attribute> attributes = new List<Catalog_Attribute>();
+            if (string.IsNullOrEmpty(category))
+            {
+                attributes = await _context
+                    .Attributes
+                    .Include(x => x.Value)
+                    .ToListAsync();
+            }
+            else
+            {
+                attributes = await _context
                     .Attributes
                     .Where(x => x.Entity.Category.CategoryName.Equals(category))
                     .Include(x => x.Value)
                     .ToListAsync();
-
-            var attributesDict = new Dictionary<string, List<Catalog_Value>>();
+            }
             foreach (var item in attributes)
             {
                 if (!attributesDict.ContainsKey(item.AttributeName))
@@ -39,12 +48,7 @@ namespace nVideo.Components
                     attributesDict[item.AttributeName].Add(item.Value);
                 }
             }
-            var result = new FilterModel
-            {
-                Attributes = attributesDict,
-                DefaultValue = model.Dict
-            };
-            return View(result);
+            return View(attributesDict);
         }
     }
 }
