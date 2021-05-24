@@ -102,25 +102,28 @@ namespace nVideo.Controllers
             foreach (var pair in dictresult)
             {
                 result.AddRange(_dbContext.Entities.Where(x => x.Id == pair.Key).Include(i => i.Images)
+                    .Include(c => c.Category)
                 .Include(a => a.Attributes)
                 .ThenInclude(v => v.Value).ToList());
             }
             var model = new CatalogViewModel
             {
-                Entities = result
+                Entities = result,
+                Dict = attributes
             };
 
             return View("List", model);
         }
         
-        [Route("Catalog/CategoryFilter/{category}")]
-        public IActionResult CategoryFilter(string category){
+        public IActionResult CategoryFilter(string category)
+        {
             if (!string.IsNullOrEmpty(category)){
 
                 var model = new CatalogViewModel
                 {
                     Entities = _catalog.GetCategoryMembers(category),
                 };
+                HttpContext.Response.Cookies.Append("category", category);
                 return View("List", model);
             }
             throw new ArgumentNullException("Missing parameter: string category");
