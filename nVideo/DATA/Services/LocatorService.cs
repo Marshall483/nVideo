@@ -19,20 +19,5 @@ namespace nVideo.DATA.Services
 
             return response.City;
         }
-        
-        public static IEnumerable<string> GetCities()
-        {
-            var cities = new List<string>()
-            {
-                "Kazan",
-                "Aznakaevo",
-                "Zalupki",
-                "Piderovo",
-                "Zaserinsk",
-                "Viserovo"
-            };
-
-            return cities;
-        }
     }
 }
