@@ -187,7 +187,7 @@ namespace nVideo.Controllers
         }
 
         private string ChangeLangCategory(string Category) =>
-            Category;
+            Category; // Lang changed in db.
 
         public IActionResult Result(int exepNum)
         {
