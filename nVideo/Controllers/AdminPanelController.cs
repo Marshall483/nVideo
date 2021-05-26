@@ -305,16 +305,23 @@ namespace nVideo.Controllers
         public  async Task<IActionResult> DeleteById(int eid)
         {
             var e = _catalog.GetItemById(eid);
-            var orders =_context.Orders
-                .Select(o => o)
+            var orders = _context.Orders
+                .Include(o => o.OrderedItems)
+                .ThenInclude(e => e.Entity)
                 .ToList();
 
-            var shopCartItem = orders.Select(o => o.Items).FirstOrDefault();
-            
-            var ent =shopCartItem==null? null: shopCartItem.FirstOrDefault(item => item.Id.Equals(eid));
-            if (ent == null)
+            var listOrders = orders.Select(o => o.OrderedItems);
+
+            bool isOrdered = false;
+
+            foreach (var order in listOrders)
+                foreach (var ordered in order)
+                    if (ordered.Entity.Id == eid)
+                        isOrdered = true;
+
+            if (!isOrdered)
             {
-                RemoveEntity(e).Wait();
+                await RemoveEntity(e);
                 return RedirectToAction("Result", new {exepNum = 0});
             }
             else 
