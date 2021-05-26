@@ -186,44 +186,8 @@ namespace nVideo.Controllers
             return RedirectToAction("Result", new {exepNum = 0});
         }
 
-        private string ChangeLangCategory(string Category)
-        {
-            switch (Category)
-            { 
-                case "Phones&Gadgets":
-                    return "Телефоны и гаджеты ";
-                    break;
-                case "TV&Audio":
-                    return "Телевизоры и аудио";
-                    break;
-                case "Nodebook&Desck":
-                    return "Ноутбуки и компьютеры";
-                    break;
-                case "Kitchen":
-                    return "Техника для кухни";
-                    break;
-                case "Home":
-                    return "Техника для дома";
-                    break;
-                case "Games&Soft":
-                    return "Игры и софт, равлеченияs";
-                    break;
-                case "Beauty&Health":
-                    return "Красота и здоровье";
-                    break;
-                case "Photo&Video":
-                    return "Фото и видео";
-                    break;
-                case "Auto":
-                    return "Авто электроника";
-                    break;
-                case "Accessories":
-                    return "Аксессуары";
-                    break;
-                default:
-                    return null;
-            }
-        }
+        private string ChangeLangCategory(string Category) =>
+            Category;
 
         public IActionResult Result(int exepNum)
         {
@@ -475,14 +439,6 @@ namespace nVideo.Controllers
         private uint PriceToRub(uint price)
         {
             return price * 74;
-        }
- 
-       
-
-       
+        }     
     }
-    
-    
-    
-    
 }

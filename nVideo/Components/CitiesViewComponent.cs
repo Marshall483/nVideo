@@ -28,7 +28,7 @@ namespace nVideo.Components
             {
                 city = await LocatorService.GetyCityAsync();
             
-                if (_cities.FirstOrDefault(x => x.Name.Equals(city)) == null)
+                if (_context.Cities.FirstOrDefault(x => x.Name.Equals(city)) == null)
                     city = "Sorry, we cant locate you(";
 
                 HttpContext.Response.Cookies.Append("City", city);
