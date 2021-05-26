@@ -21,6 +21,7 @@ namespace nVideo.DATA
                 .HasIndex(p => p.SearchVector)
                 .HasMethod("GIN");
         }
+
         public DbSet<Catalog_Category> Categories { get; set; }
         public DbSet<Catalog_Entity> Entities { get; set; }
         public DbSet<Catalog_Attribute> Attributes { get; set; }

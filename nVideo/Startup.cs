@@ -53,6 +53,9 @@ namespace nVideo
 
             services.AddTransient<IAllCatalog, CatalogRepository>();
             services.AddSingleton<EmailSenderService>();
+            services.AddSingleton<NotificatorService>();
+            services.AddTransient<INotificator, EmailNotificationService>();
+            services.AddTransient<OrderService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(x => ShopCart.GetCart(x));
             services.AddMvc(option => option.EnableEndpointRouting = false);

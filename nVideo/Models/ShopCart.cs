@@ -5,6 +5,7 @@ using nVideo.DATA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace nVideo.Models
 {
@@ -171,9 +172,10 @@ namespace nVideo.Models
 
         private void RemoveFromCartAuth(int id)
         {
-            var entity = _context.Entities.Find(id);
 
-            var item = _context.ShopCartItems.FirstOrDefault(x => x.Entity.Id == entity.Id);
+            var item = _context.ShopCartItems
+                  .Include(e => e.Entity)
+                  .FirstOrDefault(x => x.Entity.Id == id);
 
             if (item.Quanity == 1)
             {
@@ -203,6 +205,12 @@ namespace nVideo.Models
             }
         }
 
+        public async Task FlushAsync(User user) {
+            var items = _context.ShopCartItems.Where(
+                     i => i.UserName == user.Email).ToArray();
+            _context.ShopCartItems.RemoveRange(items);
+        }
+
         public IEnumerable<ShopCartItem> GetShopItems()
         {
             if (_httpContext.User.Identity.IsAuthenticated)
@@ -210,7 +218,8 @@ namespace nVideo.Models
                     .ShopCartItems
                     .Where(x => x.UserName == _httpContext.User.Identity.Name)
                     .Include(x => x.Entity)
-                    .Include(x => x.Entity.Images);
+                    .Include(x => x.Entity.Images)
+                    .ToArray();
             else
             {
                 var cartInfo = _httpContext.Request.Cookies["CartId"];

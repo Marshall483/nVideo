@@ -40,11 +40,10 @@ namespace nVideo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel regModel)
         {
-
             if (!ModelState.IsValid)
                 return View();
             
-            if (_userManager.IsNameAlreadyExist(regModel.Email))
+            if (await _userManager.IsNameAlreadyExistAsync(regModel.Email))
             {
                 ModelState.AddModelError("Uniq_Mail", "User with such login already exist");
                 return View();

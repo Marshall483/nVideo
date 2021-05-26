@@ -1,17 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using nVideo.DATA;
 using nVideo.DATA.Services;
 using nVideo.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace nVideo.Components
 {
     public class CitiesViewComponent : ViewComponent
     {
-        private readonly AppDbContext _context;
+        private volatile AppDbContext _context;
+        private readonly IEnumerable<City> _cities;
 
         public CitiesViewComponent(AppDbContext context)
         {
@@ -19,20 +21,21 @@ namespace nVideo.Components
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
-        {
+        { 
             var city = HttpContext.Request.Cookies["City"];
             
             if (string.IsNullOrEmpty(city))
             {
                 city = await LocatorService.GetyCityAsync();
-                
-                if (_context.Cities.FirstOrDefault(x => x.Name.Equals(city)) == null)
+            
+                if (_cities.FirstOrDefault(x => x.Name.Equals(city)) == null)
                     city = "Sorry, we cant locate you(";
+
                 HttpContext.Response.Cookies.Append("City", city);
             }
-            
-            var cities = _context.Cities;
-            var model = new CitiesViewModel(city, cities);
+
+
+            var model = new CitiesViewModel(city, _context.Cities.ToList());
             
             return View(model);
         }

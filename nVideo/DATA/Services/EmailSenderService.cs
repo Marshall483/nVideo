@@ -17,6 +17,7 @@ namespace nVideo.DATA.Services
     public class EmailSenderService
     {
         private static SenderOptions _secrets { get; set; }
+
         public EmailSenderService(IConfiguration config){
             _secrets = new SenderOptions();
             config.GetSection(SenderOptions.EmailBlock).Bind(_secrets);
@@ -40,6 +41,5 @@ namespace nVideo.DATA.Services
                 await client.DisconnectAsync(true);
             }
         }
-
     }
 }

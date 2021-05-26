@@ -113,7 +113,7 @@ namespace nVideo.Controllers
             List<Picture> pictures = new List<Picture>();
             
             
-                foreach (var pic in images)
+            foreach (var pic in images)
             {
                 if (!AssertThatImage(pic))
                 {
@@ -264,19 +264,18 @@ namespace nVideo.Controllers
            ViewBag.Entities = ent;
             return View();
         }
-        
-        private bool AssertThatImage(IFormFile file)
-        {
-            var name = file.FileName;
-            var extension = name //Extract extension
-                .Substring(name.LastIndexOf('.'), name.Length - name.LastIndexOf('.')) 
+
+        private bool AssertThatImage(IFormFile file) =>
+            CheckExtention(ExtractExtension(file.FileName));
+
+        private bool CheckExtention(string extension) =>
+            extension == ".png" || extension == ".jpg" || extension == ".jpeg";
+
+        private string ExtractExtension(string fileName) =>
+            fileName.Substring(
+            fileName.LastIndexOf('.'),
+            fileName.Length - fileName.LastIndexOf('.'))
                 .ToLower();
-
-            if (extension == ".png" || extension == ".jpg" || extension == ".jpeg")
-                return 1 != 0;
-
-            return false;
-        }
 
         [HttpGet]
         public  async Task<IActionResult> DeleteEntities(int Id)

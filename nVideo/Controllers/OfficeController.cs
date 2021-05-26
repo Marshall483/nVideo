@@ -21,7 +21,6 @@ using nVideo.DATA.ViewModels;
 
 namespace nVideo.Controllers
 {
-
     // Personal Cabinet func.
     [Authorize]
     public class OfficeController : Controller
@@ -75,14 +74,6 @@ namespace nVideo.Controllers
             
             var user = _userManager
                 .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
-
-            var either = Validator.ValidateProfile(profileModel);
-                
-            if (either.Result != Result.Success)
-            {
-                ModelState.AddModelError("ValidationError", $"{either.Error}" );
-                return View("EditProfileModalPartial" ,profileModel);
-            }
             
             user.Profile = profileModel;
             var res = await _userManager.UpdateAsync(user);
