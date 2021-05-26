@@ -209,6 +209,7 @@ namespace nVideo.Models
             var items = _context.ShopCartItems.Where(
                      i => i.UserName == user.Email).ToArray();
             _context.ShopCartItems.RemoveRange(items);
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<ShopCartItem> GetShopItems()

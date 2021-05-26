@@ -18,19 +18,30 @@
         <tbody>
 
        @foreach (City c in Model.Cities)
-        {
+       {
             <tr>
-                <td>@c.Name</td>
+                <td>
+                    @{ 
+                       if (c.Name == Model.CustomerCity) 
+                       { 
+                            <p style="color:red">@c.Name -- You are here </p> 
+                       }
+                       else 
+                       {
+                           <p>@c.Name</p> 
+                       } 
+                     }
+
+                </td>
                 <td>@c.OfficeLocation</td>
                 <td>
                     <form asp-action="ProcessSelfDelivery" asp-controller="Order" method="post">
                         <input type="hidden" name="cityId" value="@c.Id"/>
-                        <input class="btn-dark" type="submit"/>
+                        <input class="btn-dark" value="Select" type="submit"/>
                     </form>
                 </td>
             </tr>
         }
-
         </tbody>
     </table>
 </div>

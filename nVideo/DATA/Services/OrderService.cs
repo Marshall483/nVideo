@@ -72,7 +72,7 @@ namespace nVideo.DATA.Services
         private Catalog_Order CreateOrderFor(User user) =>
             SetReferencesToItems(
                 new Catalog_Order {
-                    User = user,
+                    User = user,                
                     State = _states[OrderState.Open],
                     CreatedTime = DateTime.Now,
                     CustomerData = user.Profile,
