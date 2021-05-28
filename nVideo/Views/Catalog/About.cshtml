@@ -39,27 +39,31 @@
                 <h4>More info</h4>
                 <table class="table table-striped">
                     <tbody>
-                    @{ foreach (var atr in Model.Entity.Attributes)
-                       {
-                           @await Html.PartialAsync("AttributesPartial", atr)
-                       }
-                    }
+                        @{ foreach (var atr in Model.Entity.Attributes)
+                            {
+                                @await Html.PartialAsync("AttributesPartial", atr)
+                            }
+                        }
                     </tbody>
                 </table>
+                @Model.Entity.Long_Desc
             </div>
 
-            @Model.Entity.Long_Desc
+
 
             <div class="tab-pane fade" id="profile">
                 <div class="row-fluid">
-
-                    @{
+                    @if (Model.Related_Products.Count() != 0)
+                    {
                         foreach (var product in Model.Related_Products)
                         {
                             @await Html.PartialAsync("ReleatedProductsPartial", product)
                         }
                     }
-
+                    else
+                    {
+                        @: Sorry, but we haven't bought anything with this product yet :(
+                    }
                 </div>
             </div>
         </div>
