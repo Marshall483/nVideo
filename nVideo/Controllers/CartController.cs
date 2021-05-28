@@ -22,8 +22,10 @@ namespace nVideo.Controllers
         public ViewResult Index()
         {
             var items = _shopCart.GetShopItems();
-            long total = items.Sum(x => x.Entity.Price * x.Quanity);
 
+            long total = items != null
+                ? items.Sum(x => x.Entity.Price * x.Quanity)
+                : 0;
 
             var viewModel = new ShopCartView(items, total, _deliverySelect );
             return View(viewModel);
