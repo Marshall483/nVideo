@@ -135,10 +135,21 @@ namespace nVideo.Controllers
             {
                 var entity = _catalog.GetItemById(id);
 
+                var relatedProduct = _dbContext.Orders
+                    .Where(x => x.OrderedItems.Any(y => y.Entity.Id.Equals(id.Value)))
+                    .SelectMany(x => x.OrderedItems.Select(y => y.Entity))
+                    .Where(x => !x.Id.Equals(id.Value))
+                    .Include(x => x.Images)
+                    .ToList()
+                    .GroupBy(x => x.Id)
+                    .OrderByDescending(x => x.Count())
+                    .Select(x => x.First())
+                    .Take(3);
+
                 var aboutVM = new AboutViewModel();
                 
                 aboutVM.Entity = entity;
-                aboutVM.Related_Products = _catalog.GetCategoryMembers(entity.Category.CategoryName);
+                aboutVM.Related_Products = relatedProduct;
                 aboutVM.SelectRating = new SelectList(new [] {1,2,3,4,5});
 
                 return View(aboutVM);
