@@ -239,13 +239,18 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditEntity()
+        public IActionResult EditEntity(int currentpage )
         {
 
-           IEnumerable<Catalog_Entity> ent = _context.Entities
+           List<Catalog_Entity> ent = _context.Entities
                 .OrderBy(e=> e.Id)
-                .Select(e => e);
-           ViewBag.Entities = ent;
+                .Select(e => e)
+                .ToList();
+           
+           var pages = ent.Count() % 10 != 0 ? ent.Count() / 10 + 1 : ent.Count() / 10;
+           ViewBag.Pages = pages;
+           ViewBag.CurrentPage = currentpage;
+           ViewBag.Entities = ent.Skip(10*(currentpage - 1)).Take(10).ToList();
             return View();
         }
 
@@ -386,11 +391,15 @@ namespace nVideo.Controllers
 
 
         
-        public IActionResult Orders()
+        public IActionResult Orders(int currentpage)
         {
-            
-            ViewBag.Orders = _context.Orders
-                .Where(x => x ==x);
+            var orders = _context.Orders
+                .Where(x => x == x).ToList();
+
+            var pages = orders.Count() % 10 != 0 ? orders.Count() / 10 + 1 : orders.Count() / 10;
+            ViewBag.Pages = pages;
+            ViewBag.CurrentPage = currentpage;
+            ViewBag.Orders = orders.Skip(10*(currentpage - 1)).Take(10).ToList();
 
             return View();
         }
