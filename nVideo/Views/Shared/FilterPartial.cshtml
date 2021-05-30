@@ -2,7 +2,16 @@
 
 
 <select name="attributes[@Model.Name]" class="form-select" aria-label="Default select example">
-    <option selected>@string.Empty</option>
+    <option selected>
+    @if (Model.Dict != null)
+    {
+        @Model.Dict[Model.Name];
+    }
+    else
+    {
+        @string.Empty;
+    }
+    </option>
     @foreach (var item in Model.Values)
     {
         if (item != null)

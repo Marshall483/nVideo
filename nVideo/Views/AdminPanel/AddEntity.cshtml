@@ -1,21 +1,32 @@
-﻿@{
-  Layout = "AdminPanelLayout";
+﻿
+@{
+    Layout = "AdminPanelLayout";
 }
 @model AdminPanelModel;
 
 
 
 <section class="charts mt-4">
-  <div class="chart-container p-3">
-    <h3 class="fs-6 mb-3">Add</h3>
-    <form method="post" asp-action="AddEntityPartial">
-      <input required minlength="1" maxlength="2"  name="Number" type="text" placeholder="Number of attributes">
-      <br>
-      <input required minlength="1" maxlength="2"  name="Imgs" type="text" placeholder="Number of img">
-        <input type="submit">
-      </form>
+    <div class="chart-container p-3">
+        <h3 class="fs-6 mb-3">Add</h3>
+        <form method="post" asp-action="AddEntityPartial">
+            <br>
+                <h3 class="fs-6 mb-3">Number of Images:</h3>
+                <input type="number" required minlength="1" maxlength="2" min="1" max="8" name="Imgs">
+            </br>
+            <br>
+                <h3 class="fs-6 mb-3">Number of Attributes:</h3>
+                <input type="number" required minlength="1" maxlength="2" min="1" max="8" name="Number">
+            </br>
+            
 
-    <div style="height: 300px">
+            
+
+            
+            <button type="submit">Save Entity</button>
+        </form>
+
+        <div style="height: 300px">
+        </div>
     </div>
-  </div>
-</section>   
+</section>  

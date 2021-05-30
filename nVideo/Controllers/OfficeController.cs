@@ -21,7 +21,6 @@ using nVideo.DATA.ViewModels;
 
 namespace nVideo.Controllers
 {
-
     // Personal Cabinet func.
     [Authorize]
     public class OfficeController : Controller
@@ -45,7 +44,7 @@ namespace nVideo.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var user = _userManager
-                    .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
+                    .GetUserIncludeProfileAndOreders(new ClaimsPrincipal(User.Identities));
 
                 ViewBag.Messages ??= new List<string>();
 
@@ -61,7 +60,9 @@ namespace nVideo.Controllers
                 var tuple = new Tuple<User, UserProfile>(user, new UserProfile());
                 return View(tuple);
             };
+
             ViewBag.Message = "Not Authenticated";
+
             return View("Error", new ErrorViewModel());
         }
 
@@ -73,14 +74,6 @@ namespace nVideo.Controllers
             
             var user = _userManager
                 .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
-
-            var either = Validator.ValidateProfile(profileModel);
-                
-            if (either.Result != Result.Success)
-            {
-                ModelState.AddModelError("ValidationError", $"{either.Error}" );
-                return View("EditProfileModalPartial" ,profileModel);
-            }
             
             user.Profile = profileModel;
             var res = await _userManager.UpdateAsync(user);

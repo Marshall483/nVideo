@@ -5,23 +5,13 @@
 <form asp-action="ProcessCourierDelivery" asp-controller="Order" method="post">
 
     <div class="form-group">
-        <label asp-for="Name" , class="sr-only">Your name</label>
+        <label asp-for="Name" , class="sr-only">Your Name</label>
         <div>
             @if (Model.Name != null)
             {<input asp-for="Name" , type="text" class="form-control" placeholder="Your name" value="@Model.Name" required="required">}
             else
             {<input asp-for="Name" , type="text" class="form-control" placeholder="Your name" required="required">}
             <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="LastName" , class="sr-only">Last name</label>
-        <div>
-            @if (Model.LastName != null)
-            {<input asp-for="Name" , type="text" class="form-control" placeholder="Last name" value="@Model.LastName" required="required">}
-            else
-            {<input asp-for="LastName" , type="text" class="form-control" placeholder="Last name" required="required">}
-            <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
@@ -33,10 +23,9 @@
             {<input asp-for="City" , type="text" class="form-control" placeholder="Current city" required="required">}
             <span asp-validation-for="City" class="text-danger"></span>
         </div>
-    </div>
-    
+    </div>   
     <div class="form-group">
-        <label asp-for="Address" , class="sr-only">Email address</label>
+        <label asp-for="Address" , class="sr-only">Delivery address</label>
         <div>
             @if (Model.Address != null)
             {<input asp-for="Address" , type="text" class="form-control" placeholder="Street address" value="@Model.Address" required="required">}
@@ -49,9 +38,9 @@
         <label asp-for="Phone" , class="sr-only">Phone to contact with you</label>
         <div>
             @if (Model.Phone != null)
-            {<input asp-for="Phone" , type="text" class="form-control" placeholder="Your phone" value="@Model.Phone" required="required">}
+            {<input asp-for="Phone" , type="tel" class="form-control" placeholder="Your phone" value="@Model.Phone" required="required">}
             else
-            {<input asp-for="Phone" , type="email" class="form-control" placeholder="Your phone" required="required">}
+            {<input asp-for="Phone" , type="tel" class="form-control" placeholder="Your phone" required="required">}
             <span asp-validation-for="Phone" class="text-danger"></span>
         </div>
     </div>

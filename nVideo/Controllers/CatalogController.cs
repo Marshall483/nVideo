@@ -102,25 +102,28 @@ namespace nVideo.Controllers
             foreach (var pair in dictresult)
             {
                 result.AddRange(_dbContext.Entities.Where(x => x.Id == pair.Key).Include(i => i.Images)
+                    .Include(c => c.Category)
                 .Include(a => a.Attributes)
                 .ThenInclude(v => v.Value).ToList());
             }
             var model = new CatalogViewModel
             {
-                Entities = result
+                Entities = result,
+                Dict = attributes
             };
 
             return View("List", model);
         }
         
-        [Route("Catalog/CategoryFilter/{category}")]
-        public IActionResult CategoryFilter(string category){
+        public IActionResult CategoryFilter(string category)
+        {
             if (!string.IsNullOrEmpty(category)){
 
                 var model = new CatalogViewModel
                 {
                     Entities = _catalog.GetCategoryMembers(category),
                 };
+                HttpContext.Response.Cookies.Append("category", category);
                 return View("List", model);
             }
             throw new ArgumentNullException("Missing parameter: string category");
@@ -132,10 +135,21 @@ namespace nVideo.Controllers
             {
                 var entity = _catalog.GetItemById(id);
 
+                var relatedProduct = _dbContext.Orders
+                    .Where(x => x.OrderedItems.Any(y => y.Entity.Id.Equals(id.Value)))
+                    .SelectMany(x => x.OrderedItems.Select(y => y.Entity))
+                    .Where(x => !x.Id.Equals(id.Value))
+                    .Include(x => x.Images)
+                    .ToList()
+                    .GroupBy(x => x.Id)
+                    .OrderByDescending(x => x.Count())
+                    .Select(x => x.First())
+                    .Take(3);
+
                 var aboutVM = new AboutViewModel();
                 
                 aboutVM.Entity = entity;
-                aboutVM.Related_Products = _catalog.GetCategoryMembers(entity.Category.CategoryName);
+                aboutVM.Related_Products = relatedProduct;
                 aboutVM.SelectRating = new SelectList(new [] {1,2,3,4,5});
 
                 return View(aboutVM);

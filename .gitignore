@@ -39,5 +39,14 @@
 #problematic folders 
 nVideo/bin
 nVideo/obj
+*nVideo/bin
+*nVideo/obj
+/.vs
+/.idea
+*.vs
+*.idea
 .vs
 .idea
+*/.vs
+*/.idea
+

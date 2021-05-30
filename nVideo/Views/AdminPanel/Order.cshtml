@@ -6,14 +6,22 @@
     <div class="welcome">
         <div class="content rounded-3 p-3">
       
-            <h3 color="black"><a class="nav-link" href="~/AdminPanel/OrderById?Id=@order.Id">Order number: @order.Id</a></h3>
+            <h3 color="black"><a class="nav-link" >Order number: @order.Id</a></h3>
             <p>Status: @order.State</p>
-            <p></p>
+            <p>Time:@order.CreatedTime</p>
+            <p>User Email: @ViewBag.user.Email</p>
+            <h3>Change status:</h3>
             <form method="post" asp-action="ChangeOrderStatus">
+                <input type="hidden" name="Email" value="@ViewBag.user.Email"/> 
                 <input type="hidden" name="Id" value="@order.Id">
-                <input type="text" name="Status" required maxlength="20">
-                <input type="submit">
-                </form>
+                <select name="Status" required/>
+                <option value="Closed">Closed</option>
+                <option value="ReadyToPick">ReadyToPick</option>
+                <option value="InProcess">InProcess</option>
+                <option selected value="Open">Open</option>
+                <select/>
+                <input type="submit" value="Change">
+            </form>
             <br/>
             <br/>
         
