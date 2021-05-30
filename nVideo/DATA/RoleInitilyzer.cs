@@ -12,7 +12,7 @@ namespace nVideo.DATA
         public static async Task InitializeAsync(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             string adminEmail = "admin@admin.admin";
-            string password = "_Aa123456";
+                string password = "_Aa123456";
             if (await roleManager.FindByNameAsync("admin") == null)
             {
                 await roleManager.CreateAsync(new IdentityRole("admin"));

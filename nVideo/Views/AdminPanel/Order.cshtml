@@ -12,9 +12,11 @@
             <p>User Email: @ViewBag.user.Email</p>
             <h3>Change status:</h3>
             <form method="post" asp-action="ChangeOrderStatus">
+                <input type="hidden" name="Email" value="@ViewBag.user.Email"/> 
                 <input type="hidden" name="Id" value="@order.Id">
                 <select name="Status" required/>
-                <option  value="Closed">Closed</option>
+                <option value="Closed">Closed</option>
+                <option value="ReadyToPick">ReadyToPick</option>
                 <option value="InProcess">InProcess</option>
                 <option selected value="Open">Open</option>
                 <select/>

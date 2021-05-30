@@ -32,9 +32,12 @@ namespace nVideo.Controllers
         private readonly AppDbContext _context;
         IWebHostEnvironment _appEnvironment;
         private readonly IAllCatalog _catalog;
+        private readonly INotificator _notificator;
         
 
-        public AdminPanelController(UserManager<User> userManager, EmailSenderService sender, ILogger<AccountController> logger, AppDbContext context,IWebHostEnvironment appEnvironment, IAllCatalog catalog)
+        public AdminPanelController(UserManager<User> userManager, EmailSenderService sender,
+            ILogger<AccountController> logger, AppDbContext context,
+            IWebHostEnvironment appEnvironment, IAllCatalog catalog, INotificator notificator)
         {
             _userManager = userManager;
             _sender = sender;
@@ -42,6 +45,7 @@ namespace nVideo.Controllers
             _context = context;
             _appEnvironment = appEnvironment;
             _catalog = catalog;
+            _notificator = notificator;
         }
         // GET
         public async Task<IActionResult> Index()
@@ -400,14 +404,23 @@ namespace nVideo.Controllers
             return View();
         }
 
-        public IActionResult ChangeOrderStatus(int Id, string Status)
+        public IActionResult ChangeOrderStatus(int Id, string Status, string Email)
         {
+            
             var order = _context.Orders
                 .First(x => x.Id == Id);
-            if(Status!= "Closed" && Status!= "Open" && Status!="InProcess") {return RedirectToAction("Result", new {exepNum =1});}
+            if(Status!= "Closed" && Status!= "Open" && Status!="InProcess" && Status !="ReadyToPick") {return RedirectToAction("Result", new {exepNum =1});}
                 order.State = Status;
             int x = Id;
             _context.SaveChanges();
+
+            if (Status == "Closed") _notificator.AboutOrderColsed(Email, order );
+            if (Status == "Open") _notificator.AboutOrderOpened(Email, order);
+            if (Status == "InProcess") _notificator.AboutOrderInProgress(Email, order);
+            if (Status == "ReadyToPick") _notificator.AboutReadyToPick(Email, order);
+            {
+                
+            }
             return RedirectToAction("Order",new {Id = x});
         }
 
