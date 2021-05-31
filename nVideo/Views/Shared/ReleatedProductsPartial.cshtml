@@ -15,11 +15,14 @@
     </div>
     <div class="span4 alignR">
         <form class="form-horizontal qtyFrm">
-            <h3> $@Model.Price.ToString("#")</h3>
+            <h3> $ @(Model.Price / 75) </h3>
+            
             <br>
+            
             <div class="btn-group">
                 <a class="shopBtn" asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id">VIEW</a>
             </div>
+            
         </form>
     </div>
 </div>

@@ -288,9 +288,9 @@ namespace nVideo.Controllers
             bool isOrdered = false;
 
             foreach (var order in listOrders)
-                foreach (var ordered in order)
-                    if (ordered.Entity.Id == eid)
-                        isOrdered = true;
+            foreach (var ordered in order)
+                if (ordered.Entity.Id == eid)
+                    isOrdered = true;
 
             if (!isOrdered)
             {
@@ -302,6 +302,7 @@ namespace nVideo.Controllers
                 return RedirectToAction("Result", new {exepNum =3});
             }
         }
+
 
         private async Task<bool> RemoveEntity(Catalog_Entity e)
         {

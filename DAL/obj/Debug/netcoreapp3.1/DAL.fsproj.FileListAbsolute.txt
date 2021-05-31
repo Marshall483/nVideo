@@ -1,0 +1,8 @@
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/obj/Debug/netcoreapp3.1/DAL.fsprojAssemblyReference.cache
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/obj/Debug/netcoreapp3.1/DAL.AssemblyInfoInputs.cache
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/obj/Debug/netcoreapp3.1/DAL.AssemblyInfo.fs
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/bin/Debug/netcoreapp3.1/DAL.deps.json
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/bin/Debug/netcoreapp3.1/DAL.dll
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/bin/Debug/netcoreapp3.1/DAL.pdb
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/obj/Debug/netcoreapp3.1/DAL.dll
+/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/obj/Debug/netcoreapp3.1/DAL.pdb
