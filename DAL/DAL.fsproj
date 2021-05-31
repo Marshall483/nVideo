@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Entities\City.fs" />
+        <Compile Include="Entities\Catalog_Picture.fs" />
+        <Compile Include="Entities\CatalogValueAndAttribute.fs" />
+        <Compile Include="Entities\CatalogEntityAndComment.fs" />
+        <Compile Include="Entities\Catalog_Category.fs" />
+        <Compile Include="Entities\Catalog_Order.fs" />
+        <Compile Include="Entities\ShopCartItem.fs" />
+        <Compile Include="AppDBContext.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.5" />
+        <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
+        
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.5">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        
+    </ItemGroup>
+
+
+</Project>
