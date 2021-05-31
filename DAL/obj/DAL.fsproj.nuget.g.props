@@ -15,7 +15,15 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design/5.0.5/build/netcoreapp3.0/Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design/5.0.5/build/netcoreapp3.0/Microsoft.EntityFrameworkCore.Design.props')" />
+  </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_EntityFrameworkCore Condition=" '$(PkgMicrosoft_EntityFrameworkCore)' == '' ">/Users/Marshall483/.nuget/packages/microsoft.entityframeworkcore/5.0.5</PkgMicrosoft_EntityFrameworkCore>
+    <PkgMicrosoft_EntityFrameworkCore_Design Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Design)' == '' ">/Users/Marshall483/.nuget/packages/microsoft.entityframeworkcore.design/5.0.5</PkgMicrosoft_EntityFrameworkCore_Design>
+    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">/Users/Marshall483/.nuget/packages/microsoft.entityframeworkcore.tools/5.0.5</PkgMicrosoft_EntityFrameworkCore_Tools>
+    <PkgMicrosoft_AspNetCore_StaticFiles Condition=" '$(PkgMicrosoft_AspNetCore_StaticFiles)' == '' ">/Users/Marshall483/.nuget/packages/microsoft.aspnetcore.staticfiles/2.2.0</PkgMicrosoft_AspNetCore_StaticFiles>
+    <PkgMicrosoft_AspNetCore_Identity_EntityFrameworkCore Condition=" '$(PkgMicrosoft_AspNetCore_Identity_EntityFrameworkCore)' == '' ">/Users/Marshall483/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/5.0.5</PkgMicrosoft_AspNetCore_Identity_EntityFrameworkCore>
     <PkgFSharp_Core Condition=" '$(PkgFSharp_Core)' == '' ">/Users/Marshall483/.nuget/packages/fsharp.core/5.0.0</PkgFSharp_Core>
   </PropertyGroup>
 </Project>

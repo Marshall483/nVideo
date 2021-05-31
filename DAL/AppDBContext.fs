@@ -1,66 +1,67 @@
-namespace DAL_Models
+namespace DAL
 
 open Microsoft.EntityFrameworkCore
+open DAL_Models
 
 type AppDBContext(options : DbContextOptions<AppDBContext>) = 
     inherit DbContext(options)
     
     [<DefaultValue>]
-    val mutable Categories : DbSet<Catalog_Category>
+    val mutable _Categories : DbSet<Catalog_Category>
     
     [<DefaultValue>]
-    val mutable Entities : DbSet<Catalog_Entity>
+    val mutable _Entities : DbSet<Catalog_Entity>
     
     [<DefaultValue>]
-    val mutable Attributes : DbSet<Catalog_Attribute>
+    val mutable _Attributes : DbSet<Catalog_Attribute>
     
     [<DefaultValue>]
-    val mutable Values : DbSet<Catalog_Value>
+    val mutable _Values : DbSet<Catalog_Value>
     
     [<DefaultValue>]
-    val mutable Pictures : DbSet<Catalog_Picture>
+    val mutable _Pictures : DbSet<Catalog_Picture>
     
     [<DefaultValue>]
-    val mutable Comments : DbSet<User>
+    val mutable _Comments : DbSet<User>
     
     [<DefaultValue>]
-    val mutable Profiles : DbSet<UserProfile>
+    val mutable _Profiles : DbSet<UserProfile>
     
     [<DefaultValue>]
-    val mutable ShopCartItems : DbSet<ShopCartItem>
+    val mutable _ShopCartItems : DbSet<ShopCartItem>
     
     [<DefaultValue>]
-    val mutable Orders : DbSet<Catalog_Order>
+    val mutable _Orders : DbSet<Catalog_Order>
     
     [<DefaultValue>]
-    val mutable Cities : DbSet<City>
+    val mutable _Cities : DbSet<City>
     
-    member public self.Categories with get() = self.Categories
-                                   and set value = self.Categories <- value
+    member public self.Categories with get() = self._Categories
+                                   and set value = self._Categories <- value
     
-    member public self.Entities with get() = self.Entities
-                                   and set value = self.Entities <- value
+    member public self.Entities with get() = self._Entities
+                                   and set value = self._Entities <- value
     
-    member public self.Attributes with get() = self.Attributes
-                                   and set value = self.Attributes <- value
+    member public self.Attributes with get() = self._Attributes
+                                   and set value = self._Attributes <- value
     
-    member public self.Values with get() = self.Values
-                                   and set value = self.Values <- value
+    member public self.Values with get() = self._Values
+                                   and set value = self._Values <- value
     
-    member public self.Pictures with get() = self.Pictures
-                                   and set value = self.Pictures <- value
+    member public self.Pictures with get() = self._Pictures
+                                   and set value = self._Pictures <- value
     
-    member public self.Comments with get() = self.Comments
-                                   and set value = self.Comments <- value
+    member public self.Comments with get() = self._Comments
+                                   and set value = self._Comments <- value
     
-    member public self.Profiles with get() = self.Profiles
-                                   and set value = self.Profiles <- value
+    member public self.Profiles with get() = self._Profiles
+                                   and set value = self._Profiles <- value
     
-    member public self.ShopCartItems with get() = self.ShopCartItems
-                                     and set value = self.ShopCartItems <- value
+    member public self.ShopCartItems with get() = self._ShopCartItems
+                                        and set value = self._ShopCartItems <- value
     
-    member public self.Orders with get() = self.Orders
-                                   and set value = self.Orders <- value
+    member public self.Orders with get() = self._Orders
+                                   and set value = self._Orders <- value
     
-    member public self.Cities with get() = self.Cities
-                                   and set value = self.Cities <- value                                                                                                                                                                                                                         
+    member public self.Cities with get() = self._Cities
+                                   and set value = self._Cities <- value                                                                                                                                                                                                                         
