@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Entities\City.fs" />
+        <Compile Include="Entities\Catalog_Picture.fs" />
+        <Compile Include="Entities\CatalogValueAndAttribute.fs" />
+        <Compile Include="Entities\CatalogEntityAndComment.fs" />
+        <Compile Include="Entities\Catalog_Category.fs" />
+        <Compile Include="Entities\Catalog_Order.fs" />
+        <Compile Include="Entities\ShopCartItem.fs" />
+        <Compile Include="AppDBContext.fs" />
+    </ItemGroup>
+
+</Project>
