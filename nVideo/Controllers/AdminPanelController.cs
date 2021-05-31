@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using nVideo.DATA;
 using nVideo.DATA.ControllerModels;
+using nVideo.DATA.Extentions;
 using nVideo.DATA.Interfaces;
 using nVideo.DATA.Services;
 using nVideo.Models;
@@ -31,8 +32,12 @@ namespace nVideo.Controllers
         private readonly AppDbContext _context;
         IWebHostEnvironment _appEnvironment;
         private readonly IAllCatalog _catalog;
+        private readonly INotificator _notificator;
+        
 
-        public AdminPanelController(UserManager<User> userManager, EmailSenderService sender, ILogger<AccountController> logger, AppDbContext context,IWebHostEnvironment appEnvironment, IAllCatalog catalog)
+        public AdminPanelController(UserManager<User> userManager, EmailSenderService sender,
+            ILogger<AccountController> logger, AppDbContext context,
+            IWebHostEnvironment appEnvironment, IAllCatalog catalog, INotificator notificator)
         {
             _userManager = userManager;
             _sender = sender;
@@ -40,6 +45,7 @@ namespace nVideo.Controllers
             _context = context;
             _appEnvironment = appEnvironment;
             _catalog = catalog;
+            _notificator = notificator;
         }
         // GET
         public async Task<IActionResult> Index()
@@ -56,6 +62,13 @@ namespace nVideo.Controllers
             
             return View();
         }
+        public IActionResult AddUser()
+        {
+            
+            return View();
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Ban(string BanEmail)
         {
@@ -98,7 +111,7 @@ namespace nVideo.Controllers
         
         [HttpPost]
         public async Task<IActionResult> AddEntityToDB(string Name,string Articul, string Price,
-            string Short_Desc, string Long_Desc, string  InStock, List<string> Attributes, 
+            string Short_Desc, string Long_Desc, string  InStock, List<string> Attributes, string Awailable, 
             List<string> Values, string Category,  IFormFileCollection images)
         {
             string NormalCategory = ChangeLangCategory(Category);
@@ -113,11 +126,11 @@ namespace nVideo.Controllers
             List<Picture> pictures = new List<Picture>();
             
             
-                foreach (var pic in images)
+            foreach (var pic in images)
             {
                 if (!AssertThatImage(pic))
                 {
-                    return RedirectToAction("Result", new {exepNum =2});
+                    return RedirectToAction("Result", new {exepNum =4});
                 }
 
                 
@@ -166,6 +179,7 @@ namespace nVideo.Controllers
             ce.Long_Desc = Long_Desc;
             ce.InStock = ushort.Parse(InStock);
             ce.Images = pictures;
+            ce.Awailable = Convert.ToBoolean(Awailable);
 
             _context.Categories.Update(category);
             await _context.Entities.AddAsync(ce);
@@ -176,44 +190,8 @@ namespace nVideo.Controllers
             return RedirectToAction("Result", new {exepNum = 0});
         }
 
-        private string ChangeLangCategory(string Category)
-        {
-            switch (Category)
-            { 
-                case "Phones&Gadgets":
-                    return "Телефоны и гаджеты ";
-                    break;
-                case "TV&Audio":
-                    return "Телевизоры и аудио";
-                    break;
-                case "Nodebook&Desck":
-                    return "Ноутбуки и компьютеры";
-                    break;
-                case "Kitchen":
-                    return "Техника для кухни";
-                    break;
-                case "Home":
-                    return "Техника для дома";
-                    break;
-                case "Games&Soft":
-                    return "Игры и софт, равлеченияs";
-                    break;
-                case "Beauty&Health":
-                    return "Красота и здоровье";
-                    break;
-                case "Photo&Video":
-                    return "Фото и видео";
-                    break;
-                case "Auto":
-                    return "Авто электроника";
-                    break;
-                case "Accessories":
-                    return "Аксессуары";
-                    break;
-                default:
-                    return null;
-            }
-        }
+        private string ChangeLangCategory(string Category) =>
+            Category; // Lang changed in db.
 
         public IActionResult Result(int exepNum)
         {
@@ -230,6 +208,12 @@ namespace nVideo.Controllers
                     break;
                 case 3: 
                     ViewBag.Message = "ERROR: Write normal attribute!";
+                    break;
+                case 4 :
+                    ViewBag.Message = "ERROR: Check filename";
+                    break;
+                case 12:
+                    ViewBag.Message = "ERROR: User is allready exist!";
                     break;
                 default:
                     ViewBag.Message = "ERROR:Something wrong happen!";
@@ -255,28 +239,32 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditEntity()
+        public IActionResult EditEntity(int currentpage )
         {
 
-           IEnumerable<Catalog_Entity> ent = _context.Entities
+           List<Catalog_Entity> ent = _context.Entities
                 .OrderBy(e=> e.Id)
-                .Select(e => e);
-           ViewBag.Entities = ent;
+                .Select(e => e)
+                .ToList();
+           
+           var pages = ent.Count() % 10 != 0 ? ent.Count() / 10 + 1 : ent.Count() / 10;
+           ViewBag.Pages = pages;
+           ViewBag.CurrentPage = currentpage;
+           ViewBag.Entities = ent.Skip(10*(currentpage - 1)).Take(10).ToList();
             return View();
         }
-        
-        private bool AssertThatImage(IFormFile file)
-        {
-            var name = file.FileName;
-            var extension = name //Extract extension
-                .Substring(name.LastIndexOf('.'), name.Length - name.LastIndexOf('.')) 
+
+        private bool AssertThatImage(IFormFile file) =>
+            CheckExtention(ExtractExtension(file.FileName));
+
+        private bool CheckExtention(string extension) =>
+            extension == ".png" || extension == ".jpg" || extension == ".jpeg";
+
+        private string ExtractExtension(string fileName) =>
+            fileName.Substring(
+            fileName.LastIndexOf('.'),
+            fileName.Length - fileName.LastIndexOf('.'))
                 .ToLower();
-
-            if (extension == ".png" || extension == ".jpg" || extension == ".jpeg")
-                return 1 != 0;
-
-            return false;
-        }
 
         [HttpGet]
         public  async Task<IActionResult> DeleteEntities(int Id)
@@ -290,19 +278,31 @@ namespace nVideo.Controllers
         public  async Task<IActionResult> DeleteById(int eid)
         {
             var e = _catalog.GetItemById(eid);
-            
             var orders = _context.Orders
-                .Select(o => o)
+                .Include(o => o.OrderedItems)
+                .ThenInclude(e => e.Entity)
                 .ToList();
-            
-            var shopCartItems = orders.Select(o => o.Items).First();
-            var ent = shopCartItems.FirstOrDefault(item => item.Id.Equals(eid)); 
-            
-            if (ent == null)
-                // Delete Here
-            else // Cant delete
-            
+
+            var listOrders = orders.Select(o => o.OrderedItems);
+
+            bool isOrdered = false;
+
+            foreach (var order in listOrders)
+            foreach (var ordered in order)
+                if (ordered.Entity.Id == eid)
+                    isOrdered = true;
+
+            if (!isOrdered)
+            {
+                await RemoveEntity(e);
+                return RedirectToAction("Result", new {exepNum = 0});
+            }
+            else 
+            {
+                return RedirectToAction("Result", new {exepNum =3});
+            }
         }
+
 
         private async Task<bool> RemoveEntity(Catalog_Entity e)
         {
@@ -336,101 +336,132 @@ namespace nVideo.Controllers
             return true;
         }
 
+        public IActionResult EditProductDb(string Id, string Name,string Articul, string Price,
+            string Short_Desc, string Long_Desc, string  InStock, List<string> AttId, string Awailable, 
+            List<string> Values)
+        {
+            var ent = _context.Entities.First(x=>x.Id == int.Parse(Id));
+            ent.Name = Name;
+            ent.Articul = Articul;
+            
+            ent.Price = PriceToRub(Convert.ToUInt32(Price));
+            ent.Short_Desc = Short_Desc;
+            ent.Long_Desc = Long_Desc;
+            ent.InStock = Convert.ToUInt16(InStock);
+            ent.Awailable = Convert.ToBoolean(Awailable);
+
+            var Attributes = _context.Attributes
+                .Where(x => x.Entity.Id == int.Parse(Id))
+                .ToList();
+            var values = _context.Values.Where(x => x.Attribute.Entity.Id == int.Parse(Id));
+
+
+           
+           var dic = AttId.Zip(Values,(k, v) => new { k, v })
+               .ToDictionary(x => x.k, x => x.v);
+
+           foreach (var id in AttId)
+           {
+               if (int.TryParse(dic[id], out _))
+               {
+                   values.First(x => x.Attribute.Id == int.Parse(id)).IntegerValue = int.Parse(dic[id]);
+               }
+               else
+               {
+                   values.First(x => x.Attribute.Id== int.Parse(id)).StringValue = dic[id];
+               }
+           }
+
+           _context.SaveChanges();
+
+           return RedirectToAction("Result", new {exepNum = 0});
+        }
+        
+        
         [HttpGet]
         public IActionResult EditProduct(int Id)
         {
             var e = _catalog.GetItemById(Id);
             var a = _context.Attributes
-                .Where(x => x.EntityId == e.Id);
+                .Where(x => x.EntityId == e.Id)
+                .ToList();
             ViewBag.Ent = e;
             ViewBag.Att = a;
             return View();
         }
 
 
-        [HttpPost]
-        public IActionResult EditShortDesc(int Id, string Descr)
-        {
-            var e = _catalog.GetItemById(Id);
-            e.Short_Desc = Descr;
-            _context.SaveChanges();
-            return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
-        }
-        public IActionResult EditLongDesc(int Id, string Descr)
-        {
-            var e = _catalog.GetItemById(Id);
-            e.Long_Desc = Descr;
-            _context.SaveChanges();
-            return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
-        }
-        public IActionResult EditPrice(int Id, string Price)
-        {
-            if (!int.TryParse(Price, out _)) {return RedirectToAction("Result", new {exepNum =3});}
-            var e = _catalog.GetItemById(Id);
-            e.Price = uint.Parse(Price);
-            _context.SaveChanges();
-            return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
-        }
-        public IActionResult EditInStock(int Id, string InStock)
-        {
-            if (!int.TryParse(InStock, out _)) {return RedirectToAction("Result", new {exepNum =3});}
-            var e = _catalog.GetItemById(Id);
-            e.InStock = ushort.Parse(InStock);
-            _context.SaveChanges();
-            return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
-        }
         
-        public IActionResult EditAwailable(int Id, string Awailable)
+        public IActionResult Orders(int currentpage)
         {
-            if (!bool.TryParse(Awailable, out _)) {return RedirectToAction("Result", new {exepNum =3});}
-            var e = _catalog.GetItemById(Id);
-            e.Awailable = bool.Parse(Awailable);
-            _context.SaveChanges();
-            return Redirect("/AdminPanel/EditProduct?Id=" + Id.ToString());
-        }
+            var orders = _context.Orders
+                .Where(x => x == x).ToList();
 
-        public IActionResult Orders(string Status)
-        {
-            if (Status =="All")
-            {ViewBag.Orders = _context.Orders
-                .Where(x => x ==x);
-                
-            }
-            else
-            {
-                ViewBag.Orders = _context.Orders
-                    .Where(x => x.State == Status);
-
-            }   
+            var pages = orders.Count() % 10 != 0 ? orders.Count() / 10 + 1 : orders.Count() / 10;
+            ViewBag.Pages = pages;
+            ViewBag.CurrentPage = currentpage;
+            ViewBag.Orders = orders.Skip(10*(currentpage - 1)).Take(10).ToList();
 
             return View();
         }
 
         public IActionResult Order(int Id)
         {
-            ViewBag.order = _context.Orders.First(x => x.Id == Id);
+            var or = _context.Orders.First(x => x.Id == Id);
+            ViewBag.order = or;
+            ViewBag.user = _context.Users.
+                FirstOrDefault(x=>x.Orders.FirstOrDefault(x=>x.Id == or.Id) == or);
             return View();
         }
 
-        public IActionResult ChangeOrderStatus(int Id, string Status)
+        public IActionResult ChangeOrderStatus(int Id, string Status, string Email)
         {
+            
             var order = _context.Orders
                 .First(x => x.Id == Id);
-            if(Status!= "Closed" && Status!= "Open" && Status!="InProcess") {return RedirectToAction("Result", new {exepNum =1});}
+            if(Status!= "Closed" && Status!= "Open" && Status!="InProcess" && Status !="ReadyToPick") {return RedirectToAction("Result", new {exepNum =1});}
                 order.State = Status;
             int x = Id;
             _context.SaveChanges();
+
+            if (Status == "Closed") _notificator.AboutOrderColsed(Email, order );
+            if (Status == "Open") _notificator.AboutOrderOpened(Email, order);
+            if (Status == "InProcess") _notificator.AboutOrderInProgress(Email, order);
+            if (Status == "ReadyToPick") _notificator.AboutReadyToPick(Email, order);
+            {
+                
+            }
             return RedirectToAction("Order",new {Id = x});
         }
-        
-        
- 
-       
 
-       
+        public async Task<IActionResult> CreateUser(string Email, string pass, string Role)
+        {
+            if (_context.Users.FirstOrDefault(x=>x.Email == Email) != null)
+            {
+                return RedirectToAction("Result", new {exepNum = 12});
+            }
+            var user = new User
+            {
+                Email = Email,
+                UserName = Email,
+                Profile = new UserProfile()
+                
+            };
+             
+           
+                Task.WhenAll(_userManager.CreateAsync(user, pass));
+            
+                Task.WhenAll(_userManager.AddToRoleAsync(user, Role));
+            return RedirectToAction("Result", new {exepNum = 0});
+        }
+
+        private uint PriceToDollars(uint price)
+        {
+            return price / 74;
+        }
+        private uint PriceToRub(uint price)
+        {
+            return price * 74;
+        }     
     }
-    
-    
-    
-    
 }

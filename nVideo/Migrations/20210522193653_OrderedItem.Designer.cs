@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using NpgsqlTypes;
@@ -10,9 +11,10 @@ using nVideo.DATA;
 namespace nVideo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210522193653_OrderedItem")]
+    partial class OrderedItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,7 +255,7 @@ namespace nVideo.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int?>("CustomerDataId")
+                    b.Property<int>("CustomerDataId")
                         .HasColumnType("integer");
 
                     b.Property<string>("State")
@@ -605,7 +607,9 @@ namespace nVideo.Migrations
                 {
                     b.HasOne("nVideo.Models.UserProfile", "CustomerData")
                         .WithMany()
-                        .HasForeignKey("CustomerDataId");
+                        .HasForeignKey("CustomerDataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("nVideo.Models.User", "User")
                         .WithMany("Orders")

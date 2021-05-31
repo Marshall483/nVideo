@@ -4,73 +4,62 @@
 <div class="p-4">
   <div class="welcome">
     <div class="content rounded-3 p-3">
-      <h1 class="fs-3">Edit this?</h1>
-      <br/>
-      <h3 class="fs-6 mb-3">Name: @ViewBag.Ent.Name</h3>
-      <br/>
-      <h3 class="fs-6 mb-3">Short Description: @ViewBag.Ent.Short_Desc</h3>
-      <br/>
-      <h3 class="fs-6 mb-3">Long Description: @ViewBag.Ent.Long_Desc</h3>
-      <br/>
-      <h3 class="fs-6 mb-3">Price: @ViewBag.Ent.Price</h3>
-      <br/>
-      <h3 class="fs-6 mb-3">Is Awailable: @ViewBag.Ent.Awailable</h3>
-      <br/>
-      <h3 class="fs-6 mb-3">In Stock: @ViewBag.Ent.InStock</h3>
-      <br/>
-      @{
-        foreach (var att in ViewBag.Att)
-        {
-          var val = att.Value.IntegerValue == null ? att.Value.StringValue : att.Value.IntegerValue.ToString();
-          
-          <h3 class="fs-6 mb-3">@att.AttributeName : @val </h3>
-         <br/>
-        }
-      }
-      <h3 class="fs-6 mb-3">Change Short Description?</h3>
-            <br/>
-      <form method="post" asp-action="EditShortDesc" >
-        <input required type="hidden" name="Id" value="@ViewBag.Ent.Id"/>
-        <input required type="text" name="Descr" maxlength="30"/>
-        <input type="submit" value="OK!"/>
-      </form>
       <br>
-      <h3 class="fs-6 mb-3">Change Long Description?</h3>
-                  <br/>
-      <form method="post" asp-action="EditLongDesc" >
-        <input required type="hidden" name="Id" value="@ViewBag.Ent.Id" maxlength="80"/>
-        <input required type="text" name="Descr"/>
-        <input type="submit" value="OK!"/>
-      </form>
-      <br>
-            <h3 class="fs-6 mb-3">Change Price?</h3>
-                        <br/>
-      <form method="post" asp-action="EditPrice" >
-        <input required type="hidden" name="Id" value="@ViewBag.Ent.Id"/>
-        <input required type="text" name="Price" maxlength="6"/>
-        <input type="submit" value="OK!"/>
-      </form>
-      
-      <br>
-                  <h3 class="fs-6 mb-3">Change InStock?</h3>
-                              <br/>
-      <form method="post" asp-action="EditInStock" >
-        <input required type="hidden" name="Id" value="@ViewBag.Ent.Id"/>
-        <input required type="text" name="InStock" maxlength="4"/>
-        <input type="submit" value="OK!"/>
-      </form>
-      
-      <br>
-                  <h3 class="fs-6 mb-3">Change Awailable?</h3>
-                              <br/>
-      <form method="post" asp-action="EditAwailable" >
-        <input required type="hidden" name="Id" value="@ViewBag.Ent.Id"/>
-        <input required type="text" name="Awailable" maxlength="6"/>
-        <input type="submit" value="OK!"/>
-      </form>
-      
+      <form asp-action="EditProductDb">
+        <input type="hidden" value="@ViewBag.Ent.Id" name="Id"/>
+        <h3 class="fs-6 mb-3">Name:</h3>
+        <input required type="text" name="Name" maxlength="20" value="@ViewBag.Ent.Name"/>
+        <br/>
         <br>
-                       
+
+        <br>
+        <h3 class="fs-6 mb-3">Short Description:</h3>
+        <input required type="text" name="Short_Desc" maxlength="30" value="@ViewBag.Ent.Short_Desc"/>
+        <br/>
+        <br>
+                <h3 class="fs-6 mb-3">Articul:</h3>
+                <input required type="text" name="Articul" maxlength="30" value="@ViewBag.Ent.Articul"/>
+                <br/>
+
+        <br>
+        <h3 class="fs-6 mb-3">Long Description:</h3>
+        <input required type="text" name="Long_Desc" value="@ViewBag.Ent.Long_Desc"/>
+        <br/>
+
+        <br>
+        <h3 class="fs-6 mb-3">Price:</h3>
+        @{ var x = ViewBag.Ent.Price % 74;}
+        <input required type="number" name="Price" maxlength="6" min="1" max="100000" value="@x"/>
+        <br/>
+
+        <br>
+        <h3 class="fs-6 mb-3">InStock:</h3>
+        <input required type="number" name="InStock" maxlength="3" min="0" max="100" value="@ViewBag.Ent.InStock"/>
+        <br>
+        <h3 class="fs-6 mb-3">Awailable:</h3>
+        <select required name="Awailable" class="form-select">
+
+          <option selected value="True">True</option>
+          <option value="False">False</option>
+        </select>
+
+        <br>
+        @{
+          int j = 0;
+          foreach (var att in ViewBag.Att)
+          {
+            var integerValue = att.Value.IntegerValue == null ? att.Value.StringValue : att.Value.IntegerValue;
+            <input type="hidden" value="@att.Id" name="AttId[@j]"/>
+            <input readonly required minlength="1"  type="text" maxlength="20" placeholder="Attribute  name  @j" value="@att.AttributeName "/>
+            <input required minlength="1" name="Values[@j]" type="text" maxlength="20" placeholder="Attribute  value @j" value="@integerValue"/>
+            <br>
+            j++;
+          }
+        }
+        <br/><br>
+
+        <input type="submit" VALUE="Ok!">
+      </form>
                   
       
     </div>

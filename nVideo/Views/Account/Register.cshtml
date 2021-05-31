@@ -1,6 +1,6 @@
 ﻿@model RegisterModel
 
-<div class="span9 container">
+<div class="span8 well well-small">
 
     <form asp-action="Register" asp-controller="Account" class="form-signin" style="margin-left: 130px;">
         <h2 class="form-signin-heading">Please register</h2>
@@ -33,7 +33,7 @@
 
             <hr>
 
-            <button class="btn btn-lg btn-primary btn-block" id="save" type="submit">Register</button>
+            <button class="btn btn-danger" type="submit" style="width: 100px;">Register</button>
             <p class="mt-5 mb-3 text-muted">© 2017-@DateTime.Now.Year</p>
     </form>
 

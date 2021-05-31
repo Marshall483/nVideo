@@ -20,18 +20,13 @@ namespace nVideo.Controllers
 
         [HttpGet]
         public ViewResult Index()
-
         {
             var items = _shopCart.GetShopItems();
-            long total;
-            if (items != null)
-            {
-                total = items.Sum(x => x.Entity.Price * x.Quanity);
-            }
-            else
-            {
-                total = 0;
-            }
+
+            long total = items != null
+                ? items.Sum(x => x.Entity.Price * x.Quanity)
+                : 0;
+
             var viewModel = new ShopCartView(items, total, _deliverySelect );
             return View(viewModel);
         }

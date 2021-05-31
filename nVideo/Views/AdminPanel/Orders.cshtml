@@ -8,7 +8,7 @@
   <div class="welcome">
     <div class="content rounded-3 p-3">
       
-      <h3 color="black"><a class="nav-link" href="~/AdminPanel/OrderById?Id=@order.Id">Order number: @order.Id</a></h3>
+      <h3 color="black"><p class="nav-link">Order number: @order.Id</p></h3>
       <p>Status: @order.State</p>
       <p></p>
       <h5><a class="nav-link" href="/AdminPanel/Order?Id=@order.Id">Edit</a></h5>
@@ -16,7 +16,22 @@
       <br/>
         
       
-    </div>
+    </div>  
   </div>
 </div>
 } 
+
+
+<div class="p-4">
+  <div class="welcome">
+    <div class="content rounded-3 p-3">
+      @{
+        var pages = ViewBag.Pages;
+        for(int num = 1; num<=pages;num++)
+        {
+          <a class="nav-link" href="/AdminPanel/Orders?currentpage=@num">@num</a>
+        }
+      }
+    </div>
+    </div>
+  </div>

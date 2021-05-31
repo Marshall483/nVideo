@@ -14,14 +14,21 @@
   </div>
   <div class="span4 alignR">
     <form class="form-horizontal qtyFrm" asp-controller="Cart" asp-action="AddToCart">
-      <h3>
-        @{
-          for (int i = 0; i < Model.Raiting; i++)
-          {
-            <span class="icon-star"></span>
-          }
-        }
-      </h3>
+        <h3>
+            @{
+                if (Model.Raiting == 0)
+                {
+                    <p>No Rating</p>
+                }
+                else
+                {
+                    for (int i = 0; i < Model.Raiting; i++)
+                    {
+                        <bitton class="btn" diasbled="disabled"><span class="icon-star"></span></bitton>
+                    }
+                }
+            }
+        </h3>
 
       <h3> $ @(Model.Price/75)  </h3>
       <label class="checkbox">
