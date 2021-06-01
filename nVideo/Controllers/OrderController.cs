@@ -41,22 +41,22 @@ namespace nVideo.Controllers
             deliveryType == SelfDelivery
                 ? View(SelfDelivery, new SelfDeliveryViewModel(_db.Cities, HttpContext.Request.Cookies["City"]))
                 : View(CourierDelivery, new CourierDeliveryViewModel(
-                    _userManager.GetUserIncludeProfile(new ClaimsPrincipal(
+                     _userManager.GetUserIncludeProfile(new ClaimsPrincipal(
                         User.Identities)).Profile));
 
         [HttpPost]
         public async Task<IActionResult> ProcessSelfDelivery(string cityId) =>
             await ProcessOrderForAsync(
-                await _userManager.FindByNameAsync(
-                    User.Identity.Name), int.Parse(cityId));
+                _userManager.GetUserIncludeProfile(new ClaimsPrincipal(
+                        User.Identities)), Guid.Parse(cityId));
 
         [HttpPost]
         public async Task<IActionResult> ProcessCourierDelivery(UserProfile? customerData) =>
            await ProcessOrderForAsync(
-                 await _userManager.FindByNameAsync(
-                     User.Identity.Name), default(int));
+                 _userManager.GetUserIncludeProfile(new ClaimsPrincipal(
+                        User.Identities)), default(Guid));
 
-        private async Task<IActionResult> ProcessOrderForAsync(User user, int cityId){            
+        private async Task<IActionResult> ProcessOrderForAsync(User user, Guid cityId){            
             await _notify.About(OrderState.Open,
                 await _order.CreateFor(user, cityId), user);
                     await _cart.FlushAsync(user);

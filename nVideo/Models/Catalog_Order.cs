@@ -29,7 +29,7 @@ namespace nVideo.Models
         public string State { get; set; } 
 
         public bool IsSelfDelivery { get; set; }
-        public int? CityId { get; set; }
+        public Guid? CityId { get; set; }
         [ForeignKey("CityId")]
         public City? PickUpFrom { get; set; }
 
