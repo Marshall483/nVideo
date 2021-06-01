@@ -47,7 +47,7 @@
                 <hr class="soften" />
                 <h3>Total products:$ @(Model.TotalValue / 74)</h3>
                 @{
-                    if (Model.TotalValue != 0)
+                    if (Model.TotalValue != 0 && !User.Identity.Name.Equals("admin@admin.admin"))
                     {
                         <div class="control-group">
                             <div class="controls">
