@@ -1,46 +1,31 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< Updated upstream
-    "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/DAL.fsproj": {}
+    "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\DAL\\DAL.fsproj": {}
   },
   "projects": {
-    "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/DAL.fsproj": {
+    "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\DAL\\DAL.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/DAL.fsproj",
+        "projectUniqueName": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\DAL\\DAL.fsproj",
         "projectName": "DAL",
-        "projectPath": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/DAL.fsproj",
-        "packagesPath": "/Users/Marshall483/.nuget/packages/",
-        "outputPath": "/Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/obj/",
+        "projectPath": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\DAL\\DAL.fsproj",
+        "packagesPath": "C:\\Users\\Alexander Putilin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alexander Putilin\\source\\repos\\nVideo\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "/Users/Marshall483/.nuget/NuGet/NuGet.Config"
-=======
-    "C:\\Users\\User\\Desktop\\nVideo\\DAL\\DAL.fsproj": {}
-  },
-  "projects": {
-    "C:\\Users\\User\\Desktop\\nVideo\\DAL\\DAL.fsproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\nVideo\\DAL\\DAL.fsproj",
-        "projectName": "DAL",
-        "projectPath": "C:\\Users\\User\\Desktop\\nVideo\\DAL\\DAL.fsproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\nVideo\\DAL\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
->>>>>>> Stashed changes
+          "C:\\Users\\Alexander Putilin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -99,22 +84,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.8, 3.1.8]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-<<<<<<< Updated upstream
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
->>>>>>> Stashed changes
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

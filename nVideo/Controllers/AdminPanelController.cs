@@ -407,10 +407,23 @@ namespace nVideo.Controllers
 
         public IActionResult Order(int Id)
         {
-            var or = _context.Orders.First(x => x.Id == Id);
-            ViewBag.order = or;
+            var order = _context.Orders
+                .Single(o => o.Id.Equals(Id));      
+
+            if (order.IsSelfDelivery)
+                order = _context.Orders
+                    .Include(o => o.PickUpFrom)
+                    .Single(x => x.Id == Id);
+            else
+                order = _context.Orders
+                    .Include(o => o.CustomerData)
+                    .Single(x => x.Id == Id);
+            
+
+            ViewBag.order = order;
             ViewBag.user = _context.Users.
-                FirstOrDefault(x=>x.Orders.FirstOrDefault(x=>x.Id == or.Id) == or);
+                FirstOrDefault(x=>x.Orders.FirstOrDefault(x=>x.Id == order.Id) == order);
+
             return View();
         }
 

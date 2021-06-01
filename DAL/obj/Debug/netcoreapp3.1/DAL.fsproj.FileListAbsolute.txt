@@ -6,3 +6,14 @@
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/bin/Debug/netcoreapp3.1/DAL.pdb
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/obj/Debug/netcoreapp3.1/DAL.dll
 /Users/Marshall483/Documents/sources/repos/nVideo/nVideo/DAL/obj/Debug/netcoreapp3.1/DAL.pdb
+C:\Users\Alexander Putilin\source\repos\nVideo\DAL\bin\Debug\netcoreapp3.1\DAL.deps.json
+C:\Users\Alexander Putilin\source\repos\nVideo\DAL\bin\Debug\netcoreapp3.1\DAL.runtimeconfig.json
+C:\Users\Alexander Putilin\source\repos\nVideo\DAL\bin\Debug\netcoreapp3.1\DAL.runtimeconfig.dev.json
+C:\Users\Alexander Putilin\source\repos\nVideo\DAL\bin\Debug\netcoreapp3.1\DAL.dll
+C:\Users\Alexander Putilin\source\repos\nVideo\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
+C:\Users\Alexander Putilin\source\repos\nVideo\DAL\obj\Debug\netcoreapp3.1\DAL.fsprojAssemblyReference.cache
+C:\Users\Alexander Putilin\source\repos\nVideo\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfoInputs.cache
+C:\Users\Alexander Putilin\source\repos\nVideo\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.fs
+C:\Users\Alexander Putilin\source\repos\nVideo\DAL\obj\Debug\netcoreapp3.1\DAL.dll
+C:\Users\Alexander Putilin\source\repos\nVideo\DAL\obj\Debug\netcoreapp3.1\DAL.pdb
+C:\Users\Alexander Putilin\source\repos\nVideo\DAL\obj\Debug\netcoreapp3.1\DAL.genruntimeconfig.cache

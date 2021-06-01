@@ -23,9 +23,11 @@ namespace nVideo.DATA.Services
         public OrderService(AppDbContext context) =>
             _db = context;
 
-        public async Task<Catalog_Order> CreateFor(User user) =>
-            await SaveOrder(RegisterOrder(
-                ChangeStateTo(OrderState.Open, CreateOrderFor(user))));
+        public async Task<Catalog_Order> CreateFor(User user, Guid cidyId) =>
+            await SaveOrder(
+                RegisterOrder(ChangeStateTo(
+                    OrderState.Open, CreateOrderFor(
+                        user, cidyId))));
 
         public Catalog_Order ChangeStateTo(OrderState newState, Catalog_Order order) =>
             EnsureUpdated(SetState(newState, order));
@@ -69,13 +71,15 @@ namespace nVideo.DATA.Services
             return order;
         }
 
-        private Catalog_Order CreateOrderFor(User user) =>
+        private Catalog_Order CreateOrderFor(User user, Guid cityId) =>
             SetReferencesToItems(
                 new Catalog_Order {
                     User = user,                
                     State = _states[OrderState.Open],
                     CreatedTime = DateTime.Now,
                     CustomerData = user.Profile,
+                    IsSelfDelivery = cityId != default,
+                    CityId =  null,
                     OrderedItems = GetOrderedItems(user) // <-- Items
                 });   
     }
