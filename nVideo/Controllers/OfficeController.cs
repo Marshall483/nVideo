@@ -45,6 +45,8 @@ namespace nVideo.Controllers
                     .GetUserIncludeProfileAndOreders(new ClaimsPrincipal(User.Identities));
 
                 ViewBag.Messages ??= new List<string>();
+                if (ViewBag.Message != null)
+                    ViewBag.Messages.Add(ViewBag.Message);
 
                 if (!user.EmailConfirmed)
                     ViewBag.Messages.Add("Please confirm your mail!");
@@ -94,6 +96,12 @@ namespace nVideo.Controllers
         {
             if (!ModelState.IsValid) return View("ChangePasswordModalPartial", model);
             
+            if (model.NewPassword != model.RepeatNewPassword)
+            {
+                ViewBag.Error = "Passwords unmatched.";
+                return View("ChangePasswordModalPartial", model);
+            }
+            
             var user = _userManager
                 .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
 
@@ -107,24 +115,25 @@ namespace nVideo.Controllers
                     HttpContext.RequestServices
                         .GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
 
-                IdentityResult result =
-                    await passwordValidator!.ValidateAsync(_userManager, user, model.NewPassword);
-                if (result.Succeeded)
+                var result = passwordHasher!.VerifyHashedPassword(
+                    user, user.PasswordHash,
+                    model.OldPassword);
+                    
+                if (result == PasswordVerificationResult.Success)
                 {
                     user.PasswordHash = passwordHasher!.HashPassword(user, model.NewPassword);
                     await _userManager.UpdateAsync(user);
 
                     ViewBag.Messages = new List<string>();
                     ViewBag.Messages.Add("Password changed successfully");
+                    ViewBag.Message = "Password changed successfully";
 
                     return RedirectToAction("Profile");
                 }
                 else
                 {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
+                    ViewBag.Error = "Current password unmatched";
+                    return View("ChangePasswordModalPartial", model);
                 }
             }
             else
