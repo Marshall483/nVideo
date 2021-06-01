@@ -48,17 +48,17 @@ namespace nVideo.Controllers
         public async Task<IActionResult> ProcessSelfDelivery(string cityId) =>
             await ProcessOrderForAsync(
                 await _userManager.FindByNameAsync(
-                    User.Identity.Name), null, isSelfDelivery: true);
+                    User.Identity.Name), int.Parse(cityId));
 
         [HttpPost]
         public async Task<IActionResult> ProcessCourierDelivery(UserProfile? customerData) =>
            await ProcessOrderForAsync(
                  await _userManager.FindByNameAsync(
-                     User.Identity.Name), customerData, isSelfDelivery: false);
+                     User.Identity.Name), default(int));
 
-        private async Task<IActionResult> ProcessOrderForAsync(User user, UserProfile? profile, bool isSelfDelivery){            
+        private async Task<IActionResult> ProcessOrderForAsync(User user, int cityId){            
             await _notify.About(OrderState.Open,
-                await _order.CreateFor(user, isSelfDelivery), user);
+                await _order.CreateFor(user, cityId), user);
                     await _cart.FlushAsync(user);
 
             return View("Complete");
