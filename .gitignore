@@ -50,3 +50,9 @@ nVideo/obj
 */.vs
 */.idea
 
+#problematic folders
+nVideo/.vs
+nVideo/.idea
+nVideo/bin
+nVideo/obj
+
