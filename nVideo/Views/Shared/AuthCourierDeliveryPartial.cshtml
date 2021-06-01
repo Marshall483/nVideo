@@ -1,0 +1,52 @@
+@model UserProfile
+
+<h2>Please check what it is correct?</h2>
+
+<form asp-action="ProcessCourierDelivery" asp-controller="Order" method="post">
+
+    <div class="form-group">
+        <label asp-for="Name" , class="sr-only">Your Name</label>
+        <div>
+            @if (Model.Name != null)
+            {<input asp-for="Name" , type="text" class="form-control" placeholder="Your name" value="@Model.Name" required="required">}
+            else
+            {<input asp-for="Name" , type="text" class="form-control" placeholder="Your name" required="required">}
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="City" , class="sr-only">City</label>
+        <div>
+            @if (Model.City != null)
+            {<input asp-for="City" , type="text" class="form-control" placeholder="Current city" value="@Model.City" required="required">}
+            else
+            {<input asp-for="City" , type="text" class="form-control" placeholder="Current city" required="required">}
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+    </div>   
+    <div class="form-group">
+        <label asp-for="Address" , class="sr-only">Delivery address</label>
+        <div>
+            @if (Model.Address != null)
+            {<input asp-for="Address" , type="text" class="form-control" placeholder="Street address" value="@Model.Address" required="required">}
+            else
+            {<input asp-for="Address" , type="text" class="form-control" placeholder="Street address" required="required">}
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone" , class="sr-only">Phone to contact with you</label>
+        <div>
+            @if (Model.Phone != null)
+            {<input asp-for="Phone" , type="tel" class="form-control" placeholder="Your phone" value="@Model.Phone" required="required">}
+            else
+            {<input asp-for="Phone" , type="tel" class="form-control" placeholder="Your phone" required="required">}
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+    </div>
+    
+    <div>
+        <input type="submit" value="Make order">
+    </div>
+    
+</form>

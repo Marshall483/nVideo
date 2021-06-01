@@ -1,28 +1,39 @@
 ﻿@model Catalog_Entity
 
  
-<div class="row-fluid">
-    <div class="span2">
-        <img src="@Model.Images.First().Patch" alt="">
-    </div>
-    <div class="span6">
-        <h5>@Model.Name </h5>
-        <p>
-            <!--Desk-->
-            @String.Concat(Model.Long_Desc.Take(150).Append('.').Append('.').Append('.').ToArray())
-        </p>
-    </div>
-    <div class="span4 alignR">
-        <form class="form-horizontal qtyFrm">
-            <h3> @Model.Price.ToString("# руб") </h3>
-            <label class="checkbox">
-                <input type="checkbox">  Adds product to compair
-            </label><br>
-            <div class="btn-group">
-                <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-                <a asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" class="shopBtn">VIEW</a>
-            </div>
-        </form>
-    </div>
+<div class="row-fluid" data-price="@(Model.Price/75)" data-raiting="@(Model.Raiting)">
+  <div class="span2">
+    <img src="@Model.Images.First().Patch" alt="sexy-image">
+  </div>
+  <div class="span6">
+    <h5>@Model.Name </h5>
+    <p>
+      <!--Desk-->
+      @String.Concat(Model.Long_Desc.Take(150).Append('.').Append('.').Append('.').ToArray())
+    </p>
+  </div>
+  <div class="span4 alignR">
+    <form class="form-horizontal qtyFrm" asp-controller="Cart" asp-action="AddToCart">
+        <h3>
+            @{
+                if (Model.Raiting == 0)
+                {
+                    <button class="btn" diasbled="disabled">No Rating</button>
+                }
+                else
+                {
+                  <button class="btn" diasbled="disabled">@Model.Raiting<span class="icon-star"></span></button>
+                }
+            }
+        </h3>
+
+      <h3> $ @(Model.Price/75)  </h3>
+        <div class="row" style="display: inline-flex;">
+        <input type="hidden" asp-for="@Model.Id" />
+<input type="submit" value="Add to cart" class="defaultBtn" style="margin-right: 5px;">        <a asp-controller="Catalog" asp-action="About" asp-route-id="@Model.Id" class="shopBtn">VIEW</a>
+      </div>
+    </form>
+  </div>
+  <hr class="soften">
 </div>
-<hr class="soften">
+  

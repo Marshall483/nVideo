@@ -2,4 +2,15 @@
     ViewBag.Title = "Error";
 }
 
-<h2>Erorr code @ViewBag.Code. Requested resource not found, removed, or deleted.</h2>
+
+<div class="span9">
+    <div class="hero-unit">
+        <h1>Erorr code @ViewBag.Code.</h1>
+        <p>An error occured</p>
+        <p>
+            <a class="btn btn-primary btn-large" asp-controller="Home" asp-action="Index">
+                Return to main
+            </a>
+        </p>
+    </div>
+</div>

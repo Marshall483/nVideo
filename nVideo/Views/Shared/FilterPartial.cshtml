@@ -1,0 +1,30 @@
+﻿@model AttributeView
+
+
+<select name="attributes[@Model.Name]" class="form-select" aria-label="Default select example">
+    <option selected>
+    @if (Model.Dict != null)
+    {
+        @Model.Dict[Model.Name];
+    }
+    else
+    {
+        @string.Empty;
+    }
+    </option>
+    @foreach (var item in Model.Values)
+    {
+        if (item != null)
+        {
+            @if (item.IntegerValue.HasValue)
+            {
+                <option value="@item.IntegerValue">@item.IntegerValue</option>
+            }
+            else
+            {
+                <option value="@item.StringValue">@item.StringValue</option>
+            }
+        }
+    }
+</select>
+

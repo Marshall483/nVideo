@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@using nVideo.DATA.Services
 <html lang="en-us">
 <head>
     <meta charset="utf-8">
@@ -20,9 +21,11 @@
         <div class="topNav">
             <div class="container">
                 <div class="alignR">
+                   @await Component.InvokeAsync("Cities") 
                     <a asp-action="Index" asp-controller="Home"> <span class="icon-home"></span> Home</a>
                     <a asp-action="Profile" asp-controller="Office"><span class="icon-user"></span> My Account</a>
                     <a asp-action="Register" asp-controller="Account"><span class="icon-edit"></span> Free Register </a>
+                    <a asp-action="Index" asp-controller="Cart"><span class=" icon-shopping-cart"></span>Shop Cart</a>
                 </div>
             </div>
         </div>
@@ -46,8 +49,8 @@
         </header>
 
         <!--
-    Navigation Bar Section
-    -->
+        Navigation Bar Section
+        -->
         <div class="navbar">
             <div class="navbar-inner">
                 <div class="container">
@@ -59,10 +62,9 @@
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li class="active"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                            <li class=""><a asp-controller="Catalog" asp-action="List">List View</a></li>
                         </ul>
-                        <form action="#" class="navbar-form pull-right">
-                            <input type="text" class="span2">
+                        <form method="get" asp-controller="Catalog" asp-action="Search" class="navbar-form pull-right">
+                            <input type="text" name="searchString" class="span2">
                             <button type="submit" class="btn">Search</button>
                         </form>
                         <ul class="nav pull-right">
@@ -80,113 +82,100 @@
             </div>
         </div>
         <!--
-    Body Section
-    -->
+        Body Section
+        -->
         <div class="row">
             <div id="sidebar" class="span3">
                 <div class="well well-small">
                     <ul class="nav nav-list">
-                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Телефоны и гаджеты"><span class="icon-chevron-right"></span>Телефоны и гаджеты</a></li>
-                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Телевизоры и аудио"><span class="icon-chevron-right"></span>Телевизоры и аудио</a></li>
-                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Ноутбуки и компьютеры"><span class="icon-chevron-right"></span>Ноутбуки и компьютеры</a></li>
-                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Техника для кухни"><span class="icon-chevron-right"></span>Техника для кухни</a></li>
-                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Техника для дома"><span class="icon-chevron-right"></span>Техника для дома</a></li>
-                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Игры и софт, равлечения"><span class="icon-chevron-right"></span>Игры и софт, развлечения</a></li>
-                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Красота и здоровье"><span class="icon-chevron-right"></span>Красота и здововье</a></li>
-                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Фото и видео"><span class="icon-chevron-right"></span>Фото и видео</a></li>
-                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Авто электроника"><span class="icon-chevron-right"></span>Авто электроника</a></li>
-                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Аксессуары"><span class="icon-chevron-right"></span>Аксессуары</a></li>
-                        <li style="border:0"> &nbsp;</li>
-                        <li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Phones&Gadgets"><span class="icon-chevron-right"></span>Phones and gadgets</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="TV&Audio"><span class="icon-chevron-right"></span>TV and audio</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Nodebook&Desck"><span class="icon-chevron-right"></span>Laptop and computers</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Kitchen"><span class="icon-chevron-right"></span>Tools for citchen</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Home"><span class="icon-chevron-right"></span>Тools for home</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Games&Soft"><span class="icon-chevron-right"></span>Games and software</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Beauty&Health"><span class="icon-chevron-right"></span>Beauty and health</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Photo&Video"><span class="icon-chevron-right"></span>Photo and video</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Auto"><span class="icon-chevron-right"></span>Tools for auto</a></li>
+                        <li><a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="Accessories"><span class="icon-chevron-right"></span>Accessories</a></li>
                     </ul>
                 </div>
-
-
+                
                 <div class="well well-small"><a href="#"><img src="~/assets/img/paypal.jpg" alt="payment method paypal"></a></div>
 
-                <a class="shopBtn btn-block" href="#">С этим товаром также покупают </a>
-                <br>
-                <br>
-                <!--С этим товаром также покупают-->
-                <ul class="nav nav-list promowrapper">
-
-                    <!--TODO-->
-
-                </ul>
             </div>
 
             <main role="main" class="pb-3">
-                
+
                 @RenderBody()
 
             </main>
 
         </div>
-            
-            <!--
+
+        <!--
         Clients
         -->
-            <section class="our_client">
-                <hr class="soften" />
-                <h4 class="title cntr"><span class="text">Manufactures</span></h4>
-                <hr class="soften" />
-                <div class="row">
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/assets/img/1.png"></a>
-                    </div>
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/assets/img/2.png"></a>
-                    </div>
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/assets/img/3.png"></a>
-                    </div>
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/assets/img/4.png"></a>
-                    </div>
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/assets/img/5.png"></a>
-                    </div>
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/assets/img/6.png"></a>
-                    </div>
+        <section class="our_client">
+            <hr class="soften" />
+            <h4 class="title cntr"><span class="text">Manufactures</span></h4>
+            <hr class="soften" />
+            <div class="row">
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/assets/img/1.png"></a>
                 </div>
-            </section>
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/assets/img/2.png"></a>
+                </div>
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/assets/img/3.png"></a>
+                </div>
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/assets/img/4.png"></a>
+                </div>
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/assets/img/5.png"></a>
+                </div>
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/assets/img/6.png"></a>
+                </div>
+            </div>
+        </section>
 
-            <!--
+        <!--
         Footer
         -->
-            <footer class="footer">
-                <div class="row-fluid">
-                    <div class="span2">
-                        <h5>Your Account</h5>
-                        <a href="#">YOUR ACCOUNT</a><br>
-                    </div>
-                    <div class="span6">
-                        <h5>The nVideo eCommerce internet magazine</h5>
-                         <strong>Good items wich good price!</strong>
-                    </div>
+        <footer class="footer">
+            <div class="row-fluid">
+                <div class="span2">
+                    <h5>The standart chunk of Lorem</h5>
+                    <a href="#">Lorem one</a><br>
                 </div>
-            </footer>
-        </div><!-- /container -->
-
-        <div class="copyright">
-            <div class="container">
-                <p class="pull-right">
-                    <a href="#"><img src="~/assets/img/maestro.png" alt="payment"></a>
-                    <a href="#"><img src="~/assets/img/mc.png" alt="payment"></a>
-                    <a href="#"><img src="~/assets/img/pp.png" alt="payment"></a>
-                    <a href="#"><img src="~/assets/img/visa.png" alt="payment"></a>
-                    <a href="#"><img src="~/assets/img/disc.png" alt="payment"></a>
-                </p>
-                <span>Copyright &copy; 2021<br> nVideo by borsch team </span>
+                <div class="span6">
+                    <h5>The nVideo eCommerce internet market</h5>
+                </div>
             </div>
+        </footer>
+    </div><!-- /container -->
+
+    <div class="copyright">
+        <div class="container">
+            <p class="pull-right">
+                <a href="#"><img src="~/assets/img/maestro.png" alt="payment"></a>
+                <a href="#"><img src="~/assets/img/mc.png" alt="payment"></a>
+                <a href="#"><img src="~/assets/img/pp.png" alt="payment"></a>
+                <a href="#"><img src="~/assets/img/visa.png" alt="payment"></a>
+                <a href="#"><img src="~/assets/img/disc.png" alt="payment"></a>
+            </p>
+            <span>Copyright &copy; 2021<br> nVideo by borsch team </span>
         </div>
-        <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="~/assets/js/jquery.js"></script>
-        <script src="~/assets/js/bootstrap.min.js"></script>
-        <script src="~/assets/js/jquery.easing-1.3.min.js"></script>
-        <script src="~/assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
-        <script src="~/assets/js/shop.js"></script>
+    </div>
+    <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="~/assets/js/jquery.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/jquery.easing-1.3.min.js"></script>
+    <script src="~/assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+    <script src="~/assets/js/shop.js"></script>
 </body>
 </html>

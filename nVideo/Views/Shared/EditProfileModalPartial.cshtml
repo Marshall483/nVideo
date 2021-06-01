@@ -1,0 +1,69 @@
+﻿@model UserProfile 
+
+<div class="row">
+
+    <div class="span6 well well-small" >
+
+        <h2>Edit @User.Identity.Name profile</h2>
+
+        <form asp-action="EditProfile" asp-controller="Office" asp-antiforgery="true" id="regForm" method="post" style="margin-left: 130px;">
+            <div class="validation" asp-validation-summary="ModelOnly"></div>
+
+            <div style="display: inline-block;">
+                @Html.ValidationMessage("UpdateErrors")
+                @Html.ValidationMessage("ValidationError")
+                <div class="form-group">
+                    <label asp-for="Name" , class="sr-only">Name</label>
+                    <div>
+                        <input asp-for="Name" type="text" class="form-control" placeholder="Your name" required="" autofocus="">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LastName" class="sr-only">LastName</label>
+                    <div>
+                        <input asp-for="LastName" type="text" class="form-control" placeholder="LastName" required="">
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Age" class="sr-only">Your age</label>
+                    <div>
+                        <input asp-for="Age" type="number" class="form-control" placeholder="Your age" required="">
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Phone" class="sr-only">Contact phone</label>
+                    <div>
+                        <input asp-for="Phone" type="tel" class="form-control" placeholder="Contact phone" required="">
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="City" class="sr-only">Current city</label>
+                    <div>
+                        <input asp-for="City" type="text" class="form-control" placeholder="Current city" required="">
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Address" class="sr-only">Current address</label>
+                    <div>
+                        <input asp-for="Address" type="text" class="form-control" placeholder="Current address" required="">
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div>
+                <hr>
+
+                <button class="btn btn-lg btn-primary btn-block" id="save" type="submit">Save</button>
+                <p class="mt-5 mb-3 text-muted">© 2017-@DateTime.Now.Year</p>
+            </div>
+        </form>
+    </div>
+</div>

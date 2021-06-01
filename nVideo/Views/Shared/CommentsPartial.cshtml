@@ -1,0 +1,40 @@
+@using System.Globalization
+@model Comment
+
+<div class="panel">
+    <div class="panel-body">
+
+        <div class="media-block">
+            <a class="media-left" href="#">
+                @{
+                    if (Model.User.Profile.Avatar != null){
+                        <img class="media-object img-polaroid" alt="128x128" src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.User.Profile.Avatar))" style="width: 96px;height: 96px;border-color:burlywood;border: 3px;margin-right: 13px;"/>
+                    }
+                    else
+                    {<img class="media-object img-polaroid" alt="128x128" src="@Url.Content("~/IMG/ProfileImages/man.png")" style="width: 96px;height: 96px;border-color:burlywood;border: 3px;margin-right: 13px;" />}
+                }
+            </a>
+            <div class="media-body">
+                
+                <div class="mar-btm">
+                    <a href="#" class="btn-link text-semibold media-heading box-inline">@Model.User.Email</a>
+                    <p class="text-muted text-sm"> @DateTime.Now.ToString(CultureInfo.InstalledUICulture)</p>
+                    <div class="btn-toolbar"> 
+                        <div class="btn-group">
+                            @{
+                                for (int i = 0; i < Model.Raiting; i++)
+                                {
+                                    <button class="btn" disabled="disabled"><span class="icon-star"></span></button>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <p>@Model.Content </p>
+
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

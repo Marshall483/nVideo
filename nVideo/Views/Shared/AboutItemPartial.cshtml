@@ -1,0 +1,40 @@
+﻿@model Catalog_Entity
+
+<div class="span7">
+    <h3>@Model.Name</h3>
+    <hr class="soft">
+    
+    <div class="btn-toolbar">
+        <div class="btn-toolbar">
+            @{
+                if (Model.Raiting == 0)
+                {
+                    <button class="btn" diasbled="disabled">No Rating</button>
+                }
+                else
+                {
+                    for (int i = 0; i < Model.Raiting; i++)
+                    {
+                        <button class="btn" diasbled="disabled"><span class="icon-star"></span></button>
+                    }
+                }
+             }
+        </div>
+    </div>
+    
+    <div class="form-horizontal qtyFrm">
+        <div class="control-group">
+            <label class="control-label"><span>$ @(Model.Price/75)</span></label>
+        </div>
+
+        <h4>@Model.InStock in stock now</h4>
+        <p>
+            @Model.Short_Desc
+        </p>
+
+        <form asp-controller="Cart" asp-action="AddToCart">
+            <input type="hidden" asp-for="@Model.Id" />
+            <input type="submit" value="Add to cart" class="defaultBtn"/>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+﻿@model ShopCartView
+
+<div class="span9">
+    <div class="well well-small">
+        @{ if (Model.TotalValue == 0)
+           {
+                <h1>Cart is empty</h1>
+           }
+           else
+           {
+                <h1>Checkout</h1>
+           }
+       } 
+            <hr class="soften" />
+            <div class="goods-wrap">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Count </th>
+                            <th>Items</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            if (Model.TotalValue != 0)
+                            {
+                                foreach (var shopCartItem in Model.ShopCartItems)
+                                {
+                                    <tr>
+                                        @await Html.PartialAsync("ListShopCartPartial", shopCartItem.Entity)
+                                        <td>
+                                            <h3><small> @shopCartItem.Quanity </small></h3>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                @: Nothing to show
+                            }
+                        }
+                    </tbody>
+                </table>
+                <hr class="soften" />
+                <h3>Total products:$ @(Model.TotalValue / 74)</h3>
+                @{
+                    if (Model.TotalValue != 0)
+                    {
+                        <div class="control-group">
+                            <div class="controls">
+                                <a href="#selectDelivery" class="btn" data-toggle="modal">Go to checkout |-></a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+</div>
+
+
+<!-- Delivery Select Modal -->
+<div id="selectDelivery" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    </div>
+    <div class="modal-body">
+        <div class="span6 well well-small">
+
+            <h2> What type of delivery you want? </h2>
+            @using (Html.BeginForm("ProcessOrder", "Order", FormMethod.Get))
+            {
+
+                <p>
+                    <strong>Delivery?</strong>
+                    @Html.DropDownList("deliveryType", Model.DeliveryType, new { required = "" })
+                </p>
+
+                <p>
+                    <input type="submit" value="Apply" />
+                </p>
+
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model Ordered_Item
+
+
+    <td>
+        <img src="@Model.Entity.Images.First().Patch" alt="sexy-order" style=" height: 124px; width: 500px; ">
+    </td>
+
+    <td>
+        <h5>@Model.Entity.Name</h5>
+        <br> @String.Concat(Model.Entity.Long_Desc.Take(150).Append('.').Append('.').Append('.').ToArray())<br>
+    </td>
+
+    <td>
+        $ @(Model.Entity.Price / 74)
+    </td>
+
+    <td>
+        @(Model.Quanity)
+    </td>

@@ -1,0 +1,18 @@
+@model CourierDeliveryViewModel
+
+<h1> Courier Delivery </h1>
+
+<hr class="soften" />
+
+<div class="span8 well well-small">
+
+    @if (Model.IsAuth)
+    {
+        @await Html.PartialAsync("AuthCourierDeliveryPartial", Model.Profile)
+    }
+    else
+    {
+        @await Html.PartialAsync("CourierDeliveryPartial", new UserProfile())
+    }
+    
+</div>

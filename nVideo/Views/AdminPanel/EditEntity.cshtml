@@ -1,0 +1,42 @@
+﻿@{
+  Layout = "AdminPanelLayout";
+}
+@{
+        foreach (Catalog_Entity ent in ViewBag.Entities)
+        {
+          <div class="p-4">
+            <div class="welcome">
+              <div class="content rounded-3 p-3">
+      
+                <h3 color="black"><a class="nav-link" href="~/Catalog/About/@ent.Id">@ent.Name</a></h3>
+                <p>@ent.Short_Desc</p>
+                <p>Is Awailable: @ent.Awailable</p>
+                <h5><a class="nav-link" href="/AdminPanel/EditProduct?Id=@ent.Id">Edit</a>     <a color="black" class="nav-link" href="/AdminPanel/DeleteEntities?Id=@ent.Id">Delete</a></h5>
+                <br/>
+                <br/>
+        
+      
+              </div>
+            </div>
+          </div>
+        } 
+}
+
+<div class="p-4">
+  <div class="welcome">
+    <div class="content rounded-3 p-3">
+      <table>
+        <tr>
+          @{
+            var pages = ViewBag.Pages;
+            for (int num = 1; num <= pages; num++)
+            {
+              <td><a class="nav-link" href="/AdminPanel/EditEntity?currentpage=@num">@num</a></td>
+            }
+          }
+        </tr>
+      </table>
+    </div>
+    </div>
+  </div>
+
