@@ -68,6 +68,7 @@ namespace nVideo.Controllers
                 {
                     count++;
                     var temp = attr
+                        .Where(x => x.EntityId.HasValue)
                         .Where(a => a.AttributeName.Equals(pair.Key))
                         .Where(a =>
                         {
