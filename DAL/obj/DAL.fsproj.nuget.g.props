@@ -4,8 +4,13 @@
     <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+<<<<<<< Updated upstream
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/Users/Marshall483/.nuget/packages/</NuGetPackageRoot>
     <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/Users/Marshall483/.nuget/packages/;/usr/local/share/dotnet/sdk/NuGetFallbackFolder</NuGetPackageFolders>
+=======
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\User\.nuget\packages\</NuGetPackageFolders>
+>>>>>>> Stashed changes
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.8.0</NuGetToolVersion>
   </PropertyGroup>
@@ -19,11 +24,20 @@
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design/5.0.5/build/netcoreapp3.0/Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design/5.0.5/build/netcoreapp3.0/Microsoft.EntityFrameworkCore.Design.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+<<<<<<< Updated upstream
     <PkgMicrosoft_EntityFrameworkCore Condition=" '$(PkgMicrosoft_EntityFrameworkCore)' == '' ">/Users/Marshall483/.nuget/packages/microsoft.entityframeworkcore/5.0.5</PkgMicrosoft_EntityFrameworkCore>
     <PkgMicrosoft_EntityFrameworkCore_Design Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Design)' == '' ">/Users/Marshall483/.nuget/packages/microsoft.entityframeworkcore.design/5.0.5</PkgMicrosoft_EntityFrameworkCore_Design>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">/Users/Marshall483/.nuget/packages/microsoft.entityframeworkcore.tools/5.0.5</PkgMicrosoft_EntityFrameworkCore_Tools>
     <PkgMicrosoft_AspNetCore_StaticFiles Condition=" '$(PkgMicrosoft_AspNetCore_StaticFiles)' == '' ">/Users/Marshall483/.nuget/packages/microsoft.aspnetcore.staticfiles/2.2.0</PkgMicrosoft_AspNetCore_StaticFiles>
     <PkgMicrosoft_AspNetCore_Identity_EntityFrameworkCore Condition=" '$(PkgMicrosoft_AspNetCore_Identity_EntityFrameworkCore)' == '' ">/Users/Marshall483/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/5.0.5</PkgMicrosoft_AspNetCore_Identity_EntityFrameworkCore>
     <PkgFSharp_Core Condition=" '$(PkgFSharp_Core)' == '' ">/Users/Marshall483/.nuget/packages/fsharp.core/5.0.0</PkgFSharp_Core>
+=======
+    <PkgMicrosoft_EntityFrameworkCore Condition=" '$(PkgMicrosoft_EntityFrameworkCore)' == '' ">C:\Users\User\.nuget\packages\microsoft.entityframeworkcore\5.0.5</PkgMicrosoft_EntityFrameworkCore>
+    <PkgMicrosoft_EntityFrameworkCore_Design Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Design)' == '' ">C:\Users\User\.nuget\packages\microsoft.entityframeworkcore.design\5.0.5</PkgMicrosoft_EntityFrameworkCore_Design>
+    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\User\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.5</PkgMicrosoft_EntityFrameworkCore_Tools>
+    <PkgMicrosoft_AspNetCore_StaticFiles Condition=" '$(PkgMicrosoft_AspNetCore_StaticFiles)' == '' ">C:\Users\User\.nuget\packages\microsoft.aspnetcore.staticfiles\2.2.0</PkgMicrosoft_AspNetCore_StaticFiles>
+    <PkgMicrosoft_AspNetCore_Identity_EntityFrameworkCore Condition=" '$(PkgMicrosoft_AspNetCore_Identity_EntityFrameworkCore)' == '' ">C:\Users\User\.nuget\packages\microsoft.aspnetcore.identity.entityframeworkcore\5.0.5</PkgMicrosoft_AspNetCore_Identity_EntityFrameworkCore>
+    <PkgFSharp_Core Condition=" '$(PkgFSharp_Core)' == '' ">C:\Users\User\.nuget\packages\fsharp.core\5.0.0</PkgFSharp_Core>
+>>>>>>> Stashed changes
   </PropertyGroup>
 </Project>
