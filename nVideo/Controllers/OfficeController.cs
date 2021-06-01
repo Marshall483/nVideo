@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using nVideo.DATA;
 using nVideo.DATA.ControllerModels;
 using nVideo.DATA.Services;
@@ -10,14 +9,13 @@ using nVideo.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using nVideo.DATA.Extentions;
-using nVideo.DATA.Validation;
 using nVideo.DATA.ViewModels;
+
+#nullable  enable
 
 namespace nVideo.Controllers
 {
@@ -102,15 +100,18 @@ namespace nVideo.Controllers
             if (user != null)
             {
                 var passwordValidator =
-                    HttpContext.RequestServices.GetService(typeof(IPasswordValidator<User>)) as IPasswordValidator<User>;
+                    HttpContext.RequestServices
+                        .GetService(typeof(IPasswordValidator<User>)) as IPasswordValidator<User>;
+                
                 var passwordHasher =
-                    HttpContext.RequestServices.GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
+                    HttpContext.RequestServices
+                        .GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
 
                 IdentityResult result =
-                    await passwordValidator.ValidateAsync(_userManager, user, model.NewPassword);
+                    await passwordValidator!.ValidateAsync(_userManager, user, model.NewPassword);
                 if (result.Succeeded)
                 {
-                    user.PasswordHash = passwordHasher.HashPassword(user, model.NewPassword);
+                    user.PasswordHash = passwordHasher!.HashPassword(user, model.NewPassword);
                     await _userManager.UpdateAsync(user);
 
                     ViewBag.Messages = new List<string>();

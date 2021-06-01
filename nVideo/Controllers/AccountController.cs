@@ -9,7 +9,8 @@ using nVideo.DATA.ControllerModels;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
+
+#nullable  enable
 
 namespace nVideo.Controllers
 {
@@ -85,7 +86,7 @@ namespace nVideo.Controllers
             var callbackUrl = Url.Action(
                 "ConfirmEmail",
                 "Account",
-                new { userId = user.Id, code = code },
+                new { userId = user.Id, code },
                 protocol: HttpContext.Request.Scheme);
 
             try{
@@ -104,7 +105,7 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ConfirmEmail(string userId, string code){
+        public async Task<IActionResult> ConfirmEmail(string? userId, string? code){
             ViewBag.Errors = new List<string>();
 
             if (userId == null || code == null)

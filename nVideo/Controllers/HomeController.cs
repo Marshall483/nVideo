@@ -1,32 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using nVideo.DATA.Interfaces;
 using nVideo.Models;
 using nVideo.DATA.ViewModels;
-using nVideo.DATA.Services;
+
+#nullable enable
 
 namespace nVideo.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IAllCatalog _catalog;
 
-        private IEnumerable<Catalog_Entity> GetThridRandom{
-            get{
-                return _catalog.GetRandomItem();
-            }
-        }
+        private IEnumerable<Catalog_Entity> GetThridRandom => 
+            _catalog.GetRandomItem();
 
-        public HomeController(ILogger<HomeController> logger, IAllCatalog catalog){
-            _logger = logger;
+        public HomeController(IAllCatalog catalog) =>
             _catalog = catalog;
-        }
 
         public IActionResult Index(){
             var model = new HomeViewModel();
