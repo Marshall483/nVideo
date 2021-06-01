@@ -28,6 +28,8 @@ namespace nVideo.Models
 
         public string State { get; set; } // Open, InProcess, Closed
 
+        public bool IsSelfDelivery { get; set; }
+
         public IEnumerable<Ordered_Item> OrderedItems { get; set; }
     }
 }

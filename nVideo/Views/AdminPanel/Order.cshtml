@@ -7,6 +7,20 @@
         <div class="content rounded-3 p-3">
       
             <h3 color="black"><a class="nav-link" >Order number: @order.Id</a></h3>
+            <h3 color="black"> Deliery:
+                
+                @{
+                    if (order.IsSelfDelivery)
+                    {
+                        <p>Self Delivery</p>
+                    }
+                    else
+                    {
+                        <p>Courier Delivery</p>
+                    }
+                }
+                
+            </h3>
             <p>Status: @order.State</p>
             <p>Time:@order.CreatedTime</p>
             <p>User Email: @ViewBag.user.Email</p>
