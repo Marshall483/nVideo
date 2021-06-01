@@ -4,21 +4,19 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using MailKit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using nVideo.DATA;
-using nVideo.DATA.ControllerModels;
-using nVideo.DATA.Extentions;
 using nVideo.DATA.Interfaces;
 using nVideo.DATA.Services;
 using nVideo.Models;
+
+#nullable enable
 
 namespace nVideo.Controllers
 {
