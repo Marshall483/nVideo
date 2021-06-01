@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace nVideo.Models
@@ -21,14 +22,16 @@ namespace nVideo.Models
         public DateTime CreatedTime { get; set; }    
         
         public string? UserId { get; set; }
-        public User? User { get; set; } // null in case anonymous user
-
+        public User? User { get; set; } 
         public int? CustomerDataId { get; set; }
-        public UserProfile CustomerData { get; set; } // Del address, phone and etc.
+        public UserProfile CustomerData { get; set; } 
 
-        public string State { get; set; } // Open, InProcess, Closed
+        public string State { get; set; } 
 
         public bool IsSelfDelivery { get; set; }
+        public int? CityId { get; set; }
+        [ForeignKey("CityId")]
+        public City? PickUpFrom { get; set; }
 
         public IEnumerable<Ordered_Item> OrderedItems { get; set; }
     }
