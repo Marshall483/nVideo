@@ -1,10 +1,9 @@
 ﻿using nVideo.Models;
 using Microsoft.AspNetCore.Mvc;
-using nVideo.DATA;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
+
+#nullable enable
 
 namespace nVideo.Controllers
 {

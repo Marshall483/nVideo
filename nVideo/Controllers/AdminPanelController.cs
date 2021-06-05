@@ -4,21 +4,19 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using MailKit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using nVideo.DATA;
-using nVideo.DATA.ControllerModels;
-using nVideo.DATA.Extentions;
 using nVideo.DATA.Interfaces;
 using nVideo.DATA.Services;
 using nVideo.Models;
+
+#nullable enable
 
 namespace nVideo.Controllers
 {
@@ -239,13 +237,18 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditEntity()
+        public IActionResult EditEntity(int currentpage )
         {
 
-           IEnumerable<Catalog_Entity> ent = _context.Entities
+           List<Catalog_Entity> ent = _context.Entities
                 .OrderBy(e=> e.Id)
-                .Select(e => e);
-           ViewBag.Entities = ent;
+                .Select(e => e)
+                .ToList();
+           
+           var pages = ent.Count() % 10 != 0 ? ent.Count() / 10 + 1 : ent.Count() / 10;
+           ViewBag.Pages = pages;
+           ViewBag.CurrentPage = currentpage;
+           ViewBag.Entities = ent.Skip(10*(currentpage - 1)).Take(10).ToList();
             return View();
         }
 
@@ -283,9 +286,9 @@ namespace nVideo.Controllers
             bool isOrdered = false;
 
             foreach (var order in listOrders)
-                foreach (var ordered in order)
-                    if (ordered.Entity.Id == eid)
-                        isOrdered = true;
+            foreach (var ordered in order)
+                if (ordered.Entity.Id == eid)
+                    isOrdered = true;
 
             if (!isOrdered)
             {
@@ -297,6 +300,7 @@ namespace nVideo.Controllers
                 return RedirectToAction("Result", new {exepNum =3});
             }
         }
+
 
         private async Task<bool> RemoveEntity(Catalog_Entity e)
         {
@@ -386,21 +390,38 @@ namespace nVideo.Controllers
 
 
         
-        public IActionResult Orders()
+        public IActionResult Orders(int currentpage)
         {
-            
-            ViewBag.Orders = _context.Orders
-                .Where(x => x ==x);
+            var orders = _context.Orders
+                .Where(x => x == x).ToList();
+
+            var pages = orders.Count() % 10 != 0 ? orders.Count() / 10 + 1 : orders.Count() / 10;
+            ViewBag.Pages = pages;
+            ViewBag.CurrentPage = currentpage;
+            ViewBag.Orders = orders.Skip(10*(currentpage - 1)).Take(10).ToList();
 
             return View();
         }
 
         public IActionResult Order(int Id)
         {
-            var or = _context.Orders.First(x => x.Id == Id);
-            ViewBag.order = or;
+            var order = _context.Orders
+                .Single(o => o.Id.Equals(Id));      
+
+            if (order.IsSelfDelivery)
+                order = _context.Orders
+                    .Include(o => o.PickUpFrom)
+                    .Single(x => x.Id == Id);
+            else
+                order = _context.Orders
+                    .Include(o => o.CustomerData)
+                    .Single(x => x.Id == Id);
+            
+
+            ViewBag.order = order;
             ViewBag.user = _context.Users.
-                FirstOrDefault(x=>x.Orders.FirstOrDefault(x=>x.Id == or.Id) == or);
+                FirstOrDefault(x=>x.Orders.FirstOrDefault(x=>x.Id == order.Id) == order);
+
             return View();
         }
 

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using nVideo.DATA.Interfaces;
 using System;
 using System.Security.Claims;
@@ -14,7 +13,8 @@ using nVideo.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
+
+#nullable enable
 
 namespace nVideo.Controllers
 {
@@ -22,13 +22,11 @@ namespace nVideo.Controllers
     {
 
         private readonly IAllCatalog _catalog;
-        private readonly ILogger<CatalogController> _logger;
         private readonly AppDbContext _dbContext;
         private readonly UserManager<User> _userManager;
-        public CatalogController(IAllCatalog catalog, ILogger<CatalogController> logger,
+        public CatalogController(IAllCatalog catalog,
             AppDbContext context, UserManager<User> userManager){
             _catalog = catalog;
-            _logger = logger;
             _dbContext = context;
             _userManager = userManager;
         }
@@ -68,14 +66,15 @@ namespace nVideo.Controllers
                 {
                     count++;
                     var temp = attr
+                        .Where(x => x.EntityId.HasValue)
                         .Where(a => a.AttributeName.Equals(pair.Key))
                         .Where(a =>
                         {
                             var flag = false;
                             if (a.Value.IntegerValue.HasValue)
                             {
-                                if (int.TryParse(pair.Value, out int result))
-                                    if (a.Value.IntegerValue.Value == result)
+                                if (int.TryParse(pair.Value, out var res))
+                                    if (a.Value.IntegerValue.Value == res)
                                         flag = true;
                             }
                             if (!string.IsNullOrEmpty(a.Value.StringValue))
@@ -92,7 +91,7 @@ namespace nVideo.Controllers
             var dict = new Dictionary<int, int>();
             foreach (var item in attrResult)
             {
-                if (!dict.ContainsKey(item.EntityId.Value))
+                if (!dict.ContainsKey(item.EntityId!.Value))
                     dict.Add(item.EntityId.Value, 1);
                 else
                     dict[item.EntityId.Value] += 1;
@@ -161,9 +160,9 @@ namespace nVideo.Controllers
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> AddCommentAsync(
-            [FromForm] int entityId,
-            [FromForm] string rating,
-            [FromForm] string content)
+            [FromForm] int? entityId,
+            [FromForm] string? rating,
+            [FromForm] string? content)
         {
             if (content != null && entityId != null )
             {

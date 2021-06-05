@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using NpgsqlTypes;
@@ -10,9 +11,10 @@ using nVideo.DATA;
 namespace nVideo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210601100931_isSelfDeliveryOrder")]
+    partial class isSelfDeliveryOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -250,9 +252,6 @@ namespace nVideo.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<Guid?>("CityId")
-                        .HasColumnType("uuid");
-
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("timestamp without time zone");
 
@@ -270,8 +269,6 @@ namespace nVideo.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CityId");
 
                     b.HasIndex("CustomerDataId");
 
@@ -611,10 +608,6 @@ namespace nVideo.Migrations
 
             modelBuilder.Entity("nVideo.Models.Catalog_Order", b =>
                 {
-                    b.HasOne("nVideo.Models.City", "PickUpFrom")
-                        .WithMany()
-                        .HasForeignKey("CityId");
-
                     b.HasOne("nVideo.Models.UserProfile", "CustomerData")
                         .WithMany()
                         .HasForeignKey("CustomerDataId");
@@ -624,8 +617,6 @@ namespace nVideo.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("CustomerData");
-
-                    b.Navigation("PickUpFrom");
 
                     b.Navigation("User");
                 });

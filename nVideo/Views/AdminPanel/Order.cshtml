@@ -7,6 +7,49 @@
         <div class="content rounded-3 p-3">
       
             <h3 color="black"><a class="nav-link" >Order number: @order.Id</a></h3>
+            <h3 color="black">
+                Deliery:
+
+                @{
+                    if (order.IsSelfDelivery)
+                    {
+                        <p>
+                            Self Delivery from
+
+                            @{
+
+                                if (order.PickUpFrom != null)
+                                {
+                                    <span>@order.PickUpFrom.Name</span>
+                                }
+                                else
+                                {
+                                    <span>Unsupported place</span>
+                                }
+
+                            }
+                        </p>
+                    }
+                    else
+                    {
+                        <p> Courier Delivery to
+                            @{
+
+                                if (order.CustomerData != null)
+                                {
+                                    <span>@order.CustomerData.City, @order.CustomerData.Address</span>
+                                }
+                                else
+                                {
+                                    <span>Unsupported place</span>
+                                }
+
+                            }
+                        </p>
+                    }
+                }
+
+            </h3>
             <p>Status: @order.State</p>
             <p>Time:@order.CreatedTime</p>
             <p>User Email: @ViewBag.user.Email</p>
@@ -20,7 +63,7 @@
                 <option value="InProcess">InProcess</option>
                 <option selected value="Open">Open</option>
                 <select/>
-                <input type="submit">
+                <input type="submit" value="Change">
             </form>
             <br/>
             <br/>

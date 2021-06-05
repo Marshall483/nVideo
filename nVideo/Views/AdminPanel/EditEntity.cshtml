@@ -22,3 +22,21 @@
         } 
 }
 
+<div class="p-4">
+  <div class="welcome">
+    <div class="content rounded-3 p-3">
+      <table>
+        <tr>
+          @{
+            var pages = ViewBag.Pages;
+            for (int num = 1; num <= pages; num++)
+            {
+              <td><a class="nav-link" href="/AdminPanel/EditEntity?currentpage=@num">@num</a></td>
+            }
+          }
+        </tr>
+      </table>
+    </div>
+    </div>
+  </div>
+
