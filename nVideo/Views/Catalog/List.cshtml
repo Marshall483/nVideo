@@ -13,17 +13,18 @@
             {
                @if (Model.Entities.First().Category != null)
                 {
-                @await Component.InvokeAsync("Attribute", Model)
-                    }
+                    @await Component.InvokeAsync("Attribute", Model)
                 }
-                else
-                {
-                    <h5>
-                        No products were found for these parameters.
-                        <a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="@Context.Request.Cookies["category"]">
-                            reset filters
-                        </a>
-                    </h5>
+            }
+            else
+            {
+
+                <h5>
+                    No products were found for these parameters.
+                    <a asp-controller="Catalog" asp-action="CategoryFilter" asp-route-category="@Context.Request.Cookies["category"]">
+                        reset filters
+                    </a>
+                </h5>
 
             }
         }
@@ -35,13 +36,17 @@
     </div>
 
   <div class="well well-small">
-    <div class="goods-wrap">
+    <div class="goods-wrap"> 
+
       @{
+
         foreach (Catalog_Entity e in Model.Entities)
         {
-          @await Html.PartialAsync("ListCatalogPartial", e)
+            @await Html.PartialAsync("ListCatalogPartial", e)
         }
+
       }
+
     </div>
   </div>
 
