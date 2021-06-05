@@ -17,6 +17,7 @@ using nVideo.DATA.Interfaces;
 using nVideo.DATA.Repository;
 using nVideo.DATA.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Location;
 
 namespace nVideo
 {
@@ -81,12 +82,9 @@ namespace nVideo
 
             app.UseAuthentication();
             app.UseAuthorization();
-            app.Use(async (context, next) =>
-            {
-                if (!context.Request.Cookies.ContainsKey("City"))
-                    context.Response.Cookies.Append("City", await LocatorService.GetyCityAsync());
-                await next.Invoke();
-            });
+
+            app.UseMiddleware<CitiesMiddleware>();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

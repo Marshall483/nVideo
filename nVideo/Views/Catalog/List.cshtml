@@ -11,10 +11,12 @@
         {
            @if (Model.Entities.Count() != 0)
             {
+
                @if (Model.Entities.First().Category != null)
                 {
                     @await Component.InvokeAsync("Attribute", Model)
                 }
+
             }
             else
             {
