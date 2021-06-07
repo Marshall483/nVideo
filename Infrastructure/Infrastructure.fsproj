@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Services\Valodators\Abstractions\IValidator.fs" />
+    <Compile Include="Services\Valodators\ConcreteValidators\ImageValidator.fs" />
+    <Compile Include="Locator\LocatorService.fs" />
+    <Compile Include="Locator\LocatorMiddleware.fs" />
+    <Compile Include="Notificator\Abstractions\INotificator.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Notificator\Realizations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IpInfo" Version="1.0.5.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.8.10" />
+  </ItemGroup>
+
+</Project>

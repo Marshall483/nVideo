@@ -42,6 +42,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.fsproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.fsproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

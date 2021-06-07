@@ -15,7 +15,7 @@ namespace nVideo.DATA.Extentions
         public static async Task<User> GetUserAsync(this UserManager<User> manager, ClaimsPrincipal principal) =>
             await manager.GetUserAsync(principal);
 
-        public static User GetUserIncludeProfile(this UserManager<User> manager,
+        public static User WithProfile(this UserManager<User> manager,
             ClaimsPrincipal principal) =>
                  manager.Users
                 .Where(u => u.Id.Equals(manager.GetUserId(principal)))
