@@ -5,7 +5,13 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nVideo", "nVideo\nVideo.csproj", "{D9F182CA-09E8-407A-A35E-AE980255F874}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "DAL", "DAL\DAL.fsproj", "{92F2B627-860B-4870-A85F-0D2DA1C4795F}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "DAL", "DAL\DAL.fsproj", "{92F2B627-860B-4870-A85F-0D2DA1C4795F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{BB870D69-52A2-42C5-8132-888DE170EF91}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Infrastructure", "Infrastructure\Infrastructure.fsproj", "{652ECC95-4100-4FE4-B6F1-FB6E6979D6A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure_CSH", "Infrastructure_CSH\Infrastructure_CSH.csproj", "{41F4961C-4B99-4391-A166-395256BD8447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{92F2B627-860B-4870-A85F-0D2DA1C4795F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92F2B627-860B-4870-A85F-0D2DA1C4795F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92F2B627-860B-4870-A85F-0D2DA1C4795F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB870D69-52A2-42C5-8132-888DE170EF91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB870D69-52A2-42C5-8132-888DE170EF91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB870D69-52A2-42C5-8132-888DE170EF91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB870D69-52A2-42C5-8132-888DE170EF91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{652ECC95-4100-4FE4-B6F1-FB6E6979D6A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{652ECC95-4100-4FE4-B6F1-FB6E6979D6A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{652ECC95-4100-4FE4-B6F1-FB6E6979D6A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{652ECC95-4100-4FE4-B6F1-FB6E6979D6A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41F4961C-4B99-4391-A166-395256BD8447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41F4961C-4B99-4391-A166-395256BD8447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41F4961C-4B99-4391-A166-395256BD8447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41F4961C-4B99-4391-A166-395256BD8447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
