@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Services\Valodators\Abstractions\IValidator.fs" />
+    <Compile Include="Services\Valodators\ConcreteValidators\ImageValidator.fs" />
     <Compile Include="Locator\LocatorService.fs" />
     <Compile Include="Locator\LocatorMiddleware.fs" />
     <Compile Include="Notificator\Abstractions\INotificator.fs" />

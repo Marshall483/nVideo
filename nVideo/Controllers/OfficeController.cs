@@ -19,7 +19,6 @@ using nVideo.DATA.ViewModels;
 
 namespace nVideo.Controllers
 {
-    // Personal Cabinet func.
     [Authorize]
     public class OfficeController : Controller
     {
