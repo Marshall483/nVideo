@@ -24,46 +24,33 @@ namespace nVideo.Controllers
     public class OfficeController : Controller
     {
         private readonly SignInManager<User> _signInManager;
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<User> _user;
         private readonly AppDbContext _dbContext;
         private readonly EmailSenderService _sender;
+        private readonly IPasswordHasher<User> _hasher;
 
-        public OfficeController(UserManager<User> manager, AppDbContext context, SignInManager<User> signInManager, 
-            EmailSenderService sender)
+        public OfficeController(UserManager<User> manager, AppDbContext context, 
+            SignInManager<User> signInManager, EmailSenderService sender,
+            IPasswordHasher<User> hasher)
         {
-            this._userManager = manager;
-            this._dbContext = context;
-            this._signInManager = signInManager;
-            this._sender = sender;
+            _user = manager;
+            _dbContext = context;
+            _signInManager = signInManager;
+            _sender = sender;
+            _hasher = hasher;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Profile() {
-            if (User.Identity.IsAuthenticated)
-            {
-                var user = _userManager
+        public IActionResult Profile() {
+            var user = _user
                     .GetUserIncludeProfileAndOreders(new ClaimsPrincipal(User.Identities));
 
-                ViewBag.Messages ??= new List<string>();
-                if (ViewBag.Message != null)
-                    ViewBag.Messages.Add(ViewBag.Message);
+            if (!user.EmailConfirmed)
+                ViewBag.Messages.Add("Please confirm your mail!");
 
-                if (!user.EmailConfirmed)
-                    ViewBag.Messages.Add("Please confirm your mail!");
-                
-                
-                var model = new ProfileModel
-                {
-                    User = user
-                };
+            var tuple = new Tuple<User, UserProfile>(user, new UserProfile());
 
-                var tuple = new Tuple<User, UserProfile>(user, new UserProfile());
-                return View(tuple);
-            };
-
-            ViewBag.Message = "Not Authenticated";
-
-            return View("Error", new ErrorViewModel());
+            return View(tuple);
         }
 
         [HttpPost]
@@ -72,11 +59,11 @@ namespace nVideo.Controllers
         {
             if (!ModelState.IsValid) return View("EditProfileModalPartial", profileModel);
             
-            var user = _userManager
-                .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
+            var user = _user
+                .WithProfile(new ClaimsPrincipal(User.Identities));
             
             user.Profile = profileModel;
-            var res = await _userManager.UpdateAsync(user);
+            var res = await _user.UpdateAsync(user);
 
             if (res.Succeeded){
                 return RedirectToAction("Profile");
@@ -94,71 +81,34 @@ namespace nVideo.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
-            if (!ModelState.IsValid) return View("ChangePasswordModalPartial", model);
-            
-            if (model.NewPassword != model.RepeatNewPassword)
-            {
-                ViewBag.Error = "Passwords unmatched.";
+            if (!ModelState.IsValid) 
                 return View("ChangePasswordModalPartial", model);
-            }
             
-            var user = _userManager
-                .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
+            var user = _user.WithProfile(new ClaimsPrincipal(User.Identities));
+            var passwordsMatch = await _user.CheckPasswordAsync(user, model.OldPassword);
 
-            if (user != null)
+            if (passwordsMatch)
             {
-                var passwordValidator =
-                    HttpContext.RequestServices
-                        .GetService(typeof(IPasswordValidator<User>)) as IPasswordValidator<User>;
-                
-                var passwordHasher =
-                    HttpContext.RequestServices
-                        .GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
-
-                var result = passwordHasher!.VerifyHashedPassword(
-                    user, user.PasswordHash,
-                    model.OldPassword);
-                    
-                if (result == PasswordVerificationResult.Success)
-                {
-                    user.PasswordHash = passwordHasher!.HashPassword(user, model.NewPassword);
-                    await _userManager.UpdateAsync(user);
-
-                    ViewBag.Messages = new List<string>();
-                    ViewBag.Messages.Add("Password changed successfully");
-                    ViewBag.Message = "Password changed successfully";
-
-                    return RedirectToAction("Profile");
-                }
-                else
-                {
-                    ViewBag.Error = "Current password unmatched";
-                    return View("ChangePasswordModalPartial", model);
-                }
+                user.PasswordHash = _hasher.HashPassword(user, model.NewPassword);
+                await _user.UpdateAsync(user);
+                return RedirectToAction("Profile");
             }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "User not found");
-            }
+
+            ModelState.AddModelError(string.Empty, "Incorrect password.");
             return View("ChangePasswordModalPartial", model);
         }
 
         public async Task<IActionResult> ResendEmailCofirm()
         {
-            var user = _userManager
-                .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
-
-            if (user.EmailConfirmed)
-            {
-                return RedirectToAction("Profile");
-            }
+            var user = _user
+                .WithProfile(new ClaimsPrincipal(User.Identities));
             
-            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var code = await _user.GenerateEmailConfirmationTokenAsync(user);
             
             var callbackUrl = Url.Action(
                 "ConfirmEmail",
                 "Account",
-                new { userId = user.Id, code = code },
+                new { userId = user.Id, code },
                 protocol: HttpContext.Request.Scheme);
 
             try
@@ -169,10 +119,10 @@ namespace nVideo.Controllers
             catch (CommandException cEx)
             {
                 ViewBag.Errors ??= new List<string>();
-                ViewBag.Errors.Add("Specified Email is not exist");
+                ViewBag.Errors.Add(cEx.Message);
                 return View("OnEmailConfirm");
             }
-            catch (Exception suddenEx)
+            catch
             {
                 ViewBag.Errors ??= new List<string>();
                 ViewBag.Errors.Add("An error occured while sending email.");
@@ -192,8 +142,7 @@ namespace nVideo.Controllers
                 return View($"ChangeAvatarPartial", new ChangeAvatarViewModel { Error = error });
             }
 
-            var user = _userManager
-                .GetUserIncludeProfile(new ClaimsPrincipal(User.Identities));
+            var user = _user.WithProfile(new ClaimsPrincipal(User.Identities));
 
             byte[] imageData = null; 
             using (var binaryReader = new BinaryReader(avatarVM.Avatar.OpenReadStream()))
