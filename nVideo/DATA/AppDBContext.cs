@@ -33,5 +33,6 @@ namespace nVideo.DATA
         public DbSet<Catalog_Order> Orders { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Ordered_Item> OrderedItem { get; set; }
+
     }
 }
