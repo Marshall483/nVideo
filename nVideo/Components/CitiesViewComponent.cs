@@ -13,8 +13,6 @@ namespace nVideo.Components
     public class CitiesViewComponent : ViewComponent
     {
         private volatile AppDbContext _context;
-        private readonly IEnumerable<City> _cities;
-
         public CitiesViewComponent(AppDbContext context)
         {
             _context = context;

@@ -17,24 +17,7 @@ namespace nVideo
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
-
-            using (var serviceScope = host.Services.CreateScope()){
-                try{
-                    var context = serviceScope.ServiceProvider.GetRequiredService<AppDbContext>();
-                    DbObjects.Initial(context);
-
-                    var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
-                    var rolesManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-                    RoleInitializer.InitializeAsync(userManager, rolesManager).Wait();
-                }
-                catch(Exception ex){
-                    var logger = serviceScope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-                    logger.LogError($"An error occured while initializing Db -\n{ex.Message} ");
-                }
-            }
-
-            host.Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
