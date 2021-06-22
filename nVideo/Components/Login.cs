@@ -6,8 +6,9 @@ namespace nVideo.Components
 {
     public class Login : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(){
-                return View("LoginForm", new LoginModel());
+        public Task<IViewComponentResult> InvokeAsync(){
+                return Task.Run( () => (IViewComponentResult)
+                    View("LoginForm", new LoginModel()));
         }
     }
 }

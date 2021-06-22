@@ -37,7 +37,7 @@ namespace nVideo.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ProcessOrder(string deliveryType) =>
+        public IActionResult ProcessOrder(string deliveryType) =>
             deliveryType == SelfDelivery
                 ? View(SelfDelivery, new SelfDeliveryViewModel(_db.Cities, HttpContext.Request.Cookies["City"]))
                 : View(CourierDelivery, new CourierDeliveryViewModel(

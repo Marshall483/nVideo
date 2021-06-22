@@ -190,7 +190,7 @@ namespace nVideo.Controllers
                     _dbContext.Entities.Update(entity);
                     await _dbContext.SaveChangesAsync();
                 }
-                catch (Exception exc)
+                catch
                 {
                     ModelState.AddModelError("Error", "Ooops, something went wrong, try again later");
                 }

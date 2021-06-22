@@ -1,4 +1,3 @@
-#nullable enable
 
 using System;
 using System.Collections.Generic;
@@ -21,17 +20,19 @@ namespace nVideo.Models
         
         public DateTime CreatedTime { get; set; }    
         
-        public string? UserId { get; set; }
-        public User? User { get; set; } 
+        public string UserId { get; set; }
+        public User User { get; set; } 
+
         public int? CustomerDataId { get; set; }
         public UserProfile CustomerData { get; set; } 
 
         public string State { get; set; } 
 
         public bool IsSelfDelivery { get; set; }
+        
         public Guid? CityId { get; set; }
         [ForeignKey("CityId")]
-        public City? PickUpFrom { get; set; }
+        public City PickUpFrom { get; set; }
 
         public IEnumerable<Ordered_Item> OrderedItems { get; set; }
     }

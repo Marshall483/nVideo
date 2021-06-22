@@ -143,7 +143,7 @@ namespace nVideo.Controllers
 
             var user = _user.WithProfile(new ClaimsPrincipal(User.Identities));
 
-            byte[] imageData = null; 
+            byte[] imageData = null!; 
             using (var binaryReader = new BinaryReader(avatarVM.Avatar.OpenReadStream()))
             { 
                 imageData = binaryReader.ReadBytes((int) avatarVM.Avatar.Length);

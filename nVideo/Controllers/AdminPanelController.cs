@@ -326,10 +326,7 @@ namespace nVideo.Controllers
                 _context.Entities.Remove(e);
                 await _context.SaveChangesAsync();
             }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            catch { return false; }
 
             return true;
         }
@@ -392,8 +389,7 @@ namespace nVideo.Controllers
         
         public IActionResult Orders(int currentpage)
         {
-            var orders = _context.Orders
-                .Where(x => x == x).ToList();
+            var orders = _context.Orders.ToList();
 
             var pages = orders.Count() % 10 != 0 ? orders.Count() / 10 + 1 : orders.Count() / 10;
             ViewBag.Pages = pages;
@@ -460,9 +456,9 @@ namespace nVideo.Controllers
             };
              
            
-                Task.WhenAll(_userManager.CreateAsync(user, pass));
-            
-                Task.WhenAll(_userManager.AddToRoleAsync(user, Role));
+            await Task.WhenAll(_userManager.CreateAsync(user, pass));     
+            await Task.WhenAll(_userManager.AddToRoleAsync(user, Role));
+
             return RedirectToAction("Result", new {exepNum = 0});
         }
 
