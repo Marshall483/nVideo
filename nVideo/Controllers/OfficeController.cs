@@ -2,18 +2,17 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using nVideo.DATA;
-using nVideo.DATA.ControllerModels;
-using nVideo.DATA.Services;
-using nVideo.Models;
+using DAL;
+using ViewModels;
+using Services;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using nVideo.DATA.Extentions;
-using nVideo.DATA.ViewModels;
+using Extentions;
 
 #nullable  enable
 
@@ -24,11 +23,11 @@ namespace nVideo.Controllers
     {
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _user;
-        private readonly AppDbContext _dbContext;
+        private readonly Database _dbContext;
         private readonly EmailSenderService _sender;
         private readonly IPasswordHasher<User> _hasher;
 
-        public OfficeController(UserManager<User> manager, AppDbContext context, 
+        public OfficeController(UserManager<User> manager, Database context, 
             SignInManager<User> signInManager, EmailSenderService sender,
             IPasswordHasher<User> hasher)
         {
@@ -143,7 +142,7 @@ namespace nVideo.Controllers
 
             var user = _user.WithProfile(new ClaimsPrincipal(User.Identities));
 
-            byte[] imageData = null; 
+            byte[] imageData = null!; 
             using (var binaryReader = new BinaryReader(avatarVM.Avatar.OpenReadStream()))
             { 
                 imageData = binaryReader.ReadBytes((int) avatarVM.Avatar.Length);

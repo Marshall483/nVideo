@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using nVideo.DATA;
-using nVideo.DATA.ViewModels;
-using nVideo.Models;
+using DAL;
+using Models;
+using ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,9 +11,9 @@ namespace nVideo.Components
 {
     public class AttributeViewComponent : ViewComponent
     {
-        private readonly AppDbContext _context;
+        private readonly Database _context;
 
-        public AttributeViewComponent(AppDbContext context)
+        public AttributeViewComponent(Database context)
         {
             _context = context;
         }

@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using MailKit;
-using nVideo.DATA.Extentions;
-using nVideo.DATA.Services;
-using nVideo.Models;
-using nVideo.DATA.ControllerModels;
+using Extentions;
+using Models;
+using Services;
+using ViewModels;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;

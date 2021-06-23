@@ -1,21 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using nVideo.DATA;
-using nVideo.DATA.Services;
-using nVideo.Models;
-using System.Collections.Generic;
+using DAL;
 using System.Linq;
-using System.Threading;
+using FSharp;
+using Location;
 using System.Threading.Tasks;
+using Models;
 
 namespace nVideo.Components
 {
     public class CitiesViewComponent : ViewComponent
     {
-        private volatile AppDbContext _context;
-        private readonly IEnumerable<City> _cities;
-
-        public CitiesViewComponent(AppDbContext context)
+        private volatile Database _context;
+        public CitiesViewComponent(Database context)
         {
             _context = context;
         }
@@ -26,7 +22,7 @@ namespace nVideo.Components
             
             if (string.IsNullOrEmpty(city))
             {
-                city = await LocatorService.GetyCityAsync();
+                city = await Locator.LocatorService.GetCityAsync();
             
                 if (_context.Cities.FirstOrDefault(x => x.Name.Equals(city)) == null)
                     city = "Sorry, we cant locate you(";

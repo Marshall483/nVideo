@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <DisableImplicitComponentsAnalyzers>true</DisableImplicitComponentsAnalyzers>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="Services\Valodators\Abstractions\IValidator.fs" />
     <Compile Include="Locator\LocatorService.fs" />

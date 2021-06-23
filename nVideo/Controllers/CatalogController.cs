@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using nVideo.DATA.Interfaces;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using nVideo.DATA;
-using nVideo.DATA.ControllerModels;
-using nVideo.DATA.ViewModels;
-using nVideo.Models;
+using DAL;
+using Interfaces;
+using ViewModels;
+using Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -22,10 +21,10 @@ namespace nVideo.Controllers
     {
 
         private readonly IAllCatalog _catalog;
-        private readonly AppDbContext _dbContext;
+        private readonly Database _dbContext;
         private readonly UserManager<User> _userManager;
         public CatalogController(IAllCatalog catalog,
-            AppDbContext context, UserManager<User> userManager){
+            Database context, UserManager<User> userManager){
             _catalog = catalog;
             _dbContext = context;
             _userManager = userManager;
@@ -190,7 +189,7 @@ namespace nVideo.Controllers
                     _dbContext.Entities.Update(entity);
                     await _dbContext.SaveChangesAsync();
                 }
-                catch (Exception exc)
+                catch
                 {
                     ModelState.AddModelError("Error", "Ooops, something went wrong, try again later");
                 }

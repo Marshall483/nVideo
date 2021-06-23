@@ -12,12 +12,14 @@ module Locator =
         static member GetCityAsync() = 
             async{
 
-                let! locationRespone = 
+                let locationRespone = 
                     IpInfoApi(token, new HttpClient())
-                        .GetCurrentInformationAsync() |> Async.AwaitTask
+                        .GetCurrentInformationAsync()
+                
+                let! awaitedResponce = locationRespone |> Async.AwaitTask
 
-                return locationRespone.City
-            }
+                return awaitedResponce.City
+            } |> Async.StartAsTask
         
 
 
