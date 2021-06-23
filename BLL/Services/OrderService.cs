@@ -3,15 +3,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using nVideo.DATA.Interfaces;
-using nVideo.Models;
+using Models;
+using DAL;
 
-namespace nVideo.DATA.Services
+namespace Services
 {
 
     public class OrderService
     {
-        private readonly AppDbContext _db;
+        private readonly Database _db;
 
         private readonly Dictionary<OrderState, string> _states = new Dictionary<OrderState, string>{
                 { OrderState.Closed, "Closed" },
@@ -20,7 +20,7 @@ namespace nVideo.DATA.Services
                 { OrderState.ReadyToPick, "Ready To Pick" }
         };
       
-        public OrderService(AppDbContext context) =>
+        public OrderService(Database context) =>
             _db = context;
 
         public async Task<Catalog_Order> CreateFor(User user, Guid cidyId) =>

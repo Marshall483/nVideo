@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using nVideo.DATA.ControllerModels;
+using ViewModels;
 
 namespace nVideo.Components
 {

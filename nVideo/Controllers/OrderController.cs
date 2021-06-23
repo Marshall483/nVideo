@@ -4,11 +4,11 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using nVideo.DATA;
-using nVideo.DATA.Extentions;
-using nVideo.DATA.ViewModels;
-using nVideo.Models;
-using nVideo.DATA.Services;
+using Extentions;
+using ViewModels;
+using Models;
+using Services;
+using DAL;
 using Microsoft.AspNetCore.Authorization;
 using System;
 
@@ -20,14 +20,14 @@ namespace nVideo.Controllers
         private readonly OrderService _order;
         private readonly ShopCart _cart;
         private readonly UserManager<User> _userManager;
-        private readonly AppDbContext _db;
+        private readonly Database _db;
         private readonly NotificatorService _notify;
 
         static readonly string CourierDelivery = "Courier Delivery";
         static readonly string SelfDelivery = "Self Delivery";
 
         public OrderController(ShopCart cart, OrderService order, 
-            UserManager<User> userManager, AppDbContext appDbContext, 
+            UserManager<User> userManager, Database appDbContext, 
             NotificatorService notify){
                 _order = order;
                 _cart = cart;

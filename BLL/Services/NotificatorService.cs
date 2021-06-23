@@ -1,10 +1,10 @@
-﻿using nVideo.DATA.Interfaces;
-using nVideo.Models;
+﻿using Interfaces;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace nVideo.DATA.Services
+namespace Services
 {
     public class NotificatorService 
     {

@@ -1,17 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using nVideo.DATA.Interfaces;
-using nVideo.Models;
+using Interfaces;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using DAL;
 
-namespace nVideo.DATA.Repository
+namespace Repository
 {
     public class CatalogRepository : IAllCatalog
     {
-        private readonly AppDbContext _context;
-        public CatalogRepository(AppDbContext context)
+        private readonly Database _context;
+        public CatalogRepository(Database context)
         {
             _context = context;
         }

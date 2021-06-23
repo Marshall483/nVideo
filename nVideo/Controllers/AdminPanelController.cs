@@ -11,10 +11,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using nVideo.DATA;
-using nVideo.DATA.Interfaces;
-using nVideo.DATA.Services;
-using nVideo.Models;
+using Interfaces;
+using Services;
+using Models;
+using DAL;
 
 #nullable enable
 
@@ -27,14 +27,14 @@ namespace nVideo.Controllers
         private readonly UserManager<User> _userManager;
         private readonly EmailSenderService _sender;
         private readonly ILogger<AccountController> _logger;
-        private readonly AppDbContext _context;
+        private readonly Database _context;
         IWebHostEnvironment _appEnvironment;
         private readonly IAllCatalog _catalog;
         private readonly INotificator _notificator;
         
 
         public AdminPanelController(UserManager<User> userManager, EmailSenderService sender,
-            ILogger<AccountController> logger, AppDbContext context,
+            ILogger<AccountController> logger, Database context,
             IWebHostEnvironment appEnvironment, IAllCatalog catalog, INotificator notificator)
         {
             _userManager = userManager;

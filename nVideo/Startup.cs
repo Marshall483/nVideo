@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Services;
-using nVideo.DATA.Interfaces;
-using nVideo.DATA.Repository;
-using nVideo.DATA.Services;
+using BLL;
+using DAL;
 using Location;
 
 namespace nVideo
@@ -21,23 +18,14 @@ namespace nVideo
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-
-            services.AddHttpContextAccessor();
+            services.AddControllersWithViews();         
             
-            services.AddTransient<IAllCatalog, CatalogRepository>();
-            services.AddSingleton<EmailSenderService>();
-            services.AddSingleton<NotificatorService>();
-            services.AddTransient<INotificator, EmailNotificationService>();
-            services.AddTransient<OrderService>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped(x => ShopCart.GetCart(x));
-
+            services.ConfigureDataAccess(Configuration);
+            services.ConfigureBussinessLogic(Configuration);
             
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddMemoryCache();
-            services.AddSession();
-            
+            services.AddSession();           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env){

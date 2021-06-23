@@ -1,17 +1,17 @@
 ﻿using System.Threading.Tasks;
-using nVideo.Models;
+using Models;
 
-namespace nVideo.DATA.Interfaces
+namespace Interfaces
 {
     public interface INotificator
     {
-        public Task AboutOrderOpened(string email, Catalog_Order order);
+        Task AboutOrderOpened(string email, Catalog_Order order);
 
-        public Task AboutReadyToPick(string email, Catalog_Order order);
+        Task AboutReadyToPick(string email, Catalog_Order order);
 
-        public Task AboutOrderInProgress(string email, Catalog_Order order);
+        Task AboutOrderInProgress(string email, Catalog_Order order);
 
-        public Task AboutOrderColsed(string email, Catalog_Order order);
+        Task AboutOrderColsed(string email, Catalog_Order order);
 
     }
 }

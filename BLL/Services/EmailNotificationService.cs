@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using nVideo.Models;
-using nVideo.DATA.Interfaces;
+using Models;
+using Interfaces;
 
-namespace nVideo.DATA.Services
+namespace Services
 {
     public class EmailNotificationService : INotificator
     {

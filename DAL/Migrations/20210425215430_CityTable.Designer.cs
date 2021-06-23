@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using nVideo.DATA;
+using DAL;
 
 namespace nVideo.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    [Migration("20210326195920_InitialCreate")]
-    partial class InitialCreate
+    [DbContext(typeof(Database))]
+    [Migration("20210425215430_CityTable")]
+    partial class CityTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -151,28 +151,6 @@ namespace nVideo.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("nVideo.Models.Cart", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<int?>("EntityId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("ShopCartId")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EntityId");
-
-                    b.ToTable("Carts");
-                });
-
             modelBuilder.Entity("nVideo.Models.Catalog_Attribute", b =>
                 {
                     b.Property<int>("Id")
@@ -236,6 +214,9 @@ namespace nVideo.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("integer");
+
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
 
@@ -249,7 +230,29 @@ namespace nVideo.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("OrderId");
+
                     b.ToTable("Entities");
+                });
+
+            modelBuilder.Entity("nVideo.Models.Catalog_Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("Oreder_Time")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Value", b =>
@@ -274,6 +277,20 @@ namespace nVideo.Migrations
                         .IsUnique();
 
                     b.ToTable("Values");
+                });
+
+            modelBuilder.Entity("nVideo.Models.City", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("nVideo.Models.Comment", b =>
@@ -322,6 +339,28 @@ namespace nVideo.Migrations
                     b.HasIndex("Catalog_EntityId");
 
                     b.ToTable("Pictures");
+                });
+
+            modelBuilder.Entity("nVideo.Models.ShopCartItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("EntityId")
+                        .HasColumnType("integer");
+
+                    b.Property<long>("Quanity")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntityId");
+
+                    b.ToTable("ShopCartItems");
                 });
 
             modelBuilder.Entity("nVideo.Models.User", b =>
@@ -412,13 +451,16 @@ namespace nVideo.Migrations
                         .HasMaxLength(20);
 
                     b.Property<string>("LastName")
-                        .HasColumnType("text");
+                        .HasColumnType("character varying(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("character varying(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Phone")
-                        .HasColumnType("text");
+                        .HasColumnType("character varying(20)")
+                        .HasMaxLength(20);
 
                     b.HasKey("Id");
 
@@ -479,13 +521,6 @@ namespace nVideo.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("nVideo.Models.Cart", b =>
-                {
-                    b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
-                        .WithMany()
-                        .HasForeignKey("EntityId");
-                });
-
             modelBuilder.Entity("nVideo.Models.Catalog_Attribute", b =>
                 {
                     b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
@@ -498,6 +533,17 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.Catalog_Category", "Category")
                         .WithMany("Entities")
                         .HasForeignKey("CategoryId");
+
+                    b.HasOne("nVideo.Models.Catalog_Order", "Order")
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId");
+                });
+
+            modelBuilder.Entity("nVideo.Models.Catalog_Order", b =>
+                {
+                    b.HasOne("nVideo.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Value", b =>
@@ -523,6 +569,13 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
                         .WithMany("Images")
                         .HasForeignKey("Catalog_EntityId");
+                });
+
+            modelBuilder.Entity("nVideo.Models.ShopCartItem", b =>
+                {
+                    b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityId");
                 });
 
             modelBuilder.Entity("nVideo.Models.UserProfile", b =>

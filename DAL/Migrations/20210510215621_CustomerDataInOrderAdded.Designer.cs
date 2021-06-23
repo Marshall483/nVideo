@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using nVideo.DATA;
+using DAL;
 
 namespace nVideo.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    [Migration("20210428084616_Avatar")]
-    partial class Avatar
+    [DbContext(typeof(Database))]
+    [Migration("20210510215621_CustomerDataInOrderAdded")]
+    partial class CustomerDataInOrderAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -242,13 +242,22 @@ namespace nVideo.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<DateTime>("Oreder_Time")
+                    b.Property<DateTime>("CreatedTime")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("CustomerDataId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("UserId")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerDataId");
 
                     b.HasIndex("UserId");
 
@@ -277,6 +286,23 @@ namespace nVideo.Migrations
                         .IsUnique();
 
                     b.ToTable("Values");
+                });
+
+            modelBuilder.Entity("nVideo.Models.City", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("OfficeLocation")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("nVideo.Models.Comment", b =>
@@ -339,15 +365,20 @@ namespace nVideo.Migrations
                     b.Property<int?>("EntityId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("integer");
+
                     b.Property<long>("Quanity")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ShopCartId")
+                    b.Property<string>("UserName")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EntityId");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("ShopCartItems");
                 });
@@ -527,14 +558,20 @@ namespace nVideo.Migrations
                         .HasForeignKey("CategoryId");
 
                     b.HasOne("nVideo.Models.Catalog_Order", "Order")
-                        .WithMany("Items")
+                        .WithMany()
                         .HasForeignKey("OrderId");
                 });
 
             modelBuilder.Entity("nVideo.Models.Catalog_Order", b =>
                 {
-                    b.HasOne("nVideo.Models.User", "User")
+                    b.HasOne("nVideo.Models.UserProfile", "CustomerData")
                         .WithMany()
+                        .HasForeignKey("CustomerDataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("nVideo.Models.User", "User")
+                        .WithMany("Orders")
                         .HasForeignKey("UserId");
                 });
 
@@ -568,6 +605,10 @@ namespace nVideo.Migrations
                     b.HasOne("nVideo.Models.Catalog_Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityId");
+
+                    b.HasOne("nVideo.Models.Catalog_Order", "Order")
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId");
                 });
 
             modelBuilder.Entity("nVideo.Models.UserProfile", b =>

@@ -5,10 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Models;
-using System;
-using DAL;
 
-namespace DataAccess
+namespace DAL
 {
     public static class Extenstion
     {

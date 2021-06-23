@@ -1,19 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using nVideo.DATA;
-using nVideo.DATA.Services;
-using nVideo.Models;
-using System.Collections.Generic;
+using DAL;
 using System.Linq;
-using System.Threading;
+using Location;
 using System.Threading.Tasks;
+using Models;
 
 namespace nVideo.Components
 {
     public class CitiesViewComponent : ViewComponent
     {
-        private volatile AppDbContext _context;
-        public CitiesViewComponent(AppDbContext context)
+        private volatile Database _context;
+        public CitiesViewComponent(Database context)
         {
             _context = context;
         }

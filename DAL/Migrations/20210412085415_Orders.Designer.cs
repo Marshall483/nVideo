@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using nVideo.DATA;
+using DAL;
 
 namespace nVideo.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(Database))]
     [Migration("20210412085415_Orders")]
     partial class Orders
     {

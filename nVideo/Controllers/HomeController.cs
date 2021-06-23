@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using nVideo.DATA.Interfaces;
-using nVideo.Models;
-using nVideo.DATA.ViewModels;
+using Interfaces;
+using Models;
+using ViewModels;
 
 #nullable enable
 
