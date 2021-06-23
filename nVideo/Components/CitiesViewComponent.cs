@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DAL;
 using System.Linq;
+using FSharp;
 using Location;
 using System.Threading.Tasks;
 using Models;
@@ -21,7 +22,7 @@ namespace nVideo.Components
             
             if (string.IsNullOrEmpty(city))
             {
-                city = await LocatorService.GetyCityAsync();
+                city = await Locator.LocatorService.GetCityAsync();
             
                 if (_context.Cities.FirstOrDefault(x => x.Name.Equals(city)) == null)
                     city = "Sorry, we cant locate you(";

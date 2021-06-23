@@ -16,15 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20210223194128_Fixed DbSet.cs" />
-    <Compile Remove="Migrations\20210223194128_Fixed DbSet.Designer.cs" />
-    <Compile Remove="Migrations\20210223195207_Fixed DbSet.cs" />
-    <Compile Remove="Migrations\20210223195207_Fixed DbSet.Designer.cs" />
-    <Compile Remove="Migrations\20210225151316_FixPicture.cs" />
-    <Compile Remove="Migrations\20210225151316_FixPicture.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="FSharp.Core" Version="5.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.6">

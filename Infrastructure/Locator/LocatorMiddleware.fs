@@ -11,7 +11,7 @@ type CitiesMiddleware(next: RequestDelegate) =
         async{ 
 
             if not (context.Request.Cookies.ContainsKey("City")) then
-                let! locate = LocatorService.GetCityAsync()
+                let! locate = LocatorService.GetCityAsync() |> Async.AwaitTask
                 context.Response.Cookies.Append("City", locate);
 
         } |> ignore
